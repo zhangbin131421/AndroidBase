@@ -6,35 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ExpandableListView
+        android:id="@+id/elv_main_types"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!1" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#002200"
-        android:text="Hello World!2" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#003300"
-        android:text="Hello World!3" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#004400"
-        android:text="Hello World!4" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#005500"
-        android:text="Hello World!5" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#006600"
-        android:text="Hello World!6" />
+    </ExpandableListView>
 </LinearLayout>
