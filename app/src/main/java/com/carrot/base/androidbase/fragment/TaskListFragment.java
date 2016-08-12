@@ -1,6 +1,6 @@
 package com.carrot.base.androidbase.fragment;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.widget.ListView;
 
 import com.carrot.base.androidbase.R;
