@@ -44,6 +44,9 @@ public class MainListAdapter extends BaseExpandableListAdapter{
 
     @Override
     public int getChildrenCount(int i) {
+        if(types.get(i).getSubTypes() == null || types.get(i).getSubTypes().size() == 0){
+            return 0;
+        }
         return types.get(i).getSubTypes().size();
     }
 
@@ -54,6 +57,10 @@ public class MainListAdapter extends BaseExpandableListAdapter{
 
     @Override
     public Object getChild(int i, int i1) {
+        if(types.get(i).getSubTypes() == null || types.get(i).getSubTypes().size() == 0){
+            return null;
+        }
+
         return types.get(i).getSubTypes().get(i1);
     }
 
@@ -102,6 +109,6 @@ public class MainListAdapter extends BaseExpandableListAdapter{
 
     @Override
     public boolean isChildSelectable(int i, int i1) {
-        return false;
+        return true;
     }
 }
