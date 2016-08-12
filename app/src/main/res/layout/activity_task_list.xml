@@ -13,5 +13,6 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lv_task_list_tasks" />
+        android:id="@+id/lv_task_list_tasks"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>
