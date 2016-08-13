@@ -23,6 +23,8 @@
         <activity android:name=".activity.TaskListActivity_" android:label="任务列表"/>
 
         <activity android:name=".activity.SettingActivity_" android:label="设置"/>
+
+        <activity android:name=".activity.ChangePsdActivity_" android:label="修改密码"/>
     </application>
 
 </manifest>

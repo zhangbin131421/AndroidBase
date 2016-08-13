@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.SettingActivity_">
+    <item
+        android:id="@+id/menu_setting_back"
+        android:title="返回"
+        android:icon="@mipmap/ic_keyboard_arrow_left_white_24dp"
+        app:showAsAction="always"/>
+</menu>
