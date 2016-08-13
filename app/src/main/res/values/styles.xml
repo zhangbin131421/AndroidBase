@@ -10,6 +10,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+
     </style>
     <style name="AppTheme" parent="AppTheme.Base"></style>
 
@@ -23,6 +25,8 @@
         <!--<item name="android:textColor">@color/colorTextBlack</item>-->
     <!--</style>-->
 
-
+    <style name="ToolBarTheme" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
 
 </resources>

@@ -3,18 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorForth">
+    android:layout_height="match_parent">
 
-
-    <android.support.design.widget.TabLayout
-        app:tabSelectedTextColor="@color/colorAccent"
-        app:tabTextColor="@color/colorTitle2"
-        android:id="@+id/tl_task_list_tabs"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorThird">
-    </android.support.design.widget.TabLayout>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_task_list_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"/>
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tl_task_list_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </android.support.design.widget.AppBarLayout>
+
 
     <android.support.v4.view.ViewPager
         android:layout_marginTop="-10dp"

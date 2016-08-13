@@ -3,6 +3,7 @@ package com.carrot.base.androidbase.activity;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
@@ -26,11 +27,17 @@ public class TaskListActivity extends AppCompatActivity {
     @ViewById(R.id.vp_task_list_pager)
     ViewPager vpPager;
 
+    @ViewById(R.id.tb_task_list_tool_bar)
+    Toolbar toolbar;
+
 
     TaskListFragmentAdapter taskListFragmentAdapter;
 
     @AfterViews
     void initTabs(){
+
+        setSupportActionBar(toolbar);
+
         taskListFragmentAdapter = new TaskListFragmentAdapter(getSupportFragmentManager(), getApplicationContext());
         vpPager.setAdapter(taskListFragmentAdapter);
 
