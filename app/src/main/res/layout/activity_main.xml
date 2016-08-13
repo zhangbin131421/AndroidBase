@@ -4,18 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?attr/colorPrimary">
+    android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_main_tool_bar"
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_main_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </android.support.v7.widget.Toolbar>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
 
     <ExpandableListView
-        android:layout_marginTop="2dp"
         android:id="@+id/elv_main_types"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
