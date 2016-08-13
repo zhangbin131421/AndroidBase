@@ -9,13 +9,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity_" android:label="首页">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity_"/>
+        <activity android:name=".LoginActivity_">
+
+        </activity>
 
         <activity android:name=".activity.TaskListActivity_" />
     </application>
