@@ -48,6 +48,8 @@ public class TaskListActivity extends AppCompatActivity {
     void initTabs(){
         taskListFragmentAdapter = new TaskListFragmentAdapter(getSupportFragmentManager(), getApplicationContext());
         vpPager.setAdapter(taskListFragmentAdapter);
+
+        tlTabs.setupWithViewPager(vpPager);
 //        tlTabs.
     }
 
