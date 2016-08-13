@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 def AAVersion = '4.1.0'
+def SDKVersion = '24.1.1'
 
 buildscript {
     repositories {
@@ -57,9 +58,13 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.1.1'
-    compile 'com.android.support:design:24.1.1'
-    compile 'com.android.support:support-v4:24.1.1'
+    compile "com.android.support:appcompat-v7:$SDKVersion"
+    compile "com.android.support:design:$SDKVersion"
+    compile "com.android.support:support-v4:$SDKVersion"
+
+    compile "com.android.support:cardview-v7:$SDKVersion"
+    compile "com.android.support:recyclerview-v7:$SDKVersion"
+
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     apt "org.androidannotations:rest-spring:$AAVersion"
