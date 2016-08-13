@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ExpandableListView.OnChildClickListener;
 
 import com.carrot.base.androidbase.activity.TaskListActivity_;
 import com.carrot.base.androidbase.adapter.MainListAdapter;
@@ -35,10 +36,11 @@ public class MainActivity extends Activity {
     void bindAdapter(){
         elvTypes.setAdapter(mainListAdapter);
 
-        elvTypes.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        elvTypes.setOnChildClickListener(new OnChildClickListener() {
 
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+//                TaskListActivity_.intent(MainActivity.this).start();
                 TaskListActivity_.intent(MainActivity.this).start();
                 return false;
 
