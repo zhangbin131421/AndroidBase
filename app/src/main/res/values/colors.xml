@@ -5,11 +5,15 @@
     <color name="colorThird">#E0F2F1</color>
     <color name="colorForth">#FFFFFF</color>
 
+    <color name="textColorPrimary">#000000</color>
 
-    <color name="colorTitle1">#616161</color>
-    <color name="colorTitle2">#9E9E9E</color>
+    <color name="colorTextWhite">#FFFFFF</color>
+    <color name="colorTextBlack">#000000</color>
+
+    <color name="colorTitle1">#616161</color><!-- 一级菜单默认颜色 -->
+    <color name="colorTitle2">#9E9E9E</color><!-- 二级菜单默认颜色 -->
 
 
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#00695C</color>
     <color name="colorAccent">#F44336</color>
 </resources>

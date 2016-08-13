@@ -1,14 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
+        <item name="android:windowBackground">@color/colorForth</item>
+
+        <!--<item name="android:editTextStyle">@style/TextViewTheme</item>-->
+        <!--<item name="android:buttonStyle">@style/ButtonTheme</item>-->
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-
     </style>
+    <style name="AppTheme" parent="AppTheme.Base"></style>
+
+
+    <!--<style name="ButtonTheme" parent="android:style/Widget.Button">-->
+        <!--<item name="android:textSize">17sp</item>-->
+    <!--</style>-->
+
+    <!--<style name="TextViewTheme" parent="android:Widget.Material.TextView">-->
+        <!--<item name="android:textSize">23sp</item>-->
+        <!--<item name="android:textColor">@color/colorTextBlack</item>-->
+    <!--</style>-->
 
 
 
