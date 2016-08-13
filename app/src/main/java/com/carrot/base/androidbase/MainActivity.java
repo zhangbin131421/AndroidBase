@@ -4,6 +4,7 @@ package com.carrot.base.androidbase;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -35,11 +36,18 @@ public class MainActivity extends AppCompatActivity {
     @ViewById(R.id.elv_main_types)
     ExpandableListView elvTypes;
 
+    @ViewById(R.id.tb_main_tool_bar)
+    Toolbar toolbar;
+
     @Bean
     MainListAdapter mainListAdapter;
 
     @AfterViews
     void bindAdapter(){
+
+        setSupportActionBar(toolbar);
+
+
         elvTypes.setAdapter(mainListAdapter);
 
         elvTypes.setOnChildClickListener(new OnChildClickListener() {
