@@ -3,4 +3,10 @@
 
 
     <integer name="actionBarSize">20</integer>
+
+    <!-- default size -->
+    <string name="sizeTitle1">30sp</string>
+    <string name="sizeTitle2">25sp</string>
+
+
 </resources>
