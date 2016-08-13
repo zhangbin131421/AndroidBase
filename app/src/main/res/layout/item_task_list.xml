@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:background="@color/colorThird"
     android:layout_height="50dp"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical" >
 
     <TextView
         android:id="@+id/tv_task_list_item_task_name"

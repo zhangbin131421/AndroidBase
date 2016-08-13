@@ -23,5 +23,6 @@ public class ChangePsdActivity extends AppCompatActivity {
     @AfterViews
     void initPage(){
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

@@ -33,7 +33,10 @@ public class SettingActivity extends AppCompatActivity {
 
     @AfterViews
     void initPage(){
+
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Click(R.id.btn_setting_logout)

@@ -20,11 +20,20 @@
 
         </activity>
 
-        <activity android:name=".activity.TaskListActivity_" android:label="任务列表"/>
+        <activity android:name=".activity.TaskListActivity_" android:label="任务列表">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity_"/>
+        </activity>
 
-        <activity android:name=".activity.SettingActivity_" android:label="设置"/>
+        <activity android:name=".activity.SettingActivity_" android:label="设置">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity_"/>
+        </activity>
 
-        <activity android:name=".activity.ChangePsdActivity_" android:label="修改密码"/>
+        <activity android:name=".activity.ChangePsdActivity_" android:label="修改密码">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.SettingActivity_"/>
+        </activity>
     </application>
 
 </manifest>

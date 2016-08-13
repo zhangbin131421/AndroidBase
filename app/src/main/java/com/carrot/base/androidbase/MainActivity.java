@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     @AfterViews
     void bindAdapter(){
 
+        Toast.makeText(this, "main bind adapter", Toast.LENGTH_SHORT).show();
+
         setSupportActionBar(toolbar);
 
 
@@ -62,12 +64,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     protected void onPostResume() {

@@ -5,11 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activity.TaskListActivity_">
 
-    <item
-        android:id="@+id/menu_task_list_back"
-        android:title="返回"
-        android:icon="@mipmap/ic_keyboard_arrow_left_white_24dp"
-        app:showAsAction="always"/>
 
     <item
         android:id="@+id/menu_task_list_new"
