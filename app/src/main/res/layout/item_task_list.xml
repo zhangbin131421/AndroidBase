@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/tv_task_list_item_task_name"
         android:textColor="@color/colorTitle1"
-        android:textSize="23sp"
+        android:textSize="@dimen/text_size_title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -26,7 +26,7 @@
     <TextView
         android:id="@+id/tv_task_list_item_status"
         android:textColor="@color/colorTitle1"
-        android:textSize="23sp"
+        android:textSize="@dimen/text_size_title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="40dp"/>
