@@ -3,6 +3,7 @@ package com.carrot.base.androidbase;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -20,7 +21,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 
 @EActivity(R.layout.activity_main)
 @OptionsMenu(R.menu.main)
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
 
     @Pref
@@ -40,7 +41,6 @@ public class MainActivity extends Activity {
 
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-//                TaskListActivity_.intent(MainActivity.this).start();
                 TaskListActivity_.intent(MainActivity.this).start();
                 return false;
 
