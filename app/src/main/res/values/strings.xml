@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidBase</string>
+    <string name="app_name">供电所</string>
 
 
     <integer name="actionBarSize">20</integer>
