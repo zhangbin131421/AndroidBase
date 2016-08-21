@@ -26,6 +26,8 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
 
+    useLibrary  'org.apache.http.legacy'
+
     packagingOptions {
         exclude 'META-INF/license.txt'
         exclude 'META-INF/notice.txt'
@@ -69,6 +71,13 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     apt "org.androidannotations:rest-spring:$AAVersion"
     compile "org.androidannotations:rest-spring-api:$AAVersion"
+
+    compile 'org.apache.httpcomponents:httpcore:4.4.1'
+    compile 'org.apache.httpcomponents:httpclient:4.5'
+
+    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+
     //    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
     //    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
     //    compile 'com.fasterxml.jackson.core:jackson-core:2.7.3'
