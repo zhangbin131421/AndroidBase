@@ -5,9 +5,14 @@
     android:layout_height="match_parent">
 
 
-    <ListView
+    <!--<ListView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:id="@+id/lv_task_list_tasks"-->
+        <!--android:layout_marginTop="10dp"/>-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_fragment_task_list_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lv_task_list_tasks"
-        android:layout_marginTop="10dp"/>
+        android:scrollbars="vertical"/>
 </LinearLayout>

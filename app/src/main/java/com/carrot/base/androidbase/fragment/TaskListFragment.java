@@ -1,10 +1,16 @@
 package com.carrot.base.androidbase.fragment;
 
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.adapter.MainCardAdapter;
+import com.carrot.base.androidbase.adapter.TaskCardAdapter;
 import com.carrot.base.androidbase.adapter.TaskListAdapter;
+import com.carrot.base.androidbase.utils.TestUtils;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -22,15 +28,22 @@ public class TaskListFragment extends Fragment {
     String status;
 
 
-    @ViewById(R.id.lv_task_list_tasks)
-    ListView lvTasks;
+    @ViewById(R.id.rv_fragment_task_list_rv)
+    RecyclerView mRecyclerView;
 
-    @Bean
-    TaskListAdapter taskListAdapter;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private static String LOG_TAG = "TaskListFragment";
 
     @AfterViews
     void bindAdapter(){
-        lvTasks.setAdapter(taskListAdapter);
+
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new TaskCardAdapter(TestUtils.getAllTasks(status));
+        mRecyclerView.setAdapter(mAdapter);
+
     }
 
 }
