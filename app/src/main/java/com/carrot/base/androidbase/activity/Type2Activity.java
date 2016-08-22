@@ -51,7 +51,7 @@ public class Type2Activity extends AppCompatActivity {
 //        mRecyclerView = (RecyclerView) findViewById(R.id.rv_type_2);
         mRecyclerView.setHasFixedSize(true);
 
-        mLayoutManager = new GridLayoutManager(getApplicationContext(), 2, GridLayoutManager.HORIZONTAL, false);
+        mLayoutManager = new GridLayoutManager(getApplicationContext(), 2, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new MainCardAdapter(typeVo.getSubTypes());
         mRecyclerView.setAdapter(mAdapter);
