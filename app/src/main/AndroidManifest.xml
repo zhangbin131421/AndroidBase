@@ -38,6 +38,8 @@
 
         <activity android:name=".activity.Type2Activity_">
         </activity>
+
+        <activity android:name=".activity.handle.LineBrokenManagementActivity_"></activity>
     </application>
 
 </manifest>

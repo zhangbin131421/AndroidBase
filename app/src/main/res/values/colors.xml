@@ -10,8 +10,13 @@
     <color name="colorTextWhite">#FFFFFF</color>
     <color name="colorTextBlack">#000000</color>
 
-    <color name="colorTitle1">#616161</color><!-- 一级菜单默认颜色 -->
+    <color name="colorTitle1">#616161</color><!-- 表单背景色 -->
     <color name="colorTitle2">#9E9E9E</color><!-- 二级菜单默认颜色 -->
+
+
+
+    <color name="colorTable1">#616161</color><!-- 表单背景色 -->
+    <color name="colorTable2">#9E9E9E</color><!-- 二级菜单默认颜色 -->
 
 
     <color name="colorPrimaryDark">#00695C</color>

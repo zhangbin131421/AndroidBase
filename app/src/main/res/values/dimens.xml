@@ -5,4 +5,7 @@
 
     <dimen name="text_size_title1">22sp</dimen>
     <dimen name="text_size_title2">18sp</dimen>
+
+
+    <dimen name="widthTable1">100dp</dimen>
 </resources>

@@ -1,5 +1,6 @@
 package com.carrot.base.androidbase.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.activity.handle.LineBrokenManagementActivity_;
 import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
 
 import org.androidannotations.annotations.AfterViews;
@@ -58,6 +60,9 @@ public class TaskListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
                 Toast.makeText(TaskListActivity.this, "ADD!", Toast.LENGTH_SHORT).show();
+                LineBrokenManagementActivity_.intent(getApplicationContext())
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
                 return true;
             case android.R.id.home:
                 if (getParentActivityIntent() == null) {
