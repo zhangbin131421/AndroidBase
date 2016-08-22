@@ -40,11 +40,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户名:"/>
+            android:text="用户名:"/><!-- 18662149174 15001768927 15087523694  123 -->
         <EditText
             android:id="@+id/et_login_username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="18662149174"/>
     </LinearLayout>
 
     <LinearLayout
@@ -60,6 +61,7 @@
             android:id="@+id/et_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="123"
             android:inputType="textPassword"/>
     </LinearLayout>
 

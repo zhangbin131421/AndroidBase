@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 def AAVersion = '4.1.0'
 def SDKVersion = '24.1.1'
+def JsonVersion = '2.7.3'
 
 buildscript {
     repositories {
@@ -76,13 +77,11 @@ dependencies {
     compile 'org.apache.httpcomponents:httpclient:4.5'
 
     compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+    compile "com.fasterxml.jackson.core:jackson-databind:$JsonVersion"
+    compile "com.fasterxml.jackson.core:jackson-core:$JsonVersion"
+    compile "com.fasterxml.jackson.core:jackson-annotations:$JsonVersion"
 
-    //    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
-    //    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
-    //    compile 'com.fasterxml.jackson.core:jackson-core:2.7.3'
-    //    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
-    //    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.google.code.gson:gson:2.6.2'
     //    compile project(':easeui')
     //    compile files('libs/Parse-1.9.4.jar')
     //    compile files('libs/umeng-analytics-v5.2.4.jar')
