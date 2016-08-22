@@ -1,9 +1,11 @@
 package com.carrot.base.androidbase.activity;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -58,9 +60,17 @@ public class TaskListActivity extends AppCompatActivity {
                 // TODO put your code here to respond to the button tap
                 Toast.makeText(TaskListActivity.this, "ADD!", Toast.LENGTH_SHORT).show();
                 return true;
+            case android.R.id.home:
+                if (getParentActivityIntent() == null) {
+                    onBackPressed();
+                } else {
+                    NavUtils.navigateUpFromSameTask(this);
+                }
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 }

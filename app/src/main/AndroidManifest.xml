@@ -24,8 +24,6 @@
         </activity>
 
         <activity android:name=".activity.TaskListActivity_" android:label="任务列表">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity_"/>
         </activity>
 
         <activity android:name=".activity.SettingActivity_" android:label="设置">
