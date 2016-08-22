@@ -37,8 +37,6 @@
         </activity>
 
         <activity android:name=".activity.Type2Activity_">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity_"/>
         </activity>
     </application>
 

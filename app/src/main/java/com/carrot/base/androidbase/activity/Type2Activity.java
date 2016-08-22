@@ -1,12 +1,15 @@
 package com.carrot.base.androidbase.activity;
 
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.adapter.Type2Adapter;
@@ -74,5 +77,18 @@ public class Type2Activity extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (getParentActivityIntent() == null) {
+                    onBackPressed();
+                } else {
+                    NavUtils.navigateUpFromSameTask(this);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

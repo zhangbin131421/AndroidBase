@@ -57,7 +57,6 @@ public class TaskListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
-                // TODO put your code here to respond to the button tap
                 Toast.makeText(TaskListActivity.this, "ADD!", Toast.LENGTH_SHORT).show();
                 return true;
             case android.R.id.home:
