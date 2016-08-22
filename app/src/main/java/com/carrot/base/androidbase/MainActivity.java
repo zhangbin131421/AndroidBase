@@ -12,11 +12,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.activity.SettingActivity_;
+import com.carrot.base.androidbase.activity.TaskListActivity_;
 import com.carrot.base.androidbase.activity.Type2Activity;
 import com.carrot.base.androidbase.activity.Type2Activity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.TestUtils;
+import com.carrot.base.androidbase.vo.TypeVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -68,9 +70,17 @@ public class MainActivity extends AppCompatActivity {
                 .MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-                Type2Activity_.intent(getApplicationContext())
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .typeVo(((MainCardAdapter) mAdapter).getItem(position)).start();
+                TypeVo typeVo = ((MainCardAdapter) mAdapter).getItem(position);
+
+                if(typeVo.getSubTypes() == null || typeVo.getSubTypes().size() == 0){
+                    TaskListActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+
+                }else{
+                    Type2Activity_.intent(getApplicationContext())
+                            .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            .typeVo(typeVo).start();
+                }
+
 
             }
         });
