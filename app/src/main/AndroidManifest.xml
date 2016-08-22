@@ -37,6 +37,11 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.SettingActivity_"/>
         </activity>
+
+        <activity android:name=".activity.Type2Activity_" android:label="二级">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity_"/>
+        </activity>
     </application>
 
 </manifest>

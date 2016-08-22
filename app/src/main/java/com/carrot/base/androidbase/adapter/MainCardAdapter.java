@@ -70,6 +70,10 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
         notifyItemInserted(index);
     }
 
+    public TypeVo getItem(int index){
+        return mDataset.get(index);
+    }
+
     public void deleteItem(int index) {
         mDataset.remove(index);
         notifyItemRemoved(index);

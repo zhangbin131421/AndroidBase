@@ -1,11 +1,12 @@
 package com.carrot.base.androidbase.vo;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by victor on 8/12/16.
  */
-public class TypeVo {
+public class TypeVo implements Serializable{
 
 
     private String name = "";
