@@ -48,6 +48,8 @@ public class Type2Activity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 //        mRecyclerView = (RecyclerView) findViewById(R.id.rv_type_2);
         mRecyclerView.setHasFixedSize(true);
 
