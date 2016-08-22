@@ -1,13 +1,12 @@
 package com.carrot.base.androidbase;
 
 import android.app.Activity;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.client.UserClient;
-import com.carrot.base.androidbase.preferences.MyPrefs_;
+import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.vo.result.LoginResult;
 import com.carrot.base.androidbase.vo.result.UserResult;
 
@@ -30,7 +29,7 @@ public class LoginActivity extends Activity {
     UserClient userClient;
 
     @Pref
-    MyPrefs_ myPrefs;
+    UserPrefs_ userPrefs;
 
     @ViewById(R.id.et_login_username)
     EditText etUsername;
@@ -63,15 +62,23 @@ public class LoginActivity extends Activity {
         }
 
 
+        UserResult userResult = userClient.getUserById(loginResult.getId());
 
 
-        loginSuccess();
+        loginSuccess(userResult);
 
     }
 
     @UiThread
-    void loginSuccess(){
-        myPrefs.edit().currentUsername().put(etUsername.getText().toString()).apply();
+    void loginSuccess(UserResult userResult){
+
+        userPrefs.edit().name().put(userResult.getName())
+                .id().put(userResult.getId())
+                .level().put(userResult.getLevel())
+                .phone().put(userResult.getPhone())
+                .isValid().put(userResult.getIsValid())
+                .message().put(userResult.getMessage())
+                .code().put(userResult.getCode()).apply();
 
         this.finish();
     }

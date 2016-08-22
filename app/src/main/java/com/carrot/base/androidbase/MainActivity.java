@@ -1,11 +1,8 @@
 package com.carrot.base.androidbase;
 
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -14,14 +11,13 @@ import android.widget.Toast;
 import com.carrot.base.androidbase.activity.SettingActivity_;
 import com.carrot.base.androidbase.activity.TaskListActivity_;
 import com.carrot.base.androidbase.adapter.MainListAdapter;
-import com.carrot.base.androidbase.preferences.MyPrefs_;
+import com.carrot.base.androidbase.preferences.UserPrefs_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
-import org.androidannotations.annotations.OptionsMenuItem;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
@@ -31,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Pref
-    MyPrefs_ myPrefs;
+    UserPrefs_ userPrefs;
 
     @ViewById(R.id.elv_main_types)
     ExpandableListView elvTypes;
@@ -69,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPostResume() {
         super.onPostResume();
 
-        if(myPrefs.currentUsername().get().equals("")){
+        if(userPrefs.name().get().equals("")){
             LoginActivity_.intent(MainActivity.this).start();
 
         }

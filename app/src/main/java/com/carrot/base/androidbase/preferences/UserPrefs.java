@@ -12,25 +12,25 @@ public interface UserPrefs {
 //    {"ID":2,"Name":"Leo si","Level":"1","Phone":"15001768927","IsValid":1,"Message":"OK","Code":1}
 
     @DefaultInt(-1)
-    int id();
+    public int id();
 
     @DefaultInt(-1)
-    int isValid();
+    public int isValid();
 
     @DefaultInt(-1)
-    int code();
+    public int code();
 
     @DefaultString("")
-    String name();
+    public String name();
 
     @DefaultString("")
-    String level();
+    public String level();
 
     @DefaultString("")
-    String phone();
+    public String phone();
 
     @DefaultString("")
-    String message();
+    public String message();
 
 }
 

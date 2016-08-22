@@ -18,12 +18,14 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 /**
  * Created by victor on 8/21/16.
  */
-@Rest(converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class})
+@Rest(rootUrl = "http://120.55.101.6:8089/api/User", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class})
 public interface UserClient {
+
     @Get("/GetUserById/?ID={id}")
+    @Accept(MediaType.APPLICATION_JSON)
     UserResult getUserById(@Path int id);
 
-    @Get("http://120.55.101.6:8089/api/User/Login/?LoginName={username}&Password={password}")
+    @Get("/Login/?LoginName={username}&Password={password}")
     @Accept(MediaType.APPLICATION_JSON)
     LoginResult login(@Path String username, @Path String password);
 

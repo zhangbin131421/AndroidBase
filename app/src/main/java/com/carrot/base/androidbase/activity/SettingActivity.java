@@ -5,7 +5,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.carrot.base.androidbase.R;
-import com.carrot.base.androidbase.preferences.MyPrefs_;
+import com.carrot.base.androidbase.preferences.UserPrefs_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -13,7 +13,6 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
-import org.w3c.dom.Text;
 
 /**
  * Created by victor on 8/13/16.
@@ -29,10 +28,12 @@ public class SettingActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     @Pref
-    MyPrefs_ myPrefs;
+    UserPrefs_ userPrefs;
 
     @AfterViews
     void initPage(){
+
+        tvUsername.setText(userPrefs.name().get());
 
         setSupportActionBar(toolbar);
 
@@ -41,7 +42,7 @@ public class SettingActivity extends AppCompatActivity {
 
     @Click(R.id.btn_setting_logout)
     void logout(){
-        myPrefs.clear();
+        userPrefs.clear();
         finish();
     }
 
