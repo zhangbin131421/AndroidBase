@@ -6,11 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
-import com.carrot.base.androidbase.adapter.MainCardAdapter;
-import com.carrot.base.androidbase.utils.TestUtils;
+import com.carrot.base.androidbase.adapter.Type2Adapter;
 import com.carrot.base.androidbase.vo.TypeVo;
 
 import org.androidannotations.annotations.AfterViews;
@@ -55,7 +53,7 @@ public class Type2Activity extends AppCompatActivity {
 
         mLayoutManager = new GridLayoutManager(getApplicationContext(), 2, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MainCardAdapter(typeVo.getSubTypes());
+        mAdapter = new Type2Adapter(typeVo.getSubTypes());
         mRecyclerView.setAdapter(mAdapter);
 
 
@@ -65,7 +63,7 @@ public class Type2Activity extends AppCompatActivity {
         super.onResume();
 
         setTitle(typeVo.getName());
-        ((MainCardAdapter) mAdapter).setOnItemClickListener(new MainCardAdapter
+        ((Type2Adapter) mAdapter).setOnItemClickListener(new Type2Adapter
                 .MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {

@@ -14,7 +14,7 @@
         android:layout_height="fill_parent">
 
         <TextView
-            android:id="@+id/tv_card_view_row_name"
+            android:id="@+id/tv_type_2_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"

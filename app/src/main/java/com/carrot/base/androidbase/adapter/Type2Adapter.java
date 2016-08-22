@@ -15,10 +15,10 @@ import java.util.List;
 /**
  * Created by victor on 8/22/16.
  */
-public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
+public class Type2Adapter extends RecyclerView.Adapter<Type2Adapter
         .DataObjectHolder> {
 
-    private static String LOG_TAG = "MainCardAdapter";
+    private static String LOG_TAG = "Type2Adapter";
     private List<TypeVo> mDataset;
     private static MyClickListener myClickListener;
 
@@ -30,7 +30,7 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
 
         public DataObjectHolder(View itemView) {
             super(itemView);
-            label = (TextView) itemView.findViewById(R.id.tv_card_view_row_name);
+            label = (TextView) itemView.findViewById(R.id.tv_type_2_name);
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }
@@ -45,7 +45,7 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
         this.myClickListener = myClickListener;
     }
 
-    public MainCardAdapter(List<TypeVo> myDataset) {
+    public Type2Adapter(List<TypeVo> myDataset) {
         mDataset = myDataset;
     }
 
@@ -53,7 +53,7 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
     public DataObjectHolder onCreateViewHolder(ViewGroup parent,
                                                int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_view_row_main, parent, false);
+                .inflate(R.layout.card_view_row_type_2, parent, false);
 
 
         DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
