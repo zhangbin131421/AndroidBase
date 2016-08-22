@@ -20,11 +20,15 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <ExpandableListView
-        android:id="@+id/elv_main_types"
+    <!--<ExpandableListView-->
+        <!--android:id="@+id/elv_main_types"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-    </ExpandableListView>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
 </LinearLayout>
