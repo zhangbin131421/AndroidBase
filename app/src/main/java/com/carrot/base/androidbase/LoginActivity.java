@@ -1,6 +1,8 @@
 package com.carrot.base.androidbase;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.os.SystemClock;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -10,6 +12,7 @@ import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.vo.result.LoginResult;
 import com.carrot.base.androidbase.vo.result.UserResult;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -40,6 +43,13 @@ public class LoginActivity extends Activity {
     @ViewById(R.id.btn_login_login)
     Button btnLogin;
 
+    ProgressDialog progress;
+
+    @AfterViews
+    void initView(){
+        progress = new ProgressDialog(this);
+    }
+
     @Click(R.id.btn_login_login)
     @Background
     void doLogin(){
@@ -62,7 +72,14 @@ public class LoginActivity extends Activity {
         }
 
 
+        showLoading();
+
+
+//        SystemClock.sleep(7000);
+
+
         UserResult userResult = userClient.getUserById(loginResult.getId());
+
 
 
         loginSuccess(userResult);
@@ -72,6 +89,9 @@ public class LoginActivity extends Activity {
     @UiThread
     void loginSuccess(UserResult userResult){
 
+        if(progress != null){
+            progress.dismiss();
+        }
         userPrefs.edit().name().put(userResult.getName())
                 .id().put(userResult.getId())
                 .level().put(userResult.getLevel())
@@ -83,6 +103,13 @@ public class LoginActivity extends Activity {
         this.finish();
     }
 
+    @UiThread
+    void showLoading(){
+
+        progress.setTitle("Loading");
+        progress.show();
+
+    }
     @UiThread
     void alert(String message){
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
