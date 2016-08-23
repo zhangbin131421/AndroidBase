@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.activity.handle.CollectResolveTroubleActivity_;
 import com.carrot.base.androidbase.activity.handle.LineBrokenManagementActivity_;
 import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
 import com.carrot.base.androidbase.adapter.Type2Adapter;
@@ -64,6 +65,8 @@ public class TaskListActivity extends AppCompatActivity {
 
         tlTabs.setupWithViewPager(vpPager);
 
+        setTitle(subTypeVo.getName() + "任务列表");
+
     }
 
 
@@ -93,6 +96,11 @@ public class TaskListActivity extends AppCompatActivity {
         switch (subTypeVo.getName()){
             case "线损管理":
                 LineBrokenManagementActivity_.intent(getApplicationContext())
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+            case "采集消缺":
+                CollectResolveTroubleActivity_.intent(getApplicationContext())
                         .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .start();
                 break;

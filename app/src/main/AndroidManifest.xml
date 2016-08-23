@@ -39,7 +39,8 @@
         <activity android:name=".activity.Type2Activity_">
         </activity>
 
-        <activity android:name=".activity.handle.LineBrokenManagementActivity_"></activity>
+        <activity android:name=".activity.handle.LineBrokenManagementActivity_" android:label="线损管理"></activity>
+        <activity android:name=".activity.handle.CollectResolveTroubleActivity_" android:label="采集消缺"></activity>
     </application>
 
 </manifest>

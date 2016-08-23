@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.activity.TaskListActivity_;
+import com.carrot.base.androidbase.activity.handle.CollectResolveTroubleActivity_;
 import com.carrot.base.androidbase.activity.handle.LineBrokenManagementActivity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.adapter.TaskCardAdapter;
@@ -73,6 +74,11 @@ public class TaskListFragment extends Fragment {
         switch (subTypeVo.getName()){
             case "线损管理":
                 LineBrokenManagementActivity_.intent(getActivity())
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+            case "采集消缺":
+                CollectResolveTroubleActivity_.intent(getActivity())
                         .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .start();
                 break;
