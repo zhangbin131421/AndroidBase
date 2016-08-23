@@ -77,6 +77,18 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
         notifyItemInserted(index);
     }
 
+    // Clean all elements of the recycler
+    public void clear() {
+        mDataset.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items
+    public void addAll(List<TaskVo> list) {
+        mDataset.addAll(list);
+        notifyDataSetChanged();
+    }
+
     public TaskVo getItem(int index){
         return mDataset.get(index);
     }

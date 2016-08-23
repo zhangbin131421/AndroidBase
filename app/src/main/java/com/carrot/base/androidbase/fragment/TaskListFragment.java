@@ -2,6 +2,7 @@ package com.carrot.base.androidbase.fragment;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -52,7 +53,10 @@ public class TaskListFragment extends Fragment {
     @ViewById(R.id.rv_fragment_task_list_rv)
     RecyclerView mRecyclerView;
 
-    private RecyclerView.Adapter mAdapter;
+    @ViewById(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
+    private TaskCardAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "TaskListFragment";
 
@@ -73,6 +77,32 @@ public class TaskListFragment extends Fragment {
                 openItem();
             }
         });
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Refresh items
+                refreshItems();
+            }
+        });
+    }
+
+    void refreshItems() {
+        // Load items
+        // ...
+
+        // Load complete
+        onItemsLoadComplete();
+    }
+
+    void onItemsLoadComplete() {
+        // Update the adapter and notify data set changed
+        // ...
+
+        // Stop refresh animation
+        mAdapter.clear();
+        mAdapter.addAll(TestUtils.getAllTasks(status));
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     void openItem(){

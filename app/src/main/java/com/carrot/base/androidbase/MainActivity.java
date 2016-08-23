@@ -73,7 +73,11 @@ public class MainActivity extends AppCompatActivity {
                 TypeVo typeVo = ((MainCardAdapter) mAdapter).getItem(position);
 
                 if(typeVo.getSubTypes() == null || typeVo.getSubTypes().size() == 0){
-                    TaskListActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                    TaskListActivity_.intent(getApplicationContext())
+                            .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            .typeVo(null)
+                            .subTypeVo(typeVo)
+                            .start();
 
                 }else{
                     Type2Activity_.intent(getApplicationContext())
