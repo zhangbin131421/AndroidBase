@@ -16,7 +16,7 @@
 
 
     <color name="colorTable1">#616161</color><!-- 表单背景色 -->
-    <color name="colorTable2">#9E9E9E</color><!-- 二级菜单默认颜色 -->
+    <color name="colorTable2">#E0F2F1</color><!-- 二级菜单默认颜色 -->
 
 
     <color name="colorPrimaryDark">#00695C</color>
