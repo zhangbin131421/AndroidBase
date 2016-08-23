@@ -41,6 +41,11 @@
 
         <activity android:name=".activity.handle.LineBrokenManagementActivity_" android:label="线损管理"></activity>
         <activity android:name=".activity.handle.CollectResolveTroubleActivity_" android:label="采集消缺"></activity>
+        <activity android:name=".activity.handle.ExtendBussinessSetupActivity_" android:label="业扩报装"></activity>
+        <activity android:name=".activity.handle.MeterTroubleActivity_" android:label="表计故障"></activity>
+        <activity android:name=".activity.handle.OrderHandleActivity_" android:label="工单处理"></activity>
+        <activity android:name=".activity.handle.BusinessAuditeActivity_" android:label="营业普查"></activity>
+        <activity android:name=".activity.handle.StopStartElectricActivity_" android:label="停复电"></activity>
     </application>
 
 </manifest>

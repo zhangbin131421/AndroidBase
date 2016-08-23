@@ -11,8 +11,13 @@ import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.activity.TaskListActivity_;
+import com.carrot.base.androidbase.activity.handle.BusinessAuditeActivity_;
 import com.carrot.base.androidbase.activity.handle.CollectResolveTroubleActivity_;
+import com.carrot.base.androidbase.activity.handle.ExtendBussinessSetupActivity_;
 import com.carrot.base.androidbase.activity.handle.LineBrokenManagementActivity_;
+import com.carrot.base.androidbase.activity.handle.MeterTroubleActivity_;
+import com.carrot.base.androidbase.activity.handle.OrderHandleActivity_;
+import com.carrot.base.androidbase.activity.handle.StopStartElectricActivity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.adapter.TaskCardAdapter;
 import com.carrot.base.androidbase.adapter.TaskListAdapter;
@@ -82,6 +87,33 @@ public class TaskListFragment extends Fragment {
                         .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .start();
                 break;
+            case "业扩报装":
+                ExtendBussinessSetupActivity_.intent(getActivity())
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+            case "表计故障":
+                MeterTroubleActivity_.intent(getActivity())
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+            case "工单处理":
+                OrderHandleActivity_.intent(getActivity())
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+            case "营业普查":
+                BusinessAuditeActivity_.intent(getActivity())
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+            case "停复电":
+                StopStartElectricActivity_.intent(getActivity())
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+            default:
+                Toast.makeText(getActivity(), "开发中....", Toast.LENGTH_SHORT).show();
         }
 
     }
