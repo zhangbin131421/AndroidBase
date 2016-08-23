@@ -19,7 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorTable2">
+        android:background="@color/primary_light">
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorTable2">
+        android:background="@color/primary_light">
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorTable2">
+        android:background="@color/primary_light">
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"

@@ -2,15 +2,19 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/colorForth</item>
+
 
         <!--<item name="android:editTextStyle">@style/TextViewTheme</item>-->
         <!--<item name="android:buttonStyle">@style/ButtonTheme</item>-->
 
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColorSecondary">@color/secondary_text</item>
+        <item name="android:icon">@color/icons</item>
+        <item name="android:divider">@color/divider</item>
 
     </style>
     <style name="AppTheme" parent="AppTheme.Base"></style>
@@ -26,7 +30,8 @@
     <!--</style>-->
 
     <style name="ToolBarTheme" parent="Base.Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/primary</item>
     </style>
+
 
 </resources>

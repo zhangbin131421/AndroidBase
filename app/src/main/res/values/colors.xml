@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#009688</color>
-    <color name="colorSecond">#80CBC4</color>
-    <color name="colorThird">#E0F2F1</color>
-    <color name="colorForth">#FFFFFF</color>
+    <!--<color name="colorPrimary">#009688</color>-->
+    <!--<color name="colorSecond">#80CBC4</color>-->
+    <!--<color name="colorThird">#E0F2F1</color>-->
+    <!--<color name="colorForth">#FFFFFF</color>-->
 
-    <color name="textColorPrimary">#000000</color>
+    <!--<color name="textColorPrimary">#000000</color>-->
 
-    <color name="colorTextWhite">#FFFFFF</color>
-    <color name="colorTextBlack">#000000</color>
+    <!--<color name="colorTextWhite">#FFFFFF</color>-->
+    <!--<color name="colorTextBlack">#000000</color>-->
 
-    <color name="colorTitle1">#616161</color><!-- 表单背景色 -->
-    <color name="colorTitle2">#9E9E9E</color><!-- 二级菜单默认颜色 -->
+    <!--<color name="colorTitle1">#616161</color>&lt;!&ndash; 表单背景色 &ndash;&gt;-->
+    <!--<color name="colorTitle2">#9E9E9E</color>&lt;!&ndash; 二级菜单默认颜色 &ndash;&gt;-->
 
 
 
-    <color name="colorTable1">#616161</color><!-- 表单背景色 -->
-    <color name="colorTable2">#E0F2F1</color><!-- 二级菜单默认颜色 -->
+    <!--<color name="colorTable1">#616161</color>&lt;!&ndash; 表单背景色 &ndash;&gt;-->
+    <!--<color name="colorTable2">#E0F2F1</color>&lt;!&ndash; 二级菜单默认颜色 &ndash;&gt;-->
+
+
+    <!--<color name="colorPrimaryDark">#00695C</color>-->
+    <!--<color name="colorAccent">#F44336</color>-->
+
 
 
     <color name="colorPrimaryDark">#00695C</color>
     <color name="colorAccent">#F44336</color>
+    <color name="primary">#009688</color>
+    <color name="primary_dark">#00796B</color>
+    <color name="primary_light">#B2DFDB</color>
+    <color name="accent">#009688</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
 </resources>

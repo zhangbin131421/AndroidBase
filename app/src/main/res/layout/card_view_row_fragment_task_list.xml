@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/tv_cvr_fragment_task_list_task_name"
-            android:textColor="@color/colorTitle1"
+            android:textColor="@color/primary_text"
             android:textSize="@dimen/text_size_title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/tv_cvr_fragment_task_list_task_time"
-            android:textColor="@color/colorTitle1"
+            android:textColor="@color/primary_text"
             android:textSize="@dimen/text_size_title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/tv_cvr_fragment_task_list_status"
-            android:textColor="@color/colorTitle1"
+            android:textColor="@color/primary_text"
             android:textSize="@dimen/text_size_title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

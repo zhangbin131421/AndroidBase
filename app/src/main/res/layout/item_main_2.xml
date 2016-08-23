@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/colorThird"
+    android:background="@color/primary"
     android:gravity="center_vertical">
 
 
@@ -13,7 +13,7 @@
         android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorTitle2"
+        android:textColor="@color/secondary_text"
         android:layout_weight="1"/>
     <TextView
         android:id="@+id/et_item_main2_newFlag"

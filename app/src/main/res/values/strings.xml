@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">供电所</string>
+    <string name="app_name">供电所管理系统</string>
 
     <string name="task_title1">任务派发</string>
     <string name="task_num">任务编号</string>
