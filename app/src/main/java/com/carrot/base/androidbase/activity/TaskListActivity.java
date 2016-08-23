@@ -59,7 +59,7 @@ public class TaskListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
-                Toast.makeText(TaskListActivity.this, "ADD!", Toast.LENGTH_SHORT).show();
+
                 LineBrokenManagementActivity_.intent(getApplicationContext())
                         .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .start();
