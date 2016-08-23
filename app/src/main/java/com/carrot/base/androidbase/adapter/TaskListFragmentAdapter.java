@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.carrot.base.androidbase.fragment.TaskListFragment;
 import com.carrot.base.androidbase.fragment.TaskListFragment_;
+import com.carrot.base.androidbase.vo.TypeVo;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
@@ -26,11 +27,20 @@ public class TaskListFragmentAdapter extends FragmentPagerAdapter {
 
     Context context;
 
-    public TaskListFragmentAdapter(FragmentManager fm, Context context){
+    TypeVo typeVo;
+    TypeVo subTypeVo;
+
+    public TaskListFragmentAdapter(FragmentManager fm, Context context,
+                                   TypeVo typeVo, TypeVo subTypeVo){
         super(fm);
         this.context = context;
-        mFragmentList.add(TaskListFragment_.builder().status(tabTitles[0]).build());
-        mFragmentList.add(TaskListFragment_.builder().status(tabTitles[1]).build());
+
+        this.typeVo = typeVo;
+        this.subTypeVo = subTypeVo;
+
+        mFragmentList.add(TaskListFragment_.builder().status(tabTitles[0]).typeVo(typeVo).subTypeVo(subTypeVo).build());
+        mFragmentList.add(TaskListFragment_.builder().status(tabTitles[1]).typeVo(typeVo).subTypeVo(subTypeVo).build());
+
 
     }
     @Override

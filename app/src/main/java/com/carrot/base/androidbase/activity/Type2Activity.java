@@ -71,7 +71,10 @@ public class Type2Activity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
 
-                TaskListActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                TaskListActivity_.intent(getApplicationContext())
+                        .typeVo(typeVo)
+                        .subTypeVo(typeVo.getSubTypes().get(position))
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
 
             }
         });

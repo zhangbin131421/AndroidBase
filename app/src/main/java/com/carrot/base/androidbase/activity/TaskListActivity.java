@@ -8,14 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.activity.handle.LineBrokenManagementActivity_;
 import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
+import com.carrot.base.androidbase.adapter.Type2Adapter;
+import com.carrot.base.androidbase.vo.TypeVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
@@ -37,6 +41,12 @@ public class TaskListActivity extends AppCompatActivity {
     @ViewById(R.id.tb_task_list_tool_bar)
     Toolbar toolbar;
 
+    @Extra
+    TypeVo typeVo;
+
+    @Extra
+    TypeVo subTypeVo;
+
 
     TaskListFragmentAdapter taskListFragmentAdapter;
 
@@ -48,21 +58,23 @@ public class TaskListActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        taskListFragmentAdapter = new TaskListFragmentAdapter(getSupportFragmentManager(), getApplicationContext());
+        taskListFragmentAdapter = new TaskListFragmentAdapter(getSupportFragmentManager(),
+                getApplicationContext(), typeVo, subTypeVo);
         vpPager.setAdapter(taskListFragmentAdapter);
 
         tlTabs.setupWithViewPager(vpPager);
 
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
 
-                LineBrokenManagementActivity_.intent(getApplicationContext())
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+                openItem();
+
                 return true;
             case android.R.id.home:
                 if (getParentActivityIntent() == null) {
@@ -77,4 +89,14 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
 
+    void openItem(){
+        switch (subTypeVo.getName()){
+            case "线损管理":
+                LineBrokenManagementActivity_.intent(getApplicationContext())
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+        }
+
+    }
 }
