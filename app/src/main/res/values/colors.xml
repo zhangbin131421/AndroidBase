@@ -34,4 +34,5 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+    <color name="menu_color">#FFFFFF</color>
 </resources>
