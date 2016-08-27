@@ -6,9 +6,11 @@ import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.activity.handle.BusinessAuditeActivity_;
+import com.carrot.base.androidbase.activity.handle.CarManagementActivity_;
 import com.carrot.base.androidbase.activity.handle.CollectResolveTroubleActivity_;
 import com.carrot.base.androidbase.activity.handle.CoreMeterTestActivity_;
 import com.carrot.base.androidbase.activity.handle.CrossTestActivity_;
+import com.carrot.base.androidbase.activity.handle.DistributionNetworkEngineeringActivity_;
 import com.carrot.base.androidbase.activity.handle.EarthResistanceTestActivity_;
 import com.carrot.base.androidbase.activity.handle.EquipmentCheckActivity_;
 import com.carrot.base.androidbase.activity.handle.ExtendBussinessSetupActivity_;
@@ -182,6 +184,22 @@ public class TypeUtils {
                 break;
             case "专项安全检查":
                 SpecialSecurityCheckActivity_.intent(context)
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+
+            //----------
+
+            case "农配网工程":
+                DistributionNetworkEngineeringActivity_.intent(context)
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .start();
+                break;
+
+            //----------
+
+            case "车辆管理":
+                CarManagementActivity_.intent(context)
                         .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .start();
                 break;
