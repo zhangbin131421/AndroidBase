@@ -62,21 +62,21 @@ public class LoginActivity extends Activity {
             return;
         }
 
-        loginSuccessTest();
+//        loginSuccessTest();
 
-//        LoginResult loginResult = userClient.login(username, password);
-//
-//
-//        if(!loginResult.isSuccess()){
-//            alert("用户名密码不正确");
-//            return;
-//        }
-//
-//        showLoading();
-//
-//        UserResult userResult = userClient.getUserById(loginResult.getId());
-//
-//        loginSuccess(userResult);
+        LoginResult loginResult = userClient.login(username, password);
+
+
+        if(!loginResult.isSuccess()){
+            alert("用户名密码不正确");
+            return;
+        }
+
+        showLoading();
+
+        UserResult userResult = userClient.getUserById(loginResult.getId());
+
+        loginSuccess(userResult);
 
     }
 
@@ -88,11 +88,14 @@ public class LoginActivity extends Activity {
         }
         userPrefs.edit().name().put(userResult.getName())
                 .id().put(userResult.getId())
-                .level().put(userResult.getLevel())
                 .phone().put(userResult.getPhone())
                 .isValid().put(userResult.getIsValid())
                 .message().put(userResult.getMessage())
-                .code().put(userResult.getCode()).apply();
+                .code().put(userResult.getCode())
+                .role().put(userResult.getRole())
+                .createTime().put(userResult.getCreateTime())
+                .updateTime().put(userResult.getUpdateTime())
+                .apply();
 
         this.finish();
     }

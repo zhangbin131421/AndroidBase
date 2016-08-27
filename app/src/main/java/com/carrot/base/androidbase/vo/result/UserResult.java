@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Created by victor on 8/21/16.
  */
 public class UserResult {
-//    {"ID":2,"Name":"Leo si","Level":"1","Phone":"15001768927","IsValid":1,"Message":"OK","Code":1}
+//   {"ID":2,"Name":"Leo si","Phone":"15001768927","Role":"2","IsValid":1,"CreateTime":"\/Date(1471753316033)\/","UpdateTime":"\/Date(1471753316033)\/","Message":"OK","Code":1}
 
     @JsonProperty(value="ID")
     private int id;
@@ -15,8 +15,6 @@ public class UserResult {
     @JsonProperty(value="Name")
     private String name;
 
-    @JsonProperty(value="Level")
-    private String level;
 
     @JsonProperty(value="Phone")
     private String phone;
@@ -26,6 +24,16 @@ public class UserResult {
 
     @JsonProperty(value="Message")
     private String message;
+
+
+    @JsonProperty(value="Role")
+    private String role;
+
+    @JsonProperty(value="CreateTime")
+    private String createTime;
+
+    @JsonProperty(value="UpdateTime")
+    private String updateTime;
 
 
     @JsonProperty(value="Code")
@@ -61,15 +69,6 @@ public class UserResult {
         this.name = name;
     }
 
-    @JsonIgnore
-    public String getLevel() {
-        return level;
-    }
-
-    @JsonIgnore
-    public void setLevel(String level) {
-        this.level = level;
-    }
 
     @JsonIgnore
     public String getPhone() {
@@ -101,4 +100,28 @@ public class UserResult {
         this.message = message;
     }
 
+    @JsonIgnore
+    public String getRole() {
+        return role;
+    }
+    @JsonIgnore
+    public void setRole(String role) {
+        this.role = role;
+    }
+    @JsonIgnore
+    public String getCreateTime() {
+        return createTime;
+    }
+    @JsonIgnore
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+    @JsonIgnore
+    public String getUpdateTime() {
+        return updateTime;
+    }
+    @JsonIgnore
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 }

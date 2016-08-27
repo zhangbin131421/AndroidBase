@@ -18,7 +18,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 /**
  * Created by victor on 8/21/16.
  */
-@Rest(rootUrl = "http://120.55.101.6:8089/api/User", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class})
+@Rest(rootUrl = "http://120.55.101.6:8889/api/User", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class})
 public interface UserClient {
 
     @Get("/GetUserById/?ID={id}")

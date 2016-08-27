@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class LoginResult {
 //    {"ID":1,"IsSuccess":true}
-    @JsonProperty(value="ID")
+    @JsonProperty(value="UserID")
     private int id;
 
     @JsonProperty(value="IsSuccess")
