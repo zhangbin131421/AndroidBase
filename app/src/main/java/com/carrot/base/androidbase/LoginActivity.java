@@ -62,27 +62,21 @@ public class LoginActivity extends Activity {
             return;
         }
 
+        loginSuccessTest();
 
-        LoginResult loginResult = userClient.login(username, password);
-
-
-        if(!loginResult.isSuccess()){
-            alert("用户名密码不正确");
-            return;
-        }
-
-
-        showLoading();
-
-
-//        SystemClock.sleep(7000);
-
-
-        UserResult userResult = userClient.getUserById(loginResult.getId());
-
-
-
-        loginSuccess(userResult);
+//        LoginResult loginResult = userClient.login(username, password);
+//
+//
+//        if(!loginResult.isSuccess()){
+//            alert("用户名密码不正确");
+//            return;
+//        }
+//
+//        showLoading();
+//
+//        UserResult userResult = userClient.getUserById(loginResult.getId());
+//
+//        loginSuccess(userResult);
 
     }
 
@@ -99,6 +93,24 @@ public class LoginActivity extends Activity {
                 .isValid().put(userResult.getIsValid())
                 .message().put(userResult.getMessage())
                 .code().put(userResult.getCode()).apply();
+
+        this.finish();
+    }
+
+    @UiThread
+    void loginSuccessTest(){
+
+        if(progress != null){
+            progress.dismiss();
+        }
+        userPrefs.edit().name().put("张三")
+                .id().put(1)
+//                .level().put(userResult.getLevel())
+//                .phone().put(userResult.getPhone())
+//                .isValid().put(userResult.getIsValid())
+//                .message().put(userResult.getMessage())
+//                .code().put(userResult.getCode())
+                .apply();
 
         this.finish();
     }

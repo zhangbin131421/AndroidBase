@@ -3,13 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<!-- 车辆管理		 -->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_line_borken_management_tool_bar"
+            android:id="@+id/tb_tool_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="@string/task_title1"/>
+            android:text="申请"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,12 +37,12 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="@string/task_num"/>
+            android:text="申请编号"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="2016082201"/>
+            android:text="2016071401"/>
     </LinearLayout>
 
     <LinearLayout
@@ -51,12 +51,12 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="@string/task_area_name"/>
+            android:text="车号"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="导入"/>
+            android:text="（选择）"/>
     </LinearLayout>
 
     <LinearLayout
@@ -65,97 +65,7 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="线损率"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="8.90%"/>
-    </LinearLayout>
-
-    <!-- ********************* -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_handle"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_unqualified_reason"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="(如窃电、采集、表计故障等)"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_handle_content"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="(附照片)"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_user_id"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="张三"/>
-    </LinearLayout>
-
-    <!-- ********************** -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_end_handle_tiem"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_is_handled"/>
+            android:text="到达地点"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,11 +79,127 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="@string/task_unhandle_reason"/>
+            android:text="出车时间"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="原因"/>
+            android:text=""/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="回来时间"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="起始路码"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="终止路码"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="费用"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="(如停车费、过路桥费、加油费、旅差费）"/>
+    </LinearLayout>
+
+    <!-- ********************* -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_light">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="提交"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2016-08-22"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="备品备件领用"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="工器具领用"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="通知、报表"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
+    </LinearLayout>
+
 </LinearLayout>

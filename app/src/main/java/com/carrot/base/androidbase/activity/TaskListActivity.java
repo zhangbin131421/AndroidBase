@@ -1,32 +1,20 @@
 package com.carrot.base.androidbase.activity;
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
-import com.carrot.base.androidbase.activity.handle.BusinessAuditeActivity_;
-import com.carrot.base.androidbase.activity.handle.CollectResolveTroubleActivity_;
-import com.carrot.base.androidbase.activity.handle.ExtendBussinessSetupActivity_;
-import com.carrot.base.androidbase.activity.handle.LineBrokenManagementActivity_;
-import com.carrot.base.androidbase.activity.handle.MeterTroubleActivity_;
-import com.carrot.base.androidbase.activity.handle.OrderHandleActivity_;
-import com.carrot.base.androidbase.activity.handle.StopStartElectricActivity_;
 import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
-import com.carrot.base.androidbase.adapter.Type2Adapter;
+import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.TypeVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
-import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
@@ -81,7 +69,8 @@ public class TaskListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
 
-                openItem();
+
+                TypeUtils.openItem(subTypeVo.getName(), getApplicationContext());
 
                 return true;
             case android.R.id.home:
@@ -95,49 +84,53 @@ public class TaskListActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-    void openItem(){
-        switch (subTypeVo.getName()){
-            case "线损管理":
-                LineBrokenManagementActivity_.intent(getApplicationContext())
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
-                break;
-            case "采集消缺":
-                CollectResolveTroubleActivity_.intent(getApplicationContext())
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
-                break;
-            case "业扩报装":
-                ExtendBussinessSetupActivity_.intent(getApplicationContext())
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
-                break;
-            case "表计故障":
-                MeterTroubleActivity_.intent(getApplicationContext())
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
-                break;
-            case "工单处理":
-                OrderHandleActivity_.intent(getApplicationContext())
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
-                break;
-            case "营业普查":
-                BusinessAuditeActivity_.intent(getApplicationContext())
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
-                break;
-            case "停复电":
-                StopStartElectricActivity_.intent(getApplicationContext())
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
-                break;
-
-            default:
-                Toast.makeText(getApplicationContext(), "开发中....", Toast.LENGTH_SHORT).show();
-        }
-
-    }
+//
+//
+//    void openItem(){
+//        switch (subTypeVo.getName()){
+//            case "线损管理":
+//                LineBrokenManagementActivity_.intent(getApplicationContext())
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .start();
+//                break;
+//            case "采集消缺":
+//                CollectResolveTroubleActivity_.intent(getApplicationContext())
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .start();
+//                break;
+//            case "业扩报装":
+//                ExtendBussinessSetupActivity_.intent(getApplicationContext())
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .start();
+//                break;
+//            case "表计故障":
+//                MeterTroubleActivity_.intent(getApplicationContext())
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .start();
+//                break;
+//            case "工单处理":
+//                OrderHandleActivity_.intent(getApplicationContext())
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .start();
+//                break;
+//            case "营业普查":
+//                BusinessAuditeActivity_.intent(getApplicationContext())
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .start();
+//                break;
+//            case "停复电":
+//                StopStartElectricActivity_.intent(getApplicationContext())
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .start();
+//            case "总表试跳":
+//                CoreMeterTestActivity_.intent(getApplicationContext())
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//                        .start();
+//                break;
+//
+//            default:
+//                Toast.makeText(getApplicationContext(), "开发中....", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
 }

@@ -18,6 +18,7 @@ import com.carrot.base.androidbase.activity.Type2Activity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.TestUtils;
+import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.TypeVo;
 
 import org.androidannotations.annotations.AfterViews;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new GridLayoutManager(getApplicationContext(), 2, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MainCardAdapter(TestUtils.getAllItems());
+        mAdapter = new MainCardAdapter(TypeUtils.getAllItems(getApplicationContext()));
         mRecyclerView.setAdapter(mAdapter);
 
 

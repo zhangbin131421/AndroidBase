@@ -11,6 +11,7 @@ import com.carrot.base.androidbase.item.main.Main1ItemView_;
 import com.carrot.base.androidbase.item.main.Main2ItemView;
 import com.carrot.base.androidbase.item.main.Main2ItemView_;
 import com.carrot.base.androidbase.utils.TestUtils;
+import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.TypeVo;
 
 import org.androidannotations.annotations.AfterInject;
@@ -33,7 +34,7 @@ public class MainListAdapter extends BaseExpandableListAdapter{
 
     @AfterInject
     void initAdapter(){
-        types = TestUtils.getAllItems();
+        types = TypeUtils.getAllItems(context);
     }
 
 

@@ -3,13 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<!-- 总表试跳	 -->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_line_borken_management_tool_bar"
+            android:id="@+id/tb_tool_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -65,12 +65,54 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="线损率"/>
+            android:text="保护线路"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="8.90%"/>
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="型号"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="安全措施"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="结束时间"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
     </LinearLayout>
 
     <!-- ********************* -->
@@ -82,7 +124,7 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="@string/task_handle"/>
+            android:text="测量情况"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,12 +138,12 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="@string/task_unqualified_reason"/>
+            android:text="天气"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="(如窃电、采集、表计故障等)"/>
+            android:text="(如:睛、阴、多云）"/>
     </LinearLayout>
 
     <LinearLayout
@@ -110,12 +152,12 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="@string/task_handle_content"/>
+            android:text="试跳方法"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="(附照片)"/>
+            android:text="(如:测试仪、手工等）"/>
     </LinearLayout>
 
     <LinearLayout
@@ -124,12 +166,96 @@
         <TextView
             android:layout_width="@dimen/widthTable1"
             android:layout_height="wrap_content"
-            android:text="@string/task_user_id"/>
+            android:text="A相接地试跳（mA)"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="张三"/>
+            android:text="（附照片）"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="B相接地试跳（mA)"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="（附照片）"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="C相接地试跳（mA)"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="（附照片）"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="检测结果"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="（如：合格、不合格）"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="采取措施"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="测试不合格填写采取措施"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="测试人"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="默认社区经理，并可增加人员"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/widthTable1"
+            android:layout_height="wrap_content"
+            android:text="试跳日期"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""/>
     </LinearLayout>
 
     <!-- ********************** -->
