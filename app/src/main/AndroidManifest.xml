@@ -39,23 +39,29 @@
         <activity android:name=".activity.Type2Activity_">
         </activity>
 
-        <activity android:name=".activity.handle.LineBrokenManagementActivity_" android:label="线损管理"></activity>
-        <activity android:name=".activity.handle.CollectResolveTroubleActivity_" android:label="采集消缺"></activity>
-        <activity android:name=".activity.handle.ExtendBussinessSetupActivity_" android:label="业扩报装"></activity>
-        <activity android:name=".activity.handle.MeterTroubleActivity_" android:label="表计故障"></activity>
-        <activity android:name=".activity.handle.OrderHandleActivity_" android:label="工单处理"></activity>
-        <activity android:name=".activity.handle.BusinessAuditeActivity_" android:label="营业普查"></activity>
-        <activity android:name=".activity.handle.StopStartElectricActivity_" android:label="停复电"></activity>
+        <activity android:name=".activity.handle.LineBrokenManagementActivity_" android:label="@string/type_1_1"></activity>
+        <activity android:name=".activity.handle.CollectResolveTroubleActivity_" android:label="@string/type_1_2"></activity>
+        <activity android:name=".activity.handle.ExtendBussinessSetupActivity_" android:label="@string/type_1_3"></activity>
+        <activity android:name=".activity.handle.MeterTroubleActivity_" android:label="@string/type_1_4"></activity>
+        <activity android:name=".activity.handle.OrderHandleActivity_" android:label="@string/type_1_5"></activity>
+        <activity android:name=".activity.handle.BusinessAuditeActivity_" android:label="@string/type_1_6"></activity>
+        <activity android:name=".activity.handle.StopStartElectricActivity_" android:label="@string/type_1_7"></activity>
 
 
-        <activity android:name=".activity.handle.CoreMeterTestActivity_" android:label="总表试跳"></activity>
-        <activity android:name=".activity.handle.CrossTestActivity_" android:label="交叉跨越测量"></activity>
-        <activity android:name=".activity.handle.EarthResistanceTestActivity_" android:label="接地电阻测量"></activity>
-        <activity android:name=".activity.handle.EquipmentCheckActivity_" android:label="设备巡视	"></activity>
-        <activity android:name=".activity.handle.ResolveRecordActivity_" android:label="消缺记录"></activity>
-        <activity android:name=".activity.handle.SpecialSecurityCheckActivity_" android:label="专项安全检查"></activity>
-        <activity android:name=".activity.handle.TotalPerformanceTestActivity_" android:label="总保性能检测"></activity>
-        <activity android:name=".activity.handle.VoltageMeasurementActivity_" android:label="负荷电压测量"></activity>
+        <activity android:name=".activity.handle.CoreMeterTestActivity_" android:label="@string/type_2_1"></activity>
+        <activity android:name=".activity.handle.TotalPerformanceTestActivity_" android:label="@string/type_2_2"></activity>
+        <activity android:name=".activity.handle.EquipmentCheckActivity_" android:label="@string/type_2_3"></activity>
+        <activity android:name=".activity.handle.ResolveRecordActivity_" android:label="@string/type_2_4"></activity>
+        <activity android:name=".activity.handle.CrossTestActivity_" android:label="@string/type_2_5"></activity>
+        <activity android:name=".activity.handle.VoltageMeasurementActivity_" android:label="@string/type_2_6"></activity>
+        <activity android:name=".activity.handle.EarthResistanceTestActivity_" android:label="@string/type_2_7"></activity>
+        <activity android:name=".activity.handle.SpecialSecurityCheckActivity_" android:label="@string/type_2_8"></activity>
+
+
+        <activity android:name=".activity.handle.DistributionNetworkEngineeringActivity_" android:label="@string/type_3_1"></activity>
+
+
+        <activity android:name=".activity.handle.CarManagementActivity_" android:label="@string/type_4_1"></activity>
     </application>
 
 </manifest>
