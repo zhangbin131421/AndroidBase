@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.carrot.base.androidbase.R;
-import com.carrot.base.androidbase.vo.TaskVo;
-import com.carrot.base.androidbase.vo.TypeVo;
+import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
         .DataObjectHolder> {
 
     private static String LOG_TAG = "TaskCardAdapter";
-    private List<TaskVo> mDataset;
+    private List<TaskBaseVo> mDataset;
     private static MyClickListener myClickListener;
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder
@@ -50,7 +49,7 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
         this.myClickListener = myClickListener;
     }
 
-    public TaskCardAdapter(List<TaskVo> myDataset) {
+    public TaskCardAdapter(List<TaskBaseVo> myDataset) {
         mDataset = myDataset;
     }
 
@@ -67,12 +66,12 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.name.setText(mDataset.get(position).taskName);
-        holder.creationTime.setText(mDataset.get(position).createTime);
-        holder.status.setText(mDataset.get(position).taskStatus);
+        holder.name.setText(mDataset.get(position).taskNum);
+        holder.creationTime.setText(mDataset.get(position).assignmentTime);
+//        holder.status.setText(mDataset.get(position).taskStatus);
     }
 
-    public void addItem(TaskVo dataObj, int index) {
+    public void addItem(TaskBaseVo dataObj, int index) {
         mDataset.add(index, dataObj);
         notifyItemInserted(index);
     }
@@ -84,12 +83,12 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
     }
 
     // Add a list of items
-    public void addAll(List<TaskVo> list) {
+    public void addAll(List<TaskBaseVo> list) {
         mDataset.addAll(list);
         notifyDataSetChanged();
     }
 
-    public TaskVo getItem(int index){
+    public TaskBaseVo getItem(int index){
         return mDataset.get(index);
     }
 
