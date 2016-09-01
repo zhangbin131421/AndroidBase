@@ -8,4 +8,6 @@
 
 
     <dimen name="widthTable1">100dp</dimen>
+
+    <dimen name="table_left_padding">10dp</dimen>
 </resources>

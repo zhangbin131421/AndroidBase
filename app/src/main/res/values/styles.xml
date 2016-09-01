@@ -20,5 +20,28 @@
         <item name="android:background">@color/primary</item>
     </style>
 
+    <!-- 表单每个大标题的样式 -->
+    <style name="tableTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/primary_light</item>
+    </style>
+    <style name="tableTitle2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
+    <!-- 表单左侧的名称的样式 -->
+    <style name="tableColName">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- 表单右侧输入文本的样式 -->
+    <style name="tableColInput">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
 </resources>
