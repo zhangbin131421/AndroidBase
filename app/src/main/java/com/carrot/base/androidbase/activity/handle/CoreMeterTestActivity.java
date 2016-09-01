@@ -8,16 +8,21 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.client.CoreMeterTestClient;
+import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringArrayRes;
 import org.androidannotations.annotations.res.TextArrayRes;
+import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.androidannotations.rest.spring.annotations.RestService;
 
 import java.util.Date;
 
@@ -35,6 +40,9 @@ public class CoreMeterTestActivity extends AppCompatActivity{
     //保存需要提交的对象，开始如果为空说明为新增，否则为修改
     @Extra("extraCoreMeterTestResult")
     CoreMeterTestResult coreMeterTestResult;
+
+    @Pref
+    UserPrefs_ userPrefs;
 
 
     @ViewById(R.id.et_assignment_time)
@@ -81,6 +89,13 @@ public class CoreMeterTestActivity extends AppCompatActivity{
     @StringArrayRes(R.array.constant_ares_name)
     String[] areaNameList;
 
+    //保存状态, 0: add, 1: update
+    private int saveStatus = 0;
+
+
+    @RestService
+    CoreMeterTestClient coreMeterTestClient; //Inject it
+
 
     @AfterViews
     void bindAdapter(){
@@ -89,17 +104,40 @@ public class CoreMeterTestActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
 
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if(coreMeterTestResult == null){
+
+            coreMeterTestResult = new CoreMeterTestResult();
+
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-        }
 
-        for(String areaName : areaNameList){
-            Toast.makeText(CoreMeterTestActivity.this, areaName, Toast.LENGTH_SHORT).show();
-        }
 
+            //test start
+            etEndTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            etTestingTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+
+            etTaskNum.setText(DateUtils.getCurrentSecond());
+            etAreaName.setText("area"+DateUtils.getCurrentSecond2());
+            etProtectLine.setText("productionline"+DateUtils.getCurrentSecond2());
+            etType.setText("type"+DateUtils.getCurrentSecond2());
+            etSafetyMeasure.setText("safetyM"+DateUtils.getCurrentSecond2());
+            etWether.setText("wether"+DateUtils.getCurrentSecond2());
+            etTestWay.setText("testway"+DateUtils.getCurrentSecond2());
+            etATesting.setText("atest"+DateUtils.getCurrentSecond2());
+            etBTesting.setText("btest"+DateUtils.getCurrentSecond2());
+            etCTesting.setText("ctest"+DateUtils.getCurrentSecond2());
+            etTestResult.setText("testResult"+DateUtils.getCurrentSecond2());
+            etHandleContent.setText("措施"+DateUtils.getCurrentSecond2());
+            etTester.setText("tester"+DateUtils.getCurrentSecond2());
+            etIsHandled.setText("1");
+            etUnhandleReason.setText("未处理原因"+DateUtils.getCurrentSecond2());
+            //test end
+        }else{
+            this.saveStatus = 1;
+        }
     }
 
 
@@ -107,8 +145,8 @@ public class CoreMeterTestActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_task_item_save:
-                Toast.makeText(CoreMeterTestActivity.this, "SAVE!", Toast.LENGTH_SHORT).show();
 
+                confirm();
                 return true;
             case android.R.id.home:
                 if (getParentActivityIntent() == null) {
@@ -122,8 +160,149 @@ public class CoreMeterTestActivity extends AppCompatActivity{
         }
     }
 
+    @Background
     void confirm(){
 
+        if(validate() == false){
+            return;
+        }
+
+        if(saveStatus == 0){ //add
+            coreMeterTestResult.assignByUserID = userPrefs.id().get();
+            coreMeterTestResult.userId = userPrefs.id().get();
+            coreMeterTestResult.createdTime = DateUtils.getCurrent();
+
+            coreMeterTestClient.add(coreMeterTestResult);
+        }else{ //update
+
+        }
+    }
+
+    boolean validate(){
+
+        String error = "不能为空";
+
+        if(etAssignmentTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "任务派发"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.assignmentTime = etAssignmentTime.getText().toString();
+
+        if(etTaskNum.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "任务编号"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.taskNum = etTaskNum.getText().toString();
+
+        if(etAreaName.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "台区名称"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.areaName = etAreaName.getText().toString();
+
+        if(etProtectLine.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "保护线路"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.protectLine = etProtectLine.getText().toString();
+
+        if(etType.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "型号"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.type = etType.getText().toString();
+
+        if(etSafetyMeasure.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "安全措施"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.safetyMeasure = etSafetyMeasure.getText().toString();
+
+        if(etEndTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "结束时间"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.endTime = etEndTime.getText().toString();
+
+        if(etBeginHandleTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "测量情况"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.beginHandleTime = etBeginHandleTime.getText().toString();
+
+        if(etWether.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "天气"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.wether = etWether.getText().toString();
+
+        if(etTestWay.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "试跳方法"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.testWay = etTestWay.getText().toString();
+
+        if(etATesting.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "A相接地试跳（mA)"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.aTesting = etATesting.getText().toString();
+
+        if(etBTesting.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "B相接地试跳（mA)"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.bTesting = etBTesting.getText().toString();
+
+        if(etCTesting.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "C相接地试跳（mA)"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.cTesting = etCTesting.getText().toString();
+
+        if(etTestResult.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "检测结果"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.testResult = etTestResult.getText().toString();
+
+        if(etHandleContent.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "采取措施"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.handleContent = etHandleContent.getText().toString();
+
+        if(etTester.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "测试人"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.tester = etTester.getText().toString();
+
+        if(etTestingTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "试跳日期"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.testingTime = etTestingTime.getText().toString();
+
+        if(etEndHandleTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "任务结束"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.endHandleTime = etEndHandleTime.getText().toString();
+
+        if(etIsHandled.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "已处理"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.isHandled = Integer.parseInt(etIsHandled.getText().toString());
+
+        if(etUnhandleReason.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "未处理"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.unhandleReason = etUnhandleReason.getText().toString();
+
+        return true;
     }
 
 }

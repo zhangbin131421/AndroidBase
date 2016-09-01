@@ -15,18 +15,22 @@ public class TaskBaseVo {
 //            "UserID":1,
     @JsonProperty(value="UserID")
     public int userId;
+    //            "AssignByUserID":2,
+    @JsonProperty(value="AssignByUserID")
+    public int assignByUserID;
+
+    //            "CreatedTime":null,
+    @JsonProperty(value="CreatedTime")
+    public String createdTime;
+
 
     //            "TaskNum":"T111",
     @JsonProperty(value="TaskNum")
     public String taskNum;
+
     //            "AssignmentTime":"\/Date(1471795200000)\/",
     @JsonProperty(value="AssignmentTime")
     public String assignmentTime;
-    //            "AssignByUserID":2,
-    @JsonProperty(value="AssignByUserID")
-    public String assignByUserID;
-
-
 
     //            "AreaName":"测试",
     @JsonProperty(value="AreaName")
@@ -82,9 +86,6 @@ public class TaskBaseVo {
     //            "UnhandleReason":null,
     @JsonProperty(value="UnhandleReason")
     public String unhandleReason;
-    //            "CreatedTime":null,
-    @JsonProperty(value="CreatedTime")
-    public String createdTime;
     //            "UpdatedTime":null,
     @JsonProperty(value="UpdatedTime")
     public String updatedTime;

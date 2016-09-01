@@ -9,9 +9,11 @@ import java.util.Date;
  */
 public class DateUtils {
 
-    static SimpleDateFormat formatYYYYMMDD = new SimpleDateFormat("yyyy-MM-dd");
+    static SimpleDateFormat formatYYYYMMDD = new SimpleDateFormat("yyyy/MM/dd");
 
-    static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    static SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    static SimpleDateFormat formatSecond = new SimpleDateFormat("yyyyMMddHHmmss");
+    static SimpleDateFormat formatSecond2 = new SimpleDateFormat("HHmmss");
 
 
     public static String getCurrentYYYY_MM_DD(){
@@ -28,5 +30,13 @@ public class DateUtils {
 
     public static String getCurrent(){
         return format.format(new Date());
+    }
+
+
+    public static String getCurrentSecond(){
+        return formatSecond.format(new Date());
+    }
+    public static String getCurrentSecond2(){
+        return formatSecond2.format(new Date());
     }
 }

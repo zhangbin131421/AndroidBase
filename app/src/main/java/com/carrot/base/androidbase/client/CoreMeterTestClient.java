@@ -4,6 +4,7 @@ import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.rest.spring.annotations.Accept;
+import org.androidannotations.rest.spring.annotations.Body;
 import org.androidannotations.rest.spring.annotations.Get;
 import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
@@ -38,7 +39,7 @@ public interface CoreMeterTestClient {
 //    http://120.55.101.6:8889/api/CoreMeterTest/AddNew
     @Post("/AddNew")
     @Accept(MediaType.APPLICATION_JSON)
-    void add();
+    void add(@Body CoreMeterTestResult coreMeterTestResult);
 //    http://120.55.101.6:8889/api/CoreMeterTest/Update
     @Post("/Update")
     @Accept(MediaType.APPLICATION_JSON)
