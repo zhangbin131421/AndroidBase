@@ -1,5 +1,6 @@
 package com.carrot.base.androidbase.activity.handle;
 
+import android.app.ProgressDialog;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -44,6 +45,8 @@ public class CoreMeterTestActivity extends AppCompatActivity{
     TaskBaseVo taskBaseVo;
 
     CoreMeterTestResult coreMeterTestResult;
+
+    ProgressDialog progress;
 
     @Pref
     UserPrefs_ userPrefs;
@@ -110,6 +113,7 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        progress = new ProgressDialog(this);
 
         getObject();
     }
@@ -117,6 +121,8 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
     @Background
     void getObject(){
+        showLoading();
+
         if(taskBaseVo == null){
 
         }else{
@@ -125,6 +131,13 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
         refreshView();
     }
+
+    @UiThread
+    void showLoading(){
+        progress.setTitle("Loading");
+        progress.show();
+    }
+
 
     @UiThread
     void refreshView(){
@@ -162,7 +175,6 @@ public class CoreMeterTestActivity extends AppCompatActivity{
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
 
-            //test start
             etEndTime.setText(coreMeterTestResult.endTime);
             etTestingTime.setText(coreMeterTestResult.testingTime);
             etBeginHandleTime.setText(coreMeterTestResult.beginHandleTime);
@@ -186,6 +198,9 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
             this.saveStatus = 1;
         }
+        if(progress != null){
+            progress.dismiss();
+        }
     }
 
 
@@ -207,6 +222,8 @@ public class CoreMeterTestActivity extends AppCompatActivity{
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 
     @Background
     void confirm(){
