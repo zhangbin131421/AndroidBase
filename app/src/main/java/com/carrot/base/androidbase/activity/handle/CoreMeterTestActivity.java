@@ -239,9 +239,10 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
             coreMeterTestClient.add(coreMeterTestResult);
 
+            finish();
         }else{ //update
             coreMeterTestClient.update(coreMeterTestResult);
-
+            finish();
         }
     }
 

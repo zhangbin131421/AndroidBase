@@ -49,7 +49,7 @@ public class TaskListFragment extends Fragment {
     @RestService
     CoreMeterTestClient coreMeterTestClient;
 
-    ProgressDialog progress;
+//    ProgressDialog progress;
 
     @ViewById(R.id.rv_fragment_task_list_rv)
     RecyclerView mRecyclerView;
@@ -94,11 +94,12 @@ public class TaskListFragment extends Fragment {
         });
     }
 
+    @Background
     void refreshItems() {
         // Load items
         // ...
 
-        showLoading();
+//        showLoading();
 
         List<TaskBaseVo> resultList = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);//
 
@@ -106,6 +107,7 @@ public class TaskListFragment extends Fragment {
         onItemsLoadComplete(resultList);
     }
 
+    @UiThread
     void onItemsLoadComplete(List<TaskBaseVo> list) {
         // Update the adapter and notify data set changed
         // ...
@@ -119,8 +121,12 @@ public class TaskListFragment extends Fragment {
     @UiThread
     void showLoading(){
 
-        progress.setTitle("Loading");
-        progress.show();
+//        if(progress == null){
+//            progress = new ProgressDialog(getActivity());
+//        }
+//
+//        progress.setTitle("Loading");
+//        progress.show();
 
     }
     @UiThread
