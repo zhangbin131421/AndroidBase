@@ -81,7 +81,7 @@ public class TaskListFragment extends Fragment {
             @Override
             public void onItemClick(int position, View v) {
 
-                TypeUtils.openItem(subTypeVo.getName(), getActivity());
+                TypeUtils.openItem(subTypeVo.getName(), getActivity(), mAdapter.getItem(position));
             }
         });
 

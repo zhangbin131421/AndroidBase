@@ -43,7 +43,7 @@ public interface CoreMeterTestClient {
 //    http://120.55.101.6:8889/api/CoreMeterTest/Update
     @Post("/Update")
     @Accept(MediaType.APPLICATION_JSON)
-    void update();
+    void update(@Body CoreMeterTestResult coreMeterTestResult);
 //    http://120.55.101.6:8889/api/CoreMeterTest/Delete/?ID=1
     @Post("/Delete/?ID={id}")
     @Accept(MediaType.APPLICATION_JSON)

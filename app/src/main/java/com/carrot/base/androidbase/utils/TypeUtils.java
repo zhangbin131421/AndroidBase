@@ -23,6 +23,7 @@ import com.carrot.base.androidbase.activity.handle.StopStartElectricActivity_;
 import com.carrot.base.androidbase.activity.handle.TotalPerformanceTestActivity_;
 import com.carrot.base.androidbase.activity.handle.VoltageMeasurementActivity_;
 import com.carrot.base.androidbase.vo.TypeVo;
+import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,7 +111,7 @@ public class TypeUtils {
 
 
 
-    public static void openItem(String typeName, Context context){
+    public static void openItem(String typeName, Context context, TaskBaseVo taskBaseVo){
         switch (typeName){
             case "线损管理":
                 LineBrokenManagementActivity_.intent(context)
@@ -149,6 +150,7 @@ public class TypeUtils {
                 //-------------------------
             case "总表试跳":
                 CoreMeterTestActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
                         .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .start();
                 break;

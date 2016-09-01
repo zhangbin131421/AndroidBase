@@ -3,9 +3,12 @@ package com.carrot.base.androidbase.vo.result;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import org.parceler.Parcel;
+
 /**
  * Created by victor on 8/28/16.
  */
+@Parcel
 public class TaskBaseVo {
     //    [{"ID":1,
     @JsonProperty(value="ID")

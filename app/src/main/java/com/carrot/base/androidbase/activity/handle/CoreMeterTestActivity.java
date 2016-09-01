@@ -12,12 +12,14 @@ import com.carrot.base.androidbase.client.CoreMeterTestClient;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
+import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringArrayRes;
 import org.androidannotations.annotations.res.TextArrayRes;
@@ -38,7 +40,9 @@ public class CoreMeterTestActivity extends AppCompatActivity{
     Toolbar toolbar;
 
     //保存需要提交的对象，开始如果为空说明为新增，否则为修改
-    @Extra("extraCoreMeterTestResult")
+    @Extra("extraTaskBaseVo")
+    TaskBaseVo taskBaseVo;
+
     CoreMeterTestResult coreMeterTestResult;
 
     @Pref
@@ -106,6 +110,24 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        getObject();
+    }
+
+
+    @Background
+    void getObject(){
+        if(taskBaseVo == null){
+
+        }else{
+            coreMeterTestResult = coreMeterTestClient.getById(taskBaseVo.id);
+        }
+
+        refreshView();
+    }
+
+    @UiThread
+    void refreshView(){
         if(coreMeterTestResult == null){
 
             coreMeterTestResult = new CoreMeterTestResult();
@@ -132,10 +154,36 @@ public class CoreMeterTestActivity extends AppCompatActivity{
             etTestResult.setText("testResult"+DateUtils.getCurrentSecond2());
             etHandleContent.setText("措施"+DateUtils.getCurrentSecond2());
             etTester.setText("tester"+DateUtils.getCurrentSecond2());
-            etIsHandled.setText("1");
+            etIsHandled.setText("0");
             etUnhandleReason.setText("未处理原因"+DateUtils.getCurrentSecond2());
             //test end
         }else{
+
+            etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+
+
+            //test start
+            etEndTime.setText(coreMeterTestResult.endTime);
+            etTestingTime.setText(coreMeterTestResult.testingTime);
+            etBeginHandleTime.setText(coreMeterTestResult.beginHandleTime);
+            etEndHandleTime.setText(coreMeterTestResult.endHandleTime);
+
+            etTaskNum.setText(coreMeterTestResult.taskNum);
+            etAreaName.setText(coreMeterTestResult.areaName);
+            etProtectLine.setText(coreMeterTestResult.protectLine);
+            etType.setText(coreMeterTestResult.type);
+            etSafetyMeasure.setText(coreMeterTestResult.safetyMeasure);
+            etWether.setText(coreMeterTestResult.wether);
+            etTestWay.setText(coreMeterTestResult.testWay);
+            etATesting.setText(coreMeterTestResult.aTesting);
+            etBTesting.setText(coreMeterTestResult.bTesting);
+            etCTesting.setText(coreMeterTestResult.cTesting);
+            etTestResult.setText(coreMeterTestResult.testResult);
+            etHandleContent.setText(coreMeterTestResult.handleContent);
+            etTester.setText(coreMeterTestResult.tester);
+            etIsHandled.setText(coreMeterTestResult.isHandled+"");
+            etUnhandleReason.setText(coreMeterTestResult.unhandleReason);
+
             this.saveStatus = 1;
         }
     }
@@ -173,7 +221,9 @@ public class CoreMeterTestActivity extends AppCompatActivity{
             coreMeterTestResult.createdTime = DateUtils.getCurrent();
 
             coreMeterTestClient.add(coreMeterTestResult);
+
         }else{ //update
+            coreMeterTestClient.update(coreMeterTestResult);
 
         }
     }

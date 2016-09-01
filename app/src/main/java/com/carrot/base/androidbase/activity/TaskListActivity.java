@@ -69,8 +69,7 @@ public class TaskListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
 
-
-                TypeUtils.openItem(subTypeVo.getName(), getApplicationContext());
+                TypeUtils.openItem(subTypeVo.getName(), getApplicationContext(), null);
 
                 return true;
             case android.R.id.home:
@@ -84,53 +83,5 @@ public class TaskListActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-//
-//
-//    void openItem(){
-//        switch (subTypeVo.getName()){
-//            case "线损管理":
-//                LineBrokenManagementActivity_.intent(getApplicationContext())
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        .start();
-//                break;
-//            case "采集消缺":
-//                CollectResolveTroubleActivity_.intent(getApplicationContext())
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        .start();
-//                break;
-//            case "业扩报装":
-//                ExtendBussinessSetupActivity_.intent(getApplicationContext())
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        .start();
-//                break;
-//            case "表计故障":
-//                MeterTroubleActivity_.intent(getApplicationContext())
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        .start();
-//                break;
-//            case "工单处理":
-//                OrderHandleActivity_.intent(getApplicationContext())
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        .start();
-//                break;
-//            case "营业普查":
-//                BusinessAuditeActivity_.intent(getApplicationContext())
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        .start();
-//                break;
-//            case "停复电":
-//                StopStartElectricActivity_.intent(getApplicationContext())
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        .start();
-//            case "总表试跳":
-//                CoreMeterTestActivity_.intent(getApplicationContext())
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-//                        .start();
-//                break;
-//
-//            default:
-//                Toast.makeText(getApplicationContext(), "开发中....", Toast.LENGTH_SHORT).show();
-//        }
-//
-//    }
+
 }

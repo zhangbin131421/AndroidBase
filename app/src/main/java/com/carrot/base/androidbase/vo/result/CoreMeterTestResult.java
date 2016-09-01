@@ -8,27 +8,42 @@ import org.parceler.Parcel;
  * Created by victor on 8/28/16.
  */
 @Parcel
-public class CoreMeterTestResult extends TaskBaseVo {
-//    [{"ID":1,"UserID":1,"TaskNum":"T111","AssignmentTime":"\/Date(1471795200000)\/","AssignByUserID":2,
-//            "AreaName":"测试","ProtectLine":"测试","Type":"1","SafetyMeasure":"测试",
-//            "BeginHandleTime":"\/Date(1471968000000)\/","EndTime":"\/Date(1471968000000)\/",
-//            "Wether":"晴朗","TestWay":"测试","ATesting":"a","BTesting":"b","CTesting":"c","TestResult":"合格",
-//            "HandleContent":"测试","Tester":"1","TestingTime":"\/Date(1471968000000)\/",
-//            "EndHandleTime":"\/Date(1471968000000)\/","IsHandled":1,"UnhandleReason":null,"CreatedTime":null,
-//            "UpdatedTime":null,"IsDelete":null}]
+public class CoreMeterTestResult {
+    //    [{"ID":1,
+    @JsonProperty(value="ID")
+    public int id;
+
+    //
+//            "UserID":1,
+    @JsonProperty(value="UserID")
+    public int userId;
+    //            "AssignByUserID":2,
+    @JsonProperty(value="AssignByUserID")
+    public int assignByUserID;
+
+    //            "CreatedTime":null,
+    @JsonProperty(value="CreatedTime")
+    public String createdTime;
 
 
-
-//            "AreaName":"测试",
+    //            "TaskNum":"T111",
     @JsonProperty(value="TaskNum")
+    public String taskNum;
+
+    //            "AssignmentTime":"\/Date(1471795200000)\/",
+    @JsonProperty(value="AssignmentTime")
+    public String assignmentTime;
+
+    //            "AreaName":"测试",
+    @JsonProperty(value="AreaName")
     public String areaName;
-//            "ProtectLine":"测试",
+    //            "ProtectLine":"测试",
     @JsonProperty(value="ProtectLine")
     public String protectLine;
-//            "Type":"1",
+    //            "Type":"1",
     @JsonProperty(value="Type")
     public String type;
-//            "SafetyMeasure":"测试",
+    //            "SafetyMeasure":"测试",
     @JsonProperty(value="SafetyMeasure")
     public String safetyMeasure;
     //            "BeginHandleTime":"\/Date(1471968000000)\/",
@@ -67,19 +82,16 @@ public class CoreMeterTestResult extends TaskBaseVo {
     //            "EndHandleTime":"\/Date(1471968000000)\/",
     @JsonProperty(value="EndHandleTime")
     public String endHandleTime;
-
+    //            "IsHandled":1,
     @JsonProperty(value="IsHandled")
     public int isHandled;
-
+    //            "UnhandleReason":null,
     @JsonProperty(value="UnhandleReason")
     public String unhandleReason;
-
-    @JsonProperty(value="CreatedTime")
-    public String createdTime;
-
+    //            "UpdatedTime":null,
     @JsonProperty(value="UpdatedTime")
     public String updatedTime;
-
+    //            "IsDelete":null}]
     @JsonProperty(value="IsDelete")
     public String isDelete;
 
