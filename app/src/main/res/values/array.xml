@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="constant_ares_name">
+        <item>台区名称1</item>
+        <item>台区名称2</item>
+        <item>台区名称3</item>
+    </string-array>
+</resources>

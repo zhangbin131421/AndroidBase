@@ -81,6 +81,10 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-core:$JsonVersion"
     compile "com.fasterxml.jackson.core:jackson-annotations:$JsonVersion"
 
+    //parceler
+    compile 'org.parceler:parceler-api:1.1.5'
+    apt 'org.parceler:parceler:1.1.5'
+
     compile 'com.google.code.gson:gson:2.6.2'
     //    compile project(':easeui')
     //    compile files('libs/Parse-1.9.4.jar')

@@ -91,47 +91,5 @@ public class TaskBaseVo {
     //            "IsDelete":null}]
     @JsonProperty(value="IsDelete")
     public String isDelete;
-//
-//
-//    @JsonIgnore
-//    public int getId() {
-//        return id;
-//    }
-//    @JsonIgnore
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//    @JsonIgnore
-//    public int getUserId() {
-//        return userId;
-//    }
-//    @JsonIgnore
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
-//    @JsonIgnore
-//    public String getTaskNum() {
-//        return taskNum;
-//    }
-//    @JsonIgnore
-//    public void setTaskNum(String taskNum) {
-//        this.taskNum = taskNum;
-//    }
-//    @JsonIgnore
-//    public String getAssignmentTime() {
-//        return assignmentTime;
-//    }
-//    @JsonIgnore
-//    public void setAssignmentTime(String assignmentTime) {
-//        this.assignmentTime = assignmentTime;
-//    }
-//    @JsonIgnore
-//    public String getAssignByUserID() {
-//        return assignByUserID;
-//    }
-//    @JsonIgnore
-//    public void setAssignByUserID(String assignByUserID) {
-//        this.assignByUserID = assignByUserID;
-//    }
 
 }

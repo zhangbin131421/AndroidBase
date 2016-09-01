@@ -41,7 +41,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
         switch (item.getItemId()) {
             case R.id.menu_task_item_save:
                 Toast.makeText(EquipmentCheckActivity.this, "SAVE!", Toast.LENGTH_SHORT).show();
-
+                conform();
                 return true;
             case android.R.id.home:
                 if (getParentActivityIntent() == null) {
@@ -55,4 +55,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
         }
     }
 
+    void conform(){
+
+    }
 }

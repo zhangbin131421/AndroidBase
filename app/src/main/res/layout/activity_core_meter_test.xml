@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="@string/task_title1"/>
         <EditText
+            android:id="@+id/et_assignment_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:text="@string/task_num"/>
         <EditText
+            android:id="@+id/et_task_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,10 +55,16 @@
             android:layout_height="wrap_content"
             android:text="@string/task_area_name"/>
         <EditText
+            android:id="@+id/et_area_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="导入"/>
+        <!--<AutoCompleteTextView-->
+            <!--android:id="@+id/et_area_name"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"/>-->
     </LinearLayout>
 
     <LinearLayout
@@ -67,6 +75,7 @@
             android:layout_height="wrap_content"
             android:text="保护线路"/>
         <EditText
+            android:id="@+id/et_protect_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -81,6 +90,7 @@
             android:layout_height="wrap_content"
             android:text="型号"/>
         <EditText
+            android:id="@+id/et_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -95,6 +105,7 @@
             android:layout_height="wrap_content"
             android:text="安全措施"/>
         <EditText
+            android:id="@+id/et_safety_measure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -109,6 +120,7 @@
             android:layout_height="wrap_content"
             android:text="结束时间"/>
         <EditText
+            android:id="@+id/et_end_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -126,6 +138,7 @@
             android:layout_height="wrap_content"
             android:text="测量情况"/>
         <EditText
+            android:id="@+id/et_begin_handle_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -140,6 +153,7 @@
             android:layout_height="wrap_content"
             android:text="天气"/>
         <EditText
+            android:id="@+id/et_wether"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -154,6 +168,7 @@
             android:layout_height="wrap_content"
             android:text="试跳方法"/>
         <EditText
+            android:id="@+id/et_test_way"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -168,6 +183,7 @@
             android:layout_height="wrap_content"
             android:text="A相接地试跳（mA)"/>
         <EditText
+            android:id="@+id/et_a_testing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -182,6 +198,7 @@
             android:layout_height="wrap_content"
             android:text="B相接地试跳（mA)"/>
         <EditText
+            android:id="@+id/et_b_testing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -196,6 +213,7 @@
             android:layout_height="wrap_content"
             android:text="C相接地试跳（mA)"/>
         <EditText
+            android:id="@+id/et_c_testing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -210,6 +228,7 @@
             android:layout_height="wrap_content"
             android:text="检测结果"/>
         <EditText
+            android:id="@+id/et_test_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -224,6 +243,7 @@
             android:layout_height="wrap_content"
             android:text="采取措施"/>
         <EditText
+            android:id="@+id/et_handle_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -238,6 +258,7 @@
             android:layout_height="wrap_content"
             android:text="测试人"/>
         <EditText
+            android:id="@+id/et_tester"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -252,6 +273,7 @@
             android:layout_height="wrap_content"
             android:text="试跳日期"/>
         <EditText
+            android:id="@+id/et_testing_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -269,6 +291,7 @@
             android:layout_height="wrap_content"
             android:text="@string/task_end_handle_tiem"/>
         <EditText
+            android:id="@+id/et_end_handle_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -283,6 +306,7 @@
             android:layout_height="wrap_content"
             android:text="@string/task_is_handled"/>
         <EditText
+            android:id="@+id/et_is_handled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -297,6 +321,7 @@
             android:layout_height="wrap_content"
             android:text="@string/task_unhandle_reason"/>
         <EditText
+            android:id="@+id/et_unhandle_reason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
