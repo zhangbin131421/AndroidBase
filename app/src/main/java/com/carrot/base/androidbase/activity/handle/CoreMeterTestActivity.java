@@ -1,6 +1,7 @@
 package com.carrot.base.androidbase.activity.handle;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.CoreMeterTestClient;
+import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
@@ -35,6 +37,7 @@ import java.util.Date;
 @EActivity(R.layout.activity_core_meter_test)
 @OptionsMenu(R.menu.task_item)
 public class CoreMeterTestActivity extends AppCompatActivity{
+
 
 
     @ViewById(R.id.tb_tool_bar)
@@ -235,26 +238,29 @@ public class CoreMeterTestActivity extends AppCompatActivity{
         if(saveStatus == 0){ //add
             coreMeterTestResult.assignByUserID = userPrefs.id().get();
             coreMeterTestResult.userId = userPrefs.id().get();
-            coreMeterTestResult.createdTime = DateUtils.getCurrent();
+//            coreMeterTestResult.createdTime = DateUtils.getCurrent();
 
             coreMeterTestClient.add(coreMeterTestResult);
 
-            finish();
         }else{ //update
             coreMeterTestClient.update(coreMeterTestResult);
-            finish();
+
         }
+
+        Intent intent = new Intent();
+        setResult(ResultCodeConstant.RESULT_CODE_REFRESH, intent);
+        finish();
     }
 
     boolean validate(){
 
         String error = "不能为空";
 
-        if(etAssignmentTime.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "任务派发"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.coreMeterTestResult.assignmentTime = etAssignmentTime.getText().toString();
+//        if(etAssignmentTime.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "任务派发"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.coreMeterTestResult.assignmentTime = etAssignmentTime.getText().toString();
 
         if(etTaskNum.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(), "任务编号"+error, Toast.LENGTH_SHORT).show();
@@ -286,11 +292,11 @@ public class CoreMeterTestActivity extends AppCompatActivity{
         }
         this.coreMeterTestResult.safetyMeasure = etSafetyMeasure.getText().toString();
 
-        if(etEndTime.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "结束时间"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.coreMeterTestResult.endTime = etEndTime.getText().toString();
+//        if(etEndTime.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "结束时间"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.coreMeterTestResult.endTime = etEndTime.getText().toString();
 
         if(etBeginHandleTime.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(), "测量情况"+error, Toast.LENGTH_SHORT).show();

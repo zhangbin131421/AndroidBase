@@ -111,99 +111,99 @@ public class TypeUtils {
 
 
 
-    public static void openItem(String typeName, Context context, TaskBaseVo taskBaseVo){
+    public static void openItem(String typeName, Context context, TaskBaseVo taskBaseVo, int requestCode){
         switch (typeName){
             case "线损管理":
                 LineBrokenManagementActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "采集消缺":
                 CollectResolveTroubleActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "业扩报装":
                 ExtendBussinessSetupActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "表计故障":
                 MeterTroubleActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "工单处理":
                 OrderHandleActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "营业普查":
                 BusinessAuditeActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "停复电":
                 StopStartElectricActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 //-------------------------
             case "总表试跳":
                 CoreMeterTestActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "总保性能检测":
                 TotalPerformanceTestActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "设备巡视":
                 EquipmentCheckActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "消缺记录":
                 ResolveRecordActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "交叉跨越测量":
                 CrossTestActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "负荷电压测量":
                 VoltageMeasurementActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "接地电阻测量":
                 EarthResistanceTestActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
             case "专项安全检查":
                 SpecialSecurityCheckActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
 
             //----------
 
             case "农配网工程":
                 DistributionNetworkEngineeringActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
 
             //----------
 
             case "车辆管理":
                 CarManagementActivity_.intent(context)
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        .start();
+//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .startForResult(requestCode);
                 break;
 
             default:

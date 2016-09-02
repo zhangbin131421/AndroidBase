@@ -23,7 +23,7 @@
 
         </activity>
 
-        <activity android:name=".activity.TaskListActivity_" android:label="任务列表">
+        <activity android:name=".activity.TaskListActivity_" android:label="任务列表" android:launchMode="standard">
         </activity>
 
         <activity android:name=".activity.SettingActivity_" android:label="设置">

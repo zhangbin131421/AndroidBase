@@ -23,7 +23,7 @@ public class TaskListFragmentAdapter extends FragmentPagerAdapter {
 
     private String tabTitles[] = new String[] { "未完成", "已完成"};
 
-    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<TaskListFragment> mFragmentList = new ArrayList<>();
 
     Context context;
 
@@ -39,10 +39,17 @@ public class TaskListFragmentAdapter extends FragmentPagerAdapter {
         this.subTypeVo = subTypeVo;
 
         mFragmentList.add(TaskListFragment_.builder().status(tabTitles[0]).typeVo(typeVo).subTypeVo(subTypeVo).build());
+
         mFragmentList.add(TaskListFragment_.builder().status(tabTitles[1]).typeVo(typeVo).subTypeVo(subTypeVo).build());
 
 
     }
+    public void refreshData(){
+        for (TaskListFragment fragment: mFragmentList) {
+            fragment.refreshItems();
+        }
+    }
+
     @Override
     public Fragment getItem(int position) {
         return mFragmentList.get(position);
