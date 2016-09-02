@@ -1,9 +1,11 @@
 package com.carrot.base.androidbase.adapter;
 
 import android.content.Context;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 
 import com.carrot.base.androidbase.fragment.TaskListFragment;
@@ -19,7 +21,7 @@ import java.util.List;
 /**
  * Created by victor on 8/12/16.
  */
-public class TaskListFragmentAdapter extends FragmentPagerAdapter {
+public class TaskListFragmentAdapter extends FragmentStatePagerAdapter {
 
     private String tabTitles[] = new String[] { "未完成", "已完成"};
 
@@ -48,6 +50,12 @@ public class TaskListFragmentAdapter extends FragmentPagerAdapter {
         for (TaskListFragment fragment: mFragmentList) {
             fragment.refreshItems();
         }
+    }
+
+    @Override
+    public Parcelable saveState()
+    {
+        return null;
     }
 
     @Override
