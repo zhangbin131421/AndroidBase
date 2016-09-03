@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -289,6 +290,23 @@ public class CoreMeterTestActivity extends AppCompatActivity{
                         imageView.setLayoutParams(new GridView.LayoutParams(width, width));
                         imageView.setPadding(padding, padding, padding, padding);
 //                        imageView.setpa
+
+                        imageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Log.i("sslog", "image clicked");
+                            }
+                        });
+
+                        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View view) {
+
+                                Log.i("sslog", "image long clicked");
+
+                                return false;
+                            }
+                        });
 
 
 
