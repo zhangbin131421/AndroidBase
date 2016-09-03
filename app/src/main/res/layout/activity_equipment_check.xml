@@ -32,45 +32,35 @@
                     android:id="@+id/et_assignment_time"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_num"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_task_num"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视种类"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_check_type"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视范围"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_check_scope"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="安全措施"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_safety_measure"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="结束时间"/>
                 <EditText style="@style/tableColInput"/>
@@ -85,62 +75,48 @@
                     android:id="@+id/et_end_time"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="存在问题"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_exist_defect"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷位置"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_defect_place"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷内容"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_defect_content"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷等级"/>
                 <EditText style="@style/tableColInput"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="处理情况"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_defect_level"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视人员"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_check_people"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视日期"/>
                 <EditText style="@style/tableColInput"
@@ -156,18 +132,14 @@
                     android:id="@+id/et_handle_content"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
                 <EditText style="@style/tableColInput"
                     android:id="@+id/et_is_handled"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_unhandle_reason"/>
                 <EditText style="@style/tableColInput"
