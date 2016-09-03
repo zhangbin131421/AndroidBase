@@ -24,6 +24,7 @@ import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.image.UILImageLoader;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.DateUtils;
+import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -151,6 +152,7 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
         progress = new ProgressDialog(this);
 
+        this.setTitle(TypeUtils.TYPE_2_1);
         getObject();
     }
 

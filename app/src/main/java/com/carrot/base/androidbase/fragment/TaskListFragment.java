@@ -16,6 +16,7 @@ import com.carrot.base.androidbase.activity.TaskListActivity;
 import com.carrot.base.androidbase.activity.TaskListActivity_;
 import com.carrot.base.androidbase.adapter.TaskCardAdapter;
 import com.carrot.base.androidbase.client.CoreMeterTestClient;
+import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.TypeUtils;
@@ -56,8 +57,12 @@ public class TaskListFragment extends Fragment {
     @FragmentArg
     TypeVo subTypeVo;
 
+
     @RestService
     CoreMeterTestClient coreMeterTestClient;
+
+    @RestService
+    EquipmentCheckClient equipmentCheckClient;
 
 //    ProgressDialog progress;
 
@@ -78,7 +83,11 @@ public class TaskListFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));//
+
+
+        if(subTypeVo.getName().equals(TypeUtils.TYPE_2_1)){
+            mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));//
+        }
         uiInit();
     }
 

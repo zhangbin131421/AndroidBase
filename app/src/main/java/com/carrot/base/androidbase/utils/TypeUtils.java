@@ -33,21 +33,40 @@ import java.util.List;
  */
 public class TypeUtils {
 
+    public final static String TYPE_1 = "营销";
+    public final static String TYPE_1_1 = "线损管理";
+    public final static String TYPE_1_2 = "采集消缺";
+    public final static String TYPE_1_3 = "业扩报装";
+    public final static String TYPE_1_4 = "表计故障";
+    public final static String TYPE_1_5 = "工单处理";
+    public final static String TYPE_1_6 = "营业普查";
+    public final static String TYPE_1_7 = "停复电";
+
+    public final static String TYPE_2 = "生产";
+    public final static String TYPE_2_1 = "总表试跳";
+    public final static String TYPE_2_2 = "总保性能检测";
+    public final static String TYPE_2_3 = "设备巡视";
+    public final static String TYPE_2_4 = "消缺记录";
+    public final static String TYPE_2_5 = "交叉跨越测量";
+    public final static String TYPE_2_6 = "负荷电压测量";
+    public final static String TYPE_2_7 = "接地电阻测量";
+    public final static String TYPE_2_8 = "专项安全检查";
+
+    public final static String TYPE_3 = "工程";
+    public final static String TYPE_3_1 = "农配网工程";
+
+    public final static String TYPE_4 = "综合";
+    public final static String TYPE_4_1 = "车辆管理";
+
     public static List<TypeVo> getAllItems(Context context){
 
         List<TypeVo> result = new ArrayList<>();
 
 
 
-        TypeVo type4 = new TypeVo(context.getString(R.string.type_1), false);
+        TypeVo type4 = new TypeVo(TYPE_1, false);
         List<TypeVo> subTypes4 = new ArrayList<>();
-        String[] ss4 = new String[]{context.getString(R.string.type_1_1),
-                context.getString(R.string.type_1_2),
-                context.getString(R.string.type_1_3),
-                context.getString(R.string.type_1_4),
-                context.getString(R.string.type_1_5),
-                context.getString(R.string.type_1_6),
-                context.getString(R.string.type_1_7)};
+        String[] ss4 = new String[]{TYPE_1_1,TYPE_1_2,TYPE_1_3,TYPE_1_4,TYPE_1_5,TYPE_1_6,TYPE_1_7};
 
         for (String item : ss4) {
             TypeVo itemVo = new TypeVo(item, true);
@@ -58,16 +77,16 @@ public class TypeUtils {
         result.add(type4);
 
 
-        TypeVo type3 = new TypeVo(context.getString(R.string.type_2), false);
+        TypeVo type3 = new TypeVo(TYPE_2, false);
         List<TypeVo> subTypes3 = new ArrayList<>();
-        String[] ss3 = new String[]{context.getString(R.string.type_2_1),
-                context.getString(R.string.type_2_2),
-                context.getString(R.string.type_2_3),
-                context.getString(R.string.type_2_4),
-                context.getString(R.string.type_2_5),
-                context.getString(R.string.type_2_6),
-                context.getString(R.string.type_2_7),
-                context.getString(R.string.type_2_8),
+        String[] ss3 = new String[]{TYPE_2_1,
+                TYPE_2_2,
+                TYPE_2_3,
+                TYPE_2_4,
+                TYPE_2_5,
+                TYPE_2_6,
+                TYPE_2_7,
+                TYPE_2_8,
         };
 
         for (String item : ss3) {
@@ -80,11 +99,11 @@ public class TypeUtils {
 
 
 
-        TypeVo type2 = new TypeVo(context.getString(R.string.type_3), true);
+        TypeVo type2 = new TypeVo(TYPE_3, true);
 
         result.add(type2);
         List<TypeVo> subTypes2 = new ArrayList<>();
-        String[] ss2 = new String[]{context.getString(R.string.type_3_1)};
+        String[] ss2 = new String[]{TYPE_3_1};
 
         for (String item : ss2) {
             TypeVo itemVo = new TypeVo(item, true);
@@ -94,9 +113,9 @@ public class TypeUtils {
 
 
 
-        TypeVo type1 = new TypeVo(context.getString(R.string.type_4), false);
+        TypeVo type1 = new TypeVo(TYPE_4, false);
         List<TypeVo> subTypes1 = new ArrayList<>();
-        String[] ss1 = new String[]{context.getString(R.string.type_4_1)};
+        String[] ss1 = new String[]{TYPE_4_1};
 
         for (String item : ss1) {
             TypeVo itemVo = new TypeVo(item, true);
@@ -113,78 +132,78 @@ public class TypeUtils {
 
     public static void openItem(String typeName, Context context, TaskBaseVo taskBaseVo, int requestCode){
         switch (typeName){
-            case "线损管理":
+            case TYPE_1_1:
                 LineBrokenManagementActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "采集消缺":
+            case TYPE_1_2:
                 CollectResolveTroubleActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "业扩报装":
+            case TYPE_1_3:
                 ExtendBussinessSetupActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "表计故障":
+            case TYPE_1_4:
                 MeterTroubleActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "工单处理":
+            case TYPE_1_5:
                 OrderHandleActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "营业普查":
+            case TYPE_1_6:
                 BusinessAuditeActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "停复电":
+            case TYPE_1_7:
                 StopStartElectricActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 //-------------------------
-            case "总表试跳":
+            case TYPE_2_1:
                 CoreMeterTestActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "总保性能检测":
+            case TYPE_2_2:
                 TotalPerformanceTestActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "设备巡视":
+            case TYPE_2_3:
                 EquipmentCheckActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "消缺记录":
+            case TYPE_2_4:
                 ResolveRecordActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "交叉跨越测量":
+            case TYPE_2_5:
                 CrossTestActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "负荷电压测量":
+            case TYPE_2_6:
                 VoltageMeasurementActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "接地电阻测量":
+            case TYPE_2_7:
                 EarthResistanceTestActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
-            case "专项安全检查":
+            case TYPE_2_8:
                 SpecialSecurityCheckActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
@@ -192,7 +211,7 @@ public class TypeUtils {
 
             //----------
 
-            case "农配网工程":
+            case TYPE_3_1:
                 DistributionNetworkEngineeringActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
@@ -200,7 +219,7 @@ public class TypeUtils {
 
             //----------
 
-            case "车辆管理":
+            case TYPE_4_1:
                 CarManagementActivity_.intent(context)
 //                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);

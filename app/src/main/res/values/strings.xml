@@ -1,30 +1,30 @@
 <resources>
     <string name="app_name">供电所管理系统</string>
 
-    <string name="type_1">营销</string>
-    <string name="type_1_1">线损管理</string>
-    <string name="type_1_2">采集消缺</string>
-    <string name="type_1_3">业扩报装</string>
-    <string name="type_1_4">表计故障</string>
-    <string name="type_1_5">工单处理</string>
-    <string name="type_1_6">营业普查</string>
-    <string name="type_1_7">停复电</string>
+    <!--<string name="type_1">营销</string>-->
+    <!--<string name="type_1_1">线损管理</string>-->
+    <!--<string name="type_1_2">采集消缺</string>-->
+    <!--<string name="type_1_3">业扩报装</string>-->
+    <!--<string name="type_1_4">表计故障</string>-->
+    <!--<string name="type_1_5">工单处理</string>-->
+    <!--<string name="type_1_6">营业普查</string>-->
+    <!--<string name="type_1_7">停复电</string>-->
 
-    <string name="type_2">生产</string>
-    <string name="type_2_1">总表试跳</string>
-    <string name="type_2_2">总保性能检测</string>
-    <string name="type_2_3">设备巡视</string>
-    <string name="type_2_4">消缺记录</string>
-    <string name="type_2_5">交叉跨越测量</string>
-    <string name="type_2_6">负荷电压测量</string>
-    <string name="type_2_7">接地电阻测量</string>
-    <string name="type_2_8">专项安全检查</string>
+    <!--<string name="type_2">生产</string>-->
+    <!--<string name="type_2_1">总表试跳</string>-->
+    <!--<string name="type_2_2">总保性能检测</string>-->
+    <!--<string name="type_2_3">设备巡视</string>-->
+    <!--<string name="type_2_4">消缺记录</string>-->
+    <!--<string name="type_2_5">交叉跨越测量</string>-->
+    <!--<string name="type_2_6">负荷电压测量</string>-->
+    <!--<string name="type_2_7">接地电阻测量</string>-->
+    <!--<string name="type_2_8">专项安全检查</string>-->
 
-    <string name="type_3">工程</string>
-    <string name="type_3_1">农配网工程</string>
+    <!--<string name="type_3">工程</string>-->
+    <!--<string name="type_3_1">农配网工程</string>-->
 
-    <string name="type_4">综合</string>
-    <string name="type_4_1">车辆管理	</string>
+    <!--<string name="type_4">综合</string>-->
+    <!--<string name="type_4_1">车辆管理	</string>-->
 
     <string name="task_title1">任务派发</string>
     <string name="task_num">任务编号</string>

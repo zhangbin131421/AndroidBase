@@ -43,29 +43,46 @@
         <activity android:name=".activity.Type2Activity_">
         </activity>
 
-        <activity android:name=".activity.handle.LineBrokenManagementActivity_" android:label="@string/type_1_1"></activity>
-        <activity android:name=".activity.handle.CollectResolveTroubleActivity_" android:label="@string/type_1_2"></activity>
-        <activity android:name=".activity.handle.ExtendBussinessSetupActivity_" android:label="@string/type_1_3"></activity>
-        <activity android:name=".activity.handle.MeterTroubleActivity_" android:label="@string/type_1_4"></activity>
-        <activity android:name=".activity.handle.OrderHandleActivity_" android:label="@string/type_1_5"></activity>
-        <activity android:name=".activity.handle.BusinessAuditeActivity_" android:label="@string/type_1_6"></activity>
-        <activity android:name=".activity.handle.StopStartElectricActivity_" android:label="@string/type_1_7"></activity>
+        <activity android:name=".activity.handle.LineBrokenManagementActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.CollectResolveTroubleActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.ExtendBussinessSetupActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.MeterTroubleActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.OrderHandleActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.BusinessAuditeActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.StopStartElectricActivity_"
+            ></activity>
 
 
-        <activity android:name=".activity.handle.CoreMeterTestActivity_" android:label="@string/type_2_1"></activity>
-        <activity android:name=".activity.handle.TotalPerformanceTestActivity_" android:label="@string/type_2_2"></activity>
-        <activity android:name=".activity.handle.EquipmentCheckActivity_" android:label="@string/type_2_3"></activity>
-        <activity android:name=".activity.handle.ResolveRecordActivity_" android:label="@string/type_2_4"></activity>
-        <activity android:name=".activity.handle.CrossTestActivity_" android:label="@string/type_2_5"></activity>
-        <activity android:name=".activity.handle.VoltageMeasurementActivity_" android:label="@string/type_2_6"></activity>
-        <activity android:name=".activity.handle.EarthResistanceTestActivity_" android:label="@string/type_2_7"></activity>
-        <activity android:name=".activity.handle.SpecialSecurityCheckActivity_" android:label="@string/type_2_8"></activity>
+        <activity android:name=".activity.handle.CoreMeterTestActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.TotalPerformanceTestActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.EquipmentCheckActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.ResolveRecordActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.CrossTestActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.VoltageMeasurementActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.EarthResistanceTestActivity_"
+            ></activity>
+        <activity android:name=".activity.handle.SpecialSecurityCheckActivity_"
+            ></activity>
 
 
-        <activity android:name=".activity.handle.DistributionNetworkEngineeringActivity_" android:label="@string/type_3_1"></activity>
+        <activity android:name=".activity.handle.DistributionNetworkEngineeringActivity_"
+            ></activity>
 
 
-        <activity android:name=".activity.handle.CarManagementActivity_" android:label="@string/type_4_1"></activity>
+        <activity android:name=".activity.handle.CarManagementActivity_"
+            ></activity>
     </application>
 
 </manifest>
