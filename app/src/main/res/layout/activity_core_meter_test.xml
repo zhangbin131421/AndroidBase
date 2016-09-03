@@ -128,9 +128,15 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="A相接地试跳（mA)"/>
-                <EditText
+
+
+                <org.apmem.tools.layouts.FlowLayout
                     android:id="@+id/et_a_testing"
-                    style="@style/tableColInput"/>
+                    style="@style/tableColImageLayout">
+                    <ImageView
+                        android:id="@+id/btn_add_image"
+                        style="@style/tableColImagAdd"/>
+                </org.apmem.tools.layouts.FlowLayout>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

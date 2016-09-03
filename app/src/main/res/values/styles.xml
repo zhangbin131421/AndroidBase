@@ -44,4 +44,19 @@
         <item name="android:layout_weight">1</item>
         <item name="android:paddingRight">10dp</item>
     </style>
+    <!-- 存放图片的布局 -->
+    <style name="tableColImageLayout">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+    <!-- 添加图片的按钮样式+ -->
+    <style name="tableColImagAdd">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:src">@mipmap/ic_add_white_24dp</item>
+        <item name="android:background">@color/divider</item>
+        <item name="android:padding">1dp</item>
+    </style>
 </resources>

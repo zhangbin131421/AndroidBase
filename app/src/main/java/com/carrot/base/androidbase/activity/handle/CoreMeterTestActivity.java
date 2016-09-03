@@ -81,7 +81,7 @@ public class CoreMeterTestActivity extends AppCompatActivity{
     @ViewById(R.id.et_test_way)
     EditText etTestWay;
     @ViewById(R.id.et_a_testing)
-    EditText etATesting;
+    org.apmem.tools.layouts.FlowLayout etATesting;
     @ViewById(R.id.et_b_testing)
     EditText etBTesting;
     @ViewById(R.id.et_c_testing)
@@ -169,7 +169,7 @@ public class CoreMeterTestActivity extends AppCompatActivity{
             etSafetyMeasure.setText("safetyM"+DateUtils.getCurrentSecond2());
             etWether.setText("wether"+DateUtils.getCurrentSecond2());
             etTestWay.setText("testway"+DateUtils.getCurrentSecond2());
-            etATesting.setText("atest"+DateUtils.getCurrentSecond2());
+//            etATesting.setText("atest"+DateUtils.getCurrentSecond2());
             etBTesting.setText("btest"+DateUtils.getCurrentSecond2());
             etCTesting.setText("ctest"+DateUtils.getCurrentSecond2());
             etTestResult.setText("testResult"+DateUtils.getCurrentSecond2());
@@ -195,7 +195,7 @@ public class CoreMeterTestActivity extends AppCompatActivity{
             etSafetyMeasure.setText(coreMeterTestResult.safetyMeasure);
             etWether.setText(coreMeterTestResult.wether);
             etTestWay.setText(coreMeterTestResult.testWay);
-            etATesting.setText(coreMeterTestResult.aTesting);
+//            etATesting.setText(coreMeterTestResult.aTesting);
             etBTesting.setText(coreMeterTestResult.bTesting);
             etCTesting.setText(coreMeterTestResult.cTesting);
             etTestResult.setText(coreMeterTestResult.testResult);
@@ -328,11 +328,11 @@ public class CoreMeterTestActivity extends AppCompatActivity{
         }
         this.coreMeterTestResult.testWay = etTestWay.getText().toString();
 
-        if(etATesting.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "A相接地试跳（mA)"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.coreMeterTestResult.aTesting = etATesting.getText().toString();
+//        if(etATesting.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "A相接地试跳（mA)"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.coreMeterTestResult.aTesting = etATesting.getText().toString();
 
         if(etBTesting.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(), "B相接地试跳（mA)"+error, Toast.LENGTH_SHORT).show();
