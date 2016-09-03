@@ -46,7 +46,7 @@ public class CoreMeterTestResult {
     @JsonProperty(value=AssignmentTime)
     public String assignmentTime;
 
-
+//----------
     public static final String AreaName = "AreaName";
     @JsonProperty(value=AreaName)
     public String areaName;

@@ -63,7 +63,8 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="结束时间"/>
-                <EditText style="@style/tableColInput"/>
+                <EditText style="@style/tableColInput"
+                    android:id="@+id/et_end_time"/>
             </LinearLayout>
 
             <!-- ********************* -->
@@ -72,7 +73,7 @@
                 <TextView style="@style/tableColName"
                     android:text="巡视内容"/>
                 <EditText style="@style/tableColInput"
-                    android:id="@+id/et_end_time"/>
+                    android:id="@+id/et_begin_handle_time"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -99,14 +100,15 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷等级"/>
-                <EditText style="@style/tableColInput"/>
+                <EditText style="@style/tableColInput"
+                    android:id="@+id/et_defect_level"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="处理情况"/>
                 <EditText style="@style/tableColInput"
-                    android:id="@+id/et_defect_level"/>
+                    android:id="@+id/et_handle_content"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -127,9 +129,9 @@
 
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
-                    android:text="@string/task_end_handle_tiem"/>
+                    android:text="任务结束"/>
                 <EditText style="@style/tableColInput"
-                    android:id="@+id/et_handle_content"/>
+                    android:id="@+id/et_end_handle_time"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

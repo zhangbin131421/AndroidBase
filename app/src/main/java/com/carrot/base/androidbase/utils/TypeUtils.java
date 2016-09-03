@@ -134,78 +134,64 @@ public class TypeUtils {
         switch (typeName){
             case TYPE_1_1:
                 LineBrokenManagementActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_2:
                 CollectResolveTroubleActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_3:
                 ExtendBussinessSetupActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_4:
                 MeterTroubleActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_5:
                 OrderHandleActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_6:
                 BusinessAuditeActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_7:
                 StopStartElectricActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 //-------------------------
             case TYPE_2_1:
                 CoreMeterTestActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_2:
                 TotalPerformanceTestActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_3:
                 EquipmentCheckActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        .taskBaseVo(taskBaseVo)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_4:
                 ResolveRecordActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_5:
                 CrossTestActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_6:
                 VoltageMeasurementActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_7:
                 EarthResistanceTestActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_8:
                 SpecialSecurityCheckActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
 
@@ -213,7 +199,6 @@ public class TypeUtils {
 
             case TYPE_3_1:
                 DistributionNetworkEngineeringActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
 
@@ -221,7 +206,6 @@ public class TypeUtils {
 
             case TYPE_4_1:
                 CarManagementActivity_.intent(context)
-//                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .startForResult(requestCode);
                 break;
 

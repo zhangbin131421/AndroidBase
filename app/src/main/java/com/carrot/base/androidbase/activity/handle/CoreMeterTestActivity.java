@@ -67,7 +67,6 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
 public class CoreMeterTestActivity extends AppCompatActivity{
 
 
-    public static final String IMAGE_TYPE = "image/*";
 
 
     @ViewById(R.id.tb_tool_bar)
