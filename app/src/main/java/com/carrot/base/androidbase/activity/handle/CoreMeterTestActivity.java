@@ -28,6 +28,11 @@ import org.androidannotations.annotations.res.StringArrayRes;
 import org.androidannotations.annotations.res.TextArrayRes;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.rest.spring.annotations.RestService;
+import org.apache.http.HttpHeaders;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.MediaType;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import java.util.Date;
 
@@ -243,7 +248,14 @@ public class CoreMeterTestActivity extends AppCompatActivity{
             coreMeterTestClient.add(coreMeterTestResult);
 
         }else{ //update
-            coreMeterTestClient.update(coreMeterTestResult);
+
+            MultiValueMap<String, Object> data = coreMeterTestResult.parseToMultiValueMap();
+
+            coreMeterTestClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
+
+            coreMeterTestClient.update(data);
+
+//            coreMeterTestClient.update(coreMeterTestResult);
 
         }
 
@@ -292,11 +304,11 @@ public class CoreMeterTestActivity extends AppCompatActivity{
         }
         this.coreMeterTestResult.safetyMeasure = etSafetyMeasure.getText().toString();
 
-//        if(etEndTime.getText().toString().equals("")){
-//            Toast.makeText(getApplicationContext(), "结束时间"+error, Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-//        this.coreMeterTestResult.endTime = etEndTime.getText().toString();
+        if(etEndTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "结束时间"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.coreMeterTestResult.endTime = etEndTime.getText().toString();
 
         if(etBeginHandleTime.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(), "测量情况"+error, Toast.LENGTH_SHORT).show();

@@ -1,98 +1,165 @@
 package com.carrot.base.androidbase.vo.result;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import org.parceler.Parcel;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 /**
  * Created by victor on 8/28/16.
  */
 @Parcel
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CoreMeterTestResult {
-    //    [{"ID":1,
-    @JsonProperty(value="ID")
+
+    public static final String ID = "ID";
+    @JsonProperty(value=ID)
     public int id;
 
-    //
-//            "UserID":1,
-    @JsonProperty(value="UserID")
+
+    public static final String UserID = "UserID";
+    @JsonProperty(value=UserID)
     public int userId;
-    //            "AssignByUserID":2,
-    @JsonProperty(value="AssignByUserID")
+
+    public static final String AssignByUserID = "AssignByUserID";
+    @JsonProperty(value=AssignByUserID)
     public int assignByUserID;
 
-    //            "CreatedTime":null,
-    @JsonProperty(value="CreatedTime")
+
+    public static final String CreatedTime = "CreatedTime";
+    @JsonProperty(value=CreatedTime)
     public String createdTime;
 
 
-    //            "TaskNum":"T111",
-    @JsonProperty(value="TaskNum")
+
+    public static final String TaskNum = "TaskNum";
+    @JsonProperty(value=TaskNum)
     public String taskNum;
 
-    //            "AssignmentTime":"\/Date(1471795200000)\/",
-    @JsonProperty(value="AssignmentTime")
+
+    public static final String AssignmentTime = "AssignmentTime";
+    @JsonProperty(value=AssignmentTime)
     public String assignmentTime;
 
-    //            "AreaName":"测试",
-    @JsonProperty(value="AreaName")
+
+    public static final String AreaName = "AreaName";
+    @JsonProperty(value=AreaName)
     public String areaName;
-    //            "ProtectLine":"测试",
-    @JsonProperty(value="ProtectLine")
+
+    public static final String ProtectLine = "ProtectLine";
+    @JsonProperty(value=ProtectLine)
     public String protectLine;
-    //            "Type":"1",
-    @JsonProperty(value="Type")
+
+    public static final String Type = "Type";
+    @JsonProperty(value=Type)
     public String type;
-    //            "SafetyMeasure":"测试",
-    @JsonProperty(value="SafetyMeasure")
+
+    public static final String SafetyMeasure = "SafetyMeasure";
+    @JsonProperty(value=SafetyMeasure)
     public String safetyMeasure;
-    //            "BeginHandleTime":"\/Date(1471968000000)\/",
-    @JsonProperty(value="BeginHandleTime")
+
+    public static final String BeginHandleTime = "BeginHandleTime";
+    @JsonProperty(value=BeginHandleTime)
     public String beginHandleTime;
-    //            "EndTime":"\/Date(1471968000000)\/",
-    @JsonProperty(value="EndTime")
+
+    public static final String EndTime = "EndTime";
+    @JsonProperty(value=EndTime)
     public String endTime;
-    //            "Wether":"晴朗",
-    @JsonProperty(value="Wether")
+
+    public static final String Wether = "Wether";
+    @JsonProperty(value=Wether)
     public String wether;
-    //            "TestWay":"测试",
-    @JsonProperty(value="TestWay")
+
+    public static final String TestWay = "TestWay";
+    @JsonProperty(value=TestWay)
     public String testWay;
-    //            "ATesting":"a",
-    @JsonProperty(value="ATesting")
+
+    public static final String ATesting = "ATesting";
+    @JsonProperty(value=ATesting)
     public String aTesting;
-    //            "BTesting":"b",
-    @JsonProperty(value="BTesting")
+
+    public static final String BTesting = "BTesting";
+    @JsonProperty(value=BTesting)
     public String bTesting;
-    //            "CTesting":"c",
-    @JsonProperty(value="CTesting")
+
+    public static final String CTesting = "CTesting";
+    @JsonProperty(value=CTesting)
     public String cTesting;
-    //            "TestResult":"合格",
-    @JsonProperty(value="TestResult")
+
+    public static final String TestResult = "TestResult";
+    @JsonProperty(value=TestResult)
     public String testResult;
-    //            "HandleContent":"测试",
-    @JsonProperty(value="HandleContent")
+
+    public static final String HandleContent = "HandleContent";
+    @JsonProperty(value=HandleContent)
     public String handleContent;
-    //            "Tester":"1",
-    @JsonProperty(value="Tester")
+
+    public static final String Tester = "Tester";
+    @JsonProperty(value=Tester)
     public String tester;
-    //            "TestingTime":"\/Date(1471968000000)\/",
-    @JsonProperty(value="TestingTime")
+
+    public static final String TestingTime = "TestingTime";
+    @JsonProperty(value=TestingTime)
     public String testingTime;
-    //            "EndHandleTime":"\/Date(1471968000000)\/",
-    @JsonProperty(value="EndHandleTime")
+
+    public static final String EndHandleTime = "EndHandleTime";
+    @JsonProperty(value=EndHandleTime)
     public String endHandleTime;
-    //            "IsHandled":1,
-    @JsonProperty(value="IsHandled")
+
+    public static final String IsHandled = "IsHandled";
+    @JsonProperty(value=IsHandled)
     public int isHandled;
-    //            "UnhandleReason":null,
-    @JsonProperty(value="UnhandleReason")
+
+    public static final String UnhandleReason = "UnhandleReason";
+    @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
-    //            "UpdatedTime":null,
-    @JsonProperty(value="UpdatedTime")
+
+    public static final String UpdatedTime = "UpdatedTime";
+    @JsonProperty(value=UpdatedTime)
     public String updatedTime;
-    //            "IsDelete":null}]
-    @JsonProperty(value="IsDelete")
-    public String isDelete;
+
+    public static final String IsDelete = "IsDelete";
+    @JsonProperty(value=IsDelete)
+    public int isDelete;
+
+    @JsonIgnore
+    public MultiValueMap<String, Object> parseToMultiValueMap(){
+        MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
+
+        rtn.add(CoreMeterTestResult.AreaName, this.areaName);
+        rtn.add(CoreMeterTestResult.AssignByUserID, this.assignByUserID+"");
+        rtn.add(CoreMeterTestResult.AssignmentTime, this.assignmentTime);
+        rtn.add(CoreMeterTestResult.ATesting, this.aTesting);
+        rtn.add(CoreMeterTestResult.BeginHandleTime, this.beginHandleTime);
+        rtn.add(CoreMeterTestResult.BTesting, this.bTesting);
+        rtn.add(CoreMeterTestResult.CreatedTime, this.createdTime);
+        rtn.add(CoreMeterTestResult.CTesting, this.cTesting);
+        rtn.add(CoreMeterTestResult.EndHandleTime, this.endHandleTime);
+        rtn.add(CoreMeterTestResult.EndTime, this.endTime);
+        rtn.add(CoreMeterTestResult.HandleContent, this.handleContent);
+        rtn.add(CoreMeterTestResult.ID, this.id+"");
+        rtn.add(CoreMeterTestResult.IsDelete, this.isDelete+"");
+        rtn.add(CoreMeterTestResult.IsHandled, this.isHandled+"");
+        rtn.add(CoreMeterTestResult.ProtectLine, this.protectLine);
+        rtn.add(CoreMeterTestResult.SafetyMeasure, this.safetyMeasure);
+        rtn.add(CoreMeterTestResult.TaskNum, this.taskNum);
+        rtn.add(CoreMeterTestResult.Tester, this.tester);
+        rtn.add(CoreMeterTestResult.TestingTime, this.testingTime);
+        rtn.add(CoreMeterTestResult.TestResult, this.testResult);
+        rtn.add(CoreMeterTestResult.TestWay, this.testWay);
+        rtn.add(CoreMeterTestResult.Type, this.type);
+        rtn.add(CoreMeterTestResult.UnhandleReason, this.unhandleReason);
+        rtn.add(CoreMeterTestResult.UpdatedTime, this.updatedTime);
+        rtn.add(CoreMeterTestResult.UserID, this.userId+"");
+        rtn.add(CoreMeterTestResult.Wether, this.wether);
+
+
+        return rtn;
+    }
 
 }
