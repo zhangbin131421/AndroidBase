@@ -47,6 +47,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -130,6 +131,8 @@ public class CoreMeterTestActivity extends AppCompatActivity{
     //保存状态, 0: add, 1: update
     private int saveStatus = 0;
 
+    List<PhotoInfo> aTestingImgList;
+
 
     @RestService
     CoreMeterTestClient coreMeterTestClient; //Inject it
@@ -143,6 +146,8 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        aTestingImgList = new ArrayList<>();
 
         progress = new ProgressDialog(this);
 
@@ -254,6 +259,8 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
                 for (PhotoInfo pi : resultList){
 
+                    aTestingImgList.add(pi);
+
                     File file = new File(pi.getPhotoPath());
 
                     if(file.exists()){
@@ -353,6 +360,12 @@ public class CoreMeterTestActivity extends AppCompatActivity{
             MultiValueMap<String, Object> data = coreMeterTestResult.parseToMultiValueMap();
 
             coreMeterTestClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
+
+            //atest image
+            MultiValueMap<String, Object> aTestingData = new LinkedMultiValueMap<>();
+            for(PhotoInfo pi : aTestingImgList){
+//                aTestingData.put()
+            }
 
             coreMeterTestClient.update(data);
 
