@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Created by victor on 8/28/16.
  */
-@Rest(rootUrl = "http://120.55.101.6:8889/api/AssignmentTime", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class})
+@Rest(rootUrl = "http://120.55.101.6:8889/api/EquipmentCheck", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class})
 public interface EquipmentCheckClient {
 
     @Get("/GetByID/?ID={id}")
@@ -33,7 +33,7 @@ public interface EquipmentCheckClient {
 
     @Get("/GetByUserIDAndHandled/?UserID={userId}&IsHandled={isHandled}")
     @Accept(MediaType.APPLICATION_JSON)
-    List<EquipmentCheckResult> getByUserId(@Path int userId, @Path int isHandled);
+    List<TaskBaseVo> getByUserId(@Path int userId, @Path int isHandled);
 
 
     //    http://120.55.101.6:8889/api/CoreMeterTest/AddNew

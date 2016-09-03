@@ -84,9 +84,79 @@ public class TaskListFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        switch (subTypeVo.getName()){
+            case TypeUtils.TYPE_1_1:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_1_2:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_1_3:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_1_4:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_1_5:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_1_6:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_1_7:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            //======================================
+            case TypeUtils.TYPE_2_1:{//OK
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_2_2:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_2_3:{//OK
+                mAdapter = new TaskCardAdapter(equipmentCheckClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_2_4:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_2_5:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_2_6:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_2_7:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            case TypeUtils.TYPE_2_8:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            //====================
+            case TypeUtils.TYPE_3_1:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
+            //=====================
+            case TypeUtils.TYPE_4_1:{
+                mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));
+                break;
+            }
 
-        if(subTypeVo.getName().equals(TypeUtils.TYPE_2_1)){
-            mAdapter = new TaskCardAdapter(coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0));//
         }
         uiInit();
     }
