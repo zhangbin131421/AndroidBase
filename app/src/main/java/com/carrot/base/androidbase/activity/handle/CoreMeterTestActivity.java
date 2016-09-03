@@ -238,8 +238,6 @@ public class CoreMeterTestActivity extends AppCompatActivity{
     void addImage(){
         Log.i("sslog", "add image");
 
-        initGrally();
-
 //带配置
         FunctionConfig config = new FunctionConfig.Builder()
                 .setMutiSelectMaxSize(8)
@@ -269,27 +267,13 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
                         Log.i("sslog", "width:"+bitmap.getWidth() + ", height" +bitmap.getHeight());
 
-
-
-
-
                         int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics());
                         int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60*(bitmap.getHeight()/bitmap.getWidth()), getResources().getDisplayMetrics());
 
-
                         int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
-
-//                        android.view.ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
-//                        if(layoutParams == null){
-//                            layoutParams = new android.view.ViewGroup.LayoutParams(width, height);
-//                        }else{
-//                            layoutParams.width = width;
-//                            layoutParams.height = height;
-//                        }
 
                         imageView.setLayoutParams(new GridView.LayoutParams(width, width));
                         imageView.setPadding(padding, padding, padding, padding);
-//                        imageView.setpa
 
                         imageView.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -328,33 +312,6 @@ public class CoreMeterTestActivity extends AppCompatActivity{
 
     }
 
-
-    private void initGrally() {
-        //设置主题
-//ThemeConfig.CYAN
-        ThemeConfig theme = new ThemeConfig.Builder()
-                .build();
-//配置功能
-        FunctionConfig functionConfig = new FunctionConfig.Builder()
-                .setEnableCamera(true)
-                .setEnableEdit(true)
-                .setEnableCrop(true)
-                .setEnableRotate(true)
-                .setCropSquare(true)
-                .setEnablePreview(true)
-                .build();
-
-//配置imageloader
-        ImageLoader imageLoader = new UILImageLoader();
-
-
-        CoreConfig coreConfig = new CoreConfig.Builder(getApplicationContext(), imageLoader, theme)
-//                .setDebug(BuildConfig.DEBUG)
-                .setFunctionConfig(functionConfig)
-                .build();
-        GalleryFinal.init(coreConfig);
-
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
