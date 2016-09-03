@@ -128,8 +128,6 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="A相接地试跳（mA)"/>
-
-
                 <org.apmem.tools.layouts.FlowLayout
                     android:id="@+id/et_a_testing"
                     style="@style/tableColImageLayout">

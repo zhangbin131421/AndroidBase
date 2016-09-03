@@ -2,12 +2,18 @@ package com.carrot.base.androidbase.activity.handle;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.MainActivity;
@@ -39,13 +45,16 @@ import org.springframework.http.MediaType;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 import cn.finalteam.galleryfinal.CoreConfig;
 import cn.finalteam.galleryfinal.FunctionConfig;
 import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.ImageLoader;
 import cn.finalteam.galleryfinal.ThemeConfig;
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by victor on 8/22/16.
@@ -236,7 +245,67 @@ public class CoreMeterTestActivity extends AppCompatActivity{
                 .setEnableRotate(true)
                 .setEnableCamera(true)
                 .build();
-        GalleryFinal.openGalleryMuti(1, config, null);
+        GalleryFinal.openGalleryMuti(1, config, new GalleryFinal.OnHanlderResultCallback(){
+            /**
+             * 处理成功
+             * @param reqeustCode
+             * @param resultList
+             */
+            public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
+
+                for (PhotoInfo pi : resultList){
+
+                    File file = new File(pi.getPhotoPath());
+
+                    if(file.exists()){
+                        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+                        ImageView imageView = new ImageView(getApplicationContext());
+
+                        imageView.setImageBitmap(bitmap);
+
+                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                        Log.i("sslog", "width:"+bitmap.getWidth() + ", height" +bitmap.getHeight());
+
+
+
+
+
+                        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics());
+                        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60*(bitmap.getHeight()/bitmap.getWidth()), getResources().getDisplayMetrics());
+
+
+                        int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
+
+//                        android.view.ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
+//                        if(layoutParams == null){
+//                            layoutParams = new android.view.ViewGroup.LayoutParams(width, height);
+//                        }else{
+//                            layoutParams.width = width;
+//                            layoutParams.height = height;
+//                        }
+
+                        imageView.setLayoutParams(new GridView.LayoutParams(width, width));
+                        imageView.setPadding(padding, padding, padding, padding);
+//                        imageView.setpa
+
+
+
+                        etATesting.addView(imageView);
+                    }
+                }
+            }
+
+            /**
+             * 处理失败或异常
+             * @param requestCode
+             * @param errorMsg
+             */
+            public void onHanlderFailure(int requestCode, String errorMsg){
+
+            }
+        });
 
 
     }
