@@ -364,10 +364,15 @@ public class CoreMeterTestActivity extends AppCompatActivity{
             coreMeterTestClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
 
             //atest image
-            MultiValueMap<String, Object> aTestingData = new LinkedMultiValueMap<>();
-            for(PhotoInfo pi : aTestingImgList){
-//                aTestingData.put()
+            File files[] = new File[aTestingImgList.size()];
+
+            for(int i = 0; i < aTestingImgList.size(); i++){
+                PhotoInfo pi = aTestingImgList.get(i);
+                File file = new File(pi.getPhotoPath());
+                files[i] = file;
             }
+
+            //TODO
 
             coreMeterTestClient.update(data);
 
