@@ -89,6 +89,12 @@ dependencies {
 
     //流式布局
     compile 'org.apmem.tools:layouts:1.10@aar'
+
+    //图片选择
+    compile 'cn.finalteam:galleryfinal:1.4.8.7'
+
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+
     //    compile project(':easeui')
     //    compile files('libs/Parse-1.9.4.jar')
     //    compile files('libs/umeng-analytics-v5.2.4.jar')

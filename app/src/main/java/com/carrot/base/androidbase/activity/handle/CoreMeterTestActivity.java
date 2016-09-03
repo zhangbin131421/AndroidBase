@@ -5,20 +5,25 @@ import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.carrot.base.androidbase.MainActivity;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.CoreMeterTestClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
+import com.carrot.base.androidbase.image.UILImageLoader;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsMenu;
@@ -36,6 +41,12 @@ import org.springframework.util.MultiValueMap;
 
 import java.util.Date;
 
+import cn.finalteam.galleryfinal.CoreConfig;
+import cn.finalteam.galleryfinal.FunctionConfig;
+import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.ImageLoader;
+import cn.finalteam.galleryfinal.ThemeConfig;
+
 /**
  * Created by victor on 8/22/16.
  */
@@ -43,6 +54,8 @@ import java.util.Date;
 @OptionsMenu(R.menu.task_item)
 public class CoreMeterTestActivity extends AppCompatActivity{
 
+
+    public static final String IMAGE_TYPE = "image/*";
 
 
     @ViewById(R.id.tb_tool_bar)
@@ -211,6 +224,50 @@ public class CoreMeterTestActivity extends AppCompatActivity{
         }
     }
 
+    @Click(R.id.btn_add_image)
+    void addImage(){
+        Log.i("sslog", "add image");
+
+        initGrally();
+
+//带配置
+        FunctionConfig config = new FunctionConfig.Builder()
+                .setMutiSelectMaxSize(8)
+                .setEnableRotate(true)
+                .setEnableCamera(true)
+                .build();
+        GalleryFinal.openGalleryMuti(1, config, null);
+
+
+    }
+
+
+    private void initGrally() {
+        //设置主题
+//ThemeConfig.CYAN
+        ThemeConfig theme = new ThemeConfig.Builder()
+                .build();
+//配置功能
+        FunctionConfig functionConfig = new FunctionConfig.Builder()
+                .setEnableCamera(true)
+                .setEnableEdit(true)
+                .setEnableCrop(true)
+                .setEnableRotate(true)
+                .setCropSquare(true)
+                .setEnablePreview(true)
+                .build();
+
+//配置imageloader
+        ImageLoader imageLoader = new UILImageLoader();
+
+
+        CoreConfig coreConfig = new CoreConfig.Builder(getApplicationContext(), imageLoader, theme)
+//                .setDebug(BuildConfig.DEBUG)
+                .setFunctionConfig(functionConfig)
+                .build();
+        GalleryFinal.init(coreConfig);
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -16,6 +16,7 @@ import com.carrot.base.androidbase.activity.TaskListActivity_;
 import com.carrot.base.androidbase.activity.Type2Activity;
 import com.carrot.base.androidbase.activity.Type2Activity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
+import com.carrot.base.androidbase.image.UILImageLoader;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.TestUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
@@ -28,6 +29,12 @@ import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+
+import cn.finalteam.galleryfinal.CoreConfig;
+import cn.finalteam.galleryfinal.FunctionConfig;
+import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.ImageLoader;
+import cn.finalteam.galleryfinal.ThemeConfig;
 
 @EActivity(R.layout.activity_main)
 @OptionsMenu(R.menu.main)
@@ -64,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
     @Override
     protected void onResume() {
         super.onResume();
