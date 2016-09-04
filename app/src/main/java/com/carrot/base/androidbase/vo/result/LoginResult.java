@@ -14,6 +14,14 @@ public class LoginResult {
     @JsonProperty(value="IsSuccess")
     private boolean isSuccess;
 
+
+    @JsonProperty(value = "IsFirstLogin")
+    public String isFirstLogin;
+
+    @JsonProperty(value = "DeviceID")
+    public String deviceID;
+
+
     @JsonIgnore
     public boolean isSuccess() {
         return isSuccess;

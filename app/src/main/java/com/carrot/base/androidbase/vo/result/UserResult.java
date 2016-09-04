@@ -36,6 +36,10 @@ public class UserResult {
     private String updateTime;
 
 
+    @JsonProperty(value = "DeviceID")
+    public String deviceID;
+
+
     @JsonProperty(value="Code")
     private int code;
 
