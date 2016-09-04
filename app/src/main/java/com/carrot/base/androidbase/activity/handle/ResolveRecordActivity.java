@@ -2,12 +2,21 @@ package com.carrot.base.androidbase.activity.handle;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
@@ -22,6 +31,7 @@ import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsMenu;
@@ -40,6 +50,8 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.finalteam.galleryfinal.FunctionConfig;
+import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
@@ -91,7 +103,7 @@ public class ResolveRecordActivity extends AppCompatActivity{
     @ViewById(R.id.et_SafetyMeasure)
     EditText et_SafetyMeasure;
     @ViewById(R.id.et_WorkType)
-    EditText et_WorkType;
+    Spinner et_WorkType;
     @ViewById(R.id.et_WorkInvoiceNum)
     EditText et_WorkInvoiceNum;
     @ViewById(R.id.et_StopScope)
@@ -115,7 +127,7 @@ public class ResolveRecordActivity extends AppCompatActivity{
     @ViewById(R.id.et_WorkInstruction)
     EditText et_WorkInstruction;
     @ViewById(R.id.et_ResolveContent)
-    EditText et_ResolveContent;
+    org.apmem.tools.layouts.FlowLayout et_ResolveContent;
     @ViewById(R.id.et_WorkDate)
     EditText et_WorkDate;
     @ViewById(R.id.et_EndHandleTime)
@@ -140,6 +152,11 @@ public class ResolveRecordActivity extends AppCompatActivity{
         this.setTitle(TypeUtils.TYPE_2_4);
 
         defectContentPicList = new ArrayList<>();
+
+
+        //下拉选择框
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypeUtils.WORK_TYPE);
+        et_WorkType.setAdapter(adapter);
 
 
         getObject();
@@ -178,7 +195,7 @@ public class ResolveRecordActivity extends AppCompatActivity{
              et_DefectContent.setText("defect content");
              et_EndTime.setText(DateUtils.getCurrentYYYY_MM_DD());
              et_SafetyMeasure.setText("safe me");
-             et_WorkType.setText("work type");
+//             et_WorkType.setText("work type");
              et_WorkInvoiceNum.setText("w i n");
              et_StopScope.setText("ss");
              et_Applier.setText("applier");
@@ -190,7 +207,7 @@ public class ResolveRecordActivity extends AppCompatActivity{
              et_Worker.setText("worker");
              et_OperationInvoiceNum.setText("o i n");
              et_WorkInstruction.setText("w i");
-             et_ResolveContent.setText("r c");
+//             et_ResolveContent.setText("r c");
              et_WorkDate.setText(DateUtils.getCurrentYYYY_MM_DD());
             et_EndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
             et_BeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
@@ -207,7 +224,7 @@ public class ResolveRecordActivity extends AppCompatActivity{
             et_DefectContent.setText(resolveRecordResult.defectContent);
             et_EndTime.setText(resolveRecordResult.endTime);
             et_SafetyMeasure.setText(resolveRecordResult.safetyMeasure);
-            et_WorkType.setText(resolveRecordResult.workType);
+            et_WorkType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.WORK_TYPE, resolveRecordResult.workType));
             et_WorkInvoiceNum.setText(resolveRecordResult.workInvoiceNum);
             et_StopScope.setText(resolveRecordResult.stopScope);
             et_Applier.setText(resolveRecordResult.applier);
@@ -219,7 +236,7 @@ public class ResolveRecordActivity extends AppCompatActivity{
             et_Worker.setText(resolveRecordResult.worker);
             et_OperationInvoiceNum.setText(resolveRecordResult.operationInvoiceNum);
             et_WorkInstruction.setText(resolveRecordResult.workInstruction);
-            et_ResolveContent.setText(resolveRecordResult.resolveContent);
+//            et_ResolveContent.setText(resolveRecordResult.resolveContent);
             et_WorkDate.setText(resolveRecordResult.workDate);
             et_EndHandleTime.setText(resolveRecordResult.endHandleTime);
             et_IsHandled.setText(resolveRecordResult.isHandled+"");
@@ -249,9 +266,9 @@ public class ResolveRecordActivity extends AppCompatActivity{
 
     @UiThread
     void addImage(ImageView imageView){
-//        if(etDefectContent != null && imageView != null){
-//            etDefectContent.addView(imageView);
-//        }
+        if(et_ResolveContent != null && imageView != null){
+            et_ResolveContent.addView(imageView);
+        }
     }
 
 
@@ -295,6 +312,112 @@ public class ResolveRecordActivity extends AppCompatActivity{
         }
     }
 
+    @Click(R.id.btn_add_image)
+    void addImageLocal(){
+        Log.i("sslog", "equipment check activity add image");
+
+        //带配置
+        final FunctionConfig config = new FunctionConfig.Builder()
+                .setMutiSelectMaxSize(8)
+                .setEnableRotate(true)
+                .setEnableCamera(true)
+                .build();
+
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.dialog_photo, null);
+
+
+        final AlertDialog alertD = new AlertDialog.Builder(this).create();
+        Button btnAdd1 = (Button) promptView.findViewById(R.id.btn_take_photo);
+
+        Button btnAdd2 = (Button) promptView.findViewById(R.id.btn_grally);
+
+
+        btnAdd1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                alertD.dismiss();
+                //带配置
+                GalleryFinal.openCamera(1, config, new GalleryFinal.OnHanlderResultCallback() {
+                    @Override
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+                        finishGetPhoto(resultList);
+
+                    }
+
+                    @Override
+                    public void onHanlderFailure(int requestCode, String errorMsg) {
+
+                    }
+                });
+
+            }
+        });
+
+        btnAdd2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                alertD.dismiss();
+                GalleryFinal.openGalleryMuti(1, config, new GalleryFinal.OnHanlderResultCallback(){
+                    /**
+                     * 处理成功
+                     * @param reqeustCode
+                     * @param resultList
+                     */
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
+                        finishGetPhoto(resultList);
+
+                    }
+
+                    /**
+                     * 处理失败或异常
+                     * @param requestCode
+                     * @param errorMsg
+                     */
+                    public void onHanlderFailure(int requestCode, String errorMsg){
+
+                    }
+                });
+            }
+        });
+
+        alertD.setView(promptView);
+
+        alertD.show();
+    }
+
+    void finishGetPhoto(List<PhotoInfo> resultList){
+        for (PhotoInfo pi : resultList){
+
+            defectContentPicList.add(pi);
+
+            File file = new File(pi.getPhotoPath());
+
+            if(file.exists()){
+                Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+                ImageView imageView = ImageUtils.getImageViewForForm(getApplicationContext(), getResources(), bitmap);
+
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.i("sslog", "image clicked");
+                    }
+                });
+
+                imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+
+                        Log.i("sslog", "image long clicked");
+
+                        return false;
+                    }
+                });
+
+                et_ResolveContent.addView(imageView);
+            }
+        }
+    }
 
     @Background
     void conform(){
@@ -422,11 +545,11 @@ public class ResolveRecordActivity extends AppCompatActivity{
         this.resolveRecordResult.beginHandleTime = et_BeginHandleTime.getText().toString();
 
 
-        if(et_WorkType.getText().toString().equals("")){
+        if(et_WorkType.getSelectedItem().toString().equals("")){
             alert("工作性质"+error);
             return false;
         }
-        this.resolveRecordResult.workType = et_WorkType.getText().toString();
+        this.resolveRecordResult.workType = et_WorkType.getSelectedItem().toString();
 
 
         if(et_WorkInvoiceNum.getText().toString().equals("")){
@@ -506,11 +629,11 @@ public class ResolveRecordActivity extends AppCompatActivity{
         this.resolveRecordResult.workInstruction = et_WorkInstruction.getText().toString();
 
 
-        if(et_ResolveContent.getText().toString().equals("")){
-            alert("消缺情况"+error);
-            return false;
-        }
-        this.resolveRecordResult.resolveContent = et_ResolveContent.getText().toString();
+//        if(et_ResolveContent.getText().toString().equals("")){
+//            alert("消缺情况"+error);
+//            return false;
+//        }
+//        this.resolveRecordResult.resolveContent = et_ResolveContent.getText().toString();
 
 
         if(et_WorkDate.getText().toString().equals("")){

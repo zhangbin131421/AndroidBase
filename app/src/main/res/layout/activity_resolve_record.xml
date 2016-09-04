@@ -80,8 +80,13 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="工作性质"/>
-                <EditText style="@style/tableColInput"
-                    android:id="@+id/et_WorkType"/>
+                <!--<EditText style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_WorkType"/>-->
+
+                <Spinner
+                    android:id="@+id/et_WorkType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -164,8 +169,16 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="消缺情况"/>
-                <EditText style="@style/tableColInput"
-                    android:id="@+id/et_ResolveContent"/>
+                <!--<EditText style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_ResolveContent"/>-->
+
+                <org.apmem.tools.layouts.FlowLayout
+                    android:id="@+id/et_ResolveContent"
+                    style="@style/tableColImageLayout">
+                    <ImageView
+                        android:id="@+id/btn_add_image"
+                        style="@style/tableColImagAdd"/>
+                </org.apmem.tools.layouts.FlowLayout>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
