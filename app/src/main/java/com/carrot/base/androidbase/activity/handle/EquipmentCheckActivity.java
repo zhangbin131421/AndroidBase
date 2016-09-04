@@ -192,7 +192,21 @@ public class EquipmentCheckActivity extends AppCompatActivity{
             etAssignmentTime.setText(equipmentCheckResult.assignmentTime);
             etTaskNum.setText(equipmentCheckResult.taskNum);
 
-
+            etCheckType.setText(equipmentCheckResult.checkType);
+            etCheckScope.setText(equipmentCheckResult.checkScope);
+            etSafetyMeasure.setText(equipmentCheckResult.safetyMeasure);
+            etEndTime.setText(equipmentCheckResult.endTime);
+            etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime);
+            etExistDefect.setText(equipmentCheckResult.existDefect);
+            etDefectPlace.setText(equipmentCheckResult.defectPlace);
+            etDefectContent.setText(equipmentCheckResult.defectContent);
+            etDefectLevel.setText(equipmentCheckResult.defectLevel);
+            etHandleContent.setText(equipmentCheckResult.handleContent);
+            etCheckpeople.setText(equipmentCheckResult.checkPeople);
+            etCheckTime.setText(equipmentCheckResult.checkTime);
+            etEndHandleTime.setText(equipmentCheckResult.endHandleTime);
+            etIsHandled.setText(equipmentCheckResult.isHandled);
+            etUnhandleReason.setText(equipmentCheckResult.unhandleReason);
 
             this.saveStatus = 1;
         }
@@ -255,6 +269,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
             }
 
             //TODO
+            data.add("DefectContentPic", "");
 
             equipmentCheckClient.update(data);
         }

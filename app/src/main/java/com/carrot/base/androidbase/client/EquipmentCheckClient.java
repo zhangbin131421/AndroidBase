@@ -14,6 +14,7 @@ import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.MediaType;
 import org.androidannotations.rest.spring.api.RestClientHeaders;
 import org.apache.http.HttpHeaders;
+import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -24,7 +25,7 @@ import java.util.List;
 /**
  * Created by victor on 8/28/16.
  */
-@Rest(rootUrl = "http://120.55.101.6:8889/api/EquipmentCheck", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class})
+@Rest(rootUrl = "http://120.55.101.6:8889/api/EquipmentCheck", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class,FormHttpMessageConverter.class})
 public interface EquipmentCheckClient  extends RestClientHeaders {
 
     @Get("/GetByID/?ID={id}")

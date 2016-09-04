@@ -119,14 +119,14 @@ public class EquipmentCheckResult {
 //            "":null}
     public static final String DefectContentPic = "DefectContentPic";
     @JsonProperty(value=DefectContentPic)
-    public String defectContentPic;
+    public String defectContentPic = "";
 
 
     @JsonIgnore
     public MultiValueMap<String, Object> parseToMultiValueMap(){
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
-        rtn.add(EquipmentCheckResult.AssignByUserID, this.assignByUserID);
+        rtn.add(EquipmentCheckResult.AssignByUserID, this.assignByUserID+"");
         rtn.add(EquipmentCheckResult.AssignmentTime, this.assignmentTime);
         rtn.add(EquipmentCheckResult.BeginHandleTime, this.beginHandleTime);
         rtn.add(EquipmentCheckResult.CheckPeople, this.checkPeople);
@@ -135,20 +135,20 @@ public class EquipmentCheckResult {
         rtn.add(EquipmentCheckResult.CheckType, this.checkType);
         rtn.add(EquipmentCheckResult.CreatedTime, this.createdTime);
         rtn.add(EquipmentCheckResult.DefectContent, this.defectContent);
-        rtn.add(EquipmentCheckResult.DefectContentPic, this.defectContentPic);
+        rtn.add(EquipmentCheckResult.DefectContentPic, this.defectContentPic == null ? "" : this.defectContentPic);
         rtn.add(EquipmentCheckResult.DefectLevel, this.defectLevel);
         rtn.add(EquipmentCheckResult.DefectPlace, this.defectPlace);
         rtn.add(EquipmentCheckResult.EndHandleTime, this.endHandleTime);
         rtn.add(EquipmentCheckResult.EndTime, this.endTime);
         rtn.add(EquipmentCheckResult.ExistDefect, this.existDefect);
         rtn.add(EquipmentCheckResult.HandleContent, this.handleContent);
-        rtn.add(EquipmentCheckResult.ID, this.id);
-        rtn.add(EquipmentCheckResult.IsDelete, this.isDelete);
-        rtn.add(EquipmentCheckResult.IsHandled, this.isHandled);
+        rtn.add(EquipmentCheckResult.ID, this.id+"");
+        rtn.add(EquipmentCheckResult.IsDelete, this.isDelete+"");
+        rtn.add(EquipmentCheckResult.IsHandled, this.isHandled+"");
         rtn.add(EquipmentCheckResult.TaskNum, this.taskNum);
         rtn.add(EquipmentCheckResult.SafetyMeasure, this.safetyMeasure);
         rtn.add(EquipmentCheckResult.UnhandleReason, this.unhandleReason);
-        rtn.add(EquipmentCheckResult.UserID, this.userId);
+        rtn.add(EquipmentCheckResult.UserID, this.userId+"");
         rtn.add(EquipmentCheckResult.UpdatedTime, this.updatedTime);
 
 
