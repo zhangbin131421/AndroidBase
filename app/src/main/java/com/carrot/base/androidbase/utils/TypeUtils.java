@@ -58,6 +58,8 @@ public class TypeUtils {
     public final static String TYPE_4 = "综合";
     public final static String TYPE_4_1 = "车辆管理";
 
+    public final static String[] CHECK_TYPE = new String[]{"定期","特殊","夜间","故障","监察","其他"};
+
     public static List<TypeVo> getAllItems(Context context){
 
         List<TypeVo> result = new ArrayList<>();

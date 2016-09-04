@@ -14,10 +14,12 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
@@ -104,7 +106,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     EditText etTaskNum;
 
     @ViewById(R.id.et_check_type)
-    EditText etCheckType;
+    Spinner etCheckType;
 
     @ViewById(R.id.et_check_scope)
     EditText etCheckScope;
@@ -158,6 +160,12 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        //下拉选择框
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypeUtils.CHECK_TYPE);
+        etCheckType.setAdapter(adapter);
+
         this.setTitle(TypeUtils.TYPE_2_3);
 
         defectContentPicList = new ArrayList<>();
@@ -196,7 +204,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
              etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
              etTaskNum.setText("Task num"+ DateUtils.getCurrentYYYY_MM_DD());
-             etCheckType.setText("type");
+
              etCheckScope.setText("checkscope");
              etSafetyMeasure.setText("safeme");
              etEndTime.setText(DateUtils.getCurrentYYYY_MM_DD());
@@ -217,7 +225,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
             etAssignmentTime.setText(equipmentCheckResult.assignmentTime);
             etTaskNum.setText(equipmentCheckResult.taskNum);
 
-            etCheckType.setText(equipmentCheckResult.checkType);
+//            etCheckType.setText(equipmentCheckResult.checkType);
             etCheckScope.setText(equipmentCheckResult.checkScope);
             etSafetyMeasure.setText(equipmentCheckResult.safetyMeasure);
             etEndTime.setText(equipmentCheckResult.endTime);
@@ -494,11 +502,11 @@ public class EquipmentCheckActivity extends AppCompatActivity{
         this.equipmentCheckResult.taskNum = etTaskNum.getText().toString();
 
 
-        if(etCheckType.getText().toString().equals("")){
+        if(etCheckType.getSelectedItem().toString().equals("")){
             alert("巡视种类"+error);
             return false;
         }
-        this.equipmentCheckResult.checkType = etCheckType.getText().toString();
+        this.equipmentCheckResult.checkType = etCheckType.getSelectedItem().toString();
 
 
         if(etCheckScope.getText().toString().equals("")){

@@ -42,8 +42,12 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视种类"/>
-                <EditText style="@style/tableColInput"
-                    android:id="@+id/et_check_type"/>
+                <!--<EditText style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_check_type"/>-->
+                <Spinner
+                    android:id="@+id/et_check_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
