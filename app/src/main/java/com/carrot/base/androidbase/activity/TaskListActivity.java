@@ -64,6 +64,7 @@ public class TaskListActivity extends AppCompatActivity {
                 this, typeVo, subTypeVo);
         vpPager.setAdapter(taskListFragmentAdapter);
 
+
         tlTabs.setupWithViewPager(vpPager);
 
         setTitle(subTypeVo.getName() + "任务列表");

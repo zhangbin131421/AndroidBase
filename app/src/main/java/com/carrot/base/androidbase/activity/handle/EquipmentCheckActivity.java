@@ -157,7 +157,6 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
         defectContentPicList = new ArrayList<>();
 
-        progress = new ProgressDialog(this);
 
         getObject();
 
@@ -175,6 +174,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
         }
 
         refreshView();
+        dissmisLoading();
     }
 
 
@@ -230,16 +230,25 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
             this.saveStatus = 1;
         }
-        if(progress != null){
-            progress.dismiss();
-        }
+
     }
 
 
     @UiThread
     void showLoading(){
+        if(progress == null){
+            progress = new ProgressDialog(this);
+        }
         progress.setTitle("Loading");
         progress.show();
+    }
+
+    @UiThread
+    void dissmisLoading(){
+        if(progress != null){
+            progress.dismiss();
+        }
+
     }
 
 
@@ -385,7 +394,11 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
     @Background
     void conform(){
+
+        showLoading();
+
         if(validate() == false){
+            dissmisLoading();
             return;
         }
 
@@ -440,6 +453,8 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
             equipmentCheckClient.update(data);
         }
+
+        dissmisLoading();
 
         Intent intent = new Intent();
         setResult(ResultCodeConstant.RESULT_CODE_REFRESH, intent);

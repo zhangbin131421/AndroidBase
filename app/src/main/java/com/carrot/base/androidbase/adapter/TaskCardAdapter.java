@@ -35,7 +35,7 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
             name = (TextView) itemView.findViewById(R.id.tv_cvr_fragment_task_list_task_name);
             creationTime = (TextView) itemView.findViewById(R.id.tv_cvr_fragment_task_list_task_time);
             status = (TextView) itemView.findViewById(R.id.tv_cvr_fragment_task_list_status);
-            Log.i(LOG_TAG, "Adding Listener");
+
             itemView.setOnClickListener(this);
         }
 
@@ -44,6 +44,7 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
             myClickListener.onItemClick(getAdapterPosition(), v);
         }
     }
+
 
     public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;

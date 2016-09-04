@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.SparseArray;
+import android.view.ViewGroup;
 
 
 import com.carrot.base.androidbase.fragment.TaskListFragment;
@@ -25,7 +27,7 @@ public class TaskListFragmentAdapter extends FragmentStatePagerAdapter {
 
     private String tabTitles[] = new String[] { "未完成", "已完成"};
 
-    private final List<TaskListFragment> mFragmentList = new ArrayList<>();
+    private final SparseArray<TaskListFragment> mFragmentList = new SparseArray<>();
 
     Context context;
 
@@ -40,14 +42,16 @@ public class TaskListFragmentAdapter extends FragmentStatePagerAdapter {
         this.typeVo = typeVo;
         this.subTypeVo = subTypeVo;
 
-        mFragmentList.add(TaskListFragment_.builder().status(tabTitles[0]).typeVo(typeVo).subTypeVo(subTypeVo).build());
+        mFragmentList.put(0, TaskListFragment_.builder().status(tabTitles[0]).typeVo(typeVo).subTypeVo(subTypeVo).build());
 
-        mFragmentList.add(TaskListFragment_.builder().status(tabTitles[1]).typeVo(typeVo).subTypeVo(subTypeVo).build());
+        mFragmentList.put(1, TaskListFragment_.builder().status(tabTitles[1]).typeVo(typeVo).subTypeVo(subTypeVo).build());
 
+//        this.instantiateItem(this, 0);
 
     }
     public void refreshData(){
-        for (TaskListFragment fragment: mFragmentList) {
+        for (int i = 0; i < mFragmentList.size(); i++) {
+            TaskListFragment fragment = mFragmentList.get(i);
             fragment.refreshItems();
         }
     }
@@ -60,6 +64,24 @@ public class TaskListFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        return mFragmentList.get(position);
+    }
+
+
+    @Override
+    public Object instantiateItem(ViewGroup container, int position) {
+        TaskListFragment fragment = (TaskListFragment) super.instantiateItem(container, position);
+        mFragmentList.put(position, fragment);
+        return fragment;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        mFragmentList.remove(position);
+        super.destroyItem(container, position, object);
+    }
+
+    public TaskListFragment getRegisteredFragment(int position) {
         return mFragmentList.get(position);
     }
 
