@@ -134,7 +134,7 @@ public class EquipmentCheckResult {
         rtn.add(EquipmentCheckResult.CheckTime, this.checkTime);
         rtn.add(EquipmentCheckResult.CheckType, this.checkType);
         rtn.add(EquipmentCheckResult.CreatedTime, this.createdTime);
-        rtn.add(EquipmentCheckResult.DefectContent, this.defectContent);
+        rtn.add(EquipmentCheckResult.DefectContent, this.defectContent == null ? "" : this.defectContent);
 //        rtn.add(EquipmentCheckResult.DefectContentPic, this.defectContentPic == null ? "" : this.defectContentPic);
         rtn.add(EquipmentCheckResult.DefectLevel, this.defectLevel);
         rtn.add(EquipmentCheckResult.DefectPlace, this.defectPlace);
