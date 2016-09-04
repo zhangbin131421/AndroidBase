@@ -60,6 +60,30 @@ public class TypeUtils {
 
     public final static String[] CHECK_TYPE = new String[]{"定期","特殊","夜间","故障","监察","其他"};
 
+    public final static String[] DEFECT_LEVEL = new String[]{"一般","重大","紧急"};
+
+
+    public final static String[] EXIST_DEFECT = new String[]{"有","无"};
+
+
+    /**
+     * 获取选中的index
+     * @param items
+     * @param item
+     * @return
+     */
+    public static int getSelectedIndex(String[] items, String item){
+        int rtn = -1;
+        for(int i = 0; i < items.length; i ++){
+            if(items[i].equals(item)){
+                rtn = i;
+                break;
+            }
+        }
+        return rtn;
+    }
+
+
     public static List<TypeVo> getAllItems(Context context){
 
         List<TypeVo> result = new ArrayList<>();

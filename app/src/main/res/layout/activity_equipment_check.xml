@@ -83,8 +83,13 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="存在问题"/>
-                <EditText style="@style/tableColInput"
-                    android:id="@+id/et_exist_defect"/>
+                <!--<EditText style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_exist_defect"/>-->
+
+                <Spinner
+                    android:id="@+id/et_exist_defect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -109,8 +114,13 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷等级"/>
-                <EditText style="@style/tableColInput"
-                    android:id="@+id/et_defect_level"/>
+                <!--<EditText style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_defect_level"/>-->
+
+                <Spinner
+                    android:id="@+id/et_defect_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

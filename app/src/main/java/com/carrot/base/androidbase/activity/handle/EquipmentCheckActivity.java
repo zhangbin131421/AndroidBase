@@ -121,7 +121,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     EditText etBeginHandleTime;
 
     @ViewById(R.id.et_exist_defect)
-    EditText etExistDefect;
+    Spinner etExistDefect;
 
     @ViewById(R.id.et_defect_place)
     EditText etDefectPlace;
@@ -130,7 +130,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     org.apmem.tools.layouts.FlowLayout etDefectContent;
 
     @ViewById(R.id.et_defect_level)
-    EditText etDefectLevel;
+    Spinner etDefectLevel;
 
     @ViewById(R.id.et_handle_content)
     EditText etHandleContent;
@@ -162,9 +162,17 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
 
         //下拉选择框
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypeUtils.CHECK_TYPE);
         etCheckType.setAdapter(adapter);
+
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypeUtils.EXIST_DEFECT);
+        etExistDefect.setAdapter(adapter2);
+
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypeUtils.DEFECT_LEVEL);
+        etDefectLevel.setAdapter(adapter3);
+
+
 
         this.setTitle(TypeUtils.TYPE_2_3);
 
@@ -209,10 +217,10 @@ public class EquipmentCheckActivity extends AppCompatActivity{
              etSafetyMeasure.setText("safeme");
              etEndTime.setText(DateUtils.getCurrentYYYY_MM_DD());
              etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-             etExistDefect.setText("defect");
+//             etExistDefect.setText("defect");
              etDefectPlace.setText("place");
 //             etDefectContent.setText("content");
-             etDefectLevel.setText("level");
+//             etDefectLevel.setText("level");
              etHandleContent.setText("content");
              etCheckpeople.setText("people");
              etCheckTime.setText(DateUtils.getCurrentYYYY_MM_DD());
@@ -226,14 +234,18 @@ public class EquipmentCheckActivity extends AppCompatActivity{
             etTaskNum.setText(equipmentCheckResult.taskNum);
 
 //            etCheckType.setText(equipmentCheckResult.checkType);
+            etCheckType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CHECK_TYPE, equipmentCheckResult.checkType));
             etCheckScope.setText(equipmentCheckResult.checkScope);
             etSafetyMeasure.setText(equipmentCheckResult.safetyMeasure);
             etEndTime.setText(equipmentCheckResult.endTime);
             etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime);
-            etExistDefect.setText(equipmentCheckResult.existDefect);
+//            etExistDefect.setText(equipmentCheckResult.existDefect);
+            etExistDefect.setSelection(TypeUtils.getSelectedIndex(TypeUtils.EXIST_DEFECT, equipmentCheckResult.existDefect));
             etDefectPlace.setText(equipmentCheckResult.defectPlace);
 //            etDefectContent.setText(equipmentCheckResult.defectContent);
-            etDefectLevel.setText(equipmentCheckResult.defectLevel);
+//            etDefectLevel.setText(equipmentCheckResult.defectLevel);
+
+            etDefectLevel.setSelection(TypeUtils.getSelectedIndex(TypeUtils.DEFECT_LEVEL, equipmentCheckResult.defectLevel));
             etHandleContent.setText(equipmentCheckResult.handleContent);
             etCheckpeople.setText(equipmentCheckResult.checkPeople);
             etCheckTime.setText(equipmentCheckResult.checkTime);
@@ -537,11 +549,11 @@ public class EquipmentCheckActivity extends AppCompatActivity{
         this.equipmentCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
 
 
-        if(etExistDefect.getText().toString().equals("")){
+        if(etExistDefect.getSelectedItem().toString().equals("")){
             alert("存在问题"+error);
             return false;
         }
-        this.equipmentCheckResult.existDefect = etExistDefect.getText().toString();
+        this.equipmentCheckResult.existDefect = etExistDefect.getSelectedItem().toString();
 
 
         if(etDefectPlace.getText().toString().equals("")){
@@ -558,11 +570,11 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 //        this.equipmentCheckResult.defectContent = etDefectContent.getText().toString();
 
 
-        if(etDefectLevel.getText().toString().equals("")){
+        if(etDefectLevel.getSelectedItem().toString().equals("")){
             alert("缺陷等级"+error);
             return false;
         }
-        this.equipmentCheckResult.defectLevel = etDefectLevel.getText().toString();
+        this.equipmentCheckResult.defectLevel = etDefectLevel.getSelectedItem().toString();
 
 
         if(etHandleContent.getText().toString().equals("")){
