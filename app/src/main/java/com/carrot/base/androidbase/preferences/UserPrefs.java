@@ -27,6 +27,9 @@ public interface UserPrefs {
     @DefaultString("")
     public String role();
 
+    @DefaultString("")
+    public String deviceID();
+
 
     @DefaultString("")
     public String createTime();

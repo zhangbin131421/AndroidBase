@@ -21,6 +21,8 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.rest.spring.annotations.RestService;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by victor on 8/12/16.
  */
@@ -86,6 +88,8 @@ public class LoginActivity extends Activity {
         if(progress != null){
             progress.dismiss();
         }
+        userResult.deviceID = JPushInterface.getRegistrationID(this);
+
         userPrefs.edit().name().put(userResult.getName())
                 .id().put(userResult.getId())
                 .phone().put(userResult.getPhone())
@@ -95,28 +99,36 @@ public class LoginActivity extends Activity {
                 .role().put(userResult.getRole())
                 .createTime().put(userResult.getCreateTime())
                 .updateTime().put(userResult.getUpdateTime())
+                .deviceID().put(userResult.deviceID)
                 .apply();
 
+        updateUser(userResult);
         this.finish();
     }
 
-    @UiThread
-    void loginSuccessTest(){
+    @Background
+    void updateUser(UserResult userResult){
 
-        if(progress != null){
-            progress.dismiss();
-        }
-        userPrefs.edit().name().put("张三")
-                .id().put(1)
-//                .level().put(userResult.getLevel())
-//                .phone().put(userResult.getPhone())
-//                .isValid().put(userResult.getIsValid())
-//                .message().put(userResult.getMessage())
-//                .code().put(userResult.getCode())
-                .apply();
-
-        this.finish();
+        userClient.updateUser(userResult);
     }
+
+//    @UiThread
+//    void loginSuccessTest(){
+//
+//        if(progress != null){
+//            progress.dismiss();
+//        }
+//        userPrefs.edit().name().put("张三")
+//                .id().put(1)
+////                .level().put(userResult.getLevel())
+////                .phone().put(userResult.getPhone())
+////                .isValid().put(userResult.getIsValid())
+////                .message().put(userResult.getMessage())
+////                .code().put(userResult.getCode())
+//                .apply();
+//
+//        this.finish();
+//    }
 
     @UiThread
     void showLoading(){
