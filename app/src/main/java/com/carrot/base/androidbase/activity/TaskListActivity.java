@@ -1,5 +1,6 @@
 package com.carrot.base.androidbase.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
@@ -139,12 +140,14 @@ public class TaskListActivity extends AppCompatActivity {
     void uiInit(){
         mRecyclerView.setAdapter(mAdapter);
 
+        final Context context = this;
+
         ((TaskCardAdapter) mAdapter).setOnItemClickListener(new TaskCardAdapter
                 .MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
 
-                TypeUtils.openItem(subTypeVo.getName(), getApplicationContext(), mAdapter.getItem(position), ACTIVITY_REQUEST_CODE);
+                TypeUtils.openItem(subTypeVo.getName(), context, mAdapter.getItem(position), ACTIVITY_REQUEST_CODE);
             }
         });
 
