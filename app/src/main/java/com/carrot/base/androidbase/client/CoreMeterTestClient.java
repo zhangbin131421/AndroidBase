@@ -45,11 +45,15 @@ public interface CoreMeterTestClient extends RestClientHeaders {
     @Post("/AddNew")
     @Accept(MediaType.APPLICATION_JSON)
     void add(@Body CoreMeterTestResult coreMeterTestResult);
+
+
 //    http://120.55.101.6:8889/api/CoreMeterTest/Update
     @Post("/Update")
     @RequiresHeader(HttpHeaders.CONTENT_TYPE)
 //    @Accept(MediaType.MULTIPART_FORM_DATA)
     void update(@Body MultiValueMap<String, Object> data);
+
+
 //    http://120.55.101.6:8889/api/CoreMeterTest/Delete/?ID=1
     @Post("/Delete/?ID={id}")
     @Accept(MediaType.APPLICATION_JSON)

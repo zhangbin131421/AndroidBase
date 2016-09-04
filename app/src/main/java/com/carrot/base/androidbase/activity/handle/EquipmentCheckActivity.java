@@ -1,6 +1,7 @@
 package com.carrot.base.androidbase.activity.handle;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
+import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
@@ -26,6 +28,16 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.rest.spring.annotations.RestService;
+import org.apache.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.util.MultiValueMap;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by victor on 8/22/16.
@@ -38,6 +50,9 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     //保存需要提交的对象，开始如果为空说明为新增，否则为修改
     @Extra("extraTaskBaseVo")
     TaskBaseVo taskBaseVo;
+
+
+    List<PhotoInfo> defectContentPicList;
 
     EquipmentCheckResult equipmentCheckResult;
 
@@ -120,6 +135,8 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
         this.setTitle(TypeUtils.TYPE_2_3);
 
+        defectContentPicList = new ArrayList<>();
+
         progress = new ProgressDialog(this);
 
         getObject();
@@ -151,6 +168,24 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
 
             //test start
+
+             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+             etTaskNum.setText("Task num"+ DateUtils.getCurrentYYYY_MM_DD());
+             etCheckType.setText("type");
+             etCheckScope.setText("checkscope");
+             etSafetyMeasure.setText("safeme");
+             etEndTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+             etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+             etExistDefect.setText("defect");
+             etDefectPlace.setText("place");
+             etDefectContent.setText("content");
+             etDefectLevel.setText("level");
+             etHandleContent.setText("content");
+             etCheckpeople.setText("people");
+             etCheckTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+             etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+             etIsHandled.setText(0+"");
+             etUnhandleReason.setText("unreason");
             //test end
         }else{
 
@@ -177,7 +212,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_task_item_save:
-                Toast.makeText(EquipmentCheckActivity.this, "SAVE!", Toast.LENGTH_SHORT).show();
+
                 conform();
                 return true;
             case android.R.id.home:
@@ -192,7 +227,54 @@ public class EquipmentCheckActivity extends AppCompatActivity{
         }
     }
 
+    @Background
     void conform(){
+        if(validate() == false){
+            return;
+        }
 
+        if(saveStatus == 0){ //add
+            equipmentCheckResult.assignByUserID = userPrefs.id().get();
+            equipmentCheckResult.userId = userPrefs.id().get();
+
+            equipmentCheckClient.add(equipmentCheckResult);
+
+        }else{ //update
+
+            MultiValueMap<String, Object> data = equipmentCheckResult.parseToMultiValueMap();
+
+            equipmentCheckClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
+
+            //defectContentPicList image
+            File files[] = new File[defectContentPicList.size()];
+
+            for(int i = 0; i < defectContentPicList.size(); i++){
+                PhotoInfo pi = defectContentPicList.get(i);
+                File file = new File(pi.getPhotoPath());
+                files[i] = file;
+            }
+
+            //TODO
+
+            equipmentCheckClient.update(data);
+        }
+
+        Intent intent = new Intent();
+        setResult(ResultCodeConstant.RESULT_CODE_REFRESH, intent);
+        finish();
+    }
+
+
+    boolean validate(){
+
+        String error = "不能为空";
+
+        if(etTaskNum.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "任务编号"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.taskNum = etTaskNum.getText().toString();
+
+        return true;
     }
 }
