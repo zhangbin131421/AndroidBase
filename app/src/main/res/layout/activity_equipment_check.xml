@@ -93,8 +93,13 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷内容"/>
-                <EditText style="@style/tableColInput"
-                    android:id="@+id/et_defect_content"/>
+                <org.apmem.tools.layouts.FlowLayout
+                    android:id="@+id/et_defect_content"
+                    style="@style/tableColImageLayout">
+                    <ImageView
+                        android:id="@+id/btn_add_image"
+                        style="@style/tableColImagAdd"/>
+                </org.apmem.tools.layouts.FlowLayout>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

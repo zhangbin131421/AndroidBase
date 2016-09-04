@@ -2,11 +2,18 @@ package com.carrot.base.androidbase.activity.handle;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
@@ -21,6 +28,7 @@ import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsMenu;
@@ -29,14 +37,22 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.rest.spring.annotations.RestService;
 import org.apache.http.HttpHeaders;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.util.MultiValueMap;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import cn.finalteam.galleryfinal.FunctionConfig;
+import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
@@ -100,7 +116,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     EditText etDefectPlace;
 
     @ViewById(R.id.et_defect_content)
-    EditText etDefectContent;
+    org.apmem.tools.layouts.FlowLayout etDefectContent;
 
     @ViewById(R.id.et_defect_level)
     EditText etDefectLevel;
@@ -178,7 +194,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
              etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
              etExistDefect.setText("defect");
              etDefectPlace.setText("place");
-             etDefectContent.setText("content");
+//             etDefectContent.setText("content");
              etDefectLevel.setText("level");
              etHandleContent.setText("content");
              etCheckpeople.setText("people");
@@ -199,7 +215,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
             etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime);
             etExistDefect.setText(equipmentCheckResult.existDefect);
             etDefectPlace.setText(equipmentCheckResult.defectPlace);
-            etDefectContent.setText(equipmentCheckResult.defectContent);
+//            etDefectContent.setText(equipmentCheckResult.defectContent);
             etDefectLevel.setText(equipmentCheckResult.defectLevel);
             etHandleContent.setText(equipmentCheckResult.handleContent);
             etCheckpeople.setText(equipmentCheckResult.checkPeople);
@@ -220,6 +236,83 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     void showLoading(){
         progress.setTitle("Loading");
         progress.show();
+    }
+
+
+    @Click(R.id.btn_add_image)
+    void addImage(){
+        Log.i("sslog", "equipment check activity add image");
+
+//带配置
+        FunctionConfig config = new FunctionConfig.Builder()
+                .setMutiSelectMaxSize(8)
+                .setEnableRotate(true)
+                .setEnableCamera(true)
+                .build();
+        GalleryFinal.openGalleryMuti(1, config, new GalleryFinal.OnHanlderResultCallback(){
+            /**
+             * 处理成功
+             * @param reqeustCode
+             * @param resultList
+             */
+            public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
+
+                for (PhotoInfo pi : resultList){
+
+                    defectContentPicList.add(pi);
+
+                    File file = new File(pi.getPhotoPath());
+
+                    if(file.exists()){
+                        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+                        ImageView imageView = new ImageView(getApplicationContext());
+
+                        imageView.setImageBitmap(bitmap);
+
+                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                        Log.i("sslog", "width:"+bitmap.getWidth() + ", height" +bitmap.getHeight());
+
+                        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics());
+                        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60*(bitmap.getHeight()/bitmap.getWidth()), getResources().getDisplayMetrics());
+
+                        int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
+
+                        imageView.setLayoutParams(new GridView.LayoutParams(width, width));
+                        imageView.setPadding(padding, padding, padding, padding);
+
+                        imageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Log.i("sslog", "image clicked");
+                            }
+                        });
+
+                        imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View view) {
+
+                                Log.i("sslog", "image long clicked");
+
+                                return false;
+                            }
+                        });
+
+                        etDefectContent.addView(imageView);
+                    }
+                }
+            }
+
+            /**
+             * 处理失败或异常
+             * @param requestCode
+             * @param errorMsg
+             */
+            public void onHanlderFailure(int requestCode, String errorMsg){
+
+            }
+        });
     }
 
     @Override
@@ -260,16 +353,41 @@ public class EquipmentCheckActivity extends AppCompatActivity{
             equipmentCheckClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
 
             //defectContentPicList image
-            File files[] = new File[defectContentPicList.size()];
+            List<File> files = new ArrayList<>();
 
-            for(int i = 0; i < defectContentPicList.size(); i++){
-                PhotoInfo pi = defectContentPicList.get(i);
-                File file = new File(pi.getPhotoPath());
-                files[i] = file;
+            try {
+                for(int i = 0; i < defectContentPicList.size(); i++){
+                    PhotoInfo pi = defectContentPicList.get(i);
+                    File file = new File(pi.getPhotoPath());
+                    files.add(file);
+
+                    final String filename = file.getName();
+
+
+                    byte[] bytes = new byte[(int) file.length()];
+
+
+                    BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
+
+                    buf.read(bytes, 0, bytes.length);
+                    buf.close();
+
+
+                    ByteArrayResource contentsAsResource = new ByteArrayResource(bytes){
+                        @Override
+                        public String getFilename(){
+                            return filename;
+                        }
+                    };;
+
+
+                    data.add("DefectContentPic", contentsAsResource);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
             //TODO
-            data.add("DefectContentPic", "");
+//            data.add("DefectContentPic", files);
 
             equipmentCheckClient.update(data);
         }
@@ -284,123 +402,125 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
         String error = "不能为空";
 
-        if(etAssignmentTime.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "任务派发"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.assignmentTime = etAssignmentTime.getText().toString();
+        //TODO
 
-
-        if(etTaskNum.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "任务编号"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.taskNum = etTaskNum.getText().toString();
-
-
-        if(etCheckType.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "巡视种类"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.checkType = etCheckType.getText().toString();
-
-
-        if(etCheckScope.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "巡视范围"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.checkScope = etCheckScope.getText().toString();
-
-
-        if(etSafetyMeasure.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "安全措施"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
-
-
-        if(etEndTime.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "结束时间"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.endTime = etEndTime.getText().toString();
-
-
-        if(etBeginHandleTime.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "巡视内容"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
-
-
-        if(etExistDefect.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "存在问题"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.existDefect = etExistDefect.getText().toString();
-
-
-        if(etDefectPlace.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "缺陷位置"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.defectPlace = etDefectPlace.getText().toString();
-
-
-        if(etDefectContent.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "缺陷内容"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.defectContent = etDefectContent.getText().toString();
-
-
-        if(etDefectLevel.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "缺陷等级"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.defectLevel = etDefectLevel.getText().toString();
-
-
-        if(etHandleContent.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "处理情况"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.handleContent = etHandleContent.getText().toString();
-
-
-        if(etCheckpeople.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "巡视人员"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.checkPeople = etCheckpeople.getText().toString();
-
-
-        if(etCheckTime.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "巡视日期"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.checkTime = etCheckTime.getText().toString();
-
-
-        if(etEndHandleTime.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "任务结束"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.endHandleTime = etEndHandleTime.getText().toString();
-
-
-        if(etIsHandled.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "已处理"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.isHandled = etIsHandled.getText().toString();
-
-
-        if(etUnhandleReason.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(), "未处理"+error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        this.equipmentCheckResult.unhandleReason = etUnhandleReason.getText().toString();
+//        if(etAssignmentTime.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "任务派发"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.assignmentTime = etAssignmentTime.getText().toString();
+//
+//
+//        if(etTaskNum.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "任务编号"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.taskNum = etTaskNum.getText().toString();
+//
+//
+//        if(etCheckType.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "巡视种类"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.checkType = etCheckType.getText().toString();
+//
+//
+//        if(etCheckScope.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "巡视范围"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.checkScope = etCheckScope.getText().toString();
+//
+//
+//        if(etSafetyMeasure.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "安全措施"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
+//
+//
+//        if(etEndTime.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "结束时间"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.endTime = etEndTime.getText().toString();
+//
+//
+//        if(etBeginHandleTime.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "巡视内容"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
+//
+//
+//        if(etExistDefect.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "存在问题"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.existDefect = etExistDefect.getText().toString();
+//
+//
+//        if(etDefectPlace.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "缺陷位置"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.defectPlace = etDefectPlace.getText().toString();
+//
+//
+////        if(etDefectContent.getText().toString().equals("")){
+////            Toast.makeText(getApplicationContext(), "缺陷内容"+error, Toast.LENGTH_SHORT).show();
+////            return false;
+////        }
+////        this.equipmentCheckResult.defectContent = etDefectContent.getText().toString();
+//
+//
+//        if(etDefectLevel.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "缺陷等级"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.defectLevel = etDefectLevel.getText().toString();
+//
+//
+//        if(etHandleContent.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "处理情况"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.handleContent = etHandleContent.getText().toString();
+//
+//
+//        if(etCheckpeople.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "巡视人员"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.checkPeople = etCheckpeople.getText().toString();
+//
+//
+//        if(etCheckTime.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "巡视日期"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.checkTime = etCheckTime.getText().toString();
+//
+//
+//        if(etEndHandleTime.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "任务结束"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.endHandleTime = etEndHandleTime.getText().toString();
+//
+//
+//        if(etIsHandled.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "已处理"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.isHandled = etIsHandled.getText().toString();
+//
+//
+//        if(etUnhandleReason.getText().toString().equals("")){
+//            Toast.makeText(getApplicationContext(), "未处理"+error, Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+//        this.equipmentCheckResult.unhandleReason = etUnhandleReason.getText().toString();
 
 
 
