@@ -184,7 +184,7 @@ public class ResolveRecordActivity extends AppCompatActivity{
              et_Applier.setText("applier");
              et_WorkLicensor.setText("w l");
              et_WorkPrincipal.setText("w p");
-             et_StopTime.setText("s t");
+             et_StopTime.setText(DateUtils.getCurrentYYYY_MM_DD());
              et_EndStopTime.setText(DateUtils.getCurrentYYYY_MM_DD());
              et_StopPeople.setText("s p");
              et_Worker.setText("worker");
@@ -192,7 +192,8 @@ public class ResolveRecordActivity extends AppCompatActivity{
              et_WorkInstruction.setText("w i");
              et_ResolveContent.setText("r c");
              et_WorkDate.setText(DateUtils.getCurrentYYYY_MM_DD());
-             et_EndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            et_EndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            et_BeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
              et_IsHandled.setText(0+"");
              et_UnhandleReason.setText("unreason");
             //test end
@@ -200,6 +201,30 @@ public class ResolveRecordActivity extends AppCompatActivity{
 
             etAssignmentTime.setText(resolveRecordResult.assignmentTime);
             et_TaskNum.setText(resolveRecordResult.taskNum);
+
+
+            et_DefectPlace.setText(resolveRecordResult.defectPlace);
+            et_DefectContent.setText(resolveRecordResult.defectContent);
+            et_EndTime.setText(resolveRecordResult.endTime);
+            et_SafetyMeasure.setText(resolveRecordResult.safetyMeasure);
+            et_WorkType.setText(resolveRecordResult.workType);
+            et_WorkInvoiceNum.setText(resolveRecordResult.workInvoiceNum);
+            et_StopScope.setText(resolveRecordResult.stopScope);
+            et_Applier.setText(resolveRecordResult.applier);
+            et_WorkLicensor.setText(resolveRecordResult.workLicensor);
+            et_WorkPrincipal.setText(resolveRecordResult.workPrincipal);
+            et_StopTime.setText(resolveRecordResult.stopTime);
+            et_EndStopTime.setText(resolveRecordResult.endStopTime);
+            et_StopPeople.setText(resolveRecordResult.stopPeople);
+            et_Worker.setText(resolveRecordResult.worker);
+            et_OperationInvoiceNum.setText(resolveRecordResult.operationInvoiceNum);
+            et_WorkInstruction.setText(resolveRecordResult.workInstruction);
+            et_ResolveContent.setText(resolveRecordResult.resolveContent);
+            et_WorkDate.setText(resolveRecordResult.workDate);
+            et_EndHandleTime.setText(resolveRecordResult.endHandleTime);
+            et_IsHandled.setText(resolveRecordResult.isHandled+"");
+            et_UnhandleReason.setText(resolveRecordResult.unhandleReason);
+            et_BeginHandleTime.setText(resolveRecordResult.beginHandleTime);
 
 
             getImageFromURL();
@@ -234,6 +259,9 @@ public class ResolveRecordActivity extends AppCompatActivity{
     void showLoading(){
         if(progress == null){
             progress = new ProgressDialog(this);
+        }
+        if(progress.isShowing()){
+            return;
         }
         progress.setTitle("Loading");
         progress.show();

@@ -162,10 +162,10 @@ public class ResolveRecordResult {
         rtn.add(ResolveRecordResult.EndHandleTime, this.endHandleTime);
         rtn.add(ResolveRecordResult.EndStopTime, this.endStopTime);
         rtn.add(ResolveRecordResult.EndTime, this.endTime);
-        rtn.add(ResolveRecordResult.IsHandled, this.isHandled);
+        rtn.add(ResolveRecordResult.IsHandled, this.isHandled+"");
         rtn.add(ResolveRecordResult.OperationInvoiceNum, this.operationInvoiceNum);
         rtn.add(ResolveRecordResult.ResolveContent, this.resolveContent);
-        rtn.add(ResolveRecordResult.ResolveContentPic, this.resolveContentPic);
+        rtn.add(ResolveRecordResult.ResolveContentPic, this.resolveContentPic == null ? "" : this.resolveContentPic);
         rtn.add(ResolveRecordResult.SafetyMeasure, this.safetyMeasure);
         rtn.add(ResolveRecordResult.StopPeople, this.stopPeople);
         rtn.add(ResolveRecordResult.StopScope, this.stopScope);
