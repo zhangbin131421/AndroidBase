@@ -22,7 +22,13 @@ public class ImageUtils {
     public static final String IMAGE_TYPE = "image/*";
 
     public static ImageView getImageViewFromURL(String url,Context context, Resources resources){
+
+        if(url == null || url.trim().equals("") || context == null || resources == null){
+            return null;
+        }
+
         ImageView imageView = null;
+
         try {
             Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(url).getContent());
             imageView = ImageUtils.getImageViewForForm(context, resources, bitmap);
