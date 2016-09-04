@@ -1,16 +1,20 @@
 package com.carrot.base.androidbase.activity.handle;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -243,76 +247,121 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     void addImage(){
         Log.i("sslog", "equipment check activity add image");
 
-//带配置
-        FunctionConfig config = new FunctionConfig.Builder()
+        //带配置
+        final FunctionConfig config = new FunctionConfig.Builder()
                 .setMutiSelectMaxSize(8)
                 .setEnableRotate(true)
                 .setEnableCamera(true)
                 .build();
-        GalleryFinal.openGalleryMuti(1, config, new GalleryFinal.OnHanlderResultCallback(){
-            /**
-             * 处理成功
-             * @param reqeustCode
-             * @param resultList
-             */
-            public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
 
-                for (PhotoInfo pi : resultList){
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.dialog_photo, null);
 
-                    defectContentPicList.add(pi);
 
-                    File file = new File(pi.getPhotoPath());
+        final AlertDialog alertD = new AlertDialog.Builder(this).create();
+        Button btnAdd1 = (Button) promptView.findViewById(R.id.btn_take_photo);
 
-                    if(file.exists()){
-                        Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+        Button btnAdd2 = (Button) promptView.findViewById(R.id.btn_grally);
 
-                        ImageView imageView = new ImageView(getApplicationContext());
 
-                        imageView.setImageBitmap(bitmap);
+        btnAdd1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
-                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                alertD.dismiss();
+                //带配置
+                GalleryFinal.openCamera(1, config, new GalleryFinal.OnHanlderResultCallback() {
+                    @Override
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+                        finishGetPhoto(resultList);
 
-                        Log.i("sslog", "width:"+bitmap.getWidth() + ", height" +bitmap.getHeight());
-
-                        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics());
-                        int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60*(bitmap.getHeight()/bitmap.getWidth()), getResources().getDisplayMetrics());
-
-                        int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
-
-                        imageView.setLayoutParams(new GridView.LayoutParams(width, width));
-                        imageView.setPadding(padding, padding, padding, padding);
-
-                        imageView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Log.i("sslog", "image clicked");
-                            }
-                        });
-
-                        imageView.setOnLongClickListener(new View.OnLongClickListener() {
-                            @Override
-                            public boolean onLongClick(View view) {
-
-                                Log.i("sslog", "image long clicked");
-
-                                return false;
-                            }
-                        });
-
-                        etDefectContent.addView(imageView);
                     }
-                }
-            }
 
-            /**
-             * 处理失败或异常
-             * @param requestCode
-             * @param errorMsg
-             */
-            public void onHanlderFailure(int requestCode, String errorMsg){
+                    @Override
+                    public void onHanlderFailure(int requestCode, String errorMsg) {
+
+                    }
+                });
 
             }
         });
+
+        btnAdd2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                alertD.dismiss();
+                GalleryFinal.openGalleryMuti(1, config, new GalleryFinal.OnHanlderResultCallback(){
+                    /**
+                     * 处理成功
+                     * @param reqeustCode
+                     * @param resultList
+                     */
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
+                        finishGetPhoto(resultList);
+
+                    }
+
+                    /**
+                     * 处理失败或异常
+                     * @param requestCode
+                     * @param errorMsg
+                     */
+                    public void onHanlderFailure(int requestCode, String errorMsg){
+
+                    }
+                });
+            }
+        });
+
+        alertD.setView(promptView);
+
+        alertD.show();
+    }
+
+    void finishGetPhoto(List<PhotoInfo> resultList){
+        for (PhotoInfo pi : resultList){
+
+            defectContentPicList.add(pi);
+
+            File file = new File(pi.getPhotoPath());
+
+            if(file.exists()){
+                Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+                ImageView imageView = new ImageView(getApplicationContext());
+
+                imageView.setImageBitmap(bitmap);
+
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+                Log.i("sslog", "width:"+bitmap.getWidth() + ", height" +bitmap.getHeight());
+
+                int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics());
+                int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60*(bitmap.getHeight()/bitmap.getWidth()), getResources().getDisplayMetrics());
+
+                int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
+
+                imageView.setLayoutParams(new GridView.LayoutParams(width, width));
+                imageView.setPadding(padding, padding, padding, padding);
+
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.i("sslog", "image clicked");
+                    }
+                });
+
+                imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+
+                        Log.i("sslog", "image long clicked");
+
+                        return false;
+                    }
+                });
+
+                etDefectContent.addView(imageView);
+            }
+        }
     }
 
     @Override
