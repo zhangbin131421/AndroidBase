@@ -269,11 +269,125 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
         String error = "不能为空";
 
+        if(etAssignmentTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "任务派发"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.assignmentTime = etAssignmentTime.getText().toString();
+
+
         if(etTaskNum.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(), "任务编号"+error, Toast.LENGTH_SHORT).show();
             return false;
         }
         this.equipmentCheckResult.taskNum = etTaskNum.getText().toString();
+
+
+        if(etCheckType.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "巡视种类"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.checkType = etCheckType.getText().toString();
+
+
+        if(etCheckScope.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "巡视范围"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.checkScope = etCheckScope.getText().toString();
+
+
+        if(etSafetyMeasure.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "安全措施"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
+
+
+        if(etEndTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "结束时间"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.endTime = etEndTime.getText().toString();
+
+
+        if(etBeginHandleTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "巡视内容"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
+
+
+        if(etExistDefect.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "存在问题"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.existDefect = etExistDefect.getText().toString();
+
+
+        if(etDefectPlace.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "缺陷位置"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.defectPlace = etDefectPlace.getText().toString();
+
+
+        if(etDefectContent.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "缺陷内容"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.defectContent = etDefectContent.getText().toString();
+
+
+        if(etDefectLevel.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "缺陷等级"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.defectLevel = etDefectLevel.getText().toString();
+
+
+        if(etHandleContent.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "处理情况"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.handleContent = etHandleContent.getText().toString();
+
+
+        if(etCheckpeople.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "巡视人员"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.checkPeople = etCheckpeople.getText().toString();
+
+
+        if(etCheckTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "巡视日期"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.checkTime = etCheckTime.getText().toString();
+
+
+        if(etEndHandleTime.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "任务结束"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.endHandleTime = etEndHandleTime.getText().toString();
+
+
+        if(etIsHandled.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "已处理"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.isHandled = etIsHandled.getText().toString();
+
+
+        if(etUnhandleReason.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "未处理"+error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        this.equipmentCheckResult.unhandleReason = etUnhandleReason.getText().toString();
+
+
 
         return true;
     }
