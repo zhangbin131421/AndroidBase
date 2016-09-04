@@ -56,7 +56,7 @@ public interface EquipmentCheckClient  extends RestClientHeaders {
 //    http://120.55.101.6:8889/api/CoreMeterTest/Update
     @Post("/Update")
     @RequiresHeader(HttpHeaders.CONTENT_TYPE)
-//    @Accept(MediaType.MULTIPART_FORM_DATA)
+    @Accept(MediaType.APPLICATION_JSON)
     void update(@Body MultiValueMap<String, Object> data);
 
 

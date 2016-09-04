@@ -35,6 +35,7 @@ import cn.finalteam.galleryfinal.FunctionConfig;
 import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.ImageLoader;
 import cn.finalteam.galleryfinal.ThemeConfig;
+import cn.jpush.android.api.JPushInterface;
 
 @EActivity(R.layout.activity_main)
 @OptionsMenu(R.menu.main)
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         initGrally();
 
+        JPushInterface.init(this);
 
     }
 

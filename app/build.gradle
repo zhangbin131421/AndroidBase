@@ -43,6 +43,20 @@ android {
         versionCode 1
         versionName "1.0"
 
+        applicationId "com.carrot.base.androidbase" //JPush上注册的包名.
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "20750c6e45e1db829cf6419d", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+
         // Enabling multidex support.
         multiDexEnabled true
 
@@ -97,6 +111,8 @@ dependencies {
 
     //图片压缩
     compile 'id.zelory:compressor:1.0.2'
+
+    compile 'cn.jiguang:jpush:2.1.8'  // 此处以SDK 2.1.8版本为例
     //    compile project(':easeui')
     //    compile files('libs/Parse-1.9.4.jar')
     //    compile files('libs/umeng-analytics-v5.2.4.jar')
