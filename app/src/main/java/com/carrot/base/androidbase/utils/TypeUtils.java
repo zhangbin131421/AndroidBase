@@ -171,6 +171,7 @@ public class TypeUtils {
                 break;
             case TYPE_2_3:
                 EquipmentCheckActivity_.intent(context)
+                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         .taskBaseVo(taskBaseVo)
                         .startForResult(requestCode);
                 break;

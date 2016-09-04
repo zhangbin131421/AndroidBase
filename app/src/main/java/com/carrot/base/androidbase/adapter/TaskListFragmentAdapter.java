@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class TaskListFragmentAdapter extends FragmentStatePagerAdapter {
 
-    private String tabTitles[] = new String[] { "未完成", "已完成"};
+    public String tabTitles[] = new String[] { "未完成", "已完成"};
 
     private final SparseArray<TaskListFragment> mFragmentList = new SparseArray<>();
 
@@ -42,18 +42,12 @@ public class TaskListFragmentAdapter extends FragmentStatePagerAdapter {
         this.typeVo = typeVo;
         this.subTypeVo = subTypeVo;
 
-        mFragmentList.put(0, TaskListFragment_.builder().status(tabTitles[0]).typeVo(typeVo).subTypeVo(subTypeVo).build());
+        mFragmentList.put(0, TaskListFragment_.builder().build());
 
-        mFragmentList.put(1, TaskListFragment_.builder().status(tabTitles[1]).typeVo(typeVo).subTypeVo(subTypeVo).build());
+        mFragmentList.put(1, TaskListFragment_.builder().build());
 
 //        this.instantiateItem(this, 0);
 
-    }
-    public void refreshData(){
-        for (int i = 0; i < mFragmentList.size(); i++) {
-            TaskListFragment fragment = mFragmentList.get(i);
-            fragment.refreshItems();
-        }
     }
 
     @Override
