@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         initGrally();
 
         JPushInterface.init(this);
+        Log.i("sslog", "rid: " + JPushInterface.getRegistrationID(this));
 
     }
 

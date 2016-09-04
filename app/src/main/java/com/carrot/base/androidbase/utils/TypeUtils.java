@@ -65,6 +65,9 @@ public class TypeUtils {
 
     public final static String[] EXIST_DEFECT = new String[]{"有","无"};
 
+    //工作性质
+    public final static String[] WORK_TYPE = new String[]{"消缺","正常检修","抢修","故障","其它"};
+
 
     /**
      * 获取选中的index
@@ -202,6 +205,7 @@ public class TypeUtils {
                 break;
             case TYPE_2_4:
                 ResolveRecordActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_5:

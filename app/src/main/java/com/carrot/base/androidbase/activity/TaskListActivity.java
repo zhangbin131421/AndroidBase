@@ -21,6 +21,7 @@ import com.carrot.base.androidbase.adapter.TaskCardAdapter;
 import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
 import com.carrot.base.androidbase.client.CoreMeterTestClient;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
+import com.carrot.base.androidbase.client.ResolveRecordClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.TypeUtils;
@@ -58,6 +59,8 @@ public class TaskListActivity extends AppCompatActivity {
 
     @RestService
     EquipmentCheckClient equipmentCheckClient;
+    @RestService
+    ResolveRecordClient resolveRecordClient;
 
     @ViewById(R.id.rv_fragment_task_list_rv)
     RecyclerView mRecyclerView;
@@ -228,7 +231,7 @@ public class TaskListActivity extends AppCompatActivity {
                 break;
             }
             case TypeUtils.TYPE_2_4:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+                list = resolveRecordClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
                 break;
             }
             case TypeUtils.TYPE_2_5:{
