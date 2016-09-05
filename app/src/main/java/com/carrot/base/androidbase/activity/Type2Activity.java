@@ -12,14 +12,27 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.adapter.Type2Adapter;
+import com.carrot.base.androidbase.client.EquipmentCheckClient;
+import com.carrot.base.androidbase.client.ResolveRecordClient;
+import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.vo.TypeVo;
+import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.androidannotations.rest.spring.annotations.RestService;
+
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by victor on 8/22/16.
@@ -60,7 +73,72 @@ public class Type2Activity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
 
+        //TODO test
+        useTimer();
     }
+
+    @Pref
+    UserPrefs_ userPrefs;
+
+    @RestService
+    EquipmentCheckClient equipmentCheckClient;
+    @RestService
+    ResolveRecordClient resolveRecordClient;
+
+    //TODO 定时刷新未完成列表，后期去掉，换成推送
+    @Background
+    public void useTimer() {
+        Timer mTimer = new Timer();
+//        mTimer.cancel();
+        mTimer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                Log.i("Timer", "Calls");
+                getUnHandled();
+            }
+        }, 1000, 30000);
+    }
+
+
+    @Background
+    void getUnHandled(){
+        if(userPrefs.id().get() > 0){
+            List<TaskBaseVo> ecList = equipmentCheckClient.getByUserId(userPrefs.id().get(), 0);
+
+            if(ecList != null && ecList.size() > 0){
+                showEquipmentCheckFlag(View.VISIBLE);
+            }else{
+                showEquipmentCheckFlag(View.INVISIBLE);
+            }
+
+            List<TaskBaseVo> rrList = resolveRecordClient.getByUserId(userPrefs.id().get(), 0);
+            if(rrList != null && rrList.size() > 0){
+                showResolveRecordFlag(View.VISIBLE);
+            }else{
+                showResolveRecordFlag(View.INVISIBLE);
+            }
+        }
+    }
+
+    @UiThread
+    void showEquipmentCheckFlag(int visibility){
+
+        Type2Adapter.DataObjectHolder holder = (Type2Adapter.DataObjectHolder) mRecyclerView.findViewHolderForAdapterPosition(2);
+        if(holder != null){
+            holder.flag.setVisibility(visibility);
+        }
+    }
+    @UiThread
+    void showResolveRecordFlag(int visibility){
+
+        Type2Adapter.DataObjectHolder holder = (Type2Adapter.DataObjectHolder) mRecyclerView.findViewHolderForAdapterPosition(3);
+        if(holder != null){
+            holder.flag.setVisibility(visibility);
+        }
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();

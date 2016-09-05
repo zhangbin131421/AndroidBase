@@ -26,11 +26,13 @@ public class Type2Adapter extends RecyclerView.Adapter<Type2Adapter
             implements View
             .OnClickListener {
 
-        TextView label;
+        public TextView label;
+        public TextView flag;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             label = (TextView) itemView.findViewById(R.id.tv_type_2_name);
+            flag = (TextView) itemView.findViewById(R.id.et_card_view_row_type_2_newFlag);
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }

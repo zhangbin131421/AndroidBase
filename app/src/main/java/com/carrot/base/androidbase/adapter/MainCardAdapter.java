@@ -20,17 +20,22 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
 
     private static String LOG_TAG = "MainCardAdapter";
     private List<TypeVo> mDataset;
+
     private static MyClickListener myClickListener;
 
     public static class DataObjectHolder extends RecyclerView.ViewHolder
             implements View
             .OnClickListener {
 
-        TextView label;
+        public TextView label;
+
+        public TextView flag;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             label = (TextView) itemView.findViewById(R.id.tv_card_view_row_name);
+            flag = (TextView) itemView.findViewById(R.id.et_card_view_row_main_newFlag);
+            flag.setVisibility(View.INVISIBLE);
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
         }
@@ -63,6 +68,7 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.label.setText(mDataset.get(position).getName());
+
     }
 
     public void addItem(TypeVo dataObj, int index) {
