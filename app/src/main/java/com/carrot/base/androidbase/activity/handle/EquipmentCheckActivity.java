@@ -27,6 +27,7 @@ import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.DateUtils;
+import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.ImageUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
@@ -448,43 +449,7 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
             equipmentCheckClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
 
-
-            //defectContentPicList image
-            List<File> files = new ArrayList<>();
-
-            try {
-                for(int i = 0; i < defectContentPicList.size(); i++){
-                    PhotoInfo pi = defectContentPicList.get(i);
-                    File file = new File(pi.getPhotoPath());
-                    files.add(file);
-
-                    final String filename = file.getName();
-
-
-                    byte[] bytes = new byte[(int) file.length()];
-
-
-                    BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
-
-                    buf.read(bytes, 0, bytes.length);
-                    buf.close();
-
-
-                    ByteArrayResource contentsAsResource = new ByteArrayResource(bytes){
-                        @Override
-                        public String getFilename(){
-                            return filename;
-                        }
-                    };;
-
-
-                    data.add("DefectContentPic", contentsAsResource);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            //TODO
-//            data.add("DefectContentPic", files);
+            FileUtils.addImageToData(data, "DefectContentPic", defectContentPicList, this);
 
             equipmentCheckClient.update(data);
         }
