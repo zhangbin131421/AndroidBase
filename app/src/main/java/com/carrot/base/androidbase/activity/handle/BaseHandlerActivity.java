@@ -1,7 +1,9 @@
 package com.carrot.base.androidbase.activity.handle;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
@@ -19,6 +22,7 @@ import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.FileUtils;
+import com.carrot.base.androidbase.utils.ImageUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
@@ -53,6 +57,8 @@ public class BaseHandlerActivity extends AppCompatActivity {
     @Extra("extraTaskBaseVo")
     TaskBaseVo taskBaseVo;
 
+    Context context;
+    Resources resources;
 
     @Pref
     UserPrefs_ userPrefs;
@@ -66,7 +72,10 @@ public class BaseHandlerActivity extends AppCompatActivity {
      */
     FormEditText[] allFields;
 
-    void afterInitView(String title){
+    void afterInitView(String title, Context context, Resources resources){
+
+        this.context = context;
+        this.resources = resources;
 
         setSupportActionBar(toolbar);
 
@@ -137,6 +146,23 @@ public class BaseHandlerActivity extends AppCompatActivity {
 
     }
 
+    void getImageFromURL(String urls, org.apmem.tools.layouts.FlowLayout imageContent){
+        if(urls != null){
+            for (String url : urls.split(";")){
+
+                ImageView imageView = ImageUtils.getImageViewFromURL(url, context, resources);
+                addImage(imageView, imageContent);
+            }
+        }
+    }
+
+    @UiThread
+    void addImage(ImageView imageView, org.apmem.tools.layouts.FlowLayout imageContent){
+        if(imageContent != null && imageView != null){
+            imageContent.addView(imageView);
+        }
+    }
+
     void setDropDownListAdapter(Spinner spinner, String[] values){
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values);
         spinner.setAdapter(adapter);
@@ -172,7 +198,7 @@ public class BaseHandlerActivity extends AppCompatActivity {
                     @Override
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
 
-                        FileUtils.finishGetPhoto(getApplicationContext(), getResources(), resultList, imageList, imageContent);
+                        FileUtils.finishGetPhoto(context, resources, resultList, imageList, imageContent);
                     }
 
                     @Override
@@ -195,7 +221,7 @@ public class BaseHandlerActivity extends AppCompatActivity {
                      */
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
 
-                        FileUtils.finishGetPhoto(getApplicationContext(), getResources(), resultList, imageList, imageContent);
+                        FileUtils.finishGetPhoto(context, resources, resultList, imageList, imageContent);
                     }
 
                     /**

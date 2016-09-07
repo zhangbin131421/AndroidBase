@@ -120,7 +120,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @AfterViews
     void bindAdapter(){
 
-        super.afterInitView(TypeUtils.TYPE_2_3);
+        super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
 
         //下拉选择框
         setDropDownListAdapter(etCheckType, TypeUtils.CHECK_TYPE);
@@ -207,8 +207,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             etIsHandled.setText(equipmentCheckResult.isHandled);
             etUnhandleReason.setText(equipmentCheckResult.unhandleReason);
 
-            getImageFromURL();
-
+            getImage();
 
             this.saveStatus = 1;
         }
@@ -216,22 +215,12 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     }
 
     @Background
-    void getImageFromURL(){
-        if(equipmentCheckResult.defectContentPic != null){
-            for (String url : equipmentCheckResult.defectContentPic.split(";")){
+    void getImage(){
 
-                ImageView imageView = ImageUtils.getImageViewFromURL(url,getApplicationContext(), getResources());
-                addImage(imageView);
-             }
-        }
+        super.getImageFromURL(equipmentCheckResult.defectContentPic, etDefectContent);
+
     }
 
-    @UiThread
-    void addImage(ImageView imageView){
-        if(etDefectContent != null && imageView != null){
-            etDefectContent.addView(imageView);
-        }
-    }
 
     @Click(R.id.btn_add_image)
     void addImageLocal(){
