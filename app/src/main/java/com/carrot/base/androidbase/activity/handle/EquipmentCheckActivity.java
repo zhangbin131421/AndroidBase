@@ -1,26 +1,19 @@
 package com.carrot.base.androidbase.activity.handle;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
@@ -31,7 +24,6 @@ import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.ImageUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
-import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
@@ -40,29 +32,16 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
-import org.androidannotations.annotations.InjectMenu;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.rest.spring.annotations.RestService;
 import org.apache.http.HttpHeaders;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.util.MultiValueMap;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.FunctionConfig;
@@ -74,34 +53,17 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
  */
 @EActivity(R.layout.activity_equipment_check)
 @OptionsMenu(R.menu.task_item)
-public class EquipmentCheckActivity extends AppCompatActivity{
+public class EquipmentCheckActivity extends BaseHandlerActivity{
 
 
-    //保存需要提交的对象，开始如果为空说明为新增，否则为修改
-    @Extra("extraTaskBaseVo")
-    TaskBaseVo taskBaseVo;
 
-
-    List<PhotoInfo> defectContentPicList;
+    List<PhotoInfo> defectContentPicList = new ArrayList<>();;
 
     EquipmentCheckResult equipmentCheckResult;
-
 
     @RestService
     EquipmentCheckClient equipmentCheckClient;
 
-
-    ProgressDialog progress;
-
-
-    //保存状态, 0: add, 1: update
-    private int saveStatus = 0;
-
-    @Pref
-    UserPrefs_ userPrefs;
-
-    @ViewById(R.id.tb_tool_bar)
-    Toolbar toolbar;
 
     @ViewById(R.id.et_assignment_time)
     FormEditText etAssignmentTime;
@@ -158,28 +120,14 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     @AfterViews
     void bindAdapter(){
 
-
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        super.afterInitView(TypeUtils.TYPE_2_3);
 
         //下拉选择框
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypeUtils.CHECK_TYPE);
-        etCheckType.setAdapter(adapter);
+        setDropDownListAdapter(etCheckType, TypeUtils.CHECK_TYPE);
 
+        setDropDownListAdapter(etExistDefect, TypeUtils.EXIST_DEFECT);
 
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypeUtils.EXIST_DEFECT);
-        etExistDefect.setAdapter(adapter2);
-
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypeUtils.DEFECT_LEVEL);
-        etDefectLevel.setAdapter(adapter3);
-
-
-
-        this.setTitle(TypeUtils.TYPE_2_3);
-
-        defectContentPicList = new ArrayList<>();
+        setDropDownListAdapter(etDefectLevel, TypeUtils.DEFECT_LEVEL);
 
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
                 etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
@@ -431,23 +379,9 @@ public class EquipmentCheckActivity extends AppCompatActivity{
         finish();
     }
 
-
-
-    FormEditText[] allFields;
-
-
     boolean validate(){
 
-
-        boolean allValidate = true;
-
-        for (FormEditText field: allFields) {
-            allValidate = field.testValidity() && allValidate;
-        }
-
-
-        if(allValidate) {
-
+        if(super.validate()) {
 
             this.equipmentCheckResult.assignmentTime = etAssignmentTime.getText().toString();
 
@@ -481,8 +415,10 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
             this.equipmentCheckResult.unhandleReason = etUnhandleReason.getText().toString();
 
+            return true;
+        }{
+            return false;
         }
-        return allValidate;
     }
 
 }

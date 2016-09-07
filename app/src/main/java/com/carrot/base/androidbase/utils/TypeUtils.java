@@ -58,14 +58,25 @@ public class TypeUtils {
     public final static String TYPE_4 = "综合";
     public final static String TYPE_4_1 = "车辆管理";
 
+    /**
+     * 巡视种类
+     */
     public final static String[] CHECK_TYPE = new String[]{"定期","特殊","夜间","故障","监察","其他"};
 
+    /**
+     * 缺陷等级
+     */
     public final static String[] DEFECT_LEVEL = new String[]{"一般","重大","紧急"};
 
 
-    public final static String[] EXIST_DEFECT = new String[]{"有","无"};
+    /**
+     * 存在问题
+     */
+    public final static String[] EXIST_DEFECT = new String[]{"无","有"};
 
-    //工作性质
+    /**
+     * 工作性质
+     */
     public final static String[] WORK_TYPE = new String[]{"消缺","正常检修","抢修","故障","其它"};
 
 
