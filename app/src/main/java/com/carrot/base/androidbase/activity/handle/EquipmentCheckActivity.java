@@ -233,152 +233,49 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         }
     }
 
-
-    @UiThread
-    void showLoading(){
-        if(progress == null){
-            progress = new ProgressDialog(this);
-        }
-        progress.setTitle("Loading");
-        progress.show();
-    }
-
-    @UiThread
-    void dissmisLoading(){
-        if(progress != null){
-            progress.dismiss();
-        }
-
-    }
-
-
     @Click(R.id.btn_add_image)
     void addImageLocal(){
         Log.i("sslog", "equipment check activity add image");
 
-        //带配置
-        final FunctionConfig config = new FunctionConfig.Builder()
-                .setMutiSelectMaxSize(8)
-                .setEnableRotate(true)
-                .setEnableCamera(true)
-                .build();
+        super.showChooseImage(defectContentPicList, etDefectContent);
 
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View promptView = layoutInflater.inflate(R.layout.dialog_photo, null);
+    }
 
 
-        final AlertDialog alertD = new AlertDialog.Builder(this).create();
-        Button btnAdd1 = (Button) promptView.findViewById(R.id.btn_take_photo);
 
-        Button btnAdd2 = (Button) promptView.findViewById(R.id.btn_grally);
+    /**
+     * 新增
+     */
+    @Override
+    void add(){
+        super.add();
 
+        equipmentCheckResult.assignByUserID = userPrefs.id().get();
+        equipmentCheckResult.userId = userPrefs.id().get();
 
-        btnAdd1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        equipmentCheckClient.add(equipmentCheckResult);
+    }
 
-                alertD.dismiss();
-                //带配置
-                GalleryFinal.openCamera(1, config, new GalleryFinal.OnHanlderResultCallback() {
-                    @Override
-                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+    /**
+     * 更新
+     */
+    @Override
+    void update(){
+        super.update();
 
-                        FileUtils.finishGetPhoto(getApplicationContext(), getResources(), resultList, defectContentPicList, etDefectContent);
-                    }
+        MultiValueMap<String, Object> data = null;
+        data = equipmentCheckResult.parseToMultiValueMap();
 
-                    @Override
-                    public void onHanlderFailure(int requestCode, String errorMsg) {
+        equipmentCheckClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
 
-                    }
-                });
+        FileUtils.addImageToData(data, "DefectContentPic", defectContentPicList, this);
 
-            }
-        });
-
-        btnAdd2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                alertD.dismiss();
-                GalleryFinal.openGalleryMuti(1, config, new GalleryFinal.OnHanlderResultCallback(){
-                    /**
-                     * 处理成功
-                     * @param reqeustCode
-                     * @param resultList
-                     */
-                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
-
-                        FileUtils.finishGetPhoto(getApplicationContext(), getResources(), resultList, defectContentPicList, etDefectContent);
-                    }
-
-                    /**
-                     * 处理失败或异常
-                     * @param requestCode
-                     * @param errorMsg
-                     */
-                    public void onHanlderFailure(int requestCode, String errorMsg){
-
-                    }
-                });
-            }
-        });
-
-        alertD.setView(promptView);
-
-        alertD.show();
+        equipmentCheckClient.update(data);
     }
 
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_task_item_save:
-
-                if(validate()){
-                    conform();
-                }
-
-                return true;
-            case android.R.id.home:
-                if (getParentActivityIntent() == null) {
-                    onBackPressed();
-                } else {
-                    NavUtils.navigateUpFromSameTask(this);
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Background
-    void conform(){
-
-        showLoading();
-
-        if(saveStatus == 0){ //add
-            equipmentCheckResult.assignByUserID = userPrefs.id().get();
-            equipmentCheckResult.userId = userPrefs.id().get();
-
-            equipmentCheckClient.add(equipmentCheckResult);
-
-        }else{ //update
-
-            MultiValueMap<String, Object> data = null;
-            data = equipmentCheckResult.parseToMultiValueMap();
-
-            equipmentCheckClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
-
-            FileUtils.addImageToData(data, "DefectContentPic", defectContentPicList, this);
-
-            equipmentCheckClient.update(data);
-        }
-
-        dissmisLoading();
-
-        Intent intent = new Intent();
-        setResult(ResultCodeConstant.RESULT_CODE_REFRESH, intent);
-        finish();
-    }
-
     boolean validate(){
 
         if(super.validate()) {

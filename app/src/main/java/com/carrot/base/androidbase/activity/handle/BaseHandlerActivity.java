@@ -1,21 +1,42 @@
 package com.carrot.base.androidbase.activity.handle;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
+import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.apache.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.util.MultiValueMap;
+
+import java.util.List;
+
+import cn.finalteam.galleryfinal.FunctionConfig;
+import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by victor on 9/7/16.
@@ -56,12 +77,149 @@ public class BaseHandlerActivity extends AppCompatActivity {
         this.setTitle(title);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_task_item_save:
+
+                if(validate()){
+                    conform();
+                }
+
+                return true;
+            case android.R.id.home:
+                if (getParentActivityIntent() == null) {
+                    onBackPressed();
+                } else {
+                    NavUtils.navigateUpFromSameTask(this);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * 提交表单
+     */
+    @Background
+    void conform(){
+
+        showLoading();
+
+        if(saveStatus == 0){ //add
+
+            add();
+        }else{ //update
+
+            update();
+        }
+
+        dissmisLoading();
+
+        Intent intent = new Intent();
+        setResult(ResultCodeConstant.RESULT_CODE_REFRESH, intent);
+        finish();
+    }
+
+    /**
+     * 新增
+     */
+    void add(){
+
+    }
+
+    /**
+     * 更新
+     */
+    void update(){
+
+    }
+
     void setDropDownListAdapter(Spinner spinner, String[] values){
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values);
         spinner.setAdapter(adapter);
     }
 
+    /**
+     * 点击添加图片按钮后，弹出的拍照、相册界面
+     */
+    void showChooseImage(final List<PhotoInfo> imageList, final org.apmem.tools.layouts.FlowLayout imageContent){
+        //带配置
+        final FunctionConfig config = new FunctionConfig.Builder()
+                .setMutiSelectMaxSize(8)
+                .setEnableRotate(true)
+                .setEnableCamera(true)
+                .build();
 
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.dialog_photo, null);
+
+
+        final AlertDialog alertD = new AlertDialog.Builder(this).create();
+        Button btnAdd1 = (Button) promptView.findViewById(R.id.btn_take_photo);
+
+        Button btnAdd2 = (Button) promptView.findViewById(R.id.btn_grally);
+
+
+        btnAdd1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                alertD.dismiss();
+                //带配置
+                GalleryFinal.openCamera(1, config, new GalleryFinal.OnHanlderResultCallback() {
+                    @Override
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
+
+                        FileUtils.finishGetPhoto(getApplicationContext(), getResources(), resultList, imageList, imageContent);
+                    }
+
+                    @Override
+                    public void onHanlderFailure(int requestCode, String errorMsg) {
+
+                    }
+                });
+
+            }
+        });
+
+        btnAdd2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                alertD.dismiss();
+                GalleryFinal.openGalleryMuti(1, config, new GalleryFinal.OnHanlderResultCallback(){
+                    /**
+                     * 处理成功
+                     * @param reqeustCode
+                     * @param resultList
+                     */
+                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
+
+                        FileUtils.finishGetPhoto(getApplicationContext(), getResources(), resultList, imageList, imageContent);
+                    }
+
+                    /**
+                     * 处理失败或异常
+                     * @param requestCode
+                     * @param errorMsg
+                     */
+                    public void onHanlderFailure(int requestCode, String errorMsg){
+
+                    }
+                });
+            }
+        });
+
+        alertD.setView(promptView);
+
+        alertD.show();
+    }
+
+
+    /**
+     * 验证输入信息
+     * @return
+     */
     boolean validate(){
 
         boolean allValidate = true;
@@ -71,5 +229,23 @@ public class BaseHandlerActivity extends AppCompatActivity {
         }
 
         return allValidate;
+    }
+
+
+    @UiThread
+    void showLoading(){
+        if(progress == null){
+            progress = new ProgressDialog(this);
+        }
+        progress.setTitle("Loading");
+        progress.show();
+    }
+
+    @UiThread
+    void dissmisLoading(){
+        if(progress != null){
+            progress.dismiss();
+        }
+
     }
 }

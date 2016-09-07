@@ -67,6 +67,8 @@ public class FileUtils {
                 PhotoInfo pi = picList.get(i);
                 File file = new File(pi.getPhotoPath());
 
+                Log.i("sslog", file.getAbsolutePath());
+
                 File compressedImageFile = Compressor.getDefault(context).compressToFile(file);
 
 
