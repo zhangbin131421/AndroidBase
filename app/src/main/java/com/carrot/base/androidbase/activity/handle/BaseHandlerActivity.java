@@ -46,7 +46,7 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
  * Created by victor on 9/7/16.
  */
 @EActivity
-public class BaseHandlerActivity extends AppCompatActivity {
+public abstract class BaseHandlerActivity extends AppCompatActivity {
 
     //保存状态, 0: add, 1: update
     int saveStatus = 0;
@@ -84,7 +84,21 @@ public class BaseHandlerActivity extends AppCompatActivity {
 
 
         this.setTitle(title);
+
+        initDropDownList();
+
+        getObject();
     }
+
+    /**
+     * 初始化下拉框
+     */
+    abstract void initDropDownList();
+
+    /**
+     * 获取entity
+     */
+    abstract void getObject();
 
 
     @Override
@@ -135,16 +149,12 @@ public class BaseHandlerActivity extends AppCompatActivity {
     /**
      * 新增
      */
-    void add(){
-
-    }
+    abstract void add();
 
     /**
      * 更新
      */
-    void update(){
-
-    }
+    abstract void update();
 
     void getImageFromURL(String urls, org.apmem.tools.layouts.FlowLayout imageContent){
         if(urls != null){

@@ -122,22 +122,23 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
         super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
 
+        allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
+                etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
+                etEndHandleTime, etIsHandled, etUnhandleReason};
+    }
+
+    @Override
+    void initDropDownList(){
         //下拉选择框
         setDropDownListAdapter(etCheckType, TypeUtils.CHECK_TYPE);
 
         setDropDownListAdapter(etExistDefect, TypeUtils.EXIST_DEFECT);
 
         setDropDownListAdapter(etDefectLevel, TypeUtils.DEFECT_LEVEL);
-
-        allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
-                etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
-                etEndHandleTime, etIsHandled, etUnhandleReason};
-
-        getObject();
-
     }
 
 
+    @Override
     @Background
     void getObject(){
         showLoading();
@@ -237,7 +238,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
      */
     @Override
     void add(){
-        super.add();
 
         equipmentCheckResult.assignByUserID = userPrefs.id().get();
         equipmentCheckResult.userId = userPrefs.id().get();
@@ -250,7 +250,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
      */
     @Override
     void update(){
-        super.update();
 
         MultiValueMap<String, Object> data = null;
         data = equipmentCheckResult.parseToMultiValueMap();
