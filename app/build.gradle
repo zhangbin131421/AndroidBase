@@ -114,6 +114,10 @@ dependencies {
 
     //极光推送
     compile 'cn.jiguang:jpush:2.1.8'  // 此处以SDK 2.1.8版本为例
+
+    //edit text validate
+    compile 'com.andreabaccega:android-form-edittext:1.2.1@aar'
+    
     //    compile project(':easeui')
     //    compile files('libs/Parse-1.9.4.jar')
     //    compile files('libs/umeng-analytics-v5.2.4.jar')

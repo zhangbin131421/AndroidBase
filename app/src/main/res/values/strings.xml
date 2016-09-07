@@ -48,5 +48,7 @@
     <string name="sizeTitle2">25sp</string>
 
 
+    <!-- validate -->
+    <string name="notEmpty">不能为空</string>
 
 </resources>

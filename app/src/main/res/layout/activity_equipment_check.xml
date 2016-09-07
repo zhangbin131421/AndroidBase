@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -28,14 +29,16 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_title1"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
                     android:id="@+id/et_assignment_time"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_num"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_task_num"/>
             </LinearLayout>
 
@@ -53,21 +56,21 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视范围"/>
-                <EditText style="@style/tableColInput"
-                    android:id="@+id/et_check_scope"/>
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                    android:id="@+id/et_check_scope" />
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="安全措施"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_safety_measure"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="结束时间"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_end_time"/>
             </LinearLayout>
 
@@ -76,14 +79,14 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="巡视内容"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_begin_handle_time"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="存在问题"/>
-                <!--<EditText style="@style/tableColInput"-->
+                <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_exist_defect"/>-->
 
                 <Spinner
@@ -95,7 +98,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷位置"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_defect_place"/>
             </LinearLayout>
 
@@ -114,7 +117,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷等级"/>
-                <!--<EditText style="@style/tableColInput"-->
+                <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_defect_level"/>-->
 
                 <Spinner
@@ -126,21 +129,21 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="处理情况"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_handle_content"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视人员"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_check_people"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视日期"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_check_time"/>
             </LinearLayout>
 
@@ -149,21 +152,21 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="任务结束"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_end_handle_time"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_is_handled"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_unhandle_reason"/>
-                <EditText style="@style/tableColInput"
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_unhandle_reason"/>
             </LinearLayout>
 

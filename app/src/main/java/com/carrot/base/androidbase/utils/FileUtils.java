@@ -1,8 +1,12 @@
 package com.carrot.base.androidbase.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.util.MultiValueMap;
@@ -19,6 +23,43 @@ import id.zelory.compressor.Compressor;
  * Created by victor on 9/7/16.
  */
 public class FileUtils {
+
+
+    public static void finishGetPhoto(Context context, Resources resources,
+                        List<PhotoInfo> resultList, List<PhotoInfo> picList,
+                        org.apmem.tools.layouts.FlowLayout contentView){
+        for (PhotoInfo pi : resultList){
+
+            picList.add(pi);
+
+            File file = new File(pi.getPhotoPath());
+
+            if(file.exists()){
+                Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+                ImageView imageView = ImageUtils.getImageViewForForm(context, resources, bitmap);
+
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.i("sslog", "image clicked");
+                    }
+                });
+
+                imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+
+                        Log.i("sslog", "image long clicked");
+
+                        return false;
+                    }
+                });
+
+                contentView.addView(imageView);
+            }
+        }
+    }
 
     public static void addImageToData(MultiValueMap<String, Object> data, String key, List<PhotoInfo> picList, Context context){
         try {

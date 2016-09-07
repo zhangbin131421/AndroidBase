@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
@@ -103,30 +104,30 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     Toolbar toolbar;
 
     @ViewById(R.id.et_assignment_time)
-    EditText etAssignmentTime;
+    FormEditText etAssignmentTime;
     @ViewById(R.id.et_task_num)
-    EditText etTaskNum;
+    FormEditText etTaskNum;
 
     @ViewById(R.id.et_check_type)
     Spinner etCheckType;
 
     @ViewById(R.id.et_check_scope)
-    EditText etCheckScope;
+    FormEditText etCheckScope;
 
     @ViewById(R.id.et_safety_measure)
-    EditText etSafetyMeasure;
+    FormEditText etSafetyMeasure;
 
     @ViewById(R.id.et_end_time)
-    EditText etEndTime;
+    FormEditText etEndTime;
 
     @ViewById(R.id.et_begin_handle_time)
-    EditText etBeginHandleTime;
+    FormEditText etBeginHandleTime;
 
     @ViewById(R.id.et_exist_defect)
     Spinner etExistDefect;
 
     @ViewById(R.id.et_defect_place)
-    EditText etDefectPlace;
+    FormEditText etDefectPlace;
 
     @ViewById(R.id.et_defect_content)
     org.apmem.tools.layouts.FlowLayout etDefectContent;
@@ -135,22 +136,22 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     Spinner etDefectLevel;
 
     @ViewById(R.id.et_handle_content)
-    EditText etHandleContent;
+    FormEditText etHandleContent;
 
     @ViewById(R.id.et_check_people)
-    EditText etCheckpeople;
+    FormEditText etCheckpeople;
 
     @ViewById(R.id.et_check_time)
-    EditText etCheckTime;
+    FormEditText etCheckTime;
 
     @ViewById(R.id.et_end_handle_time)
-    EditText etEndHandleTime;
+    FormEditText etEndHandleTime;
 
     @ViewById(R.id.et_is_handled)
-    EditText etIsHandled;
+    FormEditText etIsHandled;
 
     @ViewById(R.id.et_unhandle_reason)
-    EditText etUnhandleReason;
+    FormEditText etUnhandleReason;
 
 
 
@@ -180,6 +181,9 @@ public class EquipmentCheckActivity extends AppCompatActivity{
 
         defectContentPicList = new ArrayList<>();
 
+        allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
+                etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
+                etEndHandleTime, etIsHandled, etUnhandleReason};
 
         getObject();
 
@@ -329,8 +333,8 @@ public class EquipmentCheckActivity extends AppCompatActivity{
                 GalleryFinal.openCamera(1, config, new GalleryFinal.OnHanlderResultCallback() {
                     @Override
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
-                        finishGetPhoto(resultList);
 
+                        FileUtils.finishGetPhoto(getApplicationContext(), getResources(), resultList, defectContentPicList, etDefectContent);
                     }
 
                     @Override
@@ -352,8 +356,8 @@ public class EquipmentCheckActivity extends AppCompatActivity{
                      * @param resultList
                      */
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
-                        finishGetPhoto(resultList);
 
+                        FileUtils.finishGetPhoto(getApplicationContext(), getResources(), resultList, defectContentPicList, etDefectContent);
                     }
 
                     /**
@@ -373,46 +377,17 @@ public class EquipmentCheckActivity extends AppCompatActivity{
         alertD.show();
     }
 
-    void finishGetPhoto(List<PhotoInfo> resultList){
-        for (PhotoInfo pi : resultList){
 
-            defectContentPicList.add(pi);
-
-            File file = new File(pi.getPhotoPath());
-
-            if(file.exists()){
-                Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-
-                ImageView imageView = ImageUtils.getImageViewForForm(getApplicationContext(), getResources(), bitmap);
-
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Log.i("sslog", "image clicked");
-                    }
-                });
-
-                imageView.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View view) {
-
-                        Log.i("sslog", "image long clicked");
-
-                        return false;
-                    }
-                });
-
-                etDefectContent.addView(imageView);
-            }
-        }
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_task_item_save:
 
-                conform();
+                if(validate()){
+                    conform();
+                }
+
                 return true;
             case android.R.id.home:
                 if (getParentActivityIntent() == null) {
@@ -430,11 +405,6 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     void conform(){
 
         showLoading();
-
-        if(validate() == false){
-            dissmisLoading();
-            return;
-        }
 
         if(saveStatus == 0){ //add
             equipmentCheckResult.assignByUserID = userPrefs.id().get();
@@ -462,138 +432,57 @@ public class EquipmentCheckActivity extends AppCompatActivity{
     }
 
 
+
+    FormEditText[] allFields;
+
+
     boolean validate(){
 
-        String error = "不能为空";
 
-        //TODO
+        boolean allValidate = true;
 
-        if(etAssignmentTime.getText().toString().equals("")){
-            alert("任务派发"+error);
-            return false;
+        for (FormEditText field: allFields) {
+            allValidate = field.testValidity() && allValidate;
         }
-        this.equipmentCheckResult.assignmentTime = etAssignmentTime.getText().toString();
 
 
-        if(etTaskNum.getText().toString().equals("")){
-            alert("任务编号"+error);
-            return false;
+        if(allValidate) {
+
+
+            this.equipmentCheckResult.assignmentTime = etAssignmentTime.getText().toString();
+
+            this.equipmentCheckResult.taskNum = etTaskNum.getText().toString();
+
+            this.equipmentCheckResult.checkType = etCheckType.getSelectedItem().toString();
+
+            this.equipmentCheckResult.checkScope = etCheckScope.getText().toString();
+
+            this.equipmentCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
+
+            this.equipmentCheckResult.endTime = etEndTime.getText().toString();
+
+            this.equipmentCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
+
+            this.equipmentCheckResult.existDefect = etExistDefect.getSelectedItem().toString();
+
+            this.equipmentCheckResult.defectPlace = etDefectPlace.getText().toString();
+
+            this.equipmentCheckResult.defectLevel = etDefectLevel.getSelectedItem().toString();
+
+            this.equipmentCheckResult.handleContent = etHandleContent.getText().toString();
+
+            this.equipmentCheckResult.checkPeople = etCheckpeople.getText().toString();
+
+            this.equipmentCheckResult.checkTime = etCheckTime.getText().toString();
+
+            this.equipmentCheckResult.endHandleTime = etEndHandleTime.getText().toString();
+
+            this.equipmentCheckResult.isHandled = etIsHandled.getText().toString();
+
+            this.equipmentCheckResult.unhandleReason = etUnhandleReason.getText().toString();
+
         }
-        this.equipmentCheckResult.taskNum = etTaskNum.getText().toString();
-
-
-        if(etCheckType.getSelectedItem().toString().equals("")){
-            alert("巡视种类"+error);
-            return false;
-        }
-        this.equipmentCheckResult.checkType = etCheckType.getSelectedItem().toString();
-
-
-        if(etCheckScope.getText().toString().equals("")){
-            alert("巡视范围"+error);
-            return false;
-        }
-        this.equipmentCheckResult.checkScope = etCheckScope.getText().toString();
-
-
-        if(etSafetyMeasure.getText().toString().equals("")){
-            alert("安全措施"+error);
-            return false;
-        }
-        this.equipmentCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
-
-
-        if(etEndTime.getText().toString().equals("")){
-            alert("结束时间"+error);
-            return false;
-        }
-        this.equipmentCheckResult.endTime = etEndTime.getText().toString();
-
-
-        if(etBeginHandleTime.getText().toString().equals("")){
-            alert("巡视内容"+error);
-            return false;
-        }
-        this.equipmentCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
-
-
-        if(etExistDefect.getSelectedItem().toString().equals("")){
-            alert("存在问题"+error);
-            return false;
-        }
-        this.equipmentCheckResult.existDefect = etExistDefect.getSelectedItem().toString();
-
-
-        if(etDefectPlace.getText().toString().equals("")){
-            alert("缺陷位置"+error);
-            return false;
-        }
-        this.equipmentCheckResult.defectPlace = etDefectPlace.getText().toString();
-
-
-//        if(etDefectContent.getText().toString().equals("")){
-//            Toast.makeText(getApplicationContext(), "缺陷内容"+error, Toast.LENGTH_SHORT).show();
-//            return false;
-//        }
-//        this.equipmentCheckResult.defectContent = etDefectContent.getText().toString();
-
-
-        if(etDefectLevel.getSelectedItem().toString().equals("")){
-            alert("缺陷等级"+error);
-            return false;
-        }
-        this.equipmentCheckResult.defectLevel = etDefectLevel.getSelectedItem().toString();
-
-
-        if(etHandleContent.getText().toString().equals("")){
-            alert("处理情况"+error);
-            return false;
-        }
-        this.equipmentCheckResult.handleContent = etHandleContent.getText().toString();
-
-
-        if(etCheckpeople.getText().toString().equals("")){
-            alert("巡视人员"+error);
-            return false;
-        }
-        this.equipmentCheckResult.checkPeople = etCheckpeople.getText().toString();
-
-
-        if(etCheckTime.getText().toString().equals("")){
-            alert("巡视日期"+error);
-            return false;
-        }
-        this.equipmentCheckResult.checkTime = etCheckTime.getText().toString();
-
-
-        if(etEndHandleTime.getText().toString().equals("")){
-            alert("任务结束"+error);
-            return false;
-        }
-        this.equipmentCheckResult.endHandleTime = etEndHandleTime.getText().toString();
-
-
-        if(etIsHandled.getText().toString().equals("")){
-            alert("已处理"+error);
-            return false;
-        }
-        this.equipmentCheckResult.isHandled = etIsHandled.getText().toString();
-
-
-        if(etUnhandleReason.getText().toString().equals("")){
-            alert("未处理"+error);
-            return false;
-        }
-        this.equipmentCheckResult.unhandleReason = etUnhandleReason.getText().toString();
-
-
-
-        return true;
+        return allValidate;
     }
 
-    @UiThread
-    void alert(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-
-    }
 }
