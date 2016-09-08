@@ -57,7 +57,6 @@ public interface EquipmentCheckClient  extends RestClientHeaders {
 
 //    http://120.55.101.6:8889/api/CoreMeterTest/Update
     @Post("/Update")
-//    @RequiresHeader({HttpHeaders.CONTENT_TYPE}),
     @Headers({
             @Header(name = HttpHeaders.CONTENT_TYPE, value = "multipart/form-data"),
             @Header(name = "keep-alive", value = "360")})

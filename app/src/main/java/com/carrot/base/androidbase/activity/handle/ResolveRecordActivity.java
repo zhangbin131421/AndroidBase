@@ -47,6 +47,7 @@ import org.springframework.util.MultiValueMap;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -438,7 +439,11 @@ public class ResolveRecordActivity extends AppCompatActivity{
         }else{ //update
 
             MultiValueMap<String, Object> data = null;
-            data = resolveRecordResult.parseToMultiValueMap();
+            try {
+                data = resolveRecordResult.parseToMultiValueMap();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
 
             resolveRecordClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
 

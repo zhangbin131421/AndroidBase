@@ -245,7 +245,11 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     void update(){
 
         MultiValueMap<String, Object> data = null;
-        data = equipmentCheckResult.parseToMultiValueMap();
+        try {
+            data = equipmentCheckResult.parseToMultiValueMap();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
 //        equipmentCheckClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
 

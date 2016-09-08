@@ -9,6 +9,8 @@ import org.parceler.Parcel;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by victor on 9/1/16.
  */
@@ -144,43 +146,38 @@ public class ResolveRecordResult {
     public String resolveContentPic;
 
     @JsonIgnore
-    public MultiValueMap<String, Object> parseToMultiValueMap(){
+    public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
         rtn.add(ResolveRecordResult.AssignByUserID, this.assignByUserID+"");
-        rtn.add(ResolveRecordResult.AssignmentTime, this.assignmentTime);
-        rtn.add(ResolveRecordResult.CreatedTime, this.createdTime);
+        rtn.add(ResolveRecordResult.AssignmentTime, this.assignmentTime.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.CreatedTime, this.createdTime.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.ID, this.id+"");
-        rtn.add(ResolveRecordResult.TaskNum, this.taskNum);
+        rtn.add(ResolveRecordResult.TaskNum, this.taskNum.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.UserID, this.userId+"");
-
-
-        rtn.add(ResolveRecordResult.Applier, this.applier);
-        rtn.add(ResolveRecordResult.BeginHandleTime, this.beginHandleTime);
-        rtn.add(ResolveRecordResult.DefectContent, this.defectContent);
-        rtn.add(ResolveRecordResult.DefectPlace, this.defectPlace);
-        rtn.add(ResolveRecordResult.EndHandleTime, this.endHandleTime);
-        rtn.add(ResolveRecordResult.EndStopTime, this.endStopTime);
-        rtn.add(ResolveRecordResult.EndTime, this.endTime);
+        rtn.add(ResolveRecordResult.Applier, this.applier.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.DefectContent, this.defectContent.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.DefectPlace, this.defectPlace.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.EndStopTime, this.endStopTime.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.EndTime, this.endTime.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.IsHandled, this.isHandled+"");
-        rtn.add(ResolveRecordResult.OperationInvoiceNum, this.operationInvoiceNum);
-        rtn.add(ResolveRecordResult.ResolveContent, this.resolveContent == null ? "" : this.resolveContent);
-        rtn.add(ResolveRecordResult.ResolveContentPic, this.resolveContentPic == null ? "" : this.resolveContentPic);
-        rtn.add(ResolveRecordResult.SafetyMeasure, this.safetyMeasure);
-        rtn.add(ResolveRecordResult.StopPeople, this.stopPeople);
-        rtn.add(ResolveRecordResult.StopScope, this.stopScope);
-        rtn.add(ResolveRecordResult.StopTime, this.stopTime);
-        rtn.add(ResolveRecordResult.WorkDate, this.workDate);
-        rtn.add(ResolveRecordResult.Worker, this.worker);
-        rtn.add(ResolveRecordResult.WorkInstruction, this.workInstruction);
-        rtn.add(ResolveRecordResult.WorkInvoiceNum, this.workInvoiceNum);
-        rtn.add(ResolveRecordResult.WorkLicensor, this.workLicensor);
-        rtn.add(ResolveRecordResult.WorkPrincipal, this.workPrincipal);
-        rtn.add(ResolveRecordResult.WorkType, this.workType);
-        rtn.add(ResolveRecordResult.UnhandleReason, this.unhandleReason);
-
-
-
+        rtn.add(ResolveRecordResult.OperationInvoiceNum, this.operationInvoiceNum.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.ResolveContent, this.resolveContent == null ? "" : this.resolveContent.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.ResolveContentPic, this.resolveContentPic == null ? "" : this.resolveContentPic.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.SafetyMeasure, this.safetyMeasure.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.StopPeople, this.stopPeople.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.StopScope, this.stopScope.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.StopTime, this.stopTime.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.WorkDate, this.workDate.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.Worker, this.worker.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.WorkInstruction, this.workInstruction.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.WorkInvoiceNum, this.workInvoiceNum.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.WorkLicensor, this.workLicensor.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.WorkPrincipal, this.workPrincipal.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.WorkType, this.workType.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
 
         return rtn;
     }
