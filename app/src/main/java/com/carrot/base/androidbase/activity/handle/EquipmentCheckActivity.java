@@ -93,8 +93,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
-
-
     @AfterViews
     void bindAdapter(){
 

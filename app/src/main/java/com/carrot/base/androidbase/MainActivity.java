@@ -70,9 +70,7 @@ public class MainActivity extends AppCompatActivity {
     @AfterViews
     void bindAdapter(){
 
-
         setSupportActionBar(toolbar);
-
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
