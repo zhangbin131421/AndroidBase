@@ -8,6 +8,8 @@ import org.androidannotations.rest.spring.annotations.Accept;
 import org.androidannotations.rest.spring.annotations.Body;
 import org.androidannotations.rest.spring.annotations.Get;
 import org.androidannotations.rest.spring.annotations.Head;
+import org.androidannotations.rest.spring.annotations.Header;
+import org.androidannotations.rest.spring.annotations.Headers;
 import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.RequiresHeader;
@@ -55,7 +57,10 @@ public interface EquipmentCheckClient  extends RestClientHeaders {
 
 //    http://120.55.101.6:8889/api/CoreMeterTest/Update
     @Post("/Update")
-    @RequiresHeader({HttpHeaders.CONTENT_TYPE, HttpHeaders.ACCEPT_CHARSET})
+//    @RequiresHeader({HttpHeaders.CONTENT_TYPE}),
+    @Headers({
+            @Header(name = HttpHeaders.CONTENT_TYPE, value = "multipart/form-data"),
+            @Header(name = "keep-alive", value = "360")})
     void update(@Body MultiValueMap<String, Object> data);
 
 

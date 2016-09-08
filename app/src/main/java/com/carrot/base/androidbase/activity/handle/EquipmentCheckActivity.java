@@ -1,9 +1,12 @@
 package com.carrot.base.androidbase.activity.handle;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
+import com.android.internal.http.multipart.MultipartEntity;
+import com.android.internal.http.multipart.Part;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.utils.DateUtils;
@@ -20,9 +23,17 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
 import org.apache.http.HttpHeaders;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.http.MediaType;
 import org.springframework.util.MultiValueMap;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -236,13 +247,47 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         MultiValueMap<String, Object> data = null;
         data = equipmentCheckResult.parseToMultiValueMap();
 
-        equipmentCheckClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
-        equipmentCheckClient.setHeader(HttpHeaders.ACCEPT_CHARSET, "utf-8");
+//        equipmentCheckClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
 
 
         FileUtils.addImageToData(data, "DefectContentPic", defectContentPicList, this);
 
+
         equipmentCheckClient.update(data);
+
+//        try {
+//
+//
+//            HttpClient httpClient = new DefaultHttpClient();
+//            HttpPost postRequest = new HttpPost("http://open.ixinjiekou.com/apis/v1/dealers.json");
+//            MultipartEntity reqEntity = new MultipartEntity(new Part[]{HttpMultipartMode.BROWSER_COMPATIBLE});
+//
+//                reqEntity.addPart("name", new StringBody("test1"));
+//
+//            reqEntity.addPart("tags", new StringBody("tag1,tag2"));
+//            reqEntity.addPart("phone",new StringBody("50007777"));
+//            try{
+//                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//                bitmap.compress(Bitmap.CompressFormat.JPEG, 75, bos);
+//                byte[] data = bos.toByteArray();
+//                ByteArrayBody bab = new ByteArrayBody(data, "kfc.jpg");
+//                reqEntity.addPart("image", bab);
+//            }
+//            catch(Exception e){
+//                reqEntity.addPart("image", new StringBody("image error"));
+//            }
+//            postRequest.setEntity(reqEntity);
+//            HttpResponse response = httpClient.execute(postRequest);
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+//            String sResponse;
+//            StringBuilder s = new StringBuilder();
+//            while ((sResponse = reader.readLine()) != null) {
+//                s = s.append(sResponse);
+//            }
+//
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
     }
 
 

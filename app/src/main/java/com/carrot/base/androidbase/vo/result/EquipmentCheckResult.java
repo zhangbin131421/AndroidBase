@@ -1,5 +1,7 @@
 package com.carrot.base.androidbase.vo.result;
 
+import android.util.Log;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,6 +13,8 @@ import org.parceler.Parcel;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,33 +134,40 @@ public class EquipmentCheckResult {
     @JsonIgnore
     public MultiValueMap<String, Object> parseToMultiValueMap(){
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
+        try {
 
-        rtn.add(EquipmentCheckResult.AssignByUserID, this.assignByUserID+"");
-        rtn.add(EquipmentCheckResult.AssignmentTime, this.assignmentTime);
-        rtn.add(EquipmentCheckResult.BeginHandleTime, this.beginHandleTime);
-        rtn.add(EquipmentCheckResult.CheckPeople, this.checkPeople);
-        rtn.add(EquipmentCheckResult.CheckScope, this.checkScope);
-        rtn.add(EquipmentCheckResult.CheckTime, this.checkTime);
-        rtn.add(EquipmentCheckResult.CheckType, this.checkType);
-        rtn.add(EquipmentCheckResult.CreatedTime, this.createdTime);
-        rtn.add(EquipmentCheckResult.DefectContent, this.defectContent == null ? "" : this.defectContent);
-//        rtn.add(EquipmentCheckResult.DefectContentPic, this.defectContentPic == null ? "" : this.defectContentPic);
-        rtn.add(EquipmentCheckResult.DefectLevel, this.defectLevel);
-        rtn.add(EquipmentCheckResult.DefectPlace, this.defectPlace);
-        rtn.add(EquipmentCheckResult.EndHandleTime, this.endHandleTime);
-        rtn.add(EquipmentCheckResult.EndTime, this.endTime);
-        rtn.add(EquipmentCheckResult.ExistDefect, this.existDefect);
-        rtn.add(EquipmentCheckResult.HandleContent, this.handleContent);
-        rtn.add(EquipmentCheckResult.ID, this.id+"");
-        rtn.add(EquipmentCheckResult.IsDelete, this.isDelete+"");
-        rtn.add(EquipmentCheckResult.IsHandled, this.isHandled+"");
-        rtn.add(EquipmentCheckResult.TaskNum, this.taskNum);
-        rtn.add(EquipmentCheckResult.SafetyMeasure, this.safetyMeasure);
-        rtn.add(EquipmentCheckResult.UnhandleReason, this.unhandleReason);
-        rtn.add(EquipmentCheckResult.UserID, this.userId+"");
-        rtn.add(EquipmentCheckResult.UpdatedTime, this.updatedTime);
+            rtn.add(EquipmentCheckResult.AssignByUserID, this.assignByUserID+"");
+            rtn.add(EquipmentCheckResult.AssignmentTime, this.assignmentTime);
+            rtn.add(EquipmentCheckResult.BeginHandleTime, this.beginHandleTime);
+            rtn.add(EquipmentCheckResult.CheckPeople, this.checkPeople.getBytes("UTF-8"));
+            rtn.add(EquipmentCheckResult.CheckScope, this.checkScope.getBytes("UTF-8"));
+            rtn.add(EquipmentCheckResult.CheckTime, this.checkTime);
+            rtn.add(EquipmentCheckResult.CheckType, this.checkType.getBytes("UTF-8"));
+            rtn.add(EquipmentCheckResult.CreatedTime, this.createdTime);
+            rtn.add(EquipmentCheckResult.DefectContent, this.defectContent == null ? "" : this.defectContent.getBytes("UTF-8"));
+    //        rtn.add(EquipmentCheckResult.DefectContentPic, this.defectContentPic == null ? "" : this.defectContentPic);
+            rtn.add(EquipmentCheckResult.DefectLevel, this.defectLevel.getBytes("UTF-8"));
+            rtn.add(EquipmentCheckResult.DefectPlace, this.defectPlace.getBytes("UTF-8"));
+            rtn.add(EquipmentCheckResult.EndHandleTime, this.endHandleTime);
+            rtn.add(EquipmentCheckResult.EndTime, this.endTime);
+            rtn.add(EquipmentCheckResult.ExistDefect, this.existDefect.getBytes("UTF-8"));
+            rtn.add(EquipmentCheckResult.HandleContent, this.handleContent.getBytes("UTF-8"));
+            rtn.add(EquipmentCheckResult.ID, this.id+"");
+            rtn.add(EquipmentCheckResult.IsDelete, this.isDelete+"");
+            rtn.add(EquipmentCheckResult.IsHandled, this.isHandled+"");
+            rtn.add(EquipmentCheckResult.TaskNum, this.taskNum.getBytes("UTF-8"));
 
 
+                rtn.add(EquipmentCheckResult.SafetyMeasure, this.safetyMeasure.getBytes("UTF-8"));
+
+
+            rtn.add(EquipmentCheckResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
+            rtn.add(EquipmentCheckResult.UserID, this.userId+"");
+            rtn.add(EquipmentCheckResult.UpdatedTime, this.updatedTime);
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         return rtn;
     }
 
