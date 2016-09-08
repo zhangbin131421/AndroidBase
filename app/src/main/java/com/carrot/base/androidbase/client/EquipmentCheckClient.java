@@ -28,7 +28,7 @@ import java.util.List;
  * Created by victor on 8/28/16.
  */
 @Rest(rootUrl = "http://120.55.101.6:8889/api/EquipmentCheck",
-        converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,
+        converters = {MappingJackson2HttpMessageConverter.class,
                 StringHttpMessageConverter.class,FormHttpMessageConverter.class,
                 ByteArrayHttpMessageConverter.class})
 public interface EquipmentCheckClient  extends RestClientHeaders {
@@ -55,8 +55,7 @@ public interface EquipmentCheckClient  extends RestClientHeaders {
 
 //    http://120.55.101.6:8889/api/CoreMeterTest/Update
     @Post("/Update")
-    @RequiresHeader(HttpHeaders.CONTENT_TYPE)
-    @Accept(MediaType.APPLICATION_JSON)
+    @RequiresHeader({HttpHeaders.CONTENT_TYPE, HttpHeaders.ACCEPT_CHARSET})
     void update(@Body MultiValueMap<String, Object> data);
 
 

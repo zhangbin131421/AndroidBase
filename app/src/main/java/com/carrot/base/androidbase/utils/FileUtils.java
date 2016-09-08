@@ -37,16 +37,16 @@ public class FileUtils {
             if(file.exists()){
                 Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
 
-                ImageView imageView = ImageUtils.getImageViewForForm(context, resources, bitmap);
+                View view = ImageUtils.getImageViewForForm(context, resources, bitmap);
 
-                imageView.setOnClickListener(new View.OnClickListener() {
+                view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Log.i("sslog", "image clicked");
                     }
                 });
 
-                imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                view.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View view) {
 
@@ -56,7 +56,7 @@ public class FileUtils {
                     }
                 });
 
-                contentView.addView(imageView);
+                contentView.addView(view);
             }
         }
     }

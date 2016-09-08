@@ -109,6 +109,7 @@
                     android:id="@+id/et_defect_content"
                     style="@style/tableColImageLayout">
                     <ImageView
+                        android:layout_margin="5dp"
                         android:id="@+id/btn_add_image"
                         style="@style/tableColImagAdd"/>
                 </org.apmem.tools.layouts.FlowLayout>

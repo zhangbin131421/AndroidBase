@@ -160,16 +160,16 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
         if(urls != null){
             for (String url : urls.split(";")){
 
-                ImageView imageView = ImageUtils.getImageViewFromURL(url, context, resources);
-                addImage(imageView, imageContent);
+                View view = ImageUtils.getViewFromURL(url, context, resources);
+                addImage(view, imageContent);
             }
         }
     }
 
     @UiThread
-    void addImage(ImageView imageView, org.apmem.tools.layouts.FlowLayout imageContent){
-        if(imageContent != null && imageView != null){
-            imageContent.addView(imageView);
+    void addImage(View view, org.apmem.tools.layouts.FlowLayout imageContent){
+        if(imageContent != null && view != null){
+            imageContent.addView(view);
         }
     }
 

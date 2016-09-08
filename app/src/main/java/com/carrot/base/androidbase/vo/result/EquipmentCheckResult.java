@@ -5,9 +5,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.parceler.Parcel;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by victor on 9/1/16.
@@ -150,6 +155,40 @@ public class EquipmentCheckResult {
         rtn.add(EquipmentCheckResult.UnhandleReason, this.unhandleReason);
         rtn.add(EquipmentCheckResult.UserID, this.userId+"");
         rtn.add(EquipmentCheckResult.UpdatedTime, this.updatedTime);
+
+
+        return rtn;
+    }
+
+
+    @JsonIgnore
+    public List<NameValuePair> parseToNameValuePairs(){
+        List<NameValuePair> rtn = new ArrayList<NameValuePair>();
+
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.AssignByUserID, this.assignByUserID+""));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.AssignmentTime, this.assignmentTime));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.BeginHandleTime, this.beginHandleTime));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.CheckPeople, this.checkPeople));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.CheckScope, this.checkScope));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.CheckTime, this.checkTime));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.CheckType, this.checkType));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.CreatedTime, this.createdTime));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.DefectContent, this.defectContent == null ? "" : this.defectContent));
+//        rtn.add(new BasicNameValuePair(EquipmentCheckResult.DefectContentPic, this.defectContentPic == null ? "" : this.defectContentPic);
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.DefectLevel, this.defectLevel));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.DefectPlace, this.defectPlace));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.EndHandleTime, this.endHandleTime));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.EndTime, this.endTime));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.ExistDefect, this.existDefect));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.HandleContent, this.handleContent));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.ID, this.id+""));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.IsDelete, this.isDelete+""));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.IsHandled, this.isHandled+""));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.TaskNum, this.taskNum));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.SafetyMeasure, this.safetyMeasure));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.UnhandleReason, this.unhandleReason));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.UserID, this.userId+""));
+        rtn.add(new BasicNameValuePair(EquipmentCheckResult.UpdatedTime, this.updatedTime));
 
 
         return rtn;

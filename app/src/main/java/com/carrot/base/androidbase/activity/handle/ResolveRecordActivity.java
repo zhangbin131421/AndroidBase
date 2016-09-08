@@ -258,16 +258,16 @@ public class ResolveRecordActivity extends AppCompatActivity{
         if(resolveRecordResult.resolveContentPic != null){
             for (String url : resolveRecordResult.resolveContentPic.split(";")){
 
-                ImageView imageView = ImageUtils.getImageViewFromURL(url,getApplicationContext(), getResources());
-                addImage(imageView);
+                View view = ImageUtils.getViewFromURL(url,getApplicationContext(), getResources());
+                addImage(view);
             }
         }
     }
 
     @UiThread
-    void addImage(ImageView imageView){
-        if(et_ResolveContent != null && imageView != null){
-            et_ResolveContent.addView(imageView);
+    void addImage(View view){
+        if(et_ResolveContent != null && view != null){
+            et_ResolveContent.addView(view);
         }
     }
 
@@ -395,16 +395,16 @@ public class ResolveRecordActivity extends AppCompatActivity{
             if(file.exists()){
                 Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
 
-                ImageView imageView = ImageUtils.getImageViewForForm(getApplicationContext(), getResources(), bitmap);
+                View view = ImageUtils.getImageViewForForm(getApplicationContext(), getResources(), bitmap);
 
-                imageView.setOnClickListener(new View.OnClickListener() {
+                view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Log.i("sslog", "image clicked");
                     }
                 });
 
-                imageView.setOnLongClickListener(new View.OnLongClickListener() {
+                view.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View view) {
 
@@ -414,7 +414,7 @@ public class ResolveRecordActivity extends AppCompatActivity{
                     }
                 });
 
-                et_ResolveContent.addView(imageView);
+                et_ResolveContent.addView(view);
             }
         }
     }

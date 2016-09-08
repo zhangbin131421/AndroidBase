@@ -195,6 +195,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
     }
 
+    /**
+     * update,打开页面后，获取当前数据，并获取网络图片
+     */
     @Background
     void getImage(){
 
@@ -205,7 +208,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
     @Click(R.id.btn_add_image)
     void addImageLocal(){
-        Log.i("sslog", "equipment check activity add image");
 
         super.showChooseImage(defectContentPicList, etDefectContent);
 
@@ -235,6 +237,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         data = equipmentCheckResult.parseToMultiValueMap();
 
         equipmentCheckClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
+        equipmentCheckClient.setHeader(HttpHeaders.ACCEPT_CHARSET, "utf-8");
+
 
         FileUtils.addImageToData(data, "DefectContentPic", defectContentPicList, this);
 
