@@ -96,7 +96,13 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
         super.afterInitView(TypeUtils.TYPE_2_4, getApplicationContext(), getResources());
 
-        allFields = new FormEditText[] {etAssignmentTime};
+        allFields = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
+                et_DefectContent, et_EndTime, et_SafetyMeasure, et_WorkInvoiceNum, et_StopScope,
+                et_Applier, et_WorkLicensor, et_WorkPrincipal, et_StopTime, et_EndStopTime,
+                et_StopPeople, et_Worker, et_OperationInvoiceNum, et_WorkInstruction, et_WorkDate,
+                et_EndHandleTime, et_IsHandled, et_UnhandleReason, et_BeginHandleTime};
+
+
 
     }
 
@@ -140,7 +146,6 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
              et_DefectContent.setText("defect content");
              et_EndTime.setText(DateUtils.getCurrentYYYY_MM_DD());
              et_SafetyMeasure.setText("safe me");
-//             et_WorkType.setText("work type");
              et_WorkInvoiceNum.setText("w i n");
              et_StopScope.setText("ss");
              et_Applier.setText("applier");
@@ -152,7 +157,6 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
              et_Worker.setText("worker");
              et_OperationInvoiceNum.setText("o i n");
              et_WorkInstruction.setText("w i");
-//             et_ResolveContent.setText("r c");
              et_WorkDate.setText(DateUtils.getCurrentYYYY_MM_DD());
             et_EndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
             et_BeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
