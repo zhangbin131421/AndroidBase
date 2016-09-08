@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MainCardAdapter(TypeUtils.getAllItems(getApplicationContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-        initGrally();
 
         JPushInterface.init(this);
         Log.i("sslog", "rid: " + JPushInterface.getRegistrationID(this));
@@ -132,32 +131,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void initGrally() {
-        //设置主题
-//ThemeConfig.CYAN
-        ThemeConfig theme = new ThemeConfig.Builder()
-                .build();
-//配置功能
-        FunctionConfig functionConfig = new FunctionConfig.Builder()
-                .setEnableCamera(true)
-                .setEnableEdit(true)
-                .setEnableCrop(true)
-                .setEnableRotate(true)
-                .setCropSquare(true)
-                .setEnablePreview(true)
-                .build();
-
-//配置imageloader
-        ImageLoader imageLoader = new UILImageLoader();
-
-
-        CoreConfig coreConfig = new CoreConfig.Builder(getApplicationContext(), imageLoader, theme)
-//                .setDebug(BuildConfig.DEBUG)
-                .setFunctionConfig(functionConfig)
-                .build();
-        GalleryFinal.init(coreConfig);
-
-    }
 
     @Override
     protected void onResume() {

@@ -1,58 +1,29 @@
 package com.carrot.base.androidbase.activity.handle;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
-import com.carrot.base.androidbase.constant.ResultCodeConstant;
-import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.DateUtils;
-import com.carrot.base.androidbase.utils.ImageUtils;
+import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.ResolveRecordResult;
-import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
-import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.rest.spring.annotations.RestService;
-import org.apache.http.HttpHeaders;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.MediaType;
 import org.springframework.util.MultiValueMap;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.finalteam.galleryfinal.FunctionConfig;
-import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
@@ -60,110 +31,83 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
  */
 @EActivity(R.layout.activity_resolve_record)
 @OptionsMenu(R.menu.task_item)
-public class ResolveRecordActivity extends AppCompatActivity{
+public class ResolveRecordActivity extends BaseHandlerActivity{
 
-
-    @ViewById(R.id.tb_tool_bar)
-    Toolbar toolbar;
-
-
-    //保存需要提交的对象，开始如果为空说明为新增，否则为修改
-    @Extra("extraTaskBaseVo")
-    TaskBaseVo taskBaseVo;
-
-
-    List<PhotoInfo> defectContentPicList;
+    List<PhotoInfo> defectContentPicList = new ArrayList<>();
 
     ResolveRecordResult resolveRecordResult;
-
 
     @RestService
     ResolveRecordClient resolveRecordClient;
 
-
-    ProgressDialog progress;
-
-
-    //保存状态, 0: add, 1: update
-    private int saveStatus = 0;
-
-    @Pref
-    UserPrefs_ userPrefs;
-
-
     @ViewById(R.id.et_AssignmentTime)
-    EditText etAssignmentTime;
+    FormEditText etAssignmentTime;
     @ViewById(R.id.et_TaskNum)
-    EditText et_TaskNum;
+    FormEditText et_TaskNum;
     @ViewById(R.id.et_DefectPlace)
-    EditText et_DefectPlace;
+    FormEditText et_DefectPlace;
     @ViewById(R.id.et_DefectContent)
-    EditText et_DefectContent;
+    FormEditText et_DefectContent;
     @ViewById(R.id.et_EndTime)
-    EditText et_EndTime;
+    FormEditText et_EndTime;
     @ViewById(R.id.et_SafetyMeasure)
-    EditText et_SafetyMeasure;
+    FormEditText et_SafetyMeasure;
     @ViewById(R.id.et_WorkType)
     Spinner et_WorkType;
     @ViewById(R.id.et_WorkInvoiceNum)
-    EditText et_WorkInvoiceNum;
+    FormEditText et_WorkInvoiceNum;
     @ViewById(R.id.et_StopScope)
-    EditText et_StopScope;
+    FormEditText et_StopScope;
     @ViewById(R.id.et_Applier)
-    EditText et_Applier;
+    FormEditText et_Applier;
     @ViewById(R.id.et_WorkLicensor)
-    EditText et_WorkLicensor;
+    FormEditText et_WorkLicensor;
     @ViewById(R.id.et_WorkPrincipal)
-    EditText et_WorkPrincipal;
+    FormEditText et_WorkPrincipal;
     @ViewById(R.id.et_StopTime)
-    EditText et_StopTime;
+    FormEditText et_StopTime;
     @ViewById(R.id.et_EndStopTime)
-    EditText et_EndStopTime;
+    FormEditText et_EndStopTime;
     @ViewById(R.id.et_StopPeople)
-    EditText et_StopPeople;
+    FormEditText et_StopPeople;
     @ViewById(R.id.et_Worker)
-    EditText et_Worker;
+    FormEditText et_Worker;
     @ViewById(R.id.et_OperationInvoiceNum)
-    EditText et_OperationInvoiceNum;
+    FormEditText et_OperationInvoiceNum;
     @ViewById(R.id.et_WorkInstruction)
-    EditText et_WorkInstruction;
+    FormEditText et_WorkInstruction;
     @ViewById(R.id.et_ResolveContent)
     org.apmem.tools.layouts.FlowLayout et_ResolveContent;
     @ViewById(R.id.et_WorkDate)
-    EditText et_WorkDate;
+    FormEditText et_WorkDate;
     @ViewById(R.id.et_EndHandleTime)
-    EditText et_EndHandleTime;
+    FormEditText et_EndHandleTime;
     @ViewById(R.id.et_IsHandled)
-    EditText et_IsHandled;
+    FormEditText et_IsHandled;
     @ViewById(R.id.et_UnhandleReason)
-    EditText et_UnhandleReason;
+    FormEditText et_UnhandleReason;
     @ViewById(R.id.et_BeginHandleTime)
-    EditText et_BeginHandleTime;
+    FormEditText et_BeginHandleTime;
 
 
 
     @AfterViews
     void bindAdapter(){
 
+        super.afterInitView(TypeUtils.TYPE_2_4, getApplicationContext(), getResources());
 
-        setSupportActionBar(toolbar);
+        allFields = new FormEditText[] {etAssignmentTime};
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        this.setTitle(TypeUtils.TYPE_2_4);
-
-        defectContentPicList = new ArrayList<>();
-
-
-        //下拉选择框
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, TypeUtils.WORK_TYPE);
-        et_WorkType.setAdapter(adapter);
-
-
-        getObject();
     }
 
 
+    @Override
+    void initDropDownList(){
+        //下拉选择框
+        setDropDownListAdapter(et_WorkType, TypeUtils.WORK_TYPE);
+    }
+
+    @Override
     @Background
     void getObject(){
         showLoading();
@@ -245,7 +189,7 @@ public class ResolveRecordActivity extends AppCompatActivity{
             et_BeginHandleTime.setText(resolveRecordResult.beginHandleTime);
 
 
-            getImageFromURL();
+            getImage();
 
 
             this.saveStatus = 1;
@@ -254,429 +198,113 @@ public class ResolveRecordActivity extends AppCompatActivity{
     }
 
 
+    /**
+     * update,打开页面后，获取当前数据，并获取网络图片
+     */
     @Background
-    void getImageFromURL(){
-        if(resolveRecordResult.resolveContentPic != null){
-            for (String url : resolveRecordResult.resolveContentPic.split(";")){
+    void getImage(){
 
-                View view = ImageUtils.getViewFromURL(url,getApplicationContext(), getResources());
-                addImage(view);
-            }
-        }
-    }
+        super.getImageFromURL(resolveRecordResult.resolveContentPic, et_ResolveContent);
 
-    @UiThread
-    void addImage(View view){
-        if(et_ResolveContent != null && view != null){
-            et_ResolveContent.addView(view);
-        }
     }
 
 
-    @UiThread
-    void showLoading(){
-        if(progress == null){
-            progress = new ProgressDialog(this);
-        }
-        if(progress.isShowing()){
-            return;
-        }
-        progress.setTitle("Loading");
-        progress.show();
+
+    @Click(R.id.btn_add_image)
+    void addImageLocal(){
+
+
+        super.showChooseImage(defectContentPicList, et_ResolveContent);
+
     }
 
-    @UiThread
-    void dissmisLoading(){
-        if(progress != null){
-            progress.dismiss();
+
+    /**
+     * 新增
+     */
+    @Override
+    void add(){
+
+        resolveRecordResult.assignByUserID = userPrefs.id().get();
+        resolveRecordResult.userId = userPrefs.id().get();
+
+        resolveRecordClient.add(resolveRecordResult);
+    }
+
+    /**
+     * 更新
+     */
+    @Override
+    void update(){
+
+        MultiValueMap<String, Object> data = null;
+        try {
+            data = resolveRecordResult.parseToMultiValueMap();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
+
+        FileUtils.addImageToData(data, ResolveRecordResult.ResolveContentPic, defectContentPicList, this);
+
+        resolveRecordClient.update(data);
 
     }
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_task_item_save:
-
-                conform();
-                return true;
-            case android.R.id.home:
-                if (getParentActivityIntent() == null) {
-                    onBackPressed();
-                } else {
-                    NavUtils.navigateUpFromSameTask(this);
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Click(R.id.btn_add_image)
-    void addImageLocal(){
-        Log.i("sslog", "equipment check activity add image");
-
-        //带配置
-        final FunctionConfig config = new FunctionConfig.Builder()
-                .setMutiSelectMaxSize(8)
-                .setEnableRotate(true)
-                .setEnableCamera(true)
-                .build();
-
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View promptView = layoutInflater.inflate(R.layout.dialog_photo, null);
-
-
-        final AlertDialog alertD = new AlertDialog.Builder(this).create();
-        Button btnAdd1 = (Button) promptView.findViewById(R.id.btn_take_photo);
-
-        Button btnAdd2 = (Button) promptView.findViewById(R.id.btn_grally);
-
-
-        btnAdd1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                alertD.dismiss();
-                //带配置
-                GalleryFinal.openCamera(1, config, new GalleryFinal.OnHanlderResultCallback() {
-                    @Override
-                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
-                        finishGetPhoto(resultList);
-
-                    }
-
-                    @Override
-                    public void onHanlderFailure(int requestCode, String errorMsg) {
-
-                    }
-                });
-
-            }
-        });
-
-        btnAdd2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                alertD.dismiss();
-                GalleryFinal.openGalleryMuti(1, config, new GalleryFinal.OnHanlderResultCallback(){
-                    /**
-                     * 处理成功
-                     * @param reqeustCode
-                     * @param resultList
-                     */
-                    public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
-                        finishGetPhoto(resultList);
-
-                    }
-
-                    /**
-                     * 处理失败或异常
-                     * @param requestCode
-                     * @param errorMsg
-                     */
-                    public void onHanlderFailure(int requestCode, String errorMsg){
-
-                    }
-                });
-            }
-        });
-
-        alertD.setView(promptView);
-
-        alertD.show();
-    }
-
-    void finishGetPhoto(List<PhotoInfo> resultList){
-        for (PhotoInfo pi : resultList){
-
-            defectContentPicList.add(pi);
-
-            File file = new File(pi.getPhotoPath());
-
-            if(file.exists()){
-                Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-
-                View view = ImageUtils.getImageViewForForm(getApplicationContext(), getResources(), bitmap);
-
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Log.i("sslog", "image clicked");
-                    }
-                });
-
-                view.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View view) {
-
-                        Log.i("sslog", "image long clicked");
-
-                        return false;
-                    }
-                });
-
-                et_ResolveContent.addView(view);
-            }
-        }
-    }
-
-    @Background
-    void conform(){
-
-        showLoading();
-
-        if(validate() == false){
-            dissmisLoading();
-            return;
-        }
-
-        if(saveStatus == 0){ //add
-            resolveRecordResult.assignByUserID = userPrefs.id().get();
-            resolveRecordResult.userId = userPrefs.id().get();
-
-            resolveRecordClient.add(resolveRecordResult);
-
-        }else{ //update
-
-            MultiValueMap<String, Object> data = null;
-            try {
-                data = resolveRecordResult.parseToMultiValueMap();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
-            resolveRecordClient.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.MULTIPART_FORM_DATA_VALUE);
-
-
-            //defectContentPicList image
-            List<File> files = new ArrayList<>();
-
-            try {
-                for(int i = 0; i < defectContentPicList.size(); i++){
-                    PhotoInfo pi = defectContentPicList.get(i);
-                    File file = new File(pi.getPhotoPath());
-                    files.add(file);
-
-                    final String filename = file.getName();
-
-
-                    byte[] bytes = new byte[(int) file.length()];
-
-
-                    BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
-
-                    buf.read(bytes, 0, bytes.length);
-                    buf.close();
-
-
-                    ByteArrayResource contentsAsResource = new ByteArrayResource(bytes){
-                        @Override
-                        public String getFilename(){
-                            return filename;
-                        }
-                    };;
-
-
-                    data.add(ResolveRecordResult.ResolveContentPic, contentsAsResource);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            //TODO
-
-            resolveRecordClient.update(data);
-        }
-
-        dissmisLoading();
-
-        Intent intent = new Intent();
-        setResult(ResultCodeConstant.RESULT_CODE_REFRESH, intent);
-        finish();
-    }
-
-
     boolean validate(){
 
-        String error = "不能为空";
+        if(super.validate()) {
 
-        //TODO
+            this.resolveRecordResult.assignmentTime = etAssignmentTime.getText().toString();
 
-        if(etAssignmentTime.getText().toString().equals("")){
-            alert("任务派发"+error);
+            this.resolveRecordResult.taskNum = et_TaskNum.getText().toString();
+
+            this.resolveRecordResult.defectPlace = et_DefectPlace.getText().toString();
+
+            this.resolveRecordResult.defectContent = et_DefectContent.getText().toString();
+
+            this.resolveRecordResult.endTime = et_EndTime.getText().toString();
+
+            this.resolveRecordResult.safetyMeasure = et_SafetyMeasure.getText().toString();
+
+            this.resolveRecordResult.beginHandleTime = et_BeginHandleTime.getText().toString();
+
+            this.resolveRecordResult.workType = et_WorkType.getSelectedItem().toString();
+
+            this.resolveRecordResult.workInvoiceNum = et_WorkInvoiceNum.getText().toString();
+
+            this.resolveRecordResult.stopScope = et_StopScope.getText().toString();
+
+            this.resolveRecordResult.applier = et_Applier.getText().toString();
+
+            this.resolveRecordResult.workLicensor = et_WorkLicensor.getText().toString();
+
+            this.resolveRecordResult.workPrincipal = et_WorkPrincipal.getText().toString();
+
+            this.resolveRecordResult.stopTime = et_StopTime.getText().toString();
+
+            this.resolveRecordResult.endStopTime = et_EndStopTime.getText().toString();
+
+            this.resolveRecordResult.stopPeople = et_StopPeople.getText().toString();
+
+            this.resolveRecordResult.worker = et_Worker.getText().toString();
+
+            this.resolveRecordResult.operationInvoiceNum = et_OperationInvoiceNum.getText().toString();
+
+            this.resolveRecordResult.workInstruction = et_WorkInstruction.getText().toString();
+
+            this.resolveRecordResult.workDate = et_WorkDate.getText().toString();
+
+            this.resolveRecordResult.endHandleTime = et_EndHandleTime.getText().toString();
+
+            this.resolveRecordResult.isHandled = Integer.parseInt(et_IsHandled.getText().toString());
+
+            this.resolveRecordResult.unhandleReason = et_UnhandleReason.getText().toString();
+
+            return true;
+        }{
             return false;
         }
-        this.resolveRecordResult.assignmentTime = etAssignmentTime.getText().toString();
-
-
-        if(et_TaskNum.getText().toString().equals("")){
-            alert("任务编号"+error);
-            return false;
-        }
-        this.resolveRecordResult.taskNum = et_TaskNum.getText().toString();
-
-
-        if(et_DefectPlace.getText().toString().equals("")){
-            alert("缺陷位置"+error);
-            return false;
-        }
-        this.resolveRecordResult.defectPlace = et_DefectPlace.getText().toString();
-
-
-        if(et_DefectContent.getText().toString().equals("")){
-            alert("缺陷内容"+error);
-            return false;
-        }
-        this.resolveRecordResult.defectContent = et_DefectContent.getText().toString();
-
-
-        if(et_EndTime.getText().toString().equals("")){
-            alert("结束时间"+error);
-            return false;
-        }
-        this.resolveRecordResult.endTime = et_EndTime.getText().toString();
-
-
-        if(et_SafetyMeasure.getText().toString().equals("")){
-            alert("安全措施"+error);
-            return false;
-        }
-        this.resolveRecordResult.safetyMeasure = et_SafetyMeasure.getText().toString();
-
-
-        if(et_BeginHandleTime.getText().toString().equals("")){
-            alert("现场处理"+error);
-            return false;
-        }
-        this.resolveRecordResult.beginHandleTime = et_BeginHandleTime.getText().toString();
-
-
-        if(et_WorkType.getSelectedItem().toString().equals("")){
-            alert("工作性质"+error);
-            return false;
-        }
-        this.resolveRecordResult.workType = et_WorkType.getSelectedItem().toString();
-
-
-        if(et_WorkInvoiceNum.getText().toString().equals("")){
-            alert("工作票号"+error);
-            return false;
-        }
-        this.resolveRecordResult.workInvoiceNum = et_WorkInvoiceNum.getText().toString();
-
-
-        if(et_StopScope.getText().toString().equals("")){
-            alert("停电范围"+error);
-            return false;
-        }
-        this.resolveRecordResult.stopScope = et_StopScope.getText().toString();
-
-
-        if(et_Applier.getText().toString().equals("")){
-            alert("申请人"+error);
-            return false;
-        }
-        this.resolveRecordResult.applier = et_Applier.getText().toString();
-
-
-        if(et_WorkLicensor.getText().toString().equals("")){
-            alert("工作许可人"+error);
-            return false;
-        }
-        this.resolveRecordResult.workLicensor = et_WorkLicensor.getText().toString();
-
-
-        if(et_WorkPrincipal.getText().toString().equals("")){
-            alert("工作负责人"+error);
-            return false;
-        }
-        this.resolveRecordResult.workPrincipal = et_WorkPrincipal.getText().toString();
-
-
-        if(et_StopTime.getText().toString().equals("")){
-            alert("停电时间"+error);
-            return false;
-        }
-        this.resolveRecordResult.stopTime = et_StopTime.getText().toString();
-
-
-        if(et_EndStopTime.getText().toString().equals("")){
-            alert("送电时间"+error);
-            return false;
-        }
-        this.resolveRecordResult.endStopTime = et_EndStopTime.getText().toString();
-
-
-        if(et_StopPeople.getText().toString().equals("")){
-            alert("停送电人员"+error);
-            return false;
-        }
-        this.resolveRecordResult.stopPeople = et_StopPeople.getText().toString();
-
-
-        if(et_Worker.getText().toString().equals("")){
-            alert("工作人员"+error);
-            return false;
-        }
-        this.resolveRecordResult.worker = et_Worker.getText().toString();
-
-
-        if(et_OperationInvoiceNum.getText().toString().equals("")){
-            alert("操作票编号"+error);
-            return false;
-        }
-        this.resolveRecordResult.operationInvoiceNum = et_OperationInvoiceNum.getText().toString();
-
-
-        if(et_WorkInstruction.getText().toString().equals("")){
-            alert("作业指导书"+error);
-            return false;
-        }
-        this.resolveRecordResult.workInstruction = et_WorkInstruction.getText().toString();
-
-
-//        if(et_ResolveContent.getText().toString().equals("")){
-//            alert("消缺情况"+error);
-//            return false;
-//        }
-//        this.resolveRecordResult.resolveContent = et_ResolveContent.getText().toString();
-
-
-        if(et_WorkDate.getText().toString().equals("")){
-            alert("工作日期"+error);
-            return false;
-        }
-        this.resolveRecordResult.workDate = et_WorkDate.getText().toString();
-
-
-        if(et_EndHandleTime.getText().toString().equals("")){
-            alert("任务结束"+error);
-            return false;
-        }
-        this.resolveRecordResult.endHandleTime = et_EndHandleTime.getText().toString();
-
-        if(et_IsHandled.getText().toString().equals("")){
-            alert("已处理"+error);
-            return false;
-        }
-        this.resolveRecordResult.isHandled = Integer.parseInt(et_IsHandled.getText().toString());
-
-        if(et_UnhandleReason.getText().toString().equals("")){
-            alert("未处理"+error);
-            return false;
-        }
-        this.resolveRecordResult.unhandleReason = et_UnhandleReason.getText().toString();
-
-
-
-        return true;
     }
-
-
-    @UiThread
-    void alert(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-
-    }
-
-
 }

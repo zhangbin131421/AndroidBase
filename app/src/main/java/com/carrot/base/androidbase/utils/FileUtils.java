@@ -67,32 +67,24 @@ public class FileUtils {
                 PhotoInfo pi = picList.get(i);
                 File file = new File(pi.getPhotoPath());
 
-                Log.i("sslog", file.getAbsolutePath());
-
                 File compressedImageFile = Compressor.getDefault(context).compressToFile(file);
-
 
                 final String filename = file.getName();
 
-
                 byte[] bytes = new byte[(int) compressedImageFile.length()];
-
 
                 BufferedInputStream buf = new BufferedInputStream(new FileInputStream(compressedImageFile));
 
-
                 buf.read(bytes, 0, bytes.length);
                 buf.close();
-
 
                 ByteArrayResource contentsAsResource = new ByteArrayResource(bytes){
                     @Override
                     public String getFilename(){
                         return filename;
                     }
-                };;
-
-
+                };
+                
                 data.add(key, contentsAsResource);
             }
         } catch (Exception e) {

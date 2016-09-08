@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
+import com.carrot.base.androidbase.image.UILImageLoader;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.ImageUtils;
@@ -38,8 +39,11 @@ import org.springframework.util.MultiValueMap;
 
 import java.util.List;
 
+import cn.finalteam.galleryfinal.CoreConfig;
 import cn.finalteam.galleryfinal.FunctionConfig;
 import cn.finalteam.galleryfinal.GalleryFinal;
+import cn.finalteam.galleryfinal.ImageLoader;
+import cn.finalteam.galleryfinal.ThemeConfig;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
@@ -146,6 +150,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
         finish();
     }
 
+
+
     /**
      * 新增
      */
@@ -198,6 +204,9 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
 
         Button btnAdd2 = (Button) promptView.findViewById(R.id.btn_grally);
 
+        if(GalleryFinal.getCoreConfig() == null){
+            initGrally();
+        }
 
         btnAdd1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -265,6 +274,34 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
         }
 
         return allValidate;
+    }
+
+
+    private void initGrally() {
+        //设置主题
+//ThemeConfig.CYAN
+        ThemeConfig theme = new ThemeConfig.Builder()
+                .build();
+//配置功能
+        FunctionConfig functionConfig = new FunctionConfig.Builder()
+                .setEnableCamera(true)
+                .setEnableEdit(true)
+                .setEnableCrop(true)
+                .setEnableRotate(true)
+                .setCropSquare(true)
+                .setEnablePreview(true)
+                .build();
+
+//配置imageloader
+        ImageLoader imageLoader = new UILImageLoader();
+
+
+        CoreConfig coreConfig = new CoreConfig.Builder(getApplicationContext(), imageLoader, theme)
+//                .setDebug(BuildConfig.DEBUG)
+                .setFunctionConfig(functionConfig)
+                .build();
+        GalleryFinal.init(coreConfig);
+
     }
 
 

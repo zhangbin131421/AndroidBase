@@ -6,6 +6,8 @@ import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 import org.androidannotations.rest.spring.annotations.Accept;
 import org.androidannotations.rest.spring.annotations.Body;
 import org.androidannotations.rest.spring.annotations.Get;
+import org.androidannotations.rest.spring.annotations.Header;
+import org.androidannotations.rest.spring.annotations.Headers;
 import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.RequiresHeader;
@@ -51,8 +53,9 @@ public interface ResolveRecordClient extends RestClientHeaders {
 
 
     @Post("/Update")
-    @RequiresHeader(HttpHeaders.CONTENT_TYPE)
-    @Accept(MediaType.APPLICATION_JSON)
+    @Headers({
+            @Header(name = HttpHeaders.CONTENT_TYPE, value = "multipart/form-data"),
+            @Header(name = "keep-alive", value = "360")})
     void update(@Body MultiValueMap<String, Object> data);
 
 
