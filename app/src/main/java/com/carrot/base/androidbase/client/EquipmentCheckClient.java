@@ -52,8 +52,8 @@ public interface EquipmentCheckClient  extends RestClientHeaders {
 
     @Post("/Update")
     @Headers({
-            @Header(name = HttpHeaders.CONTENT_TYPE, value = "multipart/form-data"),
-            @Header(name = "keep-alive", value = "360")})
+            @Header(name = HttpHeaders.CONTENT_TYPE, value = "multipart/form-data")})
+    @Accept(MediaType.APPLICATION_JSON)
     void update(@Body MultiValueMap<String, Object> data);
 
 
