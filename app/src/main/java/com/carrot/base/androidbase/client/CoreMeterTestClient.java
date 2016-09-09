@@ -1,5 +1,6 @@
 package com.carrot.base.androidbase.client;
 
+import com.carrot.base.androidbase.error.SSResponseErrorHandler;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
@@ -13,6 +14,7 @@ import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.RequiresHeader;
 import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.MediaType;
+import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 import org.androidannotations.rest.spring.api.RestClientHeaders;
 import org.apache.http.HttpHeaders;
 import org.springframework.http.converter.FormHttpMessageConverter;
@@ -26,8 +28,11 @@ import java.util.List;
 /**
  * Created by victor on 8/28/16.
  */
-@Rest(rootUrl = "http://120.55.101.6:8889/api/CoreMeterTest", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class, FormHttpMessageConverter.class})
-public interface CoreMeterTestClient extends RestClientHeaders {
+@Rest(rootUrl = "http://120.55.101.6:8889/api/CoreMeterTest",
+        converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,
+                StringHttpMessageConverter.class, FormHttpMessageConverter.class},
+        responseErrorHandler = SSResponseErrorHandler.class)
+public interface CoreMeterTestClient  extends RestClientErrorHandling {
 
     @Get("/GetByID/?ID={id}")
     @Accept(MediaType.APPLICATION_JSON)

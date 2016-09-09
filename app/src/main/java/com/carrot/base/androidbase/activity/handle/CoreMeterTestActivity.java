@@ -10,6 +10,7 @@ import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Click;
@@ -21,6 +22,7 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import org.springframework.util.MultiValueMap;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.model.PhotoInfo;
@@ -76,9 +78,9 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
-    List<PhotoInfo> aTestingImgList;
-    List<PhotoInfo> bTestingImgList;
-    List<PhotoInfo> cTestingImgList;
+    List<PhotoInfo> aTestingImgList = new ArrayList<>();
+    List<PhotoInfo> bTestingImgList = new ArrayList<>();
+    List<PhotoInfo> cTestingImgList = new ArrayList<>();
 
 
     @RestService
@@ -93,8 +95,11 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etAreaName, etProtectLine, etType,
                 etSafetyMeasure, etEndTime, etBeginHandleTime, etHandleContent, etTester,
                 etTestingTime, etEndHandleTime, etIsHandled, etUnhandleReason};
+    }
 
-
+    @AfterInject
+    void afterInject(){
+        coreMeterTestClient.setRestErrorHandler(ssErrorHandler);
     }
 
 

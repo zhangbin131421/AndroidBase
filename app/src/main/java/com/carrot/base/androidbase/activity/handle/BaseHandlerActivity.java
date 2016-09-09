@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
+import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.image.UILImageLoader;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.FileUtils;
@@ -28,6 +29,7 @@ import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.UiThread;
@@ -51,6 +53,10 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
  */
 @EActivity
 public abstract class BaseHandlerActivity extends AppCompatActivity {
+
+
+    @Bean
+    SSErrorHandler ssErrorHandler;
 
     //保存状态, 0: add, 1: update
     int saveStatus = 0;
