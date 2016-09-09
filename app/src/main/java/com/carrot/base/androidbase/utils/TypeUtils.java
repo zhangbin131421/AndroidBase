@@ -79,6 +79,19 @@ public class TypeUtils {
      */
     public final static String[] WORK_TYPE = new String[]{"消缺","正常检修","抢修","故障","其它"};
 
+    /**
+     * 天气
+     */
+    public final static String[] WEATHERS = new String[]{"睛","阴","多云"};
+    /**
+     * 试跳方法
+     */
+    public final static String[] TEST_WAY = new String[]{"测试仪","手工"};
+    /**
+     * 检测结果-总表试跳
+     */
+    public final static String[] TEST_RESULT = new String[]{"合格","不合格"};
+
 
     /**
      * 获取选中的index

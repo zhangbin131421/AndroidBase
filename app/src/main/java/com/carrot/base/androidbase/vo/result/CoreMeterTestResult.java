@@ -9,6 +9,8 @@ import org.parceler.Parcel;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by victor on 8/28/16.
  */
@@ -79,17 +81,6 @@ public class CoreMeterTestResult {
     @JsonProperty(value=TestWay)
     public String testWay;
 
-    public static final String ATesting = "ATesting";
-    @JsonProperty(value=ATesting)
-    public String aTesting;
-
-    public static final String BTesting = "BTesting";
-    @JsonProperty(value=BTesting)
-    public String bTesting;
-
-    public static final String CTesting = "CTesting";
-    @JsonProperty(value=CTesting)
-    public String cTesting;
 
     public static final String TestResult = "TestResult";
     @JsonProperty(value=TestResult)
@@ -127,36 +118,50 @@ public class CoreMeterTestResult {
     @JsonProperty(value=IsDelete)
     public int isDelete;
 
+
+    public static final String ATestingPic = "ATestingPic";
+    @JsonProperty(value=ATestingPic)
+    public String aTestingPic;
+
+    public static final String BTestingPic = "BTestingPic";
+    @JsonProperty(value=BTestingPic)
+    public String bTestingPic;
+
+    public static final String CTestingPic = "CTestingPic";
+    @JsonProperty(value=CTestingPic)
+    public String cTestingPic;
+
+
     @JsonIgnore
-    public MultiValueMap<String, Object> parseToMultiValueMap(){
+    public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
-        rtn.add(CoreMeterTestResult.AreaName, this.areaName);
+        rtn.add(CoreMeterTestResult.AreaName, this.areaName.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.AssignByUserID, this.assignByUserID+"");
-        rtn.add(CoreMeterTestResult.AssignmentTime, this.assignmentTime);
-        rtn.add(CoreMeterTestResult.ATesting, this.aTesting);
-        rtn.add(CoreMeterTestResult.BeginHandleTime, this.beginHandleTime);
-        rtn.add(CoreMeterTestResult.BTesting, this.bTesting);
+        rtn.add(CoreMeterTestResult.AssignmentTime, this.assignmentTime.getBytes("UTF-8"));
+//        rtn.add(CoreMeterTestResult.ATesting, this.aTesting);
+        rtn.add(CoreMeterTestResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
+//        rtn.add(CoreMeterTestResult.BTesting, this.bTesting);
         rtn.add(CoreMeterTestResult.CreatedTime, this.createdTime);
-        rtn.add(CoreMeterTestResult.CTesting, this.cTesting);
-        rtn.add(CoreMeterTestResult.EndHandleTime, this.endHandleTime);
-        rtn.add(CoreMeterTestResult.EndTime, this.endTime);
-        rtn.add(CoreMeterTestResult.HandleContent, this.handleContent);
+//        rtn.add(CoreMeterTestResult.CTesting, this.cTesting);
+        rtn.add(CoreMeterTestResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.EndTime, this.endTime.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.HandleContent, this.handleContent.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.ID, this.id+"");
         rtn.add(CoreMeterTestResult.IsDelete, this.isDelete+"");
         rtn.add(CoreMeterTestResult.IsHandled, this.isHandled+"");
-        rtn.add(CoreMeterTestResult.ProtectLine, this.protectLine);
-        rtn.add(CoreMeterTestResult.SafetyMeasure, this.safetyMeasure);
-        rtn.add(CoreMeterTestResult.TaskNum, this.taskNum);
-        rtn.add(CoreMeterTestResult.Tester, this.tester);
-        rtn.add(CoreMeterTestResult.TestingTime, this.testingTime);
-        rtn.add(CoreMeterTestResult.TestResult, this.testResult);
-        rtn.add(CoreMeterTestResult.TestWay, this.testWay);
-        rtn.add(CoreMeterTestResult.Type, this.type);
-        rtn.add(CoreMeterTestResult.UnhandleReason, this.unhandleReason);
-        rtn.add(CoreMeterTestResult.UpdatedTime, this.updatedTime);
+        rtn.add(CoreMeterTestResult.ProtectLine, this.protectLine.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.SafetyMeasure, this.safetyMeasure.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.TaskNum, this.taskNum.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.Tester, this.tester.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.TestingTime, this.testingTime.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.TestResult, this.testResult.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.TestWay, this.testWay.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.Type, this.type.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.UpdatedTime, this.updatedTime.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.UserID, this.userId+"");
-        rtn.add(CoreMeterTestResult.Wether, this.wether);
+        rtn.add(CoreMeterTestResult.Wether, this.wether.getBytes("UTF-8"));
 
 
         return rtn;

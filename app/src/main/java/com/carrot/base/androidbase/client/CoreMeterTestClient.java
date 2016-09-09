@@ -6,6 +6,8 @@ import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 import org.androidannotations.rest.spring.annotations.Accept;
 import org.androidannotations.rest.spring.annotations.Body;
 import org.androidannotations.rest.spring.annotations.Get;
+import org.androidannotations.rest.spring.annotations.Header;
+import org.androidannotations.rest.spring.annotations.Headers;
 import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.RequiresHeader;
@@ -35,26 +37,23 @@ public interface CoreMeterTestClient extends RestClientHeaders {
     @Accept(MediaType.APPLICATION_JSON)
     List<TaskBaseVo> getByUserId(@Path int userId);
 
-    //http://120.55.101.6:8889/api/CoreMeterTest/GetByUserIDAndHandled/?UserID=1&IsHandled=1
 
     @Get("/GetByUserIDAndHandled/?UserID={userId}&IsHandled={isHandled}")
     @Accept(MediaType.APPLICATION_JSON)
     List<TaskBaseVo> getByUserId(@Path int userId, @Path int isHandled);
 
-//    http://120.55.101.6:8889/api/CoreMeterTest/AddNew
     @Post("/AddNew")
     @Accept(MediaType.APPLICATION_JSON)
     void add(@Body CoreMeterTestResult coreMeterTestResult);
 
 
-//    http://120.55.101.6:8889/api/CoreMeterTest/Update
     @Post("/Update")
-    @RequiresHeader(HttpHeaders.CONTENT_TYPE)
-//    @Accept(MediaType.MULTIPART_FORM_DATA)
+    @Headers({
+            @Header(name = HttpHeaders.CONTENT_TYPE, value = "multipart/form-data")})
+    @Accept(MediaType.APPLICATION_JSON)
     void update(@Body MultiValueMap<String, Object> data);
 
 
-//    http://120.55.101.6:8889/api/CoreMeterTest/Delete/?ID=1
     @Post("/Delete/?ID={id}")
     @Accept(MediaType.APPLICATION_JSON)
     void delete(@Path int id);
