@@ -103,6 +103,14 @@ public class TypeUtils {
      * 不合格原因 -- 线损管理
      */
     public final static String[] UNQUALIFIED_REASON = new String[]{"窃电","采集","表计故障"};
+    /**
+     * 保护线路
+     */
+    public final static String[] PRODUCTION_LINE = new String[]{"保护1","保护2","保护3"};
+    /**
+     * 型号 -- 总保性能检测
+     */
+    public final static String[] TYPE_TPT = new String[]{"型号1","型号2","型号3"};
 
 
     /**
@@ -232,6 +240,7 @@ public class TypeUtils {
                 break;
             case TYPE_2_2:
                 TotalPerformanceTestActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_3:

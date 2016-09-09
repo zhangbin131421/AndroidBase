@@ -35,7 +35,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
 
 
-    List<PhotoInfo> defectContentPicList = new ArrayList<>();;
+    List<PhotoInfo> defectContentPicList = new ArrayList<>();
 
     EquipmentCheckResult equipmentCheckResult;
 
