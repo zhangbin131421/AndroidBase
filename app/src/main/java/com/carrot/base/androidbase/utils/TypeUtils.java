@@ -91,6 +91,18 @@ public class TypeUtils {
      * 检测结果-总表试跳
      */
     public final static String[] TEST_RESULT = new String[]{"合格","不合格"};
+    /**
+     * 台区名称
+     */
+    public final static String[] AREA = new String[]{"台区1","台区2","台区3","台区4"};
+    /**
+     * 安全措施
+     */
+    public final static String[] SAFETY_MEASURE = new String[]{"措施1","措施2","措施3","措施4"};
+    /**
+     * 不合格原因 -- 线损管理
+     */
+    public final static String[] UNQUALIFIED_REASON = new String[]{"窃电","采集","表计故障"};
 
 
     /**

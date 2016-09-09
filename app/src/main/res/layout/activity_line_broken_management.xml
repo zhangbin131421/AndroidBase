@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,171 +10,155 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_line_borken_management_tool_bar"
+            android:id="@+id/tb_tool_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_title1"/>
-        <EditText
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22" />
-    </LinearLayout>
+            android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_num"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016082201"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_title1"/>
+                <com.andreabaccega.widget.FormEditText
+                    whatever:emptyErrorString="@string/notEmpty"
+                    style="@style/tableColInput"
+                    android:id="@+id/et_AssignmentTime"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_area_name"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="导入"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_num"/>
+                <com.andreabaccega.widget.FormEditText
+                    whatever:emptyErrorString="@string/notEmpty"
+                    style="@style/tableColInput"
+                    android:id="@+id/et_TaskNum"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="线损率"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="8.90%"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_area_name"/>
+                <!--<com.andreabaccega.widget.FormEditText-->
+                    <!--whatever:emptyErrorString="@string/notEmpty"-->
+                    <!--style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_AreaName"/>-->
+                <Spinner
+                    android:id="@+id/et_AreaName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-    <!-- ********************* -->
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="线损率"/>
+                <com.andreabaccega.widget.FormEditText
+                    whatever:emptyErrorString="@string/notEmpty"
+                    style="@style/tableColInput"
+                    android:id="@+id/et_BrokenRate"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_handle"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22"/>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_unqualified_reason"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="(如窃电、采集、表计故障等)"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="安全措施"/>
+                <!--<com.andreabaccega.widget.FormEditText-->
+                    <!--whatever:emptyErrorString="@string/notEmpty"-->
+                    <!--style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_SafetyMeasure"/>-->
+                <Spinner
+                    android:id="@+id/et_SafetyMeasure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <!-- ********************* -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_handle_content"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="(附照片)"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_handle"/>
+                <com.andreabaccega.widget.FormEditText
+                    whatever:emptyErrorString="@string/notEmpty"
+                    style="@style/tableColInput"
+                    android:id="@+id/et_BeginHandleTime"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_user_id"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="张三"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_unqualified_reason"/>
+                <!--<com.andreabaccega.widget.FormEditText-->
+                    <!--whatever:emptyErrorString="@string/notEmpty"-->
+                    <!--style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_UnqualifiedReason"/>-->
+                <Spinner
+                    android:id="@+id/et_UnqualifiedReason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-    <!-- ********************** -->
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_handle_content"/>
+                <!--<com.andreabaccega.widget.FormEditText-->
+                    <!--whatever:emptyErrorString="@string/notEmpty"-->
+                    <!--style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_HandleContent"/>-->
+                <org.apmem.tools.layouts.FlowLayout
+                    android:id="@+id/et_HandleContent"
+                    style="@style/tableColImageLayout">
+                    <ImageView
+                        android:layout_margin="5dp"
+                        android:id="@+id/btn_add_image"
+                        style="@style/tableColImagAdd"/>
+                </org.apmem.tools.layouts.FlowLayout>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_end_handle_tiem"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_user_id"/>
+                <com.andreabaccega.widget.FormEditText
+                    whatever:emptyErrorString="@string/notEmpty"
+                    style="@style/tableColInput"
+                    android:id="@+id/et_UserID"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_is_handled"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
+            <!-- ********************** -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_unhandle_reason"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="原因"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_end_handle_tiem"/>
+                <com.andreabaccega.widget.FormEditText
+                    whatever:emptyErrorString="@string/notEmpty"
+                    style="@style/tableColInput"
+                    android:id="@+id/et_EndHandleTiem"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_is_handled"/>
+                <com.andreabaccega.widget.FormEditText
+                    whatever:emptyErrorString="@string/notEmpty"
+                    style="@style/tableColInput"
+                    android:id="@+id/et_IsHandled"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="@string/task_unhandle_reason"/>
+                <com.andreabaccega.widget.FormEditText
+                    whatever:emptyErrorString="@string/notEmpty"
+                    style="@style/tableColInput"
+                    android:id="@+id/et_UnhandleReason"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
