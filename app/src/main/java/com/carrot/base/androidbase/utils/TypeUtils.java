@@ -57,7 +57,15 @@ public class TypeUtils {
 
     public final static String TYPE_4 = "综合";
     public final static String TYPE_4_1 = "车辆管理";
+    /**
+     * 测试
+     */
+    public final static String[] TYPE_TEST = new String[]{"测试1", "测试2"};
 
+    /**
+     * 测试
+     */
+    public final static String[] TYPE_HANDLER = new String[]{"0", "1"};
     /**
      * 巡视种类
      */
@@ -255,6 +263,7 @@ public class TypeUtils {
                 break;
             case TYPE_2_5:
                 CrossTestActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_6:

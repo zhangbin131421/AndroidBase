@@ -181,8 +181,8 @@ public class GeneratorUtils {
 
         for (Entity entity : allEntity) {
 //            gLayout(entity);
-            gResult(entity);
-//            gActivity(entity);
+//            gResult(entity);
+            gActivity(entity);
         }
     }
 
@@ -273,17 +273,17 @@ public class GeneratorUtils {
         for (String[] item : entity.columns) {
             if(item[2].equals(T_I)){
                 output.append(
-                "    @ViewById(R.id.et_"+item[0]+")\n" +
+                "    @ViewById(R.id.et"+item[0]+")\n" +
                 "    FormEditText et"+item[0]+";\n" +
                 "\n");
             }else if(item[2].equals(T_S)){
                 output.append(
-                "    @ViewById(R.id.et_"+item[0]+")\n" +
+                "    @ViewById(R.id.et"+item[0]+")\n" +
                     "    Spinner et"+item[0]+";\n" +
                     "\n");
-            }else if(item[2].equals(T_P)){
+            }else if(item[2].equals(T_P)){//et"+item[0]+"_content
                 output.append(
-                    "    @ViewById(R.id.et_"+item[0]+")\n" +
+                    "    @ViewById(R.id.et"+item[0]+"_content)\n" +
                     "    org.apmem.tools.layouts.FlowLayout et"+item[0]+"Content;\n" +
                     "\n");
             }
@@ -317,7 +317,7 @@ public class GeneratorUtils {
         for(String[] item : entity.columns){
             if(item[2].equals(T_S)){
                 output.append(
-                "        setDropDownListAdapter(et"+item[0]+", TypeUtils.);\n" +
+                "        setDropDownListAdapter(et"+item[0]+", TypeUtils.TYPE_TEST);\n" +
                 "\n");
             }
         }
@@ -360,7 +360,7 @@ public class GeneratorUtils {
                 "            et"+item[0]+".setText("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+");\n");
             }else if(item[2].equals(T_S)){
                 output.append(
-                "            et"+item[0]+".setSelection(TypeUtils.getSelectedIndex(TypeUtils., "+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+"));\n");
+                "            et"+item[0]+".setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TEST, "+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+"));\n");
             }
         }
         output.append(
@@ -436,7 +436,7 @@ public class GeneratorUtils {
         for(String[] item : entity.columns){
             if(item[2].equals(T_P)){
                 output.append(
-                "        FileUtils.addImageToData(data, "+entity.nameEnglish+"Result."+parseToLowFirst(item[0])+", "+parseToLowFirst(item[0])+"List, this);\n");
+                "        FileUtils.addImageToData(data, "+entity.nameEnglish+"Result."+item[0]+", "+parseToLowFirst(item[0])+"List, this);\n");
             }
         }
         output.append(
@@ -551,7 +551,7 @@ public class GeneratorUtils {
                         "                <TextView style=\"@style/tableColName\"\n" +
                         "                    android:text=\""+item[1]+"\"/>\n" +
                         "                <org.apmem.tools.layouts.FlowLayout\n" +
-                        "                    android:id=\"@+id/et_"+item[0]+"_content\"\n" +
+                        "                    android:id=\"@+id/et"+item[0]+"_content\"\n" +
                         "                    style=\"@style/tableColImageLayout\">\n" +
                         "                    <ImageView\n" +
                         "                        android:layout_margin=\"5dp\"\n" +
@@ -607,7 +607,13 @@ public class GeneratorUtils {
                 "@JsonIgnoreProperties(ignoreUnknown = true)\n" +
                 "public class "+entity.nameEnglish+"Result {\n" +
                 "\n" +
-                "\n" ;
+                "\n" +
+                "    public static final String UserID = \"UserID\";\n" +
+                "    @JsonProperty(value=UserID)\n" +
+                "    public int userId;\n" +
+                "    public static final String AssignByUserID = \"AssignByUserID\";\n" +
+                "    @JsonProperty(value=AssignByUserID)\n" +
+                "    public int assignByUserID;";
 
         for (String[] item : entity.columns) {
             output +=
