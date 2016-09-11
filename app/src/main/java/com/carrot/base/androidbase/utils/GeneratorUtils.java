@@ -168,7 +168,7 @@ public class GeneratorUtils {
             {"Cost", "费用", T_I, T_STRING, "0"}};
 
     public void generate(){
-        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_2, COLUMNS_CrossTest));
+        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
 //        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_5, COLUMNS_VoltageMeasurement));
 //        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_6, COLUMNS_EarthResistanceTest));
 //        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_7, COLUMNS_SpecialSecurityCheck));
@@ -180,9 +180,9 @@ public class GeneratorUtils {
 
 
         for (Entity entity : allEntity) {
-            gLayout(entity);
+//            gLayout(entity);
             gResult(entity);
-            gActivity(entity);
+//            gActivity(entity);
         }
     }
 
@@ -205,17 +205,17 @@ public class GeneratorUtils {
 
 
     private void gActivity(Entity entity){
-        String output =
-                "\n" +
+        StringBuffer output = new StringBuffer();
+        output.append("\n" +
                 "\n" +
                 "\n" +
                 "<!-- *********************"+entity.nameEnglish+" Activity ********************** -->"+
                 "\n" +
                 "\n" +
                 "\n" +
-                "\n";
+                "\n");
 
-        output += "package com.carrot.base.androidbase.activity.handle;\n" +
+        output.append("package com.carrot.base.androidbase.activity.handle;\n" +
                 "\n" +
                 "import android.widget.Spinner;\n" +
                 "\n" +
@@ -251,52 +251,52 @@ public class GeneratorUtils {
                 "public class "+entity.nameEnglish+"Activity extends BaseHandlerActivity{\n" +
                 "\n" +
                 "\n" +
-                "\n";
+                "\n");
 
         for (String[] item : entity.columns) {
             if(item[2].equals(T_P)){
-                output +=
+                output.append(
                 "    List<PhotoInfo> "+parseToLowFirst(item[0])+"List = new ArrayList<>();\n" +
-                "\n";
+                "\n");
             }
         }
 
-        output +=
+        output.append(
                 "\n" +
                 "    "+entity.nameEnglish+"Result "+parseToLowFirst(entity.nameEnglish)+"Result;\n" +
                 "\n" +
                 "    @RestService\n" +
                 "    "+entity.nameEnglish+"Client "+parseToLowFirst(entity.nameEnglish)+"Client;\n" +
                 "\n" +
-                "\n";
+                "\n");
 
         for (String[] item : entity.columns) {
             if(item[2].equals(T_I)){
-                output +=
+                output.append(
                 "    @ViewById(R.id.et_"+item[0]+")\n" +
                 "    FormEditText et"+item[0]+";\n" +
-                "\n";
+                "\n");
             }else if(item[2].equals(T_S)){
-                output +=
+                output.append(
                 "    @ViewById(R.id.et_"+item[0]+")\n" +
                     "    Spinner et"+item[0]+";\n" +
-                    "\n";
+                    "\n");
             }else if(item[2].equals(T_P)){
-                output +=
+                output.append(
                     "    @ViewById(R.id.et_"+item[0]+")\n" +
                     "    org.apmem.tools.layouts.FlowLayout et"+item[0]+"Content;\n" +
-                    "\n";
+                    "\n");
             }
         }
 
-        output +=
+        output.append(
                 "\n" +
                 "    @AfterViews\n" +
                 "    void bindAdapter(){\n" +
                 "\n" +
-                "        super.afterInitView("+entity.nameChinese+", getApplicationContext(), getResources());\n" +
+                "        super.afterInitView(\""+entity.nameChinese+"\", getApplicationContext(), getResources());\n" +
                 "\n" +
-                "        allFields = new FormEditText[] {";
+                "        allFields = new FormEditText[] {");
 
         String validateStr = "";
                 for(String[] item : entity.columns){
@@ -306,23 +306,23 @@ public class GeneratorUtils {
                 }
         validateStr = validateStr.substring(0, validateStr.length()-2);
 
-        output += validateStr +
+        output.append(validateStr +
                         "};\n" +
                 "    }\n" +
                 "\n" +
                 "    @Override\n" +
                 "    void initDropDownList(){\n" +
-                "        //下拉选择框\n";
+                "        //下拉选择框\n");
 
         for(String[] item : entity.columns){
             if(item[2].equals(T_S)){
-                output +=
+                output.append(
                 "        setDropDownListAdapter(et"+item[0]+", TypeUtils.);\n" +
-                "\n" ;
+                "\n");
             }
         }
 
-        output +=
+        output.append(
                 "    }\n" +
                 "\n" +
                 "\n" +
@@ -334,7 +334,7 @@ public class GeneratorUtils {
                 "        if(taskBaseVo == null){\n" +
                 "\n" +
                 "        }else{\n" +
-                "            "+parseToLowFirst(entity.nameEnglish)+"Result = "+entity.nameEnglish+"Client.getById(taskBaseVo.id);\n" +
+                "            "+parseToLowFirst(entity.nameEnglish)+"Result = "+parseToLowFirst(entity.nameEnglish)+"Client.getById(taskBaseVo.id);\n" +
                 "        }\n" +
                 "\n" +
                 "        refreshView();\n" +
@@ -352,18 +352,18 @@ public class GeneratorUtils {
                 "\n" +
                 "\n" +
                 "        }else{\n" +
-                "\n";
+                "\n");
 
         for(String[] item : entity.columns){
             if(item[2].equals(T_I)){
-                output +=
-                "            et"+item[0]+".setText("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+");\n";
+                output.append(
+                "            et"+item[0]+".setText("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+");\n");
             }else if(item[2].equals(T_S)){
-                output +=
-                "            et"+item[0]+".setSelection(TypeUtils.getSelectedIndex(TypeUtils., "+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+"));\n";
+                output.append(
+                "            et"+item[0]+".setSelection(TypeUtils.getSelectedIndex(TypeUtils., "+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+"));\n");
             }
         }
-        output +=
+        output.append(
                 "\n" +
                 "            getImage();\n" +
                 "\n" +
@@ -377,24 +377,24 @@ public class GeneratorUtils {
                 "     */\n" +
                 "    @Background\n" +
                 "    void getImage(){\n" +
-                "\n";
+                "\n");
 
         for(String[] item : entity.columns){
             if(item[2].equals(T_P)){
-                output +=
+                output.append(
                 "        super.getImageFromURL("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+", et"+item[0]+"Content);\n" +
-                "\n";
+                "\n");
             }
         }
 
-        output +=
+        output.append(
                 "    }\n" +
                 "\n" +
-                "\n";
+                "\n");
 
         for(String[] item : entity.columns){
             if(item[2].equals(T_P)){
-                output +=
+                output.append(
                 "    @Click(R.id.btn_add_image"+item[0]+")\n" +
                 "    void addImage"+item[0]+"(){\n" +
                 "\n" +
@@ -402,11 +402,11 @@ public class GeneratorUtils {
                 "\n" +
                 "    }\n" +
                 "\n" +
-                "\n";
+                "\n");
             }
         }
 
-        output +=
+        output.append(
                 "\n" +
                 "    /**\n" +
                 "     * 新增\n" +
@@ -415,9 +415,9 @@ public class GeneratorUtils {
                 "    void add(){\n" +
                 "\n" +
                 "        "+parseToLowFirst(entity.nameEnglish)+"Result.assignByUserID = userPrefs.id().get();\n" +
-                "        \"+parseToLowFirst(entity.nameEnglish)+\"Result.userId = userPrefs.id().get();\n" +
+                "        "+parseToLowFirst(entity.nameEnglish)+"Result.userId = userPrefs.id().get();\n" +
                 "\n" +
-                "        \"+parseToLowFirst(entity.nameEnglish)+\"Client.add(\"+parseToLowFirst(entity.nameEnglish)+\"Result);\n" +
+                "        "+parseToLowFirst(entity.nameEnglish)+"Client.add("+parseToLowFirst(entity.nameEnglish)+"Result);\n" +
                 "    }\n" +
                 "\n" +
                 "    /**\n" +
@@ -428,18 +428,18 @@ public class GeneratorUtils {
                 "\n" +
                 "        MultiValueMap<String, Object> data = null;\n" +
                 "        try {\n" +
-                "            data = \"+parseToLowFirst(entity.nameEnglish)+\"Result.parseToMultiValueMap();\n" +
+                "            data = "+parseToLowFirst(entity.nameEnglish)+"Result.parseToMultiValueMap();\n" +
                 "        } catch (UnsupportedEncodingException e) {\n" +
                 "            e.printStackTrace();\n" +
                 "        }\n" +
-                "\n";
+                "\n");
         for(String[] item : entity.columns){
             if(item[2].equals(T_P)){
-                output +=
-                "        FileUtils.addImageToData(data, "+entity.nameEnglish+"Result."+parseToLowFirst(item[0])+", "+parseToLowFirst(item[0])+"List, this);\n";
+                output.append(
+                "        FileUtils.addImageToData(data, "+entity.nameEnglish+"Result."+parseToLowFirst(item[0])+", "+parseToLowFirst(item[0])+"List, this);\n");
             }
         }
-        output +=
+        output.append(
                 "        "+parseToLowFirst(entity.nameEnglish)+"Client.update(data);\n" +
                 "\n" +
                 "    }\n" +
@@ -450,31 +450,31 @@ public class GeneratorUtils {
                 "    boolean validate(){\n" +
                 "\n" +
                 "        if(super.validate()) {\n" +
-                "\n";
+                "\n");
 
         for(String[] item : entity.columns){
 
             if(item[2].equals(T_I)){
-                output +=
+                output.append(
                 "            this."+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+" = et"+item[0]+".getText().toString();\n" +
-                "\n";
+                "\n");
             }else if(item[2].equals(T_S)){
-                output +=
+                output.append(
                 "            this."+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+" = et"+item[0]+".getSelectedItem().toString();\n" +
-                "\n";
+                "\n");
 
             }
         }
-        output +=
+        output.append(
                 "            return true;\n" +
                 "        }{\n" +
                 "            return false;\n" +
                 "        }\n" +
                 "    }\n" +
                 "\n" +
-                "}\n";
+                "}\n");
 
-        Log.i("sslog", output);
+        print(output.toString());
     }
 
 
@@ -570,7 +570,8 @@ public class GeneratorUtils {
                 "</LinearLayout>";
 
 
-        Log.i("sslog", output);
+//        Log.i("sslog", output);
+        print(output);
     }
 
     public void gResult(Entity entity){
@@ -647,7 +648,7 @@ public class GeneratorUtils {
                 "}\n";
 
 
-        Log.i("sslog", output);
+        print(output);
     }
 
     /**
@@ -657,5 +658,15 @@ public class GeneratorUtils {
      */
     public String parseToLowFirst(String item){
         return item.substring(0,1).toLowerCase()+item.substring(1);
+    }
+
+    void print(String veryLongString){
+        int maxLogSize = 1000;
+        for(int i = 0; i <= veryLongString.length() / maxLogSize; i++) {
+            int start = i * maxLogSize;
+            int end = (i+1) * maxLogSize;
+            end = end > veryLongString.length() ? veryLongString.length() : end;
+            Log.i("sslog", veryLongString.substring(start, end));
+        }
     }
 }
