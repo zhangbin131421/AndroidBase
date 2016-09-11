@@ -273,6 +273,7 @@ public class TypeUtils {
                 break;
             case TYPE_2_7:
                 EarthResistanceTestActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_8:

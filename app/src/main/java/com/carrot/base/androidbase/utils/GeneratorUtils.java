@@ -42,7 +42,7 @@ public class GeneratorUtils {
 
     public String[][] ENTITY_BASE = new String[][]{
             {"ID", T_INT},
-            {"UserID", T_STRING},
+            {"UserID", T_INT},
             {"AssignByUserID", T_INT},
             {"CreatedTime", T_STRING}
     };
@@ -175,9 +175,9 @@ public class GeneratorUtils {
 
     public void generate(){
 //        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
-        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_5, COLUMNS_VoltageMeasurement));
-//        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_6, COLUMNS_EarthResistanceTest));
-//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_7, COLUMNS_SpecialSecurityCheck));
+//        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_6, COLUMNS_VoltageMeasurement));
+        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_7, COLUMNS_EarthResistanceTest));
+//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_8, COLUMNS_SpecialSecurityCheck));
 //
 //        allEntity.add(new Entity("DistributionNetworkEngineering", TypeUtils.TYPE_3_1, COLUMNS_DistributionNetworkEngineering));
 //
@@ -187,7 +187,7 @@ public class GeneratorUtils {
 
         for (Entity entity : allEntity) {
 //            gLayout(entity);
-            gResult(entity);
+//            gResult(entity);
             gActivity(entity);
         }
     }
@@ -421,7 +421,7 @@ public class GeneratorUtils {
                 "    void add(){\n" +
                 "\n" +
                 "        "+parseToLowFirst(entity.nameEnglish)+"Result.assignByUserID = userPrefs.id().get();\n" +
-                "        "+parseToLowFirst(entity.nameEnglish)+"Result.userId = userPrefs.id().get();\n" +
+                "        "+parseToLowFirst(entity.nameEnglish)+"Result.userID = userPrefs.id().get();\n" +
                 "\n" +
                 "        "+parseToLowFirst(entity.nameEnglish)+"Client.add("+parseToLowFirst(entity.nameEnglish)+"Result);\n" +
                 "    }\n" +
