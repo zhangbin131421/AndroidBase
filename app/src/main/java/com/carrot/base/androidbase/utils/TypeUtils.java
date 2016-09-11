@@ -278,6 +278,7 @@ public class TypeUtils {
                 break;
             case TYPE_2_8:
                 SpecialSecurityCheckActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
                         .startForResult(requestCode);
                 break;
 

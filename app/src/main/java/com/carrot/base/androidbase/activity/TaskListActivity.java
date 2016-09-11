@@ -24,6 +24,7 @@ import com.carrot.base.androidbase.client.CrossTestClient;
 import com.carrot.base.androidbase.client.EarthResistanceTestClient;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
+import com.carrot.base.androidbase.client.SpecialSecurityCheckClient;
 import com.carrot.base.androidbase.client.TotalPerformanceTestClient;
 import com.carrot.base.androidbase.client.VoltageMeasurementClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
@@ -73,6 +74,8 @@ public class TaskListActivity extends AppCompatActivity {
     VoltageMeasurementClient voltageMeasurementClient;
     @RestService
     EarthResistanceTestClient earthResistanceTestClient;
+    @RestService
+    SpecialSecurityCheckClient specialSecurityCheckClient;
 
     @ViewById(R.id.rv_fragment_task_list_rv)
     RecyclerView mRecyclerView;
@@ -254,12 +257,12 @@ public class TaskListActivity extends AppCompatActivity {
                 list = voltageMeasurementClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
                 break;
             }
-            case TypeUtils.TYPE_2_7:{
+            case TypeUtils.TYPE_2_7:{//ok
                 list = earthResistanceTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
                 break;
             }
             case TypeUtils.TYPE_2_8:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+                list = specialSecurityCheckClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
                 break;
             }
             //====================

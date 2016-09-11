@@ -176,8 +176,8 @@ public class GeneratorUtils {
     public void generate(){
 //        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
 //        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_6, COLUMNS_VoltageMeasurement));
-        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_7, COLUMNS_EarthResistanceTest));
-//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_8, COLUMNS_SpecialSecurityCheck));
+//        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_7, COLUMNS_EarthResistanceTest));
+        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_8, COLUMNS_SpecialSecurityCheck));
 //
 //        allEntity.add(new Entity("DistributionNetworkEngineering", TypeUtils.TYPE_3_1, COLUMNS_DistributionNetworkEngineering));
 //
