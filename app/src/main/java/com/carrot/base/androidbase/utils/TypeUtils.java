@@ -268,6 +268,7 @@ public class TypeUtils {
                 break;
             case TYPE_2_6:
                 VoltageMeasurementActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_7:

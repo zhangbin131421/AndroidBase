@@ -22,7 +22,9 @@
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CrossTestResult {
 
-
+    public static final String ID = "ID";
+    @JsonProperty(value=ID)
+    public int id;
     public static final String UserID = "UserID";
     @JsonProperty(value=UserID)
     public int userId;
@@ -83,6 +85,7 @@ public class CrossTestResult {
     public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
+        rtn.add(CrossTestResult.ID, this.id + "");
         rtn.add(CrossTestResult.AssignmentTime, this.assignmentTime.getBytes("UTF-8"));
         rtn.add(CrossTestResult.TaskNum, this.taskNum.getBytes("UTF-8"));
         rtn.add(CrossTestResult.AreaName, this.areaName.getBytes("UTF-8"));

@@ -40,6 +40,12 @@ public class GeneratorUtils {
 
     public List<Entity> allEntity = new ArrayList<>();
 
+    public String[][] ENTITY_BASE = new String[][]{
+            {"ID", T_INT},
+            {"UserID", T_STRING},
+            {"AssignByUserID", T_INT},
+            {"CreatedTime", T_STRING}
+    };
 
     public String[][] COLUMNS_CrossTest = new String[][]{
             //交叉跨越测量
@@ -168,8 +174,8 @@ public class GeneratorUtils {
             {"Cost", "费用", T_I, T_STRING, "0"}};
 
     public void generate(){
-        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
-//        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_5, COLUMNS_VoltageMeasurement));
+//        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
+        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_5, COLUMNS_VoltageMeasurement));
 //        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_6, COLUMNS_EarthResistanceTest));
 //        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_7, COLUMNS_SpecialSecurityCheck));
 //
@@ -181,7 +187,7 @@ public class GeneratorUtils {
 
         for (Entity entity : allEntity) {
 //            gLayout(entity);
-//            gResult(entity);
+            gResult(entity);
             gActivity(entity);
         }
     }
@@ -607,13 +613,15 @@ public class GeneratorUtils {
                 "@JsonIgnoreProperties(ignoreUnknown = true)\n" +
                 "public class "+entity.nameEnglish+"Result {\n" +
                 "\n" +
-                "\n" +
-                "    public static final String UserID = \"UserID\";\n" +
-                "    @JsonProperty(value=UserID)\n" +
-                "    public int userId;\n" +
-                "    public static final String AssignByUserID = \"AssignByUserID\";\n" +
-                "    @JsonProperty(value=AssignByUserID)\n" +
-                "    public int assignByUserID;";
+                "\n";
+
+        for (String[] item : ENTITY_BASE) {
+            output +=
+                    "    public static final String "+item[0]+" = \""+item[0]+"\";\n" +
+                            "    @JsonProperty(value="+item[0]+")\n" +
+                            "    public "+item[1]+" "+parseToLowFirst(item[0])+";\n";
+
+        }
 
         for (String[] item : entity.columns) {
             output +=
@@ -633,6 +641,18 @@ public class GeneratorUtils {
                 "        MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();\n" +
                 "\n";
 
+        for(String[] item : ENTITY_BASE){
+            if(item[1].equals(T_INT)){
+                output +=
+                "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+"+\"\");\n";
+            }else if(item[1].equals(T_STRING)){
+                output +=
+                "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+".getBytes(\"UTF-8\"));\n";
+
+            }else if(item[1].equals(T_TIME)){
+
+            }
+        }
         for (String[] item : entity.columns){
             if(item[3].equals(T_INT)){
                 output +=

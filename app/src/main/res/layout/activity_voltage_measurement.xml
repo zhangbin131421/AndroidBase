@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!-- 负荷电压测量	-->
+    <!-- 交叉跨越测量 -->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,434 +13,312 @@
             android:id="@+id/tb_tool_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_title1"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22"/>
-    </LinearLayout>
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_num"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016082201"/>
+
+        <LinearLayout style="@style/tableTitle">
+            <TextView style="@style/tableColName"
+                android:text="任务派发"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etAssignmentTime"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="任务编号"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etTaskNum"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="台区名称"/>
+            <Spinner
+                android:id="@+id/etAreaName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="配变容量（KVA）4"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etConfigA"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="配变型号"/>
+            <Spinner
+                android:id="@+id/etConfigB"
+                android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="配变类别"/>
+            <Spinner
+                android:id="@+id/etConfigC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="额定电流（A）"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etRatedCurrent"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="动力户数"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etPowerHouseholder"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="动力容量"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etPowerCapacity"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="居民户数"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etHouseholder"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="居民容量"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etHouseholderCapacity"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="安全措施"/>
+            <Spinner
+                android:id="@+id/etSafetyMeasure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="结束时间"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etEndTime"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle">
+            <TextView style="@style/tableColName"
+                android:text="测量情况"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etBeginHandleTime"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="时段"/>
+            <Spinner
+                android:id="@+id/etPeriod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="A相电流（A）1"/>
+            <org.apmem.tools.layouts.FlowLayout
+                android:id="@+id/etCurrentA_content"
+                style="@style/tableColImageLayout">
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:id="@+id/btn_add_imageCurrentA"
+                    style="@style/tableColImagAdd"/>
+            </org.apmem.tools.layouts.FlowLayout>
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="B相电流（A）2"/>
+            <org.apmem.tools.layouts.FlowLayout
+                android:id="@+id/etCurrentB_content"
+                style="@style/tableColImageLayout">
+                <ImageView android:layout_margin="5dp"
+                android:id="@+id/btn_add_imageCurrentB"
+                style="@style/tableColImagAdd"/>
+            </org.apmem.tools.layouts.FlowLayout>
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="C相电流（A）3"/>
+            <org.apmem.tools.layouts.FlowLayout
+                android:id="@+id/etCurrentC_content"
+                style="@style/tableColImageLayout">
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:id="@+id/btn_add_imageCurrentC"
+                    style="@style/tableColImagAdd"/>
+            </org.apmem.tools.layouts.FlowLayout>
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="零线电流（A）"/>
+            <org.apmem.tools.layouts.FlowLayout
+                android:id="@+id/etZeoLineCurrent_content"
+                style="@style/tableColImageLayout">
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:id="@+id/btn_add_imageZeoLineCurrent"
+                    style="@style/tableColImagAdd"/>
+            </org.apmem.tools.layouts.FlowLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="负载率（%）"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etLoadRate"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="三相不平衡率（%）"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etImbalanceRate"/>
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="线路首端电压（V）"/>
+            <org.apmem.tools.layouts.FlowLayout
+                android:id="@+id/etHeaderVoltage_content"
+                style="@style/tableColImageLayout">
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:id="@+id/btn_add_imageHeaderVoltage"
+                    style="@style/tableColImagAdd"/>
+            </org.apmem.tools.layouts.FlowLayout>
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="线路末端电压（V）"/>
+            <org.apmem.tools.layouts.FlowLayout
+                android:id="@+id/etFooterVoltage_content"
+                style="@style/tableColImageLayout">
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:id="@+id/btn_add_imageFooterVoltage"
+                    style="@style/tableColImagAdd"/>
+            </org.apmem.tools.layouts.FlowLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="是否越限"/>
+            <Spinner
+                android:id="@+id/etIsOutOfLimit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="整改建议"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etModificationOpinion"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="测量日期"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etTestTime"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="测量人员"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+            android:id="@+id/etTester"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle">
+            <TextView style="@style/tableColName"
+                android:text="任务结束"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etEndHandleTime"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="已处理"/>
+            <Spinner
+                android:id="@+id/etIsHandled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout style="@style/tableTitle2">
+            <TextView style="@style/tableColName"
+                android:text="未处理"/>
+            <com.andreabaccega.widget.FormEditText
+                style="@style/tableColInput"
+                whatever:emptyErrorString="@string/notEmpty"
+                android:id="@+id/etUnhandleReason"/>
+        </LinearLayout>
+
+
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_area_name"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="导入"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="配变容量（KVA）4"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="导入"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="配变型号"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="配变类别"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="额定电流（A）"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="动力户数"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="动力容量"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="居民户数"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="居民容量"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="安全措施"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="结束时间"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <!-- ********************* -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="测量情况"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="时段"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="（如：峰值、平值、谷值）"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="A相电流（A）1"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="（附照片）"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="B相电流（A）2"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="（附照片）"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="C相电流（A）3"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="（附照片）"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="零线电流（A）"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="（附照片）"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="负载率（%）"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="公式：（1+2+3）*220/1000/4*100"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="三相不平衡率（%）"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="公式：（最大相电流—最小相电流）/最大相电流*100"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="线路首端电压（V）"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="（附照片）"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="线路末端电压（V）"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="（附照片）"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="是否越限"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="（如：是、否）"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="整改建议"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="选是，则填写整改建议，并发起消缺"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="测量日期"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="测量人员"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <!-- ********************** -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_end_handle_tiem"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_is_handled"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="@string/task_unhandle_reason"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="原因"/>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
