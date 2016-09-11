@@ -16,6 +16,7 @@ import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
+import com.carrot.base.androidbase.utils.GeneratorUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.TypeVo;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
@@ -149,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
+
+        GeneratorUtils.getInstance().generate();
 
         if(userPrefs.name().get().equals("")){
             LoginActivity_.intent(MainActivity.this).start();
