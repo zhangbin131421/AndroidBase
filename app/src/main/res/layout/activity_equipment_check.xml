@@ -105,7 +105,8 @@
                     android:text="缺陷内容"/>
                 <org.apmem.tools.layouts.FlowLayout
                     android:id="@+id/et_defect_content"
-                    style="@style/tableColImageLayout">
+                    style="@style/tableColImageLayout"
+                    android:gravity="center_vertical">
                     <ImageView
                         android:layout_margin="5dp"
                         android:id="@+id/btn_add_image"

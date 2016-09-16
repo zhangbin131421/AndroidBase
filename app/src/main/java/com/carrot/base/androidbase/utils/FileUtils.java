@@ -14,6 +14,7 @@ import org.springframework.util.MultiValueMap;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.model.PhotoInfo;
@@ -28,6 +29,14 @@ public class FileUtils {
     public static void finishGetPhoto(Context context, Resources resources,
                         List<PhotoInfo> resultList, List<PhotoInfo> picList,
                         org.apmem.tools.layouts.FlowLayout contentView){
+
+        BitmapFactory.Options opts=new BitmapFactory.Options();
+        opts.inDither=false;                     //Disable Dithering mode
+        opts.inPurgeable=true;                   //Tell to gc that whether it needs free memory, the Bitmap can be cleared
+        opts.inInputShareable=true;              //Which kind of reference will be used to recover the Bitmap data after being clear, when it will be used in the future
+        opts.inTempStorage=new byte[32 * 1024];
+
+
         for (PhotoInfo pi : resultList){
 
             picList.add(pi);
@@ -35,7 +44,16 @@ public class FileUtils {
             File file = new File(pi.getPhotoPath());
 
             if(file.exists()){
-                Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                FileInputStream fis = null;
+                try {
+                    fis = new FileInputStream(file);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+
+//                BitmapFactory.decodeStream(fis, null, opts);
+                Bitmap bitmap = BitmapFactory.decodeStream(fis, null, opts);//BitmapFactory.decodeFile(file.getAbsolutePath());
 
                 View view = ImageUtils.getImageViewForForm(context, resources, bitmap);
 
