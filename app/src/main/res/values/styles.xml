@@ -58,8 +58,8 @@
     </style>
     <!-- 添加图片的按钮样式+ -->
     <style name="tableColImagAdd">
-        <item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:src">@mipmap/ic_add_white_24dp</item>
         <item name="android:background">@color/divider</item>
         <item name="android:padding">1dp</item>
