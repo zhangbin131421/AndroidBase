@@ -186,6 +186,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             getImage();
 
+
+
             this.saveStatus = 1;
         }
 
