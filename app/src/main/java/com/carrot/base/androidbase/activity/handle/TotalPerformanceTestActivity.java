@@ -110,24 +110,14 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
+
     @Background
-    void getObject(){
-        showLoading();
-
-        if(taskBaseVo == null){
-
-        }else{
-            totalPerformanceTestResult = totalPerformanceTestClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        totalPerformanceTestResult = totalPerformanceTestClient.getById(taskBaseVo.id);
     }
 
-
     @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
         if(totalPerformanceTestResult == null){
 
             totalPerformanceTestResult = new TotalPerformanceTestResult();

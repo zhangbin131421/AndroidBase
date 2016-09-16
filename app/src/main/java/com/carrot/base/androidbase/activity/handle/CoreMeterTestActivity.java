@@ -113,23 +113,14 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
         setDropDownListAdapter(etTestResult, TypeUtils.TEST_RESULT);
     }
 
-    @Override
     @Background
-    void getObject(){
-        showLoading();
-
-        if(taskBaseVo == null){
-
-        }else{
-            coreMeterTestResult = coreMeterTestClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        coreMeterTestResult = coreMeterTestClient.getById(taskBaseVo.id);
     }
 
     @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
+
         if(coreMeterTestResult == null){
 
             coreMeterTestResult = new CoreMeterTestResult();

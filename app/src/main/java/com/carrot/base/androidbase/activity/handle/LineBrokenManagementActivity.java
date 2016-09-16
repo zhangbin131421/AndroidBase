@@ -96,24 +96,14 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
+
     @Background
-    void getObject(){
-        showLoading();
-
-        if(taskBaseVo == null){
-
-        }else{
-            lineBrokenManagementResult = lineBrokenManagementClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        lineBrokenManagementResult = lineBrokenManagementClient.getById(taskBaseVo.id);
     }
 
-
     @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
         if(lineBrokenManagementResult == null){
 
             lineBrokenManagementResult = new LineBrokenManagementResult();

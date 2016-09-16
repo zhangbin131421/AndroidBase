@@ -168,7 +168,7 @@ public class TaskListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
 
-                TypeUtils.openItem(subTypeVo.getName(), context, mAdapter.getItem(position), ACTIVITY_REQUEST_CODE);
+                TypeUtils.openItem(subTypeVo.getName(), context, mAdapter.getItem(position), ACTIVITY_REQUEST_CODE, status);
             }
         });
 
@@ -302,7 +302,7 @@ public class TaskListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
 
-                TypeUtils.openItem(subTypeVo.getName(), this, null, ACTIVITY_REQUEST_CODE);
+                TypeUtils.openItem(subTypeVo.getName(), this, null, ACTIVITY_REQUEST_CODE, status);
 
                 return true;
             case android.R.id.home:

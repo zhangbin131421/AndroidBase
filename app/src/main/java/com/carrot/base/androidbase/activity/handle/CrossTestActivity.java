@@ -120,24 +120,14 @@ public class CrossTestActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
+
     @Background
-    void getObject(){
-        showLoading();
-
-        if(taskBaseVo == null){
-
-        }else{
-            crossTestResult = crossTestClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        crossTestResult = crossTestClient.getById(taskBaseVo.id);
     }
 
-
     @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
         if(crossTestResult == null){
 
             crossTestResult = new CrossTestResult();

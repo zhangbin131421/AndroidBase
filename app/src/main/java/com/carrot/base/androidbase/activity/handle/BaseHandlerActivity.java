@@ -8,8 +8,10 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.text.InputType;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,19 +27,17 @@ import com.carrot.base.androidbase.image.UILImageLoader;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.ImageUtils;
-import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.InjectMenu;
+import org.androidannotations.annotations.OptionsMenuItem;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
-import org.apache.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.util.MultiValueMap;
 
 import java.util.List;
 
@@ -54,6 +54,9 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
 @EActivity
 public abstract class BaseHandlerActivity extends AppCompatActivity {
 
+    public FormEditText[] addDisableList;
+    public FormEditText[] updateDisableList;
+    public ImageView[] imageAddButtonList;
 
     @Bean
     SSErrorHandler ssErrorHandler;
@@ -67,6 +70,11 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
     @Extra("extraTaskBaseVo")
     TaskBaseVo taskBaseVo;
 
+
+    //未完成：0； 已完成：1
+    @Extra("isFinished")
+    int isFinished;
+
     Context context;
     Resources resources;
 
@@ -76,6 +84,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
     @ViewById(R.id.tb_tool_bar)
     Toolbar toolbar;
 
+
+    private MenuItem saveItem = null;
 
     /**
      * 需要验证的字段
@@ -89,6 +99,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -97,7 +108,11 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
 
         initDropDownList();
 
+        //获取对应的entity
         getObject();
+
+        //处理可编辑状态
+        updateDisabled();
     }
 
     /**
@@ -106,10 +121,75 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
     abstract void initDropDownList();
 
     /**
-     * 获取entity
+     * 获取entity,并标记saveStatus状态
      */
-    abstract void getObject();
+    @Background
+    void getObject(){
+        showLoading();
 
+        if(taskBaseVo == null){
+
+        }else{
+            this.saveStatus = 1;
+            getEntityFromServer();
+        }
+
+        refreshView();
+        dissmisLoading();
+    }
+
+    abstract void getEntityFromServer();
+
+    private void refreshView(){
+        refreshViewAfterGetEntity();
+
+        updateDisabled();
+    }
+
+    /**
+     * 获得server后的entity后，刷新View
+     */
+    @UiThread
+    abstract void refreshViewAfterGetEntity();
+
+    /**
+     * 处理不可编辑状态的控件，已完成、未完成
+     */
+    @UiThread
+    void updateDisabled(){
+
+        FormEditText[] editList;
+
+
+        if(this.isFinished == 0){ //未完成
+            editList = addDisableList;
+        }else{//已完成
+
+            editList = updateDisableList;
+
+            if(imageAddButtonList != null){
+                for (ImageView addBtn : imageAddButtonList){
+                    addBtn.setVisibility(ImageView.GONE);
+                }
+            }
+
+            if(saveItem != null){
+                saveItem.setVisible(false);
+            }
+        }
+
+        if(editList != null){
+            for(FormEditText editText : editList){
+                editText.setInputType(InputType.TYPE_NULL);
+            }
+        }
+    }
+
+
+    @OptionsMenuItem(R.id.menu_task_item_save)
+    void singleInjection(MenuItem item) {
+        saveItem = item;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

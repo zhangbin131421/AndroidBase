@@ -1,5 +1,6 @@
 package com.carrot.base.androidbase.activity.handle;
 
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
@@ -93,17 +94,31 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
+
+    @ViewById(R.id.btn_add_image)
+    ImageView imageAdd;
+
     @AfterViews
     void bindAdapter(){
-
-        super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
 
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
                 etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etIsHandled, etUnhandleReason};
+
+        addDisableList = new FormEditText[] {etAssignmentTime};
+
+        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
+                etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
+                etEndHandleTime, etIsHandled, etUnhandleReason};
+
+        imageAddButtonList = new ImageView[] {imageAdd};
+
+
+
+        super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
+
     }
 
-    @Override
     void initDropDownList(){
         //下拉选择框
         setDropDownListAdapter(etCheckType, TypeUtils.CHECK_TYPE);
@@ -114,24 +129,11 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
-    @Background
-    void getObject(){
-        showLoading();
-
-        if(taskBaseVo == null){
-
-        }else{
-            equipmentCheckResult = equipmentCheckClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        equipmentCheckResult = equipmentCheckClient.getById(taskBaseVo.id);
     }
 
-
-    @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
         if(equipmentCheckResult == null){
 
             equipmentCheckResult = new EquipmentCheckResult();
@@ -185,12 +187,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             etUnhandleReason.setText(equipmentCheckResult.unhandleReason);
 
             getImage();
-
-
-
-            this.saveStatus = 1;
         }
-
     }
 
     /**
@@ -216,7 +213,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     /**
      * 新增
      */
-    @Override
     void add(){
 
         equipmentCheckResult.assignByUserID = userPrefs.id().get();
@@ -228,7 +224,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     /**
      * 更新
      */
-    @Override
     void update(){
 
         MultiValueMap<String, Object> data = null;
@@ -238,7 +233,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             e.printStackTrace();
         }
 
-        FileUtils.addImageToData(data, "DefectContentPic", defectContentPicList, this);
+        FileUtils.addImageToData(data, EquipmentCheckResult.DefectContentPic, defectContentPicList, this);
 
         equipmentCheckClient.update(data);
 
@@ -246,7 +241,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
 
 
-    @Override
     boolean validate(){
 
         if(super.validate()) {

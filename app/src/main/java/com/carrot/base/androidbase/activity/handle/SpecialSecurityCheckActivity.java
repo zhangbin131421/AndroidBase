@@ -100,24 +100,14 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
+
     @Background
-    void getObject(){
-        showLoading();
-
-        if(taskBaseVo == null){
-
-        }else{
-            specialSecurityCheckResult = specialSecurityCheckClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        specialSecurityCheckResult = specialSecurityCheckClient.getById(taskBaseVo.id);
     }
 
-
     @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
         if(specialSecurityCheckResult == null){
 
             specialSecurityCheckResult = new SpecialSecurityCheckResult();

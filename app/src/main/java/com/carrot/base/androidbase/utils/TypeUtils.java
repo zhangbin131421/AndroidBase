@@ -211,7 +211,7 @@ public class TypeUtils {
 
 
 
-    public static void openItem(String typeName, Context context, TaskBaseVo taskBaseVo, int requestCode){
+    public static void openItem(String typeName, Context context, TaskBaseVo taskBaseVo, int requestCode, String status){
         switch (typeName){
             case TYPE_1_1:
                 LineBrokenManagementActivity_.intent(context)
@@ -244,41 +244,49 @@ public class TypeUtils {
             case TYPE_2_1:
                 CoreMeterTestActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
+                        .isFinished(status.equals("已完成") ? 1 : 0)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_2:
                 TotalPerformanceTestActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
+                        .isFinished(status.equals("已完成") ? 1 : 0)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_3:
                 EquipmentCheckActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
+                        .isFinished(status.equals("已完成") ? 1 : 0)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_4:
                 ResolveRecordActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
+                        .isFinished(status.equals("已完成") ? 1 : 0)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_5:
                 CrossTestActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
+                        .isFinished(status.equals("已完成") ? 1 : 0)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_6:
                 VoltageMeasurementActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
+                        .isFinished(status.equals("已完成") ? 1 : 0)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_7:
                 EarthResistanceTestActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
+                        .isFinished(status.equals("已完成") ? 1 : 0)
                         .startForResult(requestCode);
                 break;
             case TYPE_2_8:
                 SpecialSecurityCheckActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
+                        .isFinished(status.equals("已完成") ? 1 : 0)
                         .startForResult(requestCode);
                 break;
 
@@ -287,6 +295,7 @@ public class TypeUtils {
             case TYPE_3_1:
                 DistributionNetworkEngineeringActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
+                        .isFinished(status.equals("已完成") ? 1 : 0)
                         .startForResult(requestCode);
                 break;
 

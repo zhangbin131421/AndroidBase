@@ -114,24 +114,14 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
+
     @Background
-    void getObject(){
-        showLoading();
-
-        if(taskBaseVo == null){
-
-        }else{
-            earthResistanceTestResult = earthResistanceTestClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        earthResistanceTestResult = earthResistanceTestClient.getById(taskBaseVo.id);
     }
 
-
     @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
         if(earthResistanceTestResult == null){
 
             earthResistanceTestResult = new EarthResistanceTestResult();

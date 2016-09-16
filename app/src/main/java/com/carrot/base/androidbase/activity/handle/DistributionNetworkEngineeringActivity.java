@@ -142,24 +142,15 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
+
+
     @Background
-    void getObject(){
-        showLoading();
-
-        if(taskBaseVo == null){
-
-        }else{
-            distributionNetworkEngineeringResult = distributionNetworkEngineeringClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        distributionNetworkEngineeringResult = distributionNetworkEngineeringClient.getById(taskBaseVo.id);
     }
 
-
     @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
         if(distributionNetworkEngineeringResult == null){
 
             distributionNetworkEngineeringResult = new DistributionNetworkEngineeringResult();

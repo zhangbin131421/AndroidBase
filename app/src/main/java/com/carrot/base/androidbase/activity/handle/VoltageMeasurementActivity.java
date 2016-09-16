@@ -174,24 +174,13 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
     @Background
-    void getObject(){
-        showLoading();
-
-        if(taskBaseVo == null){
-
-        }else{
-            voltageMeasurementResult = voltageMeasurementClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        voltageMeasurementResult = voltageMeasurementClient.getById(taskBaseVo.id);
     }
 
-
     @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
         if(voltageMeasurementResult == null){
 
             voltageMeasurementResult = new VoltageMeasurementResult();

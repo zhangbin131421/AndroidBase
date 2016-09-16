@@ -107,30 +107,17 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
     void initDropDownList(){
         //下拉选择框
         setDropDownListAdapter(et_WorkType, TypeUtils.WORK_TYPE);
     }
 
-    @Override
-    @Background
-    void getObject(){
-        showLoading();
 
-        if(taskBaseVo == null){
-
-        }else{
-            resolveRecordResult = resolveRecordClient.getById(taskBaseVo.id);
-        }
-
-        refreshView();
-        dissmisLoading();
+    void getEntityFromServer(){
+        resolveRecordResult = resolveRecordClient.getById(taskBaseVo.id);
     }
 
-
-    @UiThread
-    void refreshView(){
+    void refreshViewAfterGetEntity(){
         if(resolveRecordResult == null){
 
             resolveRecordResult = new ResolveRecordResult();
@@ -226,7 +213,6 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
     /**
      * 新增
      */
-    @Override
     void add(){
 
         resolveRecordResult.assignByUserID = userPrefs.id().get();
@@ -238,7 +224,6 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
     /**
      * 更新
      */
-    @Override
     void update(){
 
         MultiValueMap<String, Object> data = null;
@@ -255,7 +240,6 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
     }
 
 
-    @Override
     boolean validate(){
 
         if(super.validate()) {
