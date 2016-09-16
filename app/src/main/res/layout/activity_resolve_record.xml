@@ -86,8 +86,7 @@
 
                 <Spinner
                     android:id="@+id/et_WorkType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/spinner"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

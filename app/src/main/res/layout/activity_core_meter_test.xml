@@ -116,8 +116,7 @@
                     <!--whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>-->
                 <Spinner
                     android:id="@+id/et_wether"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    style="@style/spinner"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -126,8 +125,7 @@
                     android:text="试跳方法"/>
                 <Spinner
                     android:id="@+id/et_test_way"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    style="@style/spinner"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--android:id="@+id/et_test_way"-->
                     <!--whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>-->
@@ -180,8 +178,7 @@
                     android:text="检测结果"/>
                 <Spinner
                     android:id="@+id/et_test_result"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    style="@style/spinner"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--android:id="@+id/et_test_result"-->
                     <!--whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>-->

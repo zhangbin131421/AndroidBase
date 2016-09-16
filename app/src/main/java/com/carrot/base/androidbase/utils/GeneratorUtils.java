@@ -28,6 +28,25 @@ public class GeneratorUtils {
     }
 
 
+    public void generate(){
+//        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
+//        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_6, COLUMNS_VoltageMeasurement));
+//        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_7, COLUMNS_EarthResistanceTest));
+//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_8, COLUMNS_SpecialSecurityCheck));
+//
+        allEntity.add(new Entity("DistributionNetworkEngineering", TypeUtils.TYPE_3_1, COLUMNS_DistributionNetworkEngineering));
+//
+//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_4_1, COLUMNS_CarManagement));
+
+
+
+        for (Entity entity : allEntity) {
+//            gLayout(entity);
+//            gResult(entity);
+            gActivity(entity);
+        }
+    }
+
     public final static String T_I = "1";
     public final static String T_S = "2";
     public final static String T_P = "3";
@@ -173,24 +192,6 @@ public class GeneratorUtils {
             {"EndDistanceCode", "终止路码", T_I, T_STRING, "0"},
             {"Cost", "费用", T_I, T_STRING, "0"}};
 
-    public void generate(){
-//        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
-//        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_6, COLUMNS_VoltageMeasurement));
-//        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_7, COLUMNS_EarthResistanceTest));
-        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_8, COLUMNS_SpecialSecurityCheck));
-//
-//        allEntity.add(new Entity("DistributionNetworkEngineering", TypeUtils.TYPE_3_1, COLUMNS_DistributionNetworkEngineering));
-//
-//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_4_1, COLUMNS_CarManagement));
-
-
-
-        for (Entity entity : allEntity) {
-//            gLayout(entity);
-//            gResult(entity);
-            gActivity(entity);
-        }
-    }
 
 
     class Entity{

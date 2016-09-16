@@ -53,8 +53,7 @@
                     <!--android:id="@+id/etAreaName"/>-->
                 <Spinner
                     android:id="@+id/etAreaName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/spinner"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -66,8 +65,7 @@
                     <!--android:id="@+id/etProtectLine"/>-->
                 <Spinner
                     android:id="@+id/etProtectLine"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/spinner"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -79,8 +77,7 @@
                     <!--android:id="@+id/etType"/>-->
                 <Spinner
                     android:id="@+id/etType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/spinner"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -92,8 +89,7 @@
                     <!--android:id="@+id/etSafetyMeasure"/>-->
                 <Spinner
                     android:id="@+id/etSafetyMeasure"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/spinner"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -195,8 +191,7 @@
                     <!--android:id="@+id/etTestResult"/>-->
                 <Spinner
                     android:id="@+id/etTestResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/spinner"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

@@ -21,6 +21,7 @@ import com.carrot.base.androidbase.adapter.TaskCardAdapter;
 import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
 import com.carrot.base.androidbase.client.CoreMeterTestClient;
 import com.carrot.base.androidbase.client.CrossTestClient;
+import com.carrot.base.androidbase.client.DistributionNetworkEngineeringClient;
 import com.carrot.base.androidbase.client.EarthResistanceTestClient;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
@@ -76,6 +77,8 @@ public class TaskListActivity extends AppCompatActivity {
     EarthResistanceTestClient earthResistanceTestClient;
     @RestService
     SpecialSecurityCheckClient specialSecurityCheckClient;
+    @RestService
+    DistributionNetworkEngineeringClient distributionNetworkEngineeringClient;
 
     @ViewById(R.id.rv_fragment_task_list_rv)
     RecyclerView mRecyclerView;
@@ -267,7 +270,7 @@ public class TaskListActivity extends AppCompatActivity {
             }
             //====================
             case TypeUtils.TYPE_3_1:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+                list = distributionNetworkEngineeringClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
                 break;
             }
             //=====================

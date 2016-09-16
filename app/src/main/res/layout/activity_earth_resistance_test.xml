@@ -49,8 +49,7 @@
                 android:text="台区名称"/>
             <Spinner
                 android:id="@+id/etAreaName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/spinner"/>
         </LinearLayout>
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
@@ -84,8 +83,7 @@
                 android:text="安全措施"/>
             <Spinner
                 android:id="@+id/etSafetyMeasure"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/spinner"/>
         </LinearLayout>
         <LinearLayout style="@style/tableTitle">
             <TextView style="@style/tableColName"
@@ -101,8 +99,7 @@
                 android:text="天气"/>
             <Spinner
                 android:id="@+id/etWether"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/spinner"/>
         </LinearLayout>
 
         <LinearLayout style="@style/tableTitle2">
@@ -150,8 +147,7 @@
                 android:text="已处理"/>
             <Spinner
                 android:id="@+id/etIsHandled"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                style="@style/spinner"/>
         </LinearLayout>
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"

@@ -22,13 +22,17 @@
 
     <!-- 表单每个大标题的样式 -->
     <style name="tableTitle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/border</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/primary_light</item>
+        <item name="android:layout_height">60dp</item>
+        <!--<item name="android:background">@color/primary_light</item>-->
     </style>
     <style name="tableTitle2">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/border</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">60dp</item>
     </style>
 
     <!-- 表单左侧的名称的样式 -->
@@ -39,8 +43,9 @@
     </style>
     <!-- 表单右侧输入文本的样式 -->
     <style name="tableColInput">
+        <item name="android:background">@null</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">60dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:paddingRight">10dp</item>
     </style>
@@ -58,5 +63,9 @@
         <item name="android:src">@mipmap/ic_add_white_24dp</item>
         <item name="android:background">@color/divider</item>
         <item name="android:padding">1dp</item>
+    </style>
+    <style name="spinner">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
     </style>
 </resources>

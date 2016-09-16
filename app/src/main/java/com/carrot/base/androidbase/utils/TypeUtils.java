@@ -286,6 +286,7 @@ public class TypeUtils {
 
             case TYPE_3_1:
                 DistributionNetworkEngineeringActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
                         .startForResult(requestCode);
                 break;
 
