@@ -111,6 +111,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
                 etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etIsHandled, etUnhandleReason};
 
+        updateDisabledSpinnerList = new Spinner[] {etCheckType, etExistDefect, etDefectLevel};
+
         imageAddButtonList = new ImageView[] {imageAdd};
 
 

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
@@ -54,8 +56,14 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
 @EActivity
 public abstract class BaseHandlerActivity extends AppCompatActivity {
 
+    //新增时不可编辑的字段
     public FormEditText[] addDisableList;
+    //修改时不可编辑的字段
     public FormEditText[] updateDisableList;
+
+    //修改时不可编辑的下拉选项
+    public Spinner[] updateDisabledSpinnerList;
+
     public ImageView[] imageAddButtonList;
 
     @Bean
@@ -175,6 +183,18 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
 
             if(saveItem != null){
                 saveItem.setVisible(false);
+            }
+
+            if(updateDisabledSpinnerList != null){
+                for(Spinner spinner : updateDisabledSpinnerList){
+//                    spinner.getSelectedView().setEnabled(false);
+//                    ((Spinner) spinner).getSelectedView().setEnabled(false);
+                    spinner.setEnabled(false);
+                    spinner.setClickable(false);
+                    spinner.setBackgroundResource(R.drawable.spinner_text);
+
+                }
+
             }
         }
 

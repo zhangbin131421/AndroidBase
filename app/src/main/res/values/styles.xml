@@ -71,4 +71,9 @@
         <item name="android:minWidth">100dp</item>
         <item name="android:minHeight">50dp</item>
     </style>
+
+    <!-- 下拉框文本状态 -->
+    <style parent="@android:style/Widget.Spinner" name="SpinnerAsEditText">
+        <item name="android:background">@android:drawable/edit_text</item>
+    </style>
 </resources>
