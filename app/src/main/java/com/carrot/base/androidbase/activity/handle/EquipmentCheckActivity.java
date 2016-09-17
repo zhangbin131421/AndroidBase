@@ -111,15 +111,23 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
+        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime};
+
+        finishDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
                 etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason};
 
-        updateDisabledSpinnerList = new Spinner[] {etCheckType, etExistDefect, etIsHandled, etDefectLevel};
+        updateDisabledSpinnerList = new Spinner[] {etCheckType};
+        finishDisabledSpinnerList = new Spinner[] {etCheckType, etExistDefect, etIsHandled, etDefectLevel};
 
         imageAddButtonList = new ImageView[] {imageAdd};
 
-        openDateEditTextList = new FormEditText[] {etEndTime, etCheckTime, etEndHandleTime, etBeginHandleTime};
+        openDateEditTextList = new OpenDateVo[] {
+                new OpenDateVo(etEndTime, 1),
+                new OpenDateVo(etCheckTime, 10),
+                new OpenDateVo(etEndHandleTime, 10),
+                new OpenDateVo(etBeginHandleTime, 10)
+        };
 
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
                 new ImageChooseVo(imageAdd, defectContentPicList, etDefectContent)
@@ -156,27 +164,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
-
-            //test start
-
-             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-             etTaskNum.setText("Task num"+ DateUtils.getCurrentYYYY_MM_DD());
-
-             etCheckScope.setText("checkscope");
-             etSafetyMeasure.setText("safeme");
-             etEndTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-             etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-//             etExistDefect.setText("defect");
-             etDefectPlace.setText("place");
-//             etDefectContent.setText("content");
-//             etDefectLevel.setText("level");
-             etHandleContent.setText("content");
-             etCheckpeople.setText("people");
-             etCheckTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-             etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-//             etIsHandled.setText(0+"");
-             etUnhandleReason.setText("unreason");
-            //test end
         }else{
 
             etAssignmentTime.setText(equipmentCheckResult.assignmentTime);

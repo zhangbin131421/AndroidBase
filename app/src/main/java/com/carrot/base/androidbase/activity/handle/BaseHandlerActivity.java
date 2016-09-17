@@ -66,17 +66,35 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     public FormEditText[] addDisableList;
     //修改时不可编辑的字段
     public FormEditText[] updateDisableList;
+    //完成时不可编辑的字段
+    public FormEditText[] finishDisableList;
 
     //修改时不可编辑的下拉选项
     public Spinner[] updateDisabledSpinnerList;
+    //完成时不可编辑的下拉选项
+    public Spinner[] finishDisabledSpinnerList;
 
     public ImageView[] imageAddButtonList;
 
-    public FormEditText[] openDateEditTextList;
+    public OpenDateVo[] openDateEditTextList;
 
     public ImageChooseVo[] openChooseImageList;
 
     public ShowBySpinnerVo[] showBySpinnerList;
+
+    class OpenDateVo{
+
+        FormEditText editText;
+
+        //哪些状态需要显示, 1:update, 10:add+update
+        int status;
+
+        public OpenDateVo(FormEditText et, int s){
+            editText = et;
+            status = s;
+        }
+
+    }
 
     @Bean
     SSErrorHandler ssErrorHandler;
@@ -91,9 +109,9 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     TaskBaseVo taskBaseVo;
 
 
-    //未完成：0； 已完成：1
+    //未完成：1； 已完成：2，app新增：0
     @Extra("isFinished")
-    int isFinished;
+    int isFinished = 0;
 
     Context context;
     Resources resources;
@@ -175,13 +193,17 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     private void initOpenDateList(){
         if(openDateEditTextList != null){
-            for(final FormEditText item : openDateEditTextList){
-                item.setInputType(InputType.TYPE_NULL);
-                item.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            for(final OpenDateVo item : openDateEditTextList){
+                item.editText.setInputType(InputType.TYPE_NULL);
+                item.editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
                     public void onFocusChange(View v, boolean hasFocus) {
                         if(hasFocus) {
-                            openDatePicker(item);
+                            int currentStatus = isFinished == 0 ? 0 : (isFinished == 1 ? 1 : 10);
+                            Log.i("sslog", currentStatus+"");
+                            if(item.status > currentStatus){
+                                openDatePicker(item.editText);
+                            }
                         }
                     }
                 });
@@ -246,38 +268,52 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     @UiThread
     void updateDisabled(){
 
-        FormEditText[] editList;
+        FormEditText[] editList = null;
 
+        Spinner[] spinnerList = null;
 
-        if(this.isFinished == 0){ //未完成
-            editList = addDisableList;
-        }else{//已完成
+        switch (this.isFinished){
+            case 0:
+                editList = addDisableList;
+                break;
 
-            editList = updateDisableList;
+            case 1:
+                editList = updateDisableList;
+                spinnerList = updateDisabledSpinnerList;
+                break;
 
-            if(imageAddButtonList != null){
-                for (ImageView addBtn : imageAddButtonList){
-                    addBtn.setVisibility(ImageView.GONE);
-                }
-            }
+            case 2://已完成
+                editList = finishDisableList;
+                spinnerList = finishDisabledSpinnerList;
 
-            if(saveItem != null){
-                saveItem.setVisible(false);
-            }
-
-            if(updateDisabledSpinnerList != null){
-                for(Spinner spinner : updateDisabledSpinnerList){
-//                    spinner.getSelectedView().setEnabled(false);
-//                    ((Spinner) spinner).getSelectedView().setEnabled(false);
-                    spinner.setEnabled(false);
-                    spinner.setClickable(false);
-                    spinner.setBackgroundResource(R.drawable.spinner_text);
-
+                //隐藏所有的增加图片的按钮
+                if(imageAddButtonList != null){
+                    for (ImageView addBtn : imageAddButtonList){
+                        addBtn.setVisibility(ImageView.GONE);
+                    }
                 }
 
-            }
+                //隐藏右上角保存
+                if(saveItem != null){
+                    saveItem.setVisible(false);
+                }
+
+                break;
         }
 
+
+        //下拉框显示为文本
+        if(spinnerList != null){
+            for(Spinner spinner : spinnerList){
+                spinner.setEnabled(false);
+                spinner.setClickable(false);
+                spinner.setBackgroundResource(R.drawable.spinner_text);
+
+            }
+
+        }
+
+        //文本输入框不可编辑
         if(editList != null){
             for(FormEditText editText : editList){
                 editText.setInputType(InputType.TYPE_NULL);
