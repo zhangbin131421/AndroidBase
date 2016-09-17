@@ -568,7 +568,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         if(etSelectedDate != null){
 
-            etSelectedDate.setText(year+"/"+((monthOfYear+1) > 9 ? (monthOfYear+1) : "0" + (monthOfYear+1))+"/"+(dayOfMonth > 9 ? dayOfMonth : "0"+dayOfMonth));
+            etSelectedDate.setText(year+"-"+((monthOfYear+1) > 9 ? (monthOfYear+1) : "0" + (monthOfYear+1))+"-"+(dayOfMonth > 9 ? dayOfMonth : "0"+dayOfMonth));
         }
     }
 

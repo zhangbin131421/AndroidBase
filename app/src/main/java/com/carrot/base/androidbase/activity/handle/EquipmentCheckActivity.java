@@ -170,15 +170,15 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(equipmentCheckResult.assignmentTime);
+            etAssignmentTime.setText(equipmentCheckResult.assignmentTime.substring(0, 10));
             etTaskNum.setText(equipmentCheckResult.taskNum);
 
 //            etCheckType.setText(equipmentCheckResult.checkType);
             etCheckType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CHECK_TYPE, equipmentCheckResult.checkType));
             etCheckScope.setText(equipmentCheckResult.checkScope);
             etSafetyMeasure.setText(equipmentCheckResult.safetyMeasure);
-            etEndTime.setText(equipmentCheckResult.endTime);
-            etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime);
+            etEndTime.setText(equipmentCheckResult.endTime.substring(0, 10));
+            etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime.substring(0, 10));
 //            etExistDefect.setText(equipmentCheckResult.existDefect);
             etExistDefect.setSelection(TypeUtils.getSelectedIndex(TypeUtils.EXIST_DEFECT, equipmentCheckResult.existDefect));
             etDefectPlace.setText(equipmentCheckResult.defectPlace);
@@ -188,8 +188,10 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             etDefectLevel.setSelection(TypeUtils.getSelectedIndex(TypeUtils.DEFECT_LEVEL, equipmentCheckResult.defectLevel));
             etHandleContent.setText(equipmentCheckResult.handleContent);
             etCheckpeople.setText(equipmentCheckResult.checkPeople);
-            etCheckTime.setText(equipmentCheckResult.checkTime);
-            etEndHandleTime.setText(equipmentCheckResult.endHandleTime);
+            if(equipmentCheckResult != null){
+                etCheckTime.setText(equipmentCheckResult.checkTime.substring(0, 10));
+            }
+            etEndHandleTime.setText(equipmentCheckResult.endHandleTime.substring(0, 10));
             etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, equipmentCheckResult.isHandled.equals("2") ? "未处理" : "已处理"));
 
 
