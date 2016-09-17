@@ -118,6 +118,9 @@ dependencies {
 
     //edit text validate
     compile 'com.andreabaccega:android-form-edittext:1.2.1@aar'
+
+    //日期选择控件
+    compile 'com.wdullaer:materialdatetimepicker:2.5.0'
     
     //    compile project(':easeui')
     //    compile files('libs/Parse-1.9.4.jar')

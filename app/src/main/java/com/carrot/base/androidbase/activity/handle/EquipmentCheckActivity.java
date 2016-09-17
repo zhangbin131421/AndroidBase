@@ -115,6 +115,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
         imageAddButtonList = new ImageView[] {imageAdd};
 
+        openDateEditTextList = new FormEditText[] {etEndTime, etCheckTime, etEndHandleTime};
+
 
 
         super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
@@ -207,6 +209,14 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     void addImageLocal(){
 
         super.showChooseImage(defectContentPicList, etDefectContent);
+
+    }
+
+
+    @Click(R.id.et_end_time)
+    void addOpenEndPicker(){
+
+        openDatePicker(etEndTime);
 
     }
 

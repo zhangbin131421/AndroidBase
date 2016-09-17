@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,6 +31,8 @@ import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.ImageUtils;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
@@ -41,6 +44,7 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
+import java.util.Calendar;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.CoreConfig;
@@ -54,7 +58,7 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
  * Created by victor on 9/7/16.
  */
 @EActivity
-public abstract class BaseHandlerActivity extends AppCompatActivity {
+public abstract class BaseHandlerActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     //新增时不可编辑的字段
     public FormEditText[] addDisableList;
@@ -65,6 +69,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
     public Spinner[] updateDisabledSpinnerList;
 
     public ImageView[] imageAddButtonList;
+
+    public FormEditText[] openDateEditTextList;
 
     @Bean
     SSErrorHandler ssErrorHandler;
@@ -92,6 +98,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
     @ViewById(R.id.tb_tool_bar)
     Toolbar toolbar;
 
+    //选中的日期文本，弹出的日期控件选择后，需要修改改显示的值
+    FormEditText etSelectedDate;
 
     private MenuItem saveItem = null;
 
@@ -121,6 +129,24 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
 
         //处理可编辑状态
         updateDisabled();
+
+        //初始化需要打开日期选择控件的list
+        initOpenDateList();
+    }
+
+    private void initOpenDateList(){
+        if(openDateEditTextList != null){
+            for(final FormEditText item : openDateEditTextList){
+                Log.i("sslog", "init open date picker");
+                item.setInputType(InputType.TYPE_NULL);
+//                item.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        openDatePicker(item);
+//                    }
+//                });
+            }
+        }
     }
 
     /**
@@ -426,5 +452,32 @@ public abstract class BaseHandlerActivity extends AppCompatActivity {
             progress.dismiss();
         }
 
+    }
+
+    void openDatePicker(FormEditText etSelectedDate){
+        Log.i("sslog", "open date picker");
+        this.etSelectedDate = etSelectedDate;
+        Calendar now = Calendar.getInstance();
+        DatePickerDialog dpd = DatePickerDialog.newInstance(
+                this,
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
+        );
+        dpd.show(getFragmentManager(), "Datepickerdialog");
+    }
+
+    /**
+     * 日期选择后的回调
+     * @param view
+     * @param year
+     * @param monthOfYear
+     * @param dayOfMonth
+     */
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        if(etSelectedDate != null){
+            etSelectedDate.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth);
+        }
     }
 }
