@@ -72,6 +72,9 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     public FormEditText[] openDateEditTextList;
 
+    public ImageChooseVo[] openChooseImageList;
+
+
     @Bean
     SSErrorHandler ssErrorHandler;
 
@@ -132,19 +135,37 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         //初始化需要打开日期选择控件的list
         initOpenDateList();
+
+        //初始化需要打开相册、拍照的list
+        initOpenChooseImageList();
     }
 
     private void initOpenDateList(){
         if(openDateEditTextList != null){
             for(final FormEditText item : openDateEditTextList){
-                Log.i("sslog", "init open date picker");
                 item.setInputType(InputType.TYPE_NULL);
-//                item.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        openDatePicker(item);
-//                    }
-//                });
+                item.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(hasFocus) {
+                            openDatePicker(item);
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    private void initOpenChooseImageList(){
+
+        if(openChooseImageList != null){
+            for(final ImageChooseVo item : openChooseImageList){
+                item.imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showChooseImage(item.photoInfoList, item.flowLayout);
+                    }
+                });
             }
         }
     }
@@ -477,7 +498,21 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         if(etSelectedDate != null){
-            etSelectedDate.setText(year+"/"+(monthOfYear+1)+"/"+dayOfMonth);
+
+            etSelectedDate.setText(year+"/"+((monthOfYear+1) > 9 ? (monthOfYear+1) : "0" + (monthOfYear+1))+"/"+(dayOfMonth > 9 ? dayOfMonth : "0"+dayOfMonth));
+        }
+    }
+
+
+    class ImageChooseVo{
+        public ImageView imageView;
+        public List<PhotoInfo> photoInfoList;
+        public org.apmem.tools.layouts.FlowLayout flowLayout;
+
+        public ImageChooseVo(ImageView iv, List<PhotoInfo> list, org.apmem.tools.layouts.FlowLayout fl){
+            imageView = iv;
+            photoInfoList = list;
+            flowLayout = fl;
         }
     }
 }

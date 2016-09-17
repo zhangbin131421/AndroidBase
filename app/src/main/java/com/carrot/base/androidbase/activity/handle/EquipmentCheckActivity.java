@@ -115,9 +115,11 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
         imageAddButtonList = new ImageView[] {imageAdd};
 
-        openDateEditTextList = new FormEditText[] {etEndTime, etCheckTime, etEndHandleTime};
+        openDateEditTextList = new FormEditText[] {etEndTime, etCheckTime, etEndHandleTime, etBeginHandleTime};
 
-
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
+                new ImageChooseVo(imageAdd, defectContentPicList, etDefectContent)
+        };
 
         super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
 
@@ -203,23 +205,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         super.getImageFromURL(equipmentCheckResult.defectContentPic, etDefectContent);
 
     }
-
-
-    @Click(R.id.btn_add_image)
-    void addImageLocal(){
-
-        super.showChooseImage(defectContentPicList, etDefectContent);
-
-    }
-
-
-    @Click(R.id.et_end_time)
-    void addOpenEndPicker(){
-
-        openDatePicker(etEndTime);
-
-    }
-
 
 
     /**
