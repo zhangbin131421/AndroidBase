@@ -81,6 +81,10 @@ public class TypeUtils {
      * 存在问题
      */
     public final static String[] EXIST_DEFECT = new String[]{"无","有"};
+    /**
+     * 存在问题
+     */
+    public final static String[] TASK_REPORT = new String[]{"否","是"};
 
     /**
      * 工作性质

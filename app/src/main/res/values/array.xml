@@ -6,4 +6,13 @@
         <item>台区名称2</item>
         <item>台区名称3</item>
     </string-array>
+
+    <!--<string-array name="checkType">-->
+        <!--<item>定期</item>-->
+        <!--<item>特殊</item>-->
+        <!--<item>夜间</item>-->
+        <!--<item>故障</item>-->
+        <!--<item>监察</item>-->
+        <!--<item>其他</item>-->
+    <!--</string-array>-->
 </resources>

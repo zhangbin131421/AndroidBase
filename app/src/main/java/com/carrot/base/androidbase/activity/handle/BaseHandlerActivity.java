@@ -530,8 +530,30 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         boolean allValidate = true;
 
+        boolean exFlag = false;
+
         for (FormEditText field: allFields) {
-            allValidate = field.testValidity() && allValidate;
+            exFlag = false;
+
+            if(showBySpinnerList != null){
+                for(ShowBySpinnerVo showBySpinnerVo : showBySpinnerList){
+                    if(showBySpinnerVo.showLayout.getVisibility() == View.GONE){//隐藏后，不需要验证其中的项
+                        for(FormEditText editText : showBySpinnerVo.exValidateList){
+                            if(editText.getId() == field.getId()){
+                                exFlag = true;
+                                break;
+                            }
+                        }
+                    }
+                    if(exFlag == true){
+                        break;
+                    }
+                }
+
+            }
+            if(exFlag == false){
+                allValidate = field.testValidity() && allValidate;
+            }
         }
 
         return allValidate;
@@ -628,11 +650,17 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         public Spinner spinner;
         public LinearLayout showLayout;
         public String showText;
+        public FormEditText[] exValidateList;
 
-        public ShowBySpinnerVo(Spinner sp, LinearLayout ll, String tx){
+        public ShowBySpinnerVo(Spinner sp, LinearLayout ll, String tx, FormEditText[] ex){
             spinner = sp;
             showLayout = ll;
             showText = tx;
+            if(ex == null){
+                exValidateList = new FormEditText[]{};
+            }else{
+                exValidateList = ex;
+            }
         }
     }
 }

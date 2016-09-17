@@ -10,6 +10,7 @@ import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
+import com.carrot.base.androidbase.utils.TaskUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
@@ -85,6 +86,10 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_check_people)
     FormEditText etCheckpeople;
 
+
+    @ViewById(R.id.et_report)
+    Spinner etReport;
+
     @ViewById(R.id.et_check_time)
     FormEditText etCheckTime;
 
@@ -114,7 +119,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
                 etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason};
 
-        addDisableList = new FormEditText[] {etAssignmentTime};
+        addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
 
         updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
 
@@ -123,7 +128,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
                 etEndHandleTime, etUnhandleReason};
 
         updateDisabledSpinnerList = new Spinner[] {etCheckType, etCheckScope};
-        finishDisabledSpinnerList = new Spinner[] {etCheckType, etCheckScope, etExistDefect, etIsHandled, etDefectLevel};
+        finishDisabledSpinnerList = new Spinner[] {etCheckType, etCheckScope, etExistDefect, etIsHandled, etDefectLevel, etReport};
 
         imageAddButtonList = new ImageView[] {imageAdd};
 
@@ -139,8 +144,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         };
 
         showBySpinnerList = new ShowBySpinnerVo[]{
-                new ShowBySpinnerVo(etExistDefect, llHasDefect, "有"),
-                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理")
+                new ShowBySpinnerVo(etExistDefect, llHasDefect, "有", new FormEditText[]{etDefectPlace, etHandleContent, etCheckpeople, etCheckTime}),
+                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
         };
 
         super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
@@ -154,6 +159,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         setDropDownListAdapter(etExistDefect, TypeUtils.EXIST_DEFECT);
 
         setDropDownListAdapter(etDefectLevel, TypeUtils.DEFECT_LEVEL);
+
+        setDropDownListAdapter(etReport, TypeUtils.TASK_REPORT);
 
         setDropDownListAdapter(etIsHandled, TypeUtils.TYPE_HANDLER);
 
@@ -171,28 +178,29 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             equipmentCheckResult = new EquipmentCheckResult();
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            etTaskNum.setText(TaskUtils.generatTaskNum());
+            etSafetyMeasure.setText("一人监督一人操作");
+            etEndTime.setText(DateUtils.getEndTime());
 
         }else{
 
             etAssignmentTime.setText(equipmentCheckResult.assignmentTime.substring(0, 10));
             etTaskNum.setText(equipmentCheckResult.taskNum);
 
-//            etCheckType.setText(equipmentCheckResult.checkType);
             etCheckType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CHECK_TYPE, equipmentCheckResult.checkType));
             etCheckScope.setSelection(getSelectedAreaIndex(equipmentCheckResult.checkScope));
             etSafetyMeasure.setText(equipmentCheckResult.safetyMeasure);
             etEndTime.setText(equipmentCheckResult.endTime.substring(0, 10));
             etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime.substring(0, 10));
-//            etExistDefect.setText(equipmentCheckResult.existDefect);
             etExistDefect.setSelection(TypeUtils.getSelectedIndex(TypeUtils.EXIST_DEFECT, equipmentCheckResult.existDefect));
             etDefectPlace.setText(equipmentCheckResult.defectPlace);
-//            etDefectContent.setText(equipmentCheckResult.defectContent);
-//            etDefectLevel.setText(equipmentCheckResult.defectLevel);
+
+            etReport.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TASK_REPORT, equipmentCheckResult.isReportPlan == 0 ? "否" : "是"));
 
             etDefectLevel.setSelection(TypeUtils.getSelectedIndex(TypeUtils.DEFECT_LEVEL, equipmentCheckResult.defectLevel));
             etHandleContent.setText(equipmentCheckResult.handleContent);
             etCheckpeople.setText(equipmentCheckResult.checkPeople);
-            if(equipmentCheckResult != null){
+            if(equipmentCheckResult != null && equipmentCheckResult.checkTime != null){
                 etCheckTime.setText(equipmentCheckResult.checkTime.substring(0, 10));
             }
             etEndHandleTime.setText(equipmentCheckResult.endHandleTime.substring(0, 10));
@@ -279,9 +287,11 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             this.equipmentCheckResult.endHandleTime = etEndHandleTime.getText().toString();
 
-            this.equipmentCheckResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已完成") ? "1" : "2";
+            this.equipmentCheckResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? "1" : "2";
 
             this.equipmentCheckResult.unhandleReason = etUnhandleReason.getText().toString();
+
+            this.equipmentCheckResult.isReportPlan = etReport.getSelectedItem().toString().equals("否") ? 0 : 1;
 
             return true;
         }{

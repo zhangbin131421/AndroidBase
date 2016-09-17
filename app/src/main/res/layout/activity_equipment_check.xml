@@ -154,6 +154,15 @@
                         android:id="@+id/et_check_time"/>
                 </LinearLayout>
 
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="是否上报计划改造"/>
+
+                    <Spinner
+                        android:id="@+id/et_report"
+                        style="@style/spinner"/>
+                </LinearLayout>
+
             </LinearLayout>
 
 

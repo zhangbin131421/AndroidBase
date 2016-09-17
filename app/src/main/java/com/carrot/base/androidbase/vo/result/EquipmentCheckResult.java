@@ -41,6 +41,11 @@ public class EquipmentCheckResult {
     public String assignmentTime;
 
 
+    public static final String IsReportPlan = "IsReportPlan";
+    @JsonProperty(value=IsReportPlan)
+    public int isReportPlan  ;
+
+
 //            "CheckType":"11",
     public static final String CheckType = "CheckType";
     @JsonProperty(value=CheckType)
