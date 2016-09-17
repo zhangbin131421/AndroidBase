@@ -18,6 +18,7 @@ import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.vo.TypeVo;
+import com.carrot.base.androidbase.vo.result.CountResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
@@ -104,10 +105,10 @@ public class Type2Activity extends AppCompatActivity {
     @Background
     void getUnHandled(){
         if(userPrefs.id().get() > 0){
-            List<TaskBaseVo> ecList = equipmentCheckClient.getByUserId(userPrefs.id().get(), 0);
+            CountResult ecCountVo = equipmentCheckClient.getUnFinishedByUserId(userPrefs.id().get());
 
-            if(ecList != null && ecList.size() > 0){
-                showFlag(View.VISIBLE, ecList.size(), 2);
+            if(ecCountVo.count > 0){
+                showFlag(View.VISIBLE, ecCountVo.count, 2);
             }else{
                 showFlag(View.INVISIBLE, 0, 2);
             }

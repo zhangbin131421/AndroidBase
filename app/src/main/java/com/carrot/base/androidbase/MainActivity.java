@@ -19,6 +19,7 @@ import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.GeneratorUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.TypeVo;
+import com.carrot.base.androidbase.vo.result.CountResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
@@ -98,9 +99,9 @@ public class MainActivity extends AppCompatActivity {
     @Background
     void getUnHandled(){
         if(userPrefs.id().get() > 0){
-            List<TaskBaseVo> ecList = equipmentCheckClient.getByUserId(userPrefs.id().get(), 0);
+            CountResult ecCountVo = equipmentCheckClient.getUnFinishedByUserId(userPrefs.id().get());
             List<TaskBaseVo> rrList = resolveRecordClient.getByUserId(userPrefs.id().get(), 0);
-            int count = ecList.size() + rrList.size();
+            int count = ecCountVo.count + rrList.size();
 
             if(count > 0){
                 showProduct(View.VISIBLE, count);
