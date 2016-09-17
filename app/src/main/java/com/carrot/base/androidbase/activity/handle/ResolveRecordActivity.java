@@ -113,8 +113,8 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_SafetyMeasure, et_EndTime};
 
-//        updateDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
-//                et_DefectContent, et_SafetyMeasure, et_EndTime};
+        updateDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
+                et_DefectContent, et_SafetyMeasure, et_EndTime};
 
         finishDisableList = allFields;
 
@@ -127,6 +127,10 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
                 new OpenDateVo(et_BeginHandleTime, 10),
                 new OpenDateVo(et_WorkDate, 10),
                 new OpenDateVo(et_EndHandleTime, 10)
+        };
+        openTimeEditTextList = new OpenDateVo[] {
+                new OpenDateVo(et_StopTime, 10),
+                new OpenDateVo(et_EndStopTime, 10)
         };
 
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {

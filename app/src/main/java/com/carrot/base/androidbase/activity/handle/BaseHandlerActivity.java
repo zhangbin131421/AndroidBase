@@ -32,12 +32,14 @@ import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.image.UILImageLoader;
 import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
+import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.ImageUtils;
 import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
@@ -51,6 +53,7 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.rest.spring.annotations.RestService;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.CoreConfig;
@@ -64,7 +67,7 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
  * Created by victor on 9/7/16.
  */
 @EActivity
-public abstract class BaseHandlerActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public abstract class BaseHandlerActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     @RestService
     AreaInformationClient areaInformationClient;
@@ -84,6 +87,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     public ImageView[] imageAddButtonList;
 
     public OpenDateVo[] openDateEditTextList;
+    public OpenDateVo[] openTimeEditTextList;
 
     public ImageChooseVo[] openChooseImageList;
 
@@ -131,6 +135,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     //选中的日期文本，弹出的日期控件选择后，需要修改改显示的值
     FormEditText etSelectedDate;
+    //选中的时间文本，弹出的时间控件选择后，需要修改改显示的值
+    FormEditText etSelectedTime;
 
     private MenuItem saveItem = null;
 
@@ -165,6 +171,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         //初始化需要打开日期选择控件的list
         initOpenDateList();
+        initOpenTimeList();
 
         //初始化需要打开相册、拍照的list
         initOpenChooseImageList();
@@ -234,6 +241,25 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
                             Log.i("sslog", currentStatus+"");
                             if(item.status > currentStatus){
                                 openDatePicker(item.editText);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
+    private void initOpenTimeList(){
+        if(openTimeEditTextList != null){
+            for(final OpenDateVo item : openTimeEditTextList){
+                item.editText.setInputType(InputType.TYPE_NULL);
+                item.editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if(hasFocus) {
+                            int currentStatus = isFinished == 0 ? 0 : (isFinished == 1 ? 1 : 10);
+                            Log.i("sslog", currentStatus+"");
+                            if(item.status > currentStatus){
+                                openTimePicker(item.editText);
                             }
                         }
                     }
@@ -606,7 +632,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     }
 
     void openDatePicker(FormEditText etSelectedDate){
-        Log.i("sslog", "open date picker");
+
         this.etSelectedDate = etSelectedDate;
         Calendar now = Calendar.getInstance();
         DatePickerDialog dpd = DatePickerDialog.newInstance(
@@ -616,6 +642,18 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
                 now.get(Calendar.DAY_OF_MONTH)
         );
         dpd.show(getFragmentManager(), "Datepickerdialog");
+    }
+    void openTimePicker(FormEditText etSelectedTime){
+
+        this.etSelectedTime = etSelectedTime;
+        Calendar now = Calendar.getInstance();
+        TimePickerDialog dpd = TimePickerDialog.newInstance(
+                this,
+                now.get(Calendar.HOUR_OF_DAY),
+                now.get(Calendar.MINUTE),
+                true
+        );
+        dpd.show(getFragmentManager(), "Timepickerdialog");
     }
 
     /**
@@ -630,6 +668,13 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         if(etSelectedDate != null){
 
             etSelectedDate.setText(year+"-"+((monthOfYear+1) > 9 ? (monthOfYear+1) : "0" + (monthOfYear+1))+"-"+(dayOfMonth > 9 ? dayOfMonth : "0"+dayOfMonth));
+        }
+    }
+
+    @Override
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
+        if(etSelectedTime != null){
+            etSelectedTime.setText(DateUtils.getCurrentYYYY_MM_DD() + " " + hourOfDay + ":" + minute + ":00");
         }
     }
 
