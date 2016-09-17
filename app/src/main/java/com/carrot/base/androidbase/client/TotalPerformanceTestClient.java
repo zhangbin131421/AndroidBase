@@ -1,5 +1,6 @@
 package com.carrot.base.androidbase.client;
 
+import com.carrot.base.androidbase.vo.result.CountResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 import com.carrot.base.androidbase.vo.result.TotalPerformanceTestResult;
 
@@ -61,4 +62,10 @@ public interface TotalPerformanceTestClient extends RestClientHeaders {
     @Post("/Delete/?ID={id}")
     @Accept(MediaType.APPLICATION_JSON)
     void delete(@Path int id);
+
+
+    //
+    @Get("/GetNewTaskNum/?UserID={userId}")
+    @Accept(MediaType.APPLICATION_JSON)
+    CountResult getUnFinishedByUserId(@Path int userId);
 }

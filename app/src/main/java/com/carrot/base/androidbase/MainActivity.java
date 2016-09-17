@@ -104,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
     void getUnHandled(){
         if(userPrefs.id().get() > 0){
             CountResult ecCountVo = equipmentCheckClient.getUnFinishedByUserId(userPrefs.id().get());
-            List<TaskBaseVo> rrList = resolveRecordClient.getByUserId(userPrefs.id().get(), 0);
-            int count = ecCountVo.count + rrList.size();
+            CountResult rrList = resolveRecordClient.getUnFinishedByUserId(userPrefs.id().get());
+            int count = ecCountVo.count + rrList.count;
 
             if(count > 0){
                 showProduct(View.VISIBLE, count);

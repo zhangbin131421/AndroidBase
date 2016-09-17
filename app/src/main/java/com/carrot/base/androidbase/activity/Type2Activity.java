@@ -113,9 +113,9 @@ public class Type2Activity extends AppCompatActivity {
                 showFlag(View.INVISIBLE, 0, 2);
             }
 
-            List<TaskBaseVo> rrList = resolveRecordClient.getByUserId(userPrefs.id().get(), 0);
-            if(rrList != null && rrList.size() > 0){
-                showFlag(View.VISIBLE, rrList.size(), 3);
+            CountResult rrCountVo = resolveRecordClient.getUnFinishedByUserId(userPrefs.id().get());
+            if(rrCountVo.count > 0){
+                showFlag(View.VISIBLE, rrCountVo.count, 3);
             }else{
                 showFlag(View.INVISIBLE, 0, 3);
             }

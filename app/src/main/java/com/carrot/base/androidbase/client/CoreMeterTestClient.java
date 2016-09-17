@@ -2,6 +2,7 @@ package com.carrot.base.androidbase.client;
 
 import com.carrot.base.androidbase.error.SSResponseErrorHandler;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
+import com.carrot.base.androidbase.vo.result.CountResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.rest.spring.annotations.Accept;
@@ -62,4 +63,10 @@ public interface CoreMeterTestClient  extends RestClientErrorHandling {
     @Post("/Delete/?ID={id}")
     @Accept(MediaType.APPLICATION_JSON)
     void delete(@Path int id);
+
+
+    //
+    @Get("/GetNewTaskNum/?UserID={userId}")
+    @Accept(MediaType.APPLICATION_JSON)
+    CountResult getUnFinishedByUserId(@Path int userId);
 }
