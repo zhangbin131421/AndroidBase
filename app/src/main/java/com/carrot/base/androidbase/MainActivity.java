@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     @AfterViews
     void bindAdapter(){
 
+        this.setTitle("农电外勤通系统");
+
         setSupportActionBar(toolbar);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);

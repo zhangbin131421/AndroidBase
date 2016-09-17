@@ -171,14 +171,24 @@
                     android:text="消缺情况"/>
                 <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_ResolveContent"/>-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.andreabaccega.widget.FormEditText
+                        android:hint="请输入缺陷内容"
+                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        android:id="@+id/et_ResolveContent"/>
 
-                <org.apmem.tools.layouts.FlowLayout
-                    android:id="@+id/et_ResolveContent"
-                    style="@style/tableColImageLayout">
-                    <ImageView
-                        android:id="@+id/btn_add_image"
-                        style="@style/tableColImagAdd"/>
-                </org.apmem.tools.layouts.FlowLayout>
+                    <org.apmem.tools.layouts.FlowLayout
+                        android:id="@+id/et_ResolveContentPic"
+                        style="@style/tableColImageLayout">
+                        <ImageView
+                            android:id="@+id/btn_add_image"
+                            style="@style/tableColImagAdd"/>
+                    </org.apmem.tools.layouts.FlowLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -200,17 +210,28 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                    android:id="@+id/et_IsHandled"/>
+                <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_IsHandled"/>-->
+
+                <Spinner
+                    android:id="@+id/et_IsHandled"
+                    style="@style/spinner"/>
+
             </LinearLayout>
 
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="@string/task_unhandle_reason"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                          android:id="@+id/et_UnhandleReason"/>
-            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llIsHandler">
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="@string/task_unhandle_reason"/>
+                    <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                              android:id="@+id/et_UnhandleReason"/>
+                </LinearLayout>
 
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

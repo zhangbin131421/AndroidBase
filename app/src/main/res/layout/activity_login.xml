@@ -15,22 +15,22 @@
             android:paddingTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="供电所管理系统"
+            android:text="农电外勤通系统"
             android:textSize="40dp"
             android:gravity="center"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:paddingTop="50dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher"/>
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:paddingTop="50dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center">-->
+        <!--<ImageView-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="100dp"-->
+            <!--android:src="@mipmap/ic_launcher"/>-->
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:paddingTop="50dp"

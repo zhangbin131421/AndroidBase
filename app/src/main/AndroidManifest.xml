@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity_" android:label="@string/app_name">
+        <activity android:name=".MainActivity_" android:label="外勤通">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
