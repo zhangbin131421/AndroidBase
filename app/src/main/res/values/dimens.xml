@@ -13,6 +13,10 @@
     <dimen name="text_size_task_list_2">17sp</dimen>
     <!-- 任务列表文字大小3 -->
     <dimen name="text_size_task_list_3">17sp</dimen>
+    <!-- 表单左侧字体大小 -->
+    <dimen name="text_size_form_left">20sp</dimen>
+    <!-- 表单右侧字体大小 -->
+    <dimen name="text_size_form_right">20sp</dimen>
 
 
     <dimen name="widthTable1">100dp</dimen>

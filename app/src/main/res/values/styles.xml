@@ -38,12 +38,14 @@
 
     <!-- 表单左侧的名称的样式 -->
     <style name="tableColName">
+        <item name="android:textSize">@dimen/text_size_form_left</item>
         <item name="android:layout_width">100dp</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
     <!-- 表单右侧输入文本的样式 -->
     <style name="tableColInput">
+        <item name="android:textSize">@dimen/text_size_form_right</item>
         <item name="android:background">@null</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">60dp</item>
