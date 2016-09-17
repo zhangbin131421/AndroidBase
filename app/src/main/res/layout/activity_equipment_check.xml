@@ -152,20 +152,6 @@
 
                 <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
-                        android:text="巡视人员"/>
-                    <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                        android:id="@+id/et_check_people"/>
-                </LinearLayout>
-
-                <LinearLayout style="@style/tableTitle2">
-                    <TextView style="@style/tableColName"
-                        android:text="巡视日期"/>
-                    <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                        android:id="@+id/et_check_time"/>
-                </LinearLayout>
-
-                <LinearLayout style="@style/tableTitle2">
-                    <TextView style="@style/tableColName"
                         android:text="是否上报计划改造"/>
 
                     <Spinner
@@ -174,7 +160,19 @@
                 </LinearLayout>
 
             </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="巡视人员"/>
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                    android:id="@+id/et_check_people"/>
+            </LinearLayout>
 
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="巡视日期"/>
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                    android:id="@+id/et_check_time"/>
+            </LinearLayout>
 
             <!-- ********************** -->
 

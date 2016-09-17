@@ -145,7 +145,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         };
 
         showBySpinnerList = new ShowBySpinnerVo[]{
-                new ShowBySpinnerVo(etExistDefect, llHasDefect, "有", new FormEditText[]{etDefectPlace, etHandleContent, etDefectContent, etCheckpeople, etCheckTime}),
+                new ShowBySpinnerVo(etExistDefect, llHasDefect, "有", new FormEditText[]{etDefectPlace, etHandleContent, etDefectContent}),
                 new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
         };
 
@@ -183,6 +183,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             etSafetyMeasure.setText("一人监督一人操作");
             etEndTime.setText(DateUtils.getEndTime());
 
+            etCheckpeople.setText(userPrefs.name().get());
+            etCheckTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+
         }else{
 
             etAssignmentTime.setText(equipmentCheckResult.assignmentTime.substring(0, 10));
@@ -201,7 +204,13 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             etDefectLevel.setSelection(TypeUtils.getSelectedIndex(TypeUtils.DEFECT_LEVEL, equipmentCheckResult.defectLevel));
             etHandleContent.setText(equipmentCheckResult.handleContent);
-            etCheckpeople.setText(equipmentCheckResult.checkPeople);
+
+            if(equipmentCheckResult.checkPeople == null || equipmentCheckResult.checkPeople.equals("")){
+                etCheckpeople.setText(DateUtils.getCurrentYYYY_MM_DD());
+            }else{
+                etCheckpeople.setText(equipmentCheckResult.checkPeople);
+            }
+
             if(equipmentCheckResult != null && equipmentCheckResult.checkTime != null){
                 etCheckTime.setText(equipmentCheckResult.checkTime.substring(0, 10));
             }
@@ -282,8 +291,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
                 this.equipmentCheckResult.defectContent = etDefectContent.getText().toString();
                 this.equipmentCheckResult.defectLevel = etDefectLevel.getSelectedItem().toString();
                 this.equipmentCheckResult.handleContent = etHandleContent.getText().toString();
-                this.equipmentCheckResult.checkPeople = etCheckpeople.getText().toString();
-                this.equipmentCheckResult.checkTime = etCheckTime.getText().toString();
                 this.equipmentCheckResult.isReportPlan = etReport.getSelectedItem().toString().equals("否") ? 0 : 1;
 
             }else{
@@ -291,10 +298,11 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
                 this.equipmentCheckResult.defectContent = "";
                 this.equipmentCheckResult.defectLevel = "";
                 this.equipmentCheckResult.handleContent = "";
-                this.equipmentCheckResult.checkPeople = "";
-                this.equipmentCheckResult.checkTime = DateUtils.getCurrentYYYY_MM_DD();
                 this.equipmentCheckResult.isReportPlan = -1;
             }
+
+            this.equipmentCheckResult.checkPeople = etCheckpeople.getText().toString();
+            this.equipmentCheckResult.checkTime = etCheckTime.getText().toString();
 
             this.equipmentCheckResult.endHandleTime = etEndHandleTime.getText().toString();
 
