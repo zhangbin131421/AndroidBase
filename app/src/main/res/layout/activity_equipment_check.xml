@@ -158,8 +158,11 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                    android:id="@+id/et_is_handled"/>
+                <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_is_handled"/>-->
+                <Spinner
+                    android:id="@+id/et_is_handled"
+                    style="@style/spinner"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

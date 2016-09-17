@@ -89,7 +89,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     FormEditText etEndHandleTime;
 
     @ViewById(R.id.et_is_handled)
-    FormEditText etIsHandled;
+    Spinner etIsHandled;
 
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
@@ -103,15 +103,15 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
                 etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
-                etEndHandleTime, etIsHandled, etUnhandleReason};
+                etEndHandleTime, etUnhandleReason};
 
         addDisableList = new FormEditText[] {etAssignmentTime};
 
         updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
                 etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
-                etEndHandleTime, etIsHandled, etUnhandleReason};
+                etEndHandleTime, etUnhandleReason};
 
-        updateDisabledSpinnerList = new Spinner[] {etCheckType, etExistDefect, etDefectLevel};
+        updateDisabledSpinnerList = new Spinner[] {etCheckType, etExistDefect, etIsHandled, etDefectLevel};
 
         imageAddButtonList = new ImageView[] {imageAdd};
 
@@ -132,6 +132,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         setDropDownListAdapter(etExistDefect, TypeUtils.EXIST_DEFECT);
 
         setDropDownListAdapter(etDefectLevel, TypeUtils.DEFECT_LEVEL);
+
+        setDropDownListAdapter(etIsHandled, TypeUtils.TYPE_HANDLER);
     }
 
 
@@ -164,7 +166,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
              etCheckpeople.setText("people");
              etCheckTime.setText(DateUtils.getCurrentYYYY_MM_DD());
              etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-             etIsHandled.setText(0+"");
+//             etIsHandled.setText(0+"");
              etUnhandleReason.setText("unreason");
             //test end
         }else{
@@ -189,7 +191,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             etCheckpeople.setText(equipmentCheckResult.checkPeople);
             etCheckTime.setText(equipmentCheckResult.checkTime);
             etEndHandleTime.setText(equipmentCheckResult.endHandleTime);
-            etIsHandled.setText(equipmentCheckResult.isHandled);
+            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, equipmentCheckResult.isHandled.equals("2") ? "未处理" : "已处理"));
+
+
             etUnhandleReason.setText(equipmentCheckResult.unhandleReason);
 
             getImage();
@@ -270,7 +274,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             this.equipmentCheckResult.endHandleTime = etEndHandleTime.getText().toString();
 
-            this.equipmentCheckResult.isHandled = etIsHandled.getText().toString();
+            this.equipmentCheckResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已完成") ? "1" : "2";
 
             this.equipmentCheckResult.unhandleReason = etUnhandleReason.getText().toString();
 

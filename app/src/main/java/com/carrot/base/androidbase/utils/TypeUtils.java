@@ -63,9 +63,9 @@ public class TypeUtils {
     public final static String[] TYPE_TEST = new String[]{"测试1", "测试2"};
 
     /**
-     * 测试
+     * 处理情况
      */
-    public final static String[] TYPE_HANDLER = new String[]{"0", "1"};
+    public final static String[] TYPE_HANDLER = new String[]{"已处理", "未处理"};
     /**
      * 巡视种类
      */
