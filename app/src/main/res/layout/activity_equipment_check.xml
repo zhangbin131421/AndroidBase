@@ -173,11 +173,19 @@
                     style="@style/spinner"/>
             </LinearLayout>
 
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="@string/task_unhandle_reason"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                    android:id="@+id/et_unhandle_reason"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llIsHandler">
+
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="@string/task_unhandle_reason"/>
+                    <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        android:id="@+id/et_unhandle_reason"/>
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>

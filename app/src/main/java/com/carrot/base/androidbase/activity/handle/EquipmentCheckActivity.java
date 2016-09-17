@@ -98,6 +98,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @ViewById(R.id.ll_has_defect)
     LinearLayout llHasDefect;
 
+    @ViewById(R.id.llIsHandler)
+    LinearLayout llIsHandler;
+
 
     @ViewById(R.id.btn_add_image)
     ImageView imageAdd;
@@ -134,7 +137,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         };
 
         showBySpinnerList = new ShowBySpinnerVo[]{
-                new ShowBySpinnerVo(etExistDefect, llHasDefect, "有")
+                new ShowBySpinnerVo(etExistDefect, llHasDefect, "有"),
+                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理")
         };
 
         super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
