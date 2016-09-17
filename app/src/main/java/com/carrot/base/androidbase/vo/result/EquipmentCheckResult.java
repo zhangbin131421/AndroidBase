@@ -101,7 +101,7 @@ public class EquipmentCheckResult {
 //            "":1,
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
-    public String isHandled;
+    public int isHandled;
 //            "":null,
     public static final String UnhandleReason = "UnhandleReason";
     @JsonProperty(value=UnhandleReason)
@@ -129,7 +129,7 @@ public class EquipmentCheckResult {
         rtn.add(EquipmentCheckResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.CheckPeople, this.checkPeople.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.CheckScope, this.checkScope.getBytes("UTF-8"));
-        rtn.add(EquipmentCheckResult.CheckTime, this.checkTime.getBytes("UTF-8"));
+        rtn.add(EquipmentCheckResult.CheckTime, this.checkTime == null ? "" : this.checkTime.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.CheckType, this.checkType.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.CreatedTime, this.createdTime.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.DefectContent, this.defectContent == null ? "" : this.defectContent.getBytes("UTF-8"));

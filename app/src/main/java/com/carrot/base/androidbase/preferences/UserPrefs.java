@@ -1,5 +1,7 @@
 package com.carrot.base.androidbase.preferences;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.androidannotations.annotations.sharedpreferences.DefaultInt;
 import org.androidannotations.annotations.sharedpreferences.DefaultString;
 import org.androidannotations.annotations.sharedpreferences.SharedPref;
@@ -11,6 +13,17 @@ import org.androidannotations.annotations.sharedpreferences.SharedPref;
 public interface UserPrefs {
 //    {"ID":2,"Name":"Leo si","Phone":"15001768927","Role":"2","IsValid":1,
 // "CreateTime":"\/Date(1471753316033)\/","UpdateTime":"\/Date(1471753316033)\/","Message":"OK","Code":1}
+
+
+
+    @DefaultString("")
+    public String dept();
+
+    @DefaultInt(-1)
+    public int isManager();
+
+    @DefaultInt(-1)
+    public int classSort();
 
     @DefaultInt(-1)
     public int id();

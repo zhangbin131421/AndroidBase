@@ -90,16 +90,19 @@ public class LoginActivity extends Activity {
         }
         userResult.deviceID = JPushInterface.getRegistrationID(this);
 
-        userPrefs.edit().name().put(userResult.getName())
-                .id().put(userResult.getId())
-                .phone().put(userResult.getPhone())
-                .isValid().put(userResult.getIsValid())
-                .message().put(userResult.getMessage())
-                .code().put(userResult.getCode())
-                .role().put(userResult.getRole())
-                .createTime().put(userResult.getCreateTime())
-                .updateTime().put(userResult.getUpdateTime())
+        userPrefs.edit().name().put(userResult.name)
+                .id().put(userResult.id)
+                .phone().put(userResult.phone)
+                .isValid().put(userResult.isValid)
+                .message().put(userResult.message)
+                .code().put(userResult.code)
+                .role().put(userResult.role)
+                .createTime().put(userResult.createTime)
+                .updateTime().put(userResult.updateTime)
                 .deviceID().put(userResult.deviceID)
+                .dept().put(userResult.dept)
+                .role().put(userResult.role)
+                .classSort().put(userResult.classSort)
                 .apply();
 
         updateUser(userResult);
