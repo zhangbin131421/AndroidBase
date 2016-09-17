@@ -100,21 +100,23 @@ public class MainActivity extends AppCompatActivity {
         if(userPrefs.id().get() > 0){
             List<TaskBaseVo> ecList = equipmentCheckClient.getByUserId(userPrefs.id().get(), 0);
             List<TaskBaseVo> rrList = resolveRecordClient.getByUserId(userPrefs.id().get(), 0);
+            int count = ecList.size() + rrList.size();
 
-            if((ecList != null && ecList.size() > 0) || (rrList != null && rrList.size() > 0)){
-                showProduct(View.VISIBLE);
+            if(count > 0){
+                showProduct(View.VISIBLE, count);
             }else{
-                showProduct(View.INVISIBLE);
+                showProduct(View.INVISIBLE, 0);
             }
         }
     }
 
     @UiThread
-    void showProduct(int visibility){
+    void showProduct(int visibility, int count){
 
         MainCardAdapter.DataObjectHolder holder = (MainCardAdapter.DataObjectHolder) mRecyclerView.findViewHolderForAdapterPosition(1);
         if(holder != null){
             holder.flag.setVisibility(visibility);
+            holder.flag.setText(count+"");
         }
     }
 
