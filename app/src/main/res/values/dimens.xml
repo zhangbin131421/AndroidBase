@@ -3,8 +3,16 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="text_size_title1">22sp</dimen>
-    <dimen name="text_size_title2">18sp</dimen>
+    <!-- 主页文字大小 -->
+    <dimen name="text_size_main_card_view">40sp</dimen>
+    <!-- 任务主页文字大小 -->
+    <dimen name="text_size_main_task_card_view">40sp</dimen>
+    <!-- 任务列表文字大小1 -->
+    <dimen name="text_size_task_list_1">17sp</dimen>
+    <!-- 任务列表文字大小2 -->
+    <dimen name="text_size_task_list_2">17sp</dimen>
+    <!-- 任务列表文字大小3 -->
+    <dimen name="text_size_task_list_3">17sp</dimen>
 
 
     <dimen name="widthTable1">100dp</dimen>

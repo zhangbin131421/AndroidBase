@@ -22,6 +22,7 @@
 
         <TextView
             android:id="@+id/tv_type_2_name"
+            android:textSize="@dimen/text_size_main_task_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
