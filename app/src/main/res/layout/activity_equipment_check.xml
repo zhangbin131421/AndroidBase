@@ -124,7 +124,6 @@
                             style="@style/tableColImageLayout"
                             android:gravity="center_vertical">
                             <ImageView
-                                android:layout_margin="5dp"
                                 android:id="@+id/btn_add_image"
                                 style="@style/tableColImagAdd"/>
                         </org.apmem.tools.layouts.FlowLayout>

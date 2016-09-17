@@ -116,7 +116,7 @@ public class ResolveRecordResult {
     @JsonProperty(value=OperationInvoiceNum)
     public String operationInvoiceNum;
 
-    public static final String WorkInstruction  = "WorkInstruction ";
+    public static final String WorkInstruction  = "WorkInstruction";
     @JsonProperty(value=WorkInstruction )
     public String workInstruction;
 

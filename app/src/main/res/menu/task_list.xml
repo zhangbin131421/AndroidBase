@@ -6,9 +6,13 @@
     tools:context=".activity.TaskListActivity_">
 
 
+    <!--<item-->
+        <!--android:id="@+id/menu_task_list_new"-->
+        <!--android:title="新建"-->
+        <!--&lt;!&ndash;android:icon="@mipmap/ic_add_white_24dp"&ndash;&gt;-->
+        <!--app:showAsAction="always"/>-->
     <item
         android:id="@+id/menu_task_list_new"
         android:title="新建"
-        android:icon="@mipmap/ic_add_white_24dp"
         app:showAsAction="always"/>
 </menu>

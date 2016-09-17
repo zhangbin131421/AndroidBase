@@ -113,13 +113,13 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_SafetyMeasure, et_EndTime};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
-                et_DefectContent, et_SafetyMeasure, et_EndTime};
+//        updateDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
+//                et_DefectContent, et_SafetyMeasure, et_EndTime};
 
         finishDisableList = allFields;
 
         updateDisabledSpinnerList = new Spinner[] {};
-        finishDisabledSpinnerList = new Spinner[] {et_WorkType};
+        finishDisabledSpinnerList = new Spinner[] {et_WorkType, et_IsHandled};
 
         imageAddButtonList = new ImageView[] {imageAdd};
 
