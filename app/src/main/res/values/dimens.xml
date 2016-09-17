@@ -6,7 +6,7 @@
     <!-- 主页文字大小 -->
     <dimen name="text_size_main_card_view">40sp</dimen>
     <!-- 任务主页文字大小 -->
-    <dimen name="text_size_main_task_card_view">40sp</dimen>
+    <dimen name="text_size_main_task_card_view">25sp</dimen>
     <!-- 任务列表文字大小1 -->
     <dimen name="text_size_task_list_1">17sp</dimen>
     <!-- 任务列表文字大小2 -->

@@ -107,34 +107,27 @@ public class Type2Activity extends AppCompatActivity {
             List<TaskBaseVo> ecList = equipmentCheckClient.getByUserId(userPrefs.id().get(), 0);
 
             if(ecList != null && ecList.size() > 0){
-                showEquipmentCheckFlag(View.VISIBLE);
+                showFlag(View.VISIBLE, ecList.size(), 2);
             }else{
-                showEquipmentCheckFlag(View.INVISIBLE);
+                showFlag(View.INVISIBLE, 0, 2);
             }
 
             List<TaskBaseVo> rrList = resolveRecordClient.getByUserId(userPrefs.id().get(), 0);
             if(rrList != null && rrList.size() > 0){
-                showResolveRecordFlag(View.VISIBLE);
+                showFlag(View.VISIBLE, rrList.size(), 3);
             }else{
-                showResolveRecordFlag(View.INVISIBLE);
+                showFlag(View.INVISIBLE, 0, 3);
             }
         }
     }
 
     @UiThread
-    void showEquipmentCheckFlag(int visibility){
+    void showFlag(int visibility, int count, int postion){
 
-        Type2Adapter.DataObjectHolder holder = (Type2Adapter.DataObjectHolder) mRecyclerView.findViewHolderForAdapterPosition(2);
+        Type2Adapter.DataObjectHolder holder = (Type2Adapter.DataObjectHolder) mRecyclerView.findViewHolderForAdapterPosition(postion);
         if(holder != null){
             holder.flag.setVisibility(visibility);
-        }
-    }
-    @UiThread
-    void showResolveRecordFlag(int visibility){
-
-        Type2Adapter.DataObjectHolder holder = (Type2Adapter.DataObjectHolder) mRecyclerView.findViewHolderForAdapterPosition(3);
-        if(holder != null){
-            holder.flag.setVisibility(visibility);
+            holder.flag.setText(count+"");
         }
     }
 

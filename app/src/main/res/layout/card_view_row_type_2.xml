@@ -17,8 +17,8 @@
         <TextView
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:layout_width="10dp"
-            android:layout_height="10dp"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
 
         <TextView
             android:id="@+id/tv_type_2_name"
@@ -34,8 +34,12 @@
             android:id="@+id/et_card_view_row_type_2_newFlag"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
+            android:layout_width="20dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/mdtp_white"
+            android:textSize="12sp"
+            android:layout_height="20dp"
             android:background="@drawable/unread_flag"
             android:visibility="invisible"/>
     </LinearLayout>
