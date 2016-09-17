@@ -13,6 +13,7 @@ import com.carrot.base.androidbase.activity.SettingActivity_;
 import com.carrot.base.androidbase.activity.TaskListActivity_;
 import com.carrot.base.androidbase.activity.Type2Activity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
+import com.carrot.base.androidbase.client.AreaInformationClient;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private static String LOG_TAG = "MainActivity";
+
 
     @Pref
     UserPrefs_ userPrefs;
@@ -125,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         ((MainCardAdapter) mAdapter).setOnItemClickListener(new MainCardAdapter
                 .MyClickListener() {
             @Override
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
 

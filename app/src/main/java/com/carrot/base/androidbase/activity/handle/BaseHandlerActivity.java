@@ -26,12 +26,15 @@ import android.widget.TextView;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.client.AreaInformationClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.image.UILImageLoader;
+import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.ImageUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
@@ -45,6 +48,7 @@ import org.androidannotations.annotations.OptionsMenuItem;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.androidannotations.rest.spring.annotations.RestService;
 
 import java.util.Calendar;
 import java.util.List;
@@ -61,6 +65,9 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
  */
 @EActivity
 public abstract class BaseHandlerActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
+    @RestService
+    AreaInformationClient areaInformationClient;
 
     //新增时不可编辑的字段
     public FormEditText[] addDisableList;
@@ -134,6 +141,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     void afterInitView(String title, Context context, Resources resources){
 
+
+
         this.context = context;
         this.resources = resources;
 
@@ -162,6 +171,28 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         //下拉框选择后，某些组件需要隐藏显示
         initHideBySpinner();
+    }
+
+    /**
+     *
+     * @param item
+     * @return
+     */
+    public int getSelectedAreaIndex(String item){
+
+        if(DataInstance.getInstance().areaInformationResults == null || DataInstance.getInstance().areaInformationResults.length == 0){
+            return -1;
+        }
+
+        int rtn = -1;
+        for(int i = 0; i < DataInstance.getInstance().areaInformationResults.length; i ++){
+            AreaInformationResult areaInformationResult = DataInstance.getInstance().areaInformationResults[i];
+            if(areaInformationResult.areaName.equals(item)){
+                rtn = i;
+                break;
+            }
+        }
+        return rtn;
     }
 
     void initHideBySpinner(){
@@ -224,6 +255,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
             }
         }
     }
+
+
 
     /**
      * 初始化下拉框
@@ -403,6 +436,12 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     void setDropDownListAdapter(Spinner spinner, String[] values){
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values);
+        spinner.setAdapter(adapter);
+    }
+
+
+    void setDropDownListAdapter(Spinner spinner, AreaInformationResult[] values){
+        ArrayAdapter<AreaInformationResult> adapter = new ArrayAdapter<AreaInformationResult>(this, android.R.layout.simple_spinner_item, values);
         spinner.setAdapter(adapter);
     }
 

@@ -19,6 +19,7 @@ import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.activity.handle.CoreMeterTestActivity_;
 import com.carrot.base.androidbase.adapter.TaskCardAdapter;
 import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
+import com.carrot.base.androidbase.client.AreaInformationClient;
 import com.carrot.base.androidbase.client.CoreMeterTestClient;
 import com.carrot.base.androidbase.client.CrossTestClient;
 import com.carrot.base.androidbase.client.DistributionNetworkEngineeringClient;
@@ -29,9 +30,11 @@ import com.carrot.base.androidbase.client.SpecialSecurityCheckClient;
 import com.carrot.base.androidbase.client.TotalPerformanceTestClient;
 import com.carrot.base.androidbase.client.VoltageMeasurementClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
+import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.TypeVo;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
@@ -79,6 +82,10 @@ public class TaskListActivity extends AppCompatActivity {
     SpecialSecurityCheckClient specialSecurityCheckClient;
     @RestService
     DistributionNetworkEngineeringClient distributionNetworkEngineeringClient;
+
+
+    @RestService
+    AreaInformationClient areaInformationClient;
 
     @ViewById(R.id.rv_fragment_task_list_rv)
     RecyclerView mRecyclerView;
@@ -155,8 +162,17 @@ public class TaskListActivity extends AppCompatActivity {
         mAdapter = new TaskCardAdapter(new ArrayList<TaskBaseVo>());
 
         this.uiInit();
+
+        getAllData();
     }
 
+    /**
+     * 获取表单的相关数据
+     */
+    @Background
+    void getAllData(){
+        DataInstance.getInstance().areaInformationResults = areaInformationClient.getByUserId(userPrefs.id().get());
+    }
     @UiThread
     void uiInit(){
         mRecyclerView.setAdapter(mAdapter);

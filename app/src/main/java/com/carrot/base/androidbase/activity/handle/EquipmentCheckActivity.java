@@ -7,9 +7,11 @@ import android.widget.Spinner;
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
+import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
 
 import org.androidannotations.annotations.AfterViews;
@@ -54,7 +56,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     Spinner etCheckType;
 
     @ViewById(R.id.et_check_scope)
-    FormEditText etCheckScope;
+    Spinner etCheckScope;
 
     @ViewById(R.id.et_safety_measure)
     FormEditText etSafetyMeasure;
@@ -108,20 +110,20 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @AfterViews
     void bindAdapter(){
 
-        allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
+        allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
                 etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason};
 
         addDisableList = new FormEditText[] {etAssignmentTime};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime};
+        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etCheckScope, etSafetyMeasure, etEndTime,
+        finishDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
                 etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason};
 
-        updateDisabledSpinnerList = new Spinner[] {etCheckType};
-        finishDisabledSpinnerList = new Spinner[] {etCheckType, etExistDefect, etIsHandled, etDefectLevel};
+        updateDisabledSpinnerList = new Spinner[] {etCheckType, etCheckScope};
+        finishDisabledSpinnerList = new Spinner[] {etCheckType, etCheckScope, etExistDefect, etIsHandled, etDefectLevel};
 
         imageAddButtonList = new ImageView[] {imageAdd};
 
@@ -154,6 +156,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         setDropDownListAdapter(etDefectLevel, TypeUtils.DEFECT_LEVEL);
 
         setDropDownListAdapter(etIsHandled, TypeUtils.TYPE_HANDLER);
+
+        setDropDownListAdapter(etCheckScope, DataInstance.getInstance().areaInformationResults);
     }
 
 
@@ -175,7 +179,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
 //            etCheckType.setText(equipmentCheckResult.checkType);
             etCheckType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CHECK_TYPE, equipmentCheckResult.checkType));
-            etCheckScope.setText(equipmentCheckResult.checkScope);
+            etCheckScope.setSelection(getSelectedAreaIndex(equipmentCheckResult.checkScope));
             etSafetyMeasure.setText(equipmentCheckResult.safetyMeasure);
             etEndTime.setText(equipmentCheckResult.endTime.substring(0, 10));
             etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime.substring(0, 10));
@@ -253,7 +257,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             this.equipmentCheckResult.checkType = etCheckType.getSelectedItem().toString();
 
-            this.equipmentCheckResult.checkScope = etCheckScope.getText().toString();
+            this.equipmentCheckResult.checkScope = ((AreaInformationResult)etCheckScope.getSelectedItem()).areaName;
 
             this.equipmentCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
 
