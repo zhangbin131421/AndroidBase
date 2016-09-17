@@ -22,8 +22,8 @@ public interface UserPrefs {
     @DefaultInt(-1)
     public int isManager();
 
-    @DefaultInt(-1)
-    public int classSort();
+    @DefaultString("")
+    public String classSort();
 
     @DefaultInt(-1)
     public int id();

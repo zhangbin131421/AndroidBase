@@ -15,7 +15,7 @@ public class UserResult {
     public int isManager;
 
     @JsonProperty(value="ClassSort")
-    public int classSort;
+    public String classSort;
 
     @JsonProperty(value="ID")
     public int id;
