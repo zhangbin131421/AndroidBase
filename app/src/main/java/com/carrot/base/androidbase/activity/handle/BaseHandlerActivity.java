@@ -16,9 +16,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -74,6 +76,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     public ImageChooseVo[] openChooseImageList;
 
+    public ShowBySpinnerVo[] showBySpinnerList;
 
     @Bean
     SSErrorHandler ssErrorHandler;
@@ -138,6 +141,36 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         //初始化需要打开相册、拍照的list
         initOpenChooseImageList();
+
+        //下拉框选择后，某些组件需要隐藏显示
+        initHideBySpinner();
+    }
+
+    void initHideBySpinner(){
+
+        if(showBySpinnerList == null){
+            return;
+        }
+
+        for(final ShowBySpinnerVo ss : showBySpinnerList){
+            ss.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    if(ss.spinner.getSelectedItem().toString().equals(ss.showText)){
+                        ss.showLayout.setVisibility(View.VISIBLE);
+                    }else{
+                        ss.showLayout.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    // your code here
+                }
+
+            });
+        }
+
     }
 
     private void initOpenDateList(){
@@ -513,6 +546,18 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
             imageView = iv;
             photoInfoList = list;
             flowLayout = fl;
+        }
+    }
+
+    class ShowBySpinnerVo{
+        public Spinner spinner;
+        public LinearLayout showLayout;
+        public String showText;
+
+        public ShowBySpinnerVo(Spinner sp, LinearLayout ll, String tx){
+            spinner = sp;
+            showLayout = ll;
+            showText = tx;
         }
     }
 }

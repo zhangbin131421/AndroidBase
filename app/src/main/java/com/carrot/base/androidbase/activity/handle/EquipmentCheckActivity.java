@@ -1,6 +1,7 @@
 package com.carrot.base.androidbase.activity.handle;
 
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
@@ -94,6 +95,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
+    @ViewById(R.id.ll_has_defect)
+    LinearLayout llHasDefect;
+
 
     @ViewById(R.id.btn_add_image)
     ImageView imageAdd;
@@ -119,6 +123,10 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
                 new ImageChooseVo(imageAdd, defectContentPicList, etDefectContent)
+        };
+
+        showBySpinnerList = new ShowBySpinnerVo[]{
+                new ShowBySpinnerVo(etExistDefect, llHasDefect, "有")
         };
 
         super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());

@@ -92,59 +92,67 @@
                     android:id="@+id/et_exist_defect"
                     style="@style/spinner"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/ll_has_defect">
 
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="缺陷位置"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                    android:id="@+id/et_defect_place"/>
-            </LinearLayout>
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="缺陷位置"/>
+                    <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        android:id="@+id/et_defect_place"/>
+                </LinearLayout>
 
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="缺陷内容"/>
-                <org.apmem.tools.layouts.FlowLayout
-                    android:id="@+id/et_defect_content"
-                    style="@style/tableColImageLayout"
-                    android:gravity="center_vertical">
-                    <ImageView
-                        android:layout_margin="5dp"
-                        android:id="@+id/btn_add_image"
-                        style="@style/tableColImagAdd"/>
-                </org.apmem.tools.layouts.FlowLayout>
-            </LinearLayout>
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="缺陷内容"/>
+                    <org.apmem.tools.layouts.FlowLayout
+                        android:id="@+id/et_defect_content"
+                        style="@style/tableColImageLayout"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_margin="5dp"
+                            android:id="@+id/btn_add_image"
+                            style="@style/tableColImagAdd"/>
+                    </org.apmem.tools.layouts.FlowLayout>
+                </LinearLayout>
 
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="缺陷等级"/>
-                <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="缺陷等级"/>
+                    <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_defect_level"/>-->
 
-                <Spinner
-                    android:id="@+id/et_defect_level"
-                    style="@style/spinner"/>
+                    <Spinner
+                        android:id="@+id/et_defect_level"
+                        style="@style/spinner"/>
+                </LinearLayout>
+
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="处理情况"/>
+                    <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        android:id="@+id/et_handle_content"/>
+                </LinearLayout>
+
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="巡视人员"/>
+                    <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        android:id="@+id/et_check_people"/>
+                </LinearLayout>
+
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="巡视日期"/>
+                    <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        android:id="@+id/et_check_time"/>
+                </LinearLayout>
+
             </LinearLayout>
 
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="处理情况"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                    android:id="@+id/et_handle_content"/>
-            </LinearLayout>
-
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="巡视人员"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                    android:id="@+id/et_check_people"/>
-            </LinearLayout>
-
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="巡视日期"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                    android:id="@+id/et_check_time"/>
-            </LinearLayout>
 
             <!-- ********************** -->
 
