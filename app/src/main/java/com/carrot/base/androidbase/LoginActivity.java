@@ -3,6 +3,7 @@ package com.carrot.base.androidbase;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.SystemClock;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -88,7 +89,9 @@ public class LoginActivity extends Activity {
         if(progress != null){
             progress.dismiss();
         }
+        JPushInterface.init(this);
         userResult.deviceID = JPushInterface.getRegistrationID(this);
+        Log.i("sslog", "device id : " + userResult.deviceID);
 
         userPrefs.edit().name().put(userResult.name)
                 .id().put(userResult.id)

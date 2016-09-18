@@ -73,10 +73,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MainCardAdapter(TypeUtils.getAllItems(getApplicationContext()));
         mRecyclerView.setAdapter(mAdapter);
 
-
-        JPushInterface.init(this);
-        Log.i("sslog", "rid: " + JPushInterface.getRegistrationID(this));
-
         useTimer();
     }
 
