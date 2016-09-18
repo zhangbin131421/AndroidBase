@@ -23,6 +23,10 @@ public class SettingActivity extends AppCompatActivity {
 
     @ViewById(R.id.tv_setting_username)
     TextView tvUsername;
+    @ViewById(R.id.tv_setting_dept)
+    TextView tvDept;
+    @ViewById(R.id.tv_setting_device_id)
+    TextView tvDeviceId;
 
     @ViewById(R.id.tb_setting_tool_bar)
     Toolbar toolbar;
@@ -34,6 +38,9 @@ public class SettingActivity extends AppCompatActivity {
     void initPage(){
 
         tvUsername.setText(userPrefs.name().get());
+
+        tvDept.setText(userPrefs.dept().get());
+        tvDeviceId.setText(userPrefs.deviceID().get());
 
         setSupportActionBar(toolbar);
 
