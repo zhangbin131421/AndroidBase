@@ -194,7 +194,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         int rtn = -1;
         for(int i = 0; i < DataInstance.getInstance().areaInformationResults.length; i ++){
             AreaInformationResult areaInformationResult = DataInstance.getInstance().areaInformationResults[i];
-            if(areaInformationResult.areaName.equals(item)){
+            if(item.equals(areaInformationResult.id+"")){
                 rtn = i;
                 break;
             }

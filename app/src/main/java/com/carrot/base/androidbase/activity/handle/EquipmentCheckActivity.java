@@ -195,7 +195,12 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             etCheckScope.setSelection(getSelectedAreaIndex(equipmentCheckResult.checkScope));
             etSafetyMeasure.setText(equipmentCheckResult.safetyMeasure);
             etEndTime.setText(equipmentCheckResult.endTime.substring(0, 10));
-            etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime.substring(0, 10));
+            if(equipmentCheckResult.beginHandleTime == null || equipmentCheckResult.beginHandleTime.equals("")){
+                etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            }else{
+                etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime.substring(0, 10));
+            }
+
             etExistDefect.setSelection(TypeUtils.getSelectedIndex(TypeUtils.EXIST_DEFECT, equipmentCheckResult.existDefect));
             etDefectPlace.setText(equipmentCheckResult.defectPlace);
             etDefectContent.setText(equipmentCheckResult.defectContent);
@@ -214,7 +219,12 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             if(equipmentCheckResult != null && equipmentCheckResult.checkTime != null){
                 etCheckTime.setText(equipmentCheckResult.checkTime.substring(0, 10));
             }
-            etEndHandleTime.setText(equipmentCheckResult.endHandleTime.substring(0, 10));
+            if(equipmentCheckResult.endHandleTime == null || equipmentCheckResult.endHandleTime.equals("")){
+                etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            }else{
+                etEndHandleTime.setText(equipmentCheckResult.endHandleTime.substring(0, 10));
+            }
+
             etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, equipmentCheckResult.isHandled == 2 ? "未处理" : "已处理"));
 
 
@@ -276,7 +286,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             this.equipmentCheckResult.checkType = etCheckType.getSelectedItem().toString();
 
-            this.equipmentCheckResult.checkScope = ((AreaInformationResult)etCheckScope.getSelectedItem()).areaName;
+            this.equipmentCheckResult.checkScope = ((AreaInformationResult)etCheckScope.getSelectedItem()).id+"";
 
             this.equipmentCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
 
