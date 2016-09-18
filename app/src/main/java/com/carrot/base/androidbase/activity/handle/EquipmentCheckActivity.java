@@ -211,13 +211,15 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             etHandleContent.setText(equipmentCheckResult.handleContent);
 
             if(equipmentCheckResult.checkPeople == null || equipmentCheckResult.checkPeople.equals("")){
-                etCheckpeople.setText(DateUtils.getCurrentYYYY_MM_DD());
+                etCheckpeople.setText(userPrefs.name().get());
             }else{
                 etCheckpeople.setText(equipmentCheckResult.checkPeople);
             }
 
             if(equipmentCheckResult != null && equipmentCheckResult.checkTime != null){
                 etCheckTime.setText(equipmentCheckResult.checkTime.substring(0, 10));
+            }else{
+                etCheckTime.setText(DateUtils.getCurrentYYYY_MM_DD());
             }
             if(equipmentCheckResult.endHandleTime == null || equipmentCheckResult.endHandleTime.equals("")){
                 etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
