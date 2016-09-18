@@ -132,7 +132,7 @@ public class TypeUtils {
      * @return
      */
     public static int getSelectedIndex(String[] items, String item){
-        int rtn = -1;
+        int rtn = 0;
         for(int i = 0; i < items.length; i ++){
             if(items[i].equals(item)){
                 rtn = i;
