@@ -13,6 +13,7 @@ import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.MediaType;
+import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 import org.androidannotations.rest.spring.api.RestClientHeaders;
 import org.apache.http.HttpHeaders;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
@@ -30,7 +31,7 @@ import java.util.List;
         converters = {MappingJackson2HttpMessageConverter.class,
                 StringHttpMessageConverter.class,FormHttpMessageConverter.class,
                 ByteArrayHttpMessageConverter.class})
-public interface LineBrokenManagementClient extends RestClientHeaders {
+public interface LineBrokenManagementClient extends RestClientErrorHandling {
 
     @Get("/GetByID/?ID={id}")
     @Accept(MediaType.APPLICATION_JSON)

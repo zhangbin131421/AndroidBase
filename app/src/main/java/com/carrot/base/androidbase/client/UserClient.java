@@ -13,6 +13,7 @@ import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.MediaType;
+import org.androidannotations.rest.spring.api.RestClientErrorHandling;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -21,7 +22,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
  * Created by victor on 8/21/16.
  */
 @Rest(rootUrl = "http://120.55.101.6:8889/api/User", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class})
-public interface UserClient {
+public interface UserClient extends RestClientErrorHandling {
 
     @Get("/GetUserById/?ID={id}")
     @Accept(MediaType.APPLICATION_JSON)

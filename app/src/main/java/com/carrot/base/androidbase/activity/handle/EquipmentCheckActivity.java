@@ -1,12 +1,15 @@
 package com.carrot.base.androidbase.activity.handle;
 
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
+import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
@@ -17,10 +20,12 @@ import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
+import org.springframework.core.NestedRuntimeException;
 import org.springframework.util.MultiValueMap;
 
 import java.io.UnsupportedEncodingException;
@@ -44,6 +49,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
     @RestService
     EquipmentCheckClient equipmentCheckClient;
+
+    @Bean
+    SSErrorHandler ssErrorHandler;
 
 
     @ViewById(R.id.et_assignment_time)
@@ -115,6 +123,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
     @AfterViews
     void bindAdapter(){
+
+        equipmentCheckClient.setRestErrorHandler(ssErrorHandler);
 
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
                 etBeginHandleTime, etDefectPlace, etHandleContent, etDefectContent, etCheckpeople, etCheckTime,

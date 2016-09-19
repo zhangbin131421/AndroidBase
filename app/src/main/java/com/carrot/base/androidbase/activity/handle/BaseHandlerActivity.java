@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
@@ -62,6 +63,7 @@ import cn.finalteam.galleryfinal.GalleryFinal;
 import cn.finalteam.galleryfinal.ImageLoader;
 import cn.finalteam.galleryfinal.ThemeConfig;
 import cn.finalteam.galleryfinal.model.PhotoInfo;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by victor on 9/7/16.
@@ -708,4 +710,14 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
             }
         }
     }
+
+    @UiThread
+    public void alert(String msg){
+//        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText("糟糕")
+                .setContentText(msg)
+                .show();
+    }
+
 }
