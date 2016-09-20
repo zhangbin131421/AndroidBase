@@ -16,6 +16,8 @@ import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.client.AreaInformationClient;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
+import com.carrot.base.androidbase.error.SSErrorHandler;
+import com.carrot.base.androidbase.error.SSErrorWithoutDialogHandler;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.GeneratorUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
@@ -25,6 +27,7 @@ import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
@@ -50,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
     private static String LOG_TAG = "MainActivity";
 
 
+    @RestService
+    EquipmentCheckClient equipmentCheckClient;
+    @RestService
+    ResolveRecordClient resolveRecordClient;
+
+
     @Pref
     UserPrefs_ userPrefs;
 
@@ -57,10 +66,18 @@ public class MainActivity extends AppCompatActivity {
     @ViewById(R.id.tb_main_tool_bar)
     Toolbar toolbar;
 
+    @Bean
+    SSErrorHandler ssErrorHandler;
 
+    @Bean
+    SSErrorWithoutDialogHandler ssErrorWithoutDialogHandler;
 
     @AfterViews
     void bindAdapter(){
+
+
+        equipmentCheckClient.setRestErrorHandler(ssErrorWithoutDialogHandler);
+        resolveRecordClient.setRestErrorHandler(ssErrorWithoutDialogHandler);
 
         this.setTitle("农电外勤通系统");
 
@@ -91,10 +108,6 @@ public class MainActivity extends AppCompatActivity {
         }, 1000, 30000);
     }
 
-    @RestService
-    EquipmentCheckClient equipmentCheckClient;
-    @RestService
-    ResolveRecordClient resolveRecordClient;
 
     @Background
     void getUnHandled(){

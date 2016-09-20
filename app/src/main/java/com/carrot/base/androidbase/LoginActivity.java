@@ -9,12 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.client.UserClient;
+import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.vo.result.LoginResult;
 import com.carrot.base.androidbase.vo.result.UserResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.UiThread;
@@ -30,6 +32,8 @@ import cn.jpush.android.api.JPushInterface;
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends Activity {
 
+    @Bean
+    SSErrorHandler ssErrorHandler;
 
     @RestService
     UserClient userClient;
@@ -51,6 +55,7 @@ public class LoginActivity extends Activity {
     @AfterViews
     void initView(){
         progress = new ProgressDialog(this);
+        userClient.setRestErrorHandler(ssErrorHandler);
     }
 
     @Click(R.id.btn_login_login)

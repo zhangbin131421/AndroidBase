@@ -16,6 +16,8 @@ import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.adapter.Type2Adapter;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
+import com.carrot.base.androidbase.error.SSErrorHandler;
+import com.carrot.base.androidbase.error.SSErrorWithoutDialogHandler;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.vo.TypeVo;
 import com.carrot.base.androidbase.vo.result.CountResult;
@@ -23,6 +25,7 @@ import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsMenu;
@@ -58,9 +61,23 @@ public class Type2Activity extends AppCompatActivity {
     @ViewById(R.id.tb_type_2_tool_bar)
     Toolbar toolbar;
 
+
+    @Pref
+    UserPrefs_ userPrefs;
+
+    @RestService
+    EquipmentCheckClient equipmentCheckClient;
+    @RestService
+    ResolveRecordClient resolveRecordClient;
+
+    @Bean
+    SSErrorWithoutDialogHandler ssErrorHandler;
+
     @AfterViews
     void bindAdapter(){
 
+        equipmentCheckClient.setRestErrorHandler(ssErrorHandler);
+        resolveRecordClient.setRestErrorHandler(ssErrorHandler);
 
         setSupportActionBar(toolbar);
 
@@ -78,13 +95,6 @@ public class Type2Activity extends AppCompatActivity {
         useTimer();
     }
 
-    @Pref
-    UserPrefs_ userPrefs;
-
-    @RestService
-    EquipmentCheckClient equipmentCheckClient;
-    @RestService
-    ResolveRecordClient resolveRecordClient;
 
     //TODO 定时刷新未完成列表，后期去掉，换成推送
     @Background

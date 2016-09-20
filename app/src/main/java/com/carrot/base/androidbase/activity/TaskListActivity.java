@@ -30,6 +30,7 @@ import com.carrot.base.androidbase.client.SpecialSecurityCheckClient;
 import com.carrot.base.androidbase.client.TotalPerformanceTestClient;
 import com.carrot.base.androidbase.client.VoltageMeasurementClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
+import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.TypeUtils;
@@ -39,6 +40,7 @@ import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OnActivityResult;
@@ -63,9 +65,11 @@ public class TaskListActivity extends AppCompatActivity {
     @Pref
     UserPrefs_ userPrefs;
 
+    @Bean
+    SSErrorHandler ssErrorHandler;
+
     @RestService
     CoreMeterTestClient coreMeterTestClient;
-
     @RestService
     EquipmentCheckClient equipmentCheckClient;
     @RestService
@@ -82,8 +86,6 @@ public class TaskListActivity extends AppCompatActivity {
     SpecialSecurityCheckClient specialSecurityCheckClient;
     @RestService
     DistributionNetworkEngineeringClient distributionNetworkEngineeringClient;
-
-
     @RestService
     AreaInformationClient areaInformationClient;
 
@@ -120,6 +122,16 @@ public class TaskListActivity extends AppCompatActivity {
     @AfterViews
     void initTabs(){
 
+        areaInformationClient.setRestErrorHandler(ssErrorHandler);
+        coreMeterTestClient.setRestErrorHandler(ssErrorHandler);
+        crossTestClient.setRestErrorHandler(ssErrorHandler);
+        distributionNetworkEngineeringClient.setRestErrorHandler(ssErrorHandler);
+        earthResistanceTestClient.setRestErrorHandler(ssErrorHandler);
+        equipmentCheckClient.setRestErrorHandler(ssErrorHandler);
+        resolveRecordClient.setRestErrorHandler(ssErrorHandler);
+        specialSecurityCheckClient.setRestErrorHandler(ssErrorHandler);
+        totalPerformanceTestClient.setRestErrorHandler(ssErrorHandler);
+        voltageMeasurementClient.setRestErrorHandler(ssErrorHandler);
 
         setSupportActionBar(toolbar);
 
