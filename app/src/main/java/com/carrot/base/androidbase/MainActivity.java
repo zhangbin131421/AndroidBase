@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new GridLayoutManager(getApplicationContext(), 2, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MainCardAdapter(TypeUtils.getAllItems(getApplicationContext()));
+        mAdapter = new MainCardAdapter(TypeUtils.getAllItems(getResources()));
         mRecyclerView.setAdapter(mAdapter);
 
         useTimer();

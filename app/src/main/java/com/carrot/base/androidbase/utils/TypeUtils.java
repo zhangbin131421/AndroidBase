@@ -2,6 +2,7 @@ package com.carrot.base.androidbase.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
@@ -24,6 +25,9 @@ import com.carrot.base.androidbase.activity.handle.TotalPerformanceTestActivity_
 import com.carrot.base.androidbase.activity.handle.VoltageMeasurementActivity_;
 import com.carrot.base.androidbase.vo.TypeVo;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
+
+import org.androidannotations.annotations.RootContext;
+import org.springframework.core.io.Resource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -143,20 +147,22 @@ public class TypeUtils {
     }
 
 
-    public static List<TypeVo> getAllItems(Context context){
+    public static List<TypeVo> getAllItems(Resources resource){
 
         List<TypeVo> result = new ArrayList<>();
 
 
-
         TypeVo type4 = new TypeVo(TYPE_1, false, R.mipmap.manager4);
         List<TypeVo> subTypes4 = new ArrayList<>();
-        String[] ss4 = new String[]{TYPE_1_1,TYPE_1_2,TYPE_1_3,TYPE_1_4,TYPE_1_5,TYPE_1_6,TYPE_1_7};
 
-        for (String item : ss4) {
-            TypeVo itemVo = new TypeVo(item, true, R.mipmap.manager1);
-            subTypes4.add(itemVo);
-        }
+        subTypes4.add(new TypeVo(TYPE_1_1, true, R.mipmap.manager1));
+        subTypes4.add(new TypeVo(TYPE_1_2, true, R.mipmap.manager1));
+        subTypes4.add(new TypeVo(TYPE_1_3, true, R.mipmap.manager1));
+        subTypes4.add(new TypeVo(TYPE_1_4, true, R.mipmap.manager1));
+        subTypes4.add(new TypeVo(TYPE_1_5, true, R.mipmap.manager1));
+        subTypes4.add(new TypeVo(TYPE_1_6, true, R.mipmap.manager1));
+        subTypes4.add(new TypeVo(TYPE_1_7, true, R.mipmap.manager1));
+
         type4.setSubTypes(subTypes4);
 
         result.add(type4);
@@ -164,20 +170,16 @@ public class TypeUtils {
 
         TypeVo type3 = new TypeVo(TYPE_2, false, R.mipmap.manager1);
         List<TypeVo> subTypes3 = new ArrayList<>();
-        String[] ss3 = new String[]{TYPE_2_1,
-                TYPE_2_2,
-                TYPE_2_3,
-                TYPE_2_4,
-                TYPE_2_5,
-                TYPE_2_6,
-                TYPE_2_7,
-                TYPE_2_8,
-        };
 
-        for (String item : ss3) {
-            TypeVo itemVo = new TypeVo(item, true, R.mipmap.manager1);
-            subTypes3.add(itemVo);
-        }
+        subTypes3.add(new TypeVo(TYPE_2_1, true, R.mipmap.manager1));
+        subTypes3.add(new TypeVo(TYPE_2_2, true, R.mipmap.manager1));
+        subTypes3.add(new TypeVo(TYPE_2_3, true, R.mipmap.manager1));
+        subTypes3.add(new TypeVo(TYPE_2_4, true, R.mipmap.manager1));
+        subTypes3.add(new TypeVo(TYPE_2_5, true, R.mipmap.manager1));
+        subTypes3.add(new TypeVo(TYPE_2_6, true, R.mipmap.manager1));
+        subTypes3.add(new TypeVo(TYPE_2_7, true, R.mipmap.manager1));
+        subTypes3.add(new TypeVo(TYPE_2_8, true, R.mipmap.manager1));
+
         type3.setSubTypes(subTypes3);
 
         result.add(type3);
@@ -186,26 +188,19 @@ public class TypeUtils {
 
         TypeVo type2 = new TypeVo(TYPE_3, true, R.mipmap.manager3);
 
-        result.add(type2);
         List<TypeVo> subTypes2 = new ArrayList<>();
-        String[] ss2 = new String[]{TYPE_3_1};
 
-        for (String item : ss2) {
-            TypeVo itemVo = new TypeVo(item, true, R.mipmap.manager1);
-            subTypes2.add(itemVo);
-        }
+        subTypes2.add(new TypeVo(TYPE_3_1, true, R.mipmap.manager1));
         type2.setSubTypes(subTypes2);
-
+        result.add(type2);
 
 
         TypeVo type1 = new TypeVo(TYPE_4, false, R.mipmap.manager2);
         List<TypeVo> subTypes1 = new ArrayList<>();
-        String[] ss1 = new String[]{TYPE_4_1};
 
-        for (String item : ss1) {
-            TypeVo itemVo = new TypeVo(item, true, R.mipmap.manager1);
-            subTypes1.add(itemVo);
-        }
+
+        subTypes1.add(new TypeVo(TYPE_4_1, true, R.mipmap.manager1));
+
         type1.setSubTypes(subTypes1);
 
         result.add(type1);
