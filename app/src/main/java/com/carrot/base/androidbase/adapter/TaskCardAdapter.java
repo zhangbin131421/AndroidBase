@@ -28,13 +28,17 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
 
         TextView name;
         TextView creationTime;
-        TextView status;
+        TextView endTime;
+
+        TextView tv_unfinished;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_cvr_fragment_task_list_task_name);
             creationTime = (TextView) itemView.findViewById(R.id.tv_cvr_fragment_task_list_task_time);
-            status = (TextView) itemView.findViewById(R.id.tv_cvr_fragment_task_list_status);
+            endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
+
+            tv_unfinished = (TextView) itemView.findViewById(R.id.tv_unfinished);
 
             itemView.setOnClickListener(this);
         }
@@ -67,9 +71,22 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.name.setText(mDataset.get(position).taskNum);
-        holder.creationTime.setText(mDataset.get(position).assignmentTime);
-//        holder.status.setText(mDataset.get(position).taskStatus);
+
+        TaskBaseVo taskBaseVo = mDataset.get(position);
+        holder.name.setText(taskBaseVo.taskNum);
+        holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));
+        if(mDataset.get(position).endHandleTime != null && !mDataset.get(position).endHandleTime.equals("")){
+            holder.endTime.setText("结束日期：" + taskBaseVo.endHandleTime.substring(0,10));
+        }else{
+            holder.endTime.setText("");
+        }
+
+        if(taskBaseVo.isHandled == 2){
+            holder.tv_unfinished.setText("未完成");
+            holder.tv_unfinished.setVisibility(View.VISIBLE);
+        }else{
+            holder.tv_unfinished.setVisibility(View.GONE);
+        }
     }
 
     public void addItem(TaskBaseVo dataObj, int index) {
