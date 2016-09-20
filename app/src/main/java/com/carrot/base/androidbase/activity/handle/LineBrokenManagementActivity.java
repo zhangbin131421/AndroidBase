@@ -79,9 +79,21 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
         super.afterInitView(TypeUtils.TYPE_1_1, getApplicationContext(), getResources());
 
+    }
+
+
+    public void setValidateList(){
+
         allFields = new FormEditText[] {et_AssignmentTime, et_TaskNum,
                 et_BrokenRate, et_BeginHandleTime,
                 et_UserID, et_EndHandleTiem, et_IsHandled, et_UnhandleReason};
+
+    }
+
+
+    @Override
+    public void setErrorHandler(){
+        lineBrokenManagementClient.setRestErrorHandler(ssErrorHandler);
     }
 
 

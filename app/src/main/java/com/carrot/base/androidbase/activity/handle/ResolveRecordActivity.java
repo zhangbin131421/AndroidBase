@@ -105,6 +105,14 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
     void bindAdapter(){
 
 
+        super.afterInitView(TypeUtils.TYPE_2_4, getApplicationContext(), getResources());
+    }
+
+
+    public void setValidateList(){
+
+
+
         allFields = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
                 et_DefectContent, et_EndTime, et_SafetyMeasure, et_WorkInvoiceNum, et_StopScope,
                 et_Applier, et_WorkLicensor, et_WorkPrincipal, et_StopTime, et_EndStopTime,
@@ -142,9 +150,12 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
         };
 
 
-        super.afterInitView(TypeUtils.TYPE_2_4, getApplicationContext(), getResources());
     }
 
+    @Override
+    public void setErrorHandler(){
+        resolveRecordClient.setRestErrorHandler(ssErrorHandler);
+    }
 
     void initDropDownList(){
         //下拉选择框

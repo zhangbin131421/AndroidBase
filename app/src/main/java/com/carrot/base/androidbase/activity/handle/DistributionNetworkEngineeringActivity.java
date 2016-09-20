@@ -125,9 +125,24 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
     @AfterViews
     void bindAdapter(){
 
+
+
         super.afterInitView("农配网工程", getApplicationContext(), getResources());
 
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEngineeringName,etEngineeringNum,etWorkContent,etWorkPlace,etStopScope,etStopTime,etWorkLicensor,etBeginHandleTime,etWorkInvoiceNum,etExecutionResponsible,etWorkResponsible,etWorkContent2,etSafetyMeasure,etActualStopTime,etEndStopTime,etInspector,etComplete,etEndHandleTime,etUnhandleReason};
+    }
+
+
+    public void setValidateList(){
+        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEngineeringName,
+                etEngineeringNum,etWorkContent,etWorkPlace,etStopScope,etStopTime,etWorkLicensor,
+                etBeginHandleTime,etWorkInvoiceNum,etExecutionResponsible,etWorkResponsible,etWorkContent2,
+                etSafetyMeasure,etActualStopTime,etEndStopTime,etInspector,etComplete,etEndHandleTime,etUnhandleReason};
+    }
+
+
+    @Override
+    public void setErrorHandler(){
+        distributionNetworkEngineeringClient.setRestErrorHandler(ssErrorHandler);
     }
 
     @Override

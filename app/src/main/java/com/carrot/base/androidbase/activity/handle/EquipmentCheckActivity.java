@@ -122,8 +122,14 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @AfterViews
     void bindAdapter(){
 
-        equipmentCheckClient.setRestErrorHandler(ssErrorHandler);
 
+
+        super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
+
+    }
+
+
+    public void setValidateList(){
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
                 etBeginHandleTime, etDefectPlace, etHandleContent, etDefectContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason};
@@ -157,8 +163,11 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
                 new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
         };
 
-        super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
+    }
 
+    @Override
+    public void setErrorHandler(){
+        equipmentCheckClient.setRestErrorHandler(ssErrorHandler);
     }
 
     void initDropDownList(){

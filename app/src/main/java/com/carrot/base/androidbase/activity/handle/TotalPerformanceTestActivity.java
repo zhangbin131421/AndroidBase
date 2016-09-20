@@ -89,11 +89,21 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
         super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
 
+    }
+
+
+    public void setValidateList(){
         allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,etBeginHandleTime,
                 etElectricityA,etElectricityC,etOperateTime,etTestTime,etHandleContent,
                 etTester,etEndHandleTime,etIsHandled,etUnhandleReason};
+
     }
 
+
+    @Override
+    public void setErrorHandler(){
+        totalPerformanceTestClient.setRestErrorHandler(ssErrorHandler);
+    }
 
     @Override
     void initDropDownList(){

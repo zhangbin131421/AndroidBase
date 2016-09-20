@@ -149,9 +149,24 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
     @AfterViews
     void bindAdapter(){
 
-        super.afterInitView("交叉跨越测量", getApplicationContext(), getResources());
 
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etConfigA,etRatedCurrent,etPowerHouseholder,etPowerCapacity,etHouseholder,etHouseholderCapacity,etEndTime,etBeginHandleTime,etLoadRate,etImbalanceRate,etModificationOpinion,etTestTime,etTester,etEndHandleTime,etUnhandleReason};
+        super.afterInitView("交叉跨越测量", getApplicationContext(), getResources());
+    }
+
+
+    public void setValidateList(){
+        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etConfigA,etRatedCurrent,
+                etPowerHouseholder,etPowerCapacity,etHouseholder,etHouseholderCapacity,
+                etEndTime,etBeginHandleTime,etLoadRate,etImbalanceRate,etModificationOpinion,
+                etTestTime,etTester,etEndHandleTime,etUnhandleReason};
+
+
+    }
+
+
+    @Override
+    public void setErrorHandler(){
+        voltageMeasurementClient.setRestErrorHandler(ssErrorHandler);
     }
 
     @Override

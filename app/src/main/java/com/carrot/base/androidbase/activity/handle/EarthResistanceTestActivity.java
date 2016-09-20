@@ -95,9 +95,21 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
     @AfterViews
     void bindAdapter(){
 
-        super.afterInitView("接地电阻测量", getApplicationContext(), getResources());
 
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEarthPlace,etEarthEquipmentName,etResistanceValue,etBeginHandleTime,etTestDate,etTester,etEndHandleTime,etUnhandleReason};
+        super.afterInitView("接地电阻测量", getApplicationContext(), getResources());
+    }
+
+
+    public void setValidateList(){
+        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEarthPlace,etEarthEquipmentName,
+                etResistanceValue,etBeginHandleTime,etTestDate,etTester,etEndHandleTime,etUnhandleReason};
+
+    }
+
+
+    @Override
+    public void setErrorHandler(){
+        earthResistanceTestClient.setRestErrorHandler(ssErrorHandler);
     }
 
     @Override

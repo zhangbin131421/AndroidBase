@@ -103,7 +103,18 @@ public class CrossTestActivity extends BaseHandlerActivity{
 
         super.afterInitView("交叉跨越测量", getApplicationContext(), getResources());
 
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etCrossPoint,etCrossName,etBeginHandleTime,etModificationOpinion,etTestTime,etTester,etEndHandleTime,etUnhandleReason};
+
+    }
+
+    public void setValidateList(){
+
+        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etCrossPoint,etCrossName,
+                etBeginHandleTime,etModificationOpinion,etTestTime,etTester,etEndHandleTime,etUnhandleReason};
+    }
+
+    @Override
+    public void setErrorHandler(){
+        crossTestClient.setRestErrorHandler(ssErrorHandler);
     }
 
     @Override

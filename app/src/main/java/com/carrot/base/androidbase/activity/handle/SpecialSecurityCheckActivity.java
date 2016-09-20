@@ -87,7 +87,19 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
         super.afterInitView("专项安全检查", getApplicationContext(), getResources());
 
+    }
+
+
+    public void setValidateList(){
+
         allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginTime,etEndTime,etBeginHandleTime,etExistIssue,etUserID,etCheckDate,etEndHandleTime,etUnhandleReason};
+
+
+    }
+
+    @Override
+    public void setErrorHandler(){
+        specialSecurityCheckClient.setRestErrorHandler(ssErrorHandler);
     }
 
     @Override

@@ -144,6 +144,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     void afterInitView(String title, Context context, Resources resources){
 
         areaInformationClient.setRestErrorHandler(ssErrorHandler);
+        setErrorHandler();
 
 
         this.context = context;
@@ -157,6 +158,9 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
 
         this.setTitle(title);
+
+
+        setValidateList();
 
         initDropDownList();
 
@@ -176,6 +180,10 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         //下拉框选择后，某些组件需要隐藏显示
         initHideBySpinner();
     }
+
+    public abstract void setValidateList();
+
+    public abstract void setErrorHandler();
 
     /**
      *

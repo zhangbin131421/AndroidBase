@@ -92,16 +92,20 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
         super.afterInitView(TypeUtils.TYPE_2_1, getApplicationContext(), getResources());
 
+    }
+
+
+    public void setValidateList(){
+
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etAreaName, etProtectLine, etType,
                 etSafetyMeasure, etEndTime, etBeginHandleTime, etHandleContent, etTester,
                 etTestingTime, etEndHandleTime, etIsHandled, etUnhandleReason};
     }
 
-    @AfterInject
-    void afterInject(){
+    @Override
+    public void setErrorHandler(){
         coreMeterTestClient.setRestErrorHandler(ssErrorHandler);
     }
-
 
     @Override
     void initDropDownList(){
