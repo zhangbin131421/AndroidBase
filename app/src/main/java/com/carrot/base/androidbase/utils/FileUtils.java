@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.util.MultiValueMap;
@@ -24,60 +22,60 @@ import id.zelory.compressor.Compressor;
  * Created by victor on 9/7/16.
  */
 public class FileUtils {
-
-
-    public static void finishGetPhoto(Context context, Resources resources,
-                        List<PhotoInfo> resultList, List<PhotoInfo> picList,
-                        org.apmem.tools.layouts.FlowLayout contentView){
-
-        BitmapFactory.Options opts=new BitmapFactory.Options();
-        opts.inDither=false;                     //Disable Dithering mode
-        opts.inPurgeable=true;                   //Tell to gc that whether it needs free memory, the Bitmap can be cleared
-        opts.inInputShareable=true;              //Which kind of reference will be used to recover the Bitmap data after being clear, when it will be used in the future
-        opts.inTempStorage=new byte[32 * 1024];
-
-
-        for (PhotoInfo pi : resultList){
-
-            picList.add(pi);
-
-            File file = new File(pi.getPhotoPath());
-
-            if(file.exists()){
-                FileInputStream fis = null;
-                try {
-                    fis = new FileInputStream(file);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-
-//                BitmapFactory.decodeStream(fis, null, opts);
-                Bitmap bitmap = BitmapFactory.decodeStream(fis, null, opts);//BitmapFactory.decodeFile(file.getAbsolutePath());
-
-                View view = ImageUtils.getImageViewForForm(context, resources, bitmap);
-
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Log.i("sslog", "image clicked");
-                    }
-                });
-
-                view.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View view) {
-
-                        Log.i("sslog", "image long clicked");
-
-                        return false;
-                    }
-                });
-
-                contentView.addView(view);
-            }
-        }
-    }
+//
+//
+//    public static void finishGetPhoto(Context context, Resources resources,
+//                        List<PhotoInfo> resultList, List<PhotoInfo> picList,
+//                        org.apmem.tools.layouts.FlowLayout contentView){
+//
+//        BitmapFactory.Options opts=new BitmapFactory.Options();
+//        opts.inDither=false;                     //Disable Dithering mode
+//        opts.inPurgeable=true;                   //Tell to gc that whether it needs free memory, the Bitmap can be cleared
+//        opts.inInputShareable=true;              //Which kind of reference will be used to recover the Bitmap data after being clear, when it will be used in the future
+//        opts.inTempStorage=new byte[32 * 1024];
+//
+//
+//        for (final PhotoInfo pi : resultList){
+//
+//            picList.add(pi);
+//
+//            File file = new File(pi.getPhotoPath());
+//
+//            if(file.exists()){
+//                FileInputStream fis = null;
+//                try {
+//                    fis = new FileInputStream(file);
+//                } catch (FileNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+////                BitmapFactory.decodeStream(fis, null, opts);
+//                Bitmap bitmap = BitmapFactory.decodeStream(fis, null, opts);//BitmapFactory.decodeFile(file.getAbsolutePath());
+//
+//                View view = ImageUtils.getImageViewForForm(context, resources, bitmap, pi);
+//
+//                view.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+////                        Log.i("sslog", "image clicked, " + pi.getPhotoPath());
+//                    }
+//                });
+//
+//                view.setOnLongClickListener(new View.OnLongClickListener() {
+//                    @Override
+//                    public boolean onLongClick(View view) {
+//
+////                        Log.i("sslog", "image long clicked, " + pi.getPhotoPath());
+//
+//                        return false;
+//                    }
+//                });
+//
+//                contentView.addView(view);
+//            }
+//        }
+//    }
 
     public static void addImageToData(MultiValueMap<String, Object> data, String key, List<PhotoInfo> picList, Context context){
         try {

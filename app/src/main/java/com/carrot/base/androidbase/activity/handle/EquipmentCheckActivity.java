@@ -1,15 +1,12 @@
 package com.carrot.base.androidbase.activity.handle;
 
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
-import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
@@ -20,12 +17,10 @@ import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
-import org.springframework.core.NestedRuntimeException;
 import org.springframework.util.MultiValueMap;
 
 import java.io.UnsupportedEncodingException;
@@ -119,6 +114,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @ViewById(R.id.btn_add_image)
     ImageView imageAdd;
 
+
     @AfterViews
     void bindAdapter(){
 
@@ -162,6 +158,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
                 new ShowBySpinnerVo(etExistDefect, llHasDefect, "有", new FormEditText[]{etDefectPlace, etHandleContent, etDefectContent}),
                 new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
         };
+
+
 
     }
 
@@ -211,7 +209,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             etCheckType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CHECK_TYPE, equipmentCheckResult.checkType));
             etCheckScope.setSelection(getSelectedAreaIndex(equipmentCheckResult.checkScope));
             etSafetyMeasure.setText(equipmentCheckResult.safetyMeasure);
-            etEndTime.setText(equipmentCheckResult.endTime.substring(0, 10));
+
+            etEndTime.setText(equipmentCheckResult.endTime == null ? DateUtils.getCurrentYYYY_MM_DD() : equipmentCheckResult.endTime.substring(0, 10));
             if(equipmentCheckResult.beginHandleTime == null || equipmentCheckResult.beginHandleTime.equals("")){
                 etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
             }else{

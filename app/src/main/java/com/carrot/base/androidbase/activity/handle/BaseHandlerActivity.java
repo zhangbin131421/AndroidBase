@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -47,6 +49,12 @@ import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.rest.spring.annotations.RestService;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.List;
 
@@ -243,7 +251,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
                     public void onFocusChange(View v, boolean hasFocus) {
                         if(hasFocus) {
                             int currentStatus = isFinished == 0 ? 0 : (isFinished == 1 ? 1 : 10);
-                            Log.i("sslog", currentStatus+"");
+
                             if(item.status > currentStatus){
                                 openDatePicker(item.editText);
                             }
@@ -262,7 +270,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
                     public void onFocusChange(View v, boolean hasFocus) {
                         if(hasFocus) {
                             int currentStatus = isFinished == 0 ? 0 : (isFinished == 1 ? 1 : 10);
-                            Log.i("sslog", currentStatus+"");
+
                             if(item.status > currentStatus){
                                 openTimePicker(item.editText);
                             }
@@ -442,7 +450,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         if(urls != null){
             for (String url : urls.split(";")){
 
-                View view = ImageUtils.getViewFromURL(url, context, resources);
+                View view = getViewFromURL(url);
                 addImage(view, imageContent);
             }
         }
@@ -502,7 +510,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
                     @Override
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList) {
 
-                        FileUtils.finishGetPhoto(context, resources, resultList, imageList, imageContent);
+                        finishGetPhoto(resultList, imageList, imageContent);
                     }
 
                     @Override
@@ -525,7 +533,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
                      */
                     public void onHanlderSuccess(int reqeustCode, List<PhotoInfo> resultList){
 
-                        FileUtils.finishGetPhoto(context, resources, resultList, imageList, imageContent);
+                        finishGetPhoto(resultList, imageList, imageContent);
                     }
 
                     /**
@@ -716,4 +724,160 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
                 .show();
     }
 
+
+    /**
+     * 获取图片的View，包括图片和删除按钮
+     * @param url
+     * @return
+     */
+    public View getViewFromURL(String url){
+
+        if(url == null || url.trim().equals("") || context == null || resources == null){
+            return null;
+        }
+
+        View view = null;
+
+        try {
+            Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(url).getContent());
+            view = getImageViewForForm(bitmap, null, null, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return view;
+    }
+
+    public View getImageViewForForm(Bitmap bitmap, final PhotoInfo pi, final List<PhotoInfo> picList,
+                                    final org.apmem.tools.layouts.FlowLayout contentView){
+
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        final View promptView = layoutInflater.inflate(R.layout.view_image, null);
+
+
+        ImageView imageView = (ImageView) promptView.findViewById(R.id.image);
+
+        ImageView deleteButton = (ImageView) promptView.findViewById(R.id.btnDelete);
+
+        if(isFinished == 2){
+            deleteButton.setVisibility(View.GONE);
+        }
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(pi != null){
+                    openRemoveImageDialog(pi, picList, contentView, promptView);
+                }
+
+            }
+        });
+
+        imageView.setImageBitmap(bitmap);
+
+
+//        ImageView imageView = new ImageView(context);
+//
+//
+//        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//
+//
+//        int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, resources.getDisplayMetrics());
+//
+//        int padding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, resources.getDisplayMetrics());
+//
+//        imageView.setLayoutParams(new GridView.LayoutParams(width, width));
+//        imageView.setPadding(padding, padding, padding, padding);
+//
+//        imageView.setImageBitmap(bitmap);
+
+        return promptView;
+    }
+
+    @UiThread
+    public void openRemoveImageDialog(final PhotoInfo pi, final List<PhotoInfo> picList,
+                                      final org.apmem.tools.layouts.FlowLayout contentView, final View promptView){
+        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("提示")
+                .setContentText("是否要删除该图片？").setConfirmText("确定")
+                .showCancelButton(true).setCancelText("取消")
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
+                    }
+                })
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+
+                        picList.remove(pi);
+
+                        contentView.removeView(promptView);
+
+                        sDialog.dismissWithAnimation();
+                    }
+                })
+                .show();
+    }
+
+
+    /**
+     *
+     * @param resultList
+     * @param picList   最终的图片列表
+     * @param contentView
+     */
+    public void finishGetPhoto(List<PhotoInfo> resultList, List<PhotoInfo> picList,
+                                      org.apmem.tools.layouts.FlowLayout contentView){
+
+        BitmapFactory.Options opts=new BitmapFactory.Options();
+        opts.inDither=false;                     //Disable Dithering mode
+        opts.inPurgeable=true;                   //Tell to gc that whether it needs free memory, the Bitmap can be cleared
+        opts.inInputShareable=true;              //Which kind of reference will be used to recover the Bitmap data after being clear, when it will be used in the future
+        opts.inTempStorage=new byte[32 * 1024];
+
+
+        for (final PhotoInfo pi : resultList){
+
+            picList.add(pi);
+
+            File file = new File(pi.getPhotoPath());
+
+            if(file.exists()){
+                FileInputStream fis = null;
+                try {
+                    fis = new FileInputStream(file);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+
+//                BitmapFactory.decodeStream(fis, null, opts);
+                Bitmap bitmap = BitmapFactory.decodeStream(fis, null, opts);//BitmapFactory.decodeFile(file.getAbsolutePath());
+
+                View view = getImageViewForForm(bitmap, pi, picList, contentView);
+
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+//                        Log.i("sslog", "image clicked, " + pi.getPhotoPath());
+                    }
+                });
+
+                view.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+
+//                        Log.i("sslog", "image long clicked, " + pi.getPhotoPath());
+
+                        return false;
+                    }
+                });
+
+                contentView.addView(view);
+            }
+        }
+    }
 }
