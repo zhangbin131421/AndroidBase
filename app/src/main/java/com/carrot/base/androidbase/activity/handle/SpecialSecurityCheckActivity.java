@@ -151,19 +151,12 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void add(){
+    void save(){
 
-        specialSecurityCheckResult.assignByUserID = userPrefs.id().get();
-        specialSecurityCheckResult.userID = userPrefs.id().get();
-
-        specialSecurityCheckClient.add(specialSecurityCheckResult);
-    }
-
-    /**
-     * 更新
-     */
-    @Override
-    void update(){
+        if(specialSecurityCheckResult.iD == 0){
+            specialSecurityCheckResult.assignByUserID = userPrefs.id().get();
+            specialSecurityCheckResult.userID = userPrefs.id().get();
+        }
 
         MultiValueMap<String, Object> data = null;
         try {

@@ -193,19 +193,13 @@ public class CrossTestActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void add(){
+    void save(){
 
-        crossTestResult.assignByUserID = userPrefs.id().get();
-        crossTestResult.userId = userPrefs.id().get();
+        if(crossTestResult.id == 0){
+            crossTestResult.assignByUserID = userPrefs.id().get();
+            crossTestResult.userId = userPrefs.id().get();
+        }
 
-        crossTestClient.add(crossTestResult);
-    }
-
-    /**
-     * 更新
-     */
-    @Override
-    void update(){
 
         MultiValueMap<String, Object> data = null;
         try {
@@ -218,9 +212,7 @@ public class CrossTestActivity extends BaseHandlerActivity{
         FileUtils.addImageToData(data, CrossTestResult.EarthDistancePic, earthDistanceList, this);
         FileUtils.addImageToData(data, CrossTestResult.CrossDistancePic, crossDistanceList, this);
         crossTestClient.update(data);
-
     }
-
 
 
     @Override

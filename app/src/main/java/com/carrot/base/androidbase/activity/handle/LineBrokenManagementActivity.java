@@ -158,19 +158,13 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void add(){
+    void save(){
 
-        lineBrokenManagementResult.assignByUserID = userPrefs.id().get();
-        lineBrokenManagementResult.userId = userPrefs.id().get();
+        if(lineBrokenManagementResult.id == 0){
+            lineBrokenManagementResult.assignByUserID = userPrefs.id().get();
+            lineBrokenManagementResult.userId = userPrefs.id().get();
+        }
 
-        lineBrokenManagementClient.add(lineBrokenManagementResult);
-    }
-
-    /**
-     * 更新
-     */
-    @Override
-    void update(){
 
         MultiValueMap<String, Object> data = null;
         try {
@@ -182,10 +176,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
         FileUtils.addImageToData(data, LineBrokenManagementResult.HandleContentPic, handleContentPicList, this);
 
         lineBrokenManagementClient.update(data);
-
     }
-
-
 
     @Override
     boolean validate(){

@@ -23,6 +23,7 @@ public class SSErrorHandler implements RestErrorHandler {
     @Override
     @UiThread
     public void onRestClientExceptionThrown(NestedRuntimeException e) {
+        Log.e("sserror", e.getMessage());
         new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                 .setTitleText("糟糕")
                 .setContentText("网络连接失败，请重试。")

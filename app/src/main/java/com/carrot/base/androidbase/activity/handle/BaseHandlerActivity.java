@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,8 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,8 +19,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
@@ -46,7 +41,6 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
-import org.androidannotations.annotations.InjectMenu;
 import org.androidannotations.annotations.OptionsMenuItem;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
@@ -54,7 +48,6 @@ import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.androidannotations.rest.spring.annotations.RestService;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.CoreConfig;
@@ -73,6 +66,10 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     @RestService
     AreaInformationClient areaInformationClient;
+
+
+    @Bean
+    SSErrorHandler ssErrorHandler;
 
     //新增时不可编辑的字段
     public FormEditText[] addDisableList;
@@ -108,9 +105,6 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         }
 
     }
-
-    @Bean
-    SSErrorHandler ssErrorHandler;
 
     //保存状态, 0: add, 1: update
     int saveStatus = 0;
@@ -149,6 +143,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     void afterInitView(String title, Context context, Resources resources){
 
+        areaInformationClient.setRestErrorHandler(ssErrorHandler);
 
 
         this.context = context;
@@ -418,13 +413,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         showLoading();
 
-        if(saveStatus == 0){ //add
-
-            add();
-        }else{ //update
-
-            update();
-        }
+        save();
 
         dissmisLoading();
 
@@ -438,12 +427,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     /**
      * 新增
      */
-    abstract void add();
+    abstract void save();
 
-    /**
-     * 更新
-     */
-    abstract void update();
 
     void getImageFromURL(String urls, org.apmem.tools.layouts.FlowLayout imageContent){
         if(urls != null){

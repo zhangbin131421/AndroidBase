@@ -25,7 +25,7 @@ public class DistributionNetworkEngineeringResult {
 
     public static final String ID = "ID";
     @JsonProperty(value=ID)
-    public int iD;
+    public int id;
     public static final String UserID = "UserID";
     @JsonProperty(value=UserID)
     public int userID;
@@ -116,7 +116,7 @@ public class DistributionNetworkEngineeringResult {
     public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
-        rtn.add(DistributionNetworkEngineeringResult.ID, this.iD+"");
+        rtn.add(DistributionNetworkEngineeringResult.ID, this.id+"");
         rtn.add(DistributionNetworkEngineeringResult.UserID, this.userID+"");
         rtn.add(DistributionNetworkEngineeringResult.AssignByUserID, this.assignByUserID+"");
         rtn.add(DistributionNetworkEngineeringResult.CreatedTime, this.createdTime.getBytes("UTF-8"));

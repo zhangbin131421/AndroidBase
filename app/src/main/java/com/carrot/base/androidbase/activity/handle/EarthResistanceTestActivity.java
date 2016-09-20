@@ -177,19 +177,13 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void add(){
+    void save(){
 
-        earthResistanceTestResult.assignByUserID = userPrefs.id().get();
-        earthResistanceTestResult.userID = userPrefs.id().get();
+        if(earthResistanceTestResult.iD == 0){
+            earthResistanceTestResult.assignByUserID = userPrefs.id().get();
+            earthResistanceTestResult.userID = userPrefs.id().get();
+        }
 
-        earthResistanceTestClient.add(earthResistanceTestResult);
-    }
-
-    /**
-     * 更新
-     */
-    @Override
-    void update(){
 
         MultiValueMap<String, Object> data = null;
         try {
@@ -200,9 +194,7 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
 
         FileUtils.addImageToData(data, EarthResistanceTestResult.TestResistanceValuePic, testResistanceValueList, this);
         earthResistanceTestClient.update(data);
-
     }
-
 
 
     @Override

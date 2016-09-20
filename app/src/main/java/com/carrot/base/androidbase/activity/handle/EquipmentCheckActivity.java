@@ -50,8 +50,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @RestService
     EquipmentCheckClient equipmentCheckClient;
 
-    @Bean
-    SSErrorHandler ssErrorHandler;
 
 
     @ViewById(R.id.et_assignment_time)
@@ -256,22 +254,12 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
     }
 
+    void save(){
 
-    /**
-     * 新增
-     */
-    void add(){
-
-        equipmentCheckResult.assignByUserID = userPrefs.id().get();
-        equipmentCheckResult.userId = userPrefs.id().get();
-
-        equipmentCheckClient.add(equipmentCheckResult);
-    }
-
-    /**
-     * 更新
-     */
-    void update(){
+        if(equipmentCheckResult.id == 0){
+            equipmentCheckResult.assignByUserID = userPrefs.id().get();
+            equipmentCheckResult.userId = userPrefs.id().get();
+        }
 
         MultiValueMap<String, Object> data = null;
         try {
@@ -283,9 +271,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         FileUtils.addImageToData(data, EquipmentCheckResult.DefectContentPic, defectContentPicList, this);
 
         equipmentCheckClient.update(data);
-
     }
-
 
 
     boolean validate(){

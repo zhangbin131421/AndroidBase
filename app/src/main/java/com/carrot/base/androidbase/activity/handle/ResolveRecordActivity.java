@@ -224,18 +224,13 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
     /**
      * 新增
      */
-    void add(){
+    void save(){
 
-        resolveRecordResult.assignByUserID = userPrefs.id().get();
-        resolveRecordResult.userId = userPrefs.id().get();
+        if(resolveRecordResult.id == 0){
+            resolveRecordResult.assignByUserID = userPrefs.id().get();
+            resolveRecordResult.userId = userPrefs.id().get();
+        }
 
-        resolveRecordClient.add(resolveRecordResult);
-    }
-
-    /**
-     * 更新
-     */
-    void update(){
 
         MultiValueMap<String, Object> data = null;
         try {

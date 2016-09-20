@@ -296,19 +296,12 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void add(){
+    void save(){
 
-        voltageMeasurementResult.assignByUserID = userPrefs.id().get();
-        voltageMeasurementResult.userId = userPrefs.id().get();
-
-        voltageMeasurementClient.add(voltageMeasurementResult);
-    }
-
-    /**
-     * 更新
-     */
-    @Override
-    void update(){
+        if(voltageMeasurementResult.id == 0){
+            voltageMeasurementResult.assignByUserID = userPrefs.id().get();
+            voltageMeasurementResult.userId = userPrefs.id().get();
+        }
 
         MultiValueMap<String, Object> data = null;
         try {

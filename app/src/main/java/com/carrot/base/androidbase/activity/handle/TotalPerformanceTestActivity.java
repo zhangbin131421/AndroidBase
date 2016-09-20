@@ -190,19 +190,12 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void add(){
+    void save(){
 
-        totalPerformanceTestResult.assignByUserID = userPrefs.id().get();
-        totalPerformanceTestResult.userId = userPrefs.id().get();
-
-        totalPerformanceTestClient.add(totalPerformanceTestResult);
-    }
-
-    /**
-     * 更新
-     */
-    @Override
-    void update(){
+        if(totalPerformanceTestResult.id == 0){
+            totalPerformanceTestResult.assignByUserID = userPrefs.id().get();
+            totalPerformanceTestResult.userId = userPrefs.id().get();
+        }
 
         MultiValueMap<String, Object> data = null;
         try {

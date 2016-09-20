@@ -131,7 +131,7 @@ public class EquipmentCheckResult {
         rtn.add(EquipmentCheckResult.CheckScope, this.checkScope.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.CheckTime, this.checkTime == null ? "" : this.checkTime.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.CheckType, this.checkType.getBytes("UTF-8"));
-        rtn.add(EquipmentCheckResult.CreatedTime, this.createdTime.getBytes("UTF-8"));
+        rtn.add(EquipmentCheckResult.CreatedTime, this.createdTime == null ? "" : this.createdTime.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.DefectContent, this.defectContent == null ? "" : this.defectContent.getBytes("UTF-8"));
 //        rtn.add(EquipmentCheckResult.DefectContentPic, this.defectContentPic == null ? "" : this.defectContentPic);
         rtn.add(EquipmentCheckResult.DefectLevel, this.defectLevel.getBytes("UTF-8"));
@@ -147,7 +147,7 @@ public class EquipmentCheckResult {
         rtn.add(EquipmentCheckResult.SafetyMeasure, this.safetyMeasure.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.UserID, this.userId+"");
-        rtn.add(EquipmentCheckResult.UpdatedTime, this.updatedTime.getBytes("UTF-8"));
+        rtn.add(EquipmentCheckResult.UpdatedTime, this.updatedTime == null ? "" : this.updatedTime.getBytes("UTF-8"));
 
         return rtn;
     }

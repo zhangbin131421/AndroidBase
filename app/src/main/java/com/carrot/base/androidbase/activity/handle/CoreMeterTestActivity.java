@@ -209,19 +209,12 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void add(){
+    void save(){
 
-        coreMeterTestResult.assignByUserID = userPrefs.id().get();
-        coreMeterTestResult.userId = userPrefs.id().get();
-
-        coreMeterTestClient.add(coreMeterTestResult);
-    }
-
-    /**
-     * 更新
-     */
-    @Override
-    void update(){
+        if(coreMeterTestResult.id == 0){
+            coreMeterTestResult.assignByUserID = userPrefs.id().get();
+            coreMeterTestResult.userId = userPrefs.id().get();
+        }
 
         MultiValueMap<String, Object> data = null;
         try {
@@ -235,8 +228,8 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
         FileUtils.addImageToData(data, CoreMeterTestResult.CTestingPic, cTestingImgList, this);
 
         coreMeterTestClient.update(data);
-
     }
+
 
     @Override
     boolean validate(){

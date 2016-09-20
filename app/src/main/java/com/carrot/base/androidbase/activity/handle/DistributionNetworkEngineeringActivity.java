@@ -217,19 +217,13 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void add(){
+    void save(){
 
+        if(distributionNetworkEngineeringResult.id == 0){
+
+        }
         distributionNetworkEngineeringResult.assignByUserID = userPrefs.id().get();
         distributionNetworkEngineeringResult.userID = userPrefs.id().get();
-
-        distributionNetworkEngineeringClient.add(distributionNetworkEngineeringResult);
-    }
-
-    /**
-     * 更新
-     */
-    @Override
-    void update(){
 
         MultiValueMap<String, Object> data = null;
         try {
@@ -240,7 +234,6 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
 
         FileUtils.addImageToData(data, DistributionNetworkEngineeringResult.Inspect, inspectList, this);
         distributionNetworkEngineeringClient.update(data);
-
     }
 
 
