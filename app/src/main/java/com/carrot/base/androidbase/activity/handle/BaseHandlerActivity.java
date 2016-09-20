@@ -24,6 +24,7 @@ import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.activity.ImagePreviewActivity_;
 import com.carrot.base.androidbase.client.AreaInformationClient;
 import com.carrot.base.androidbase.constant.ResultCodeConstant;
 import com.carrot.base.androidbase.error.SSErrorHandler;
@@ -740,7 +741,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         try {
             Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(url).getContent());
-            view = getImageViewForForm(bitmap, null, null, null);
+            view = getImageViewForForm(bitmap, null, null, null, url);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -750,13 +751,20 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     }
 
     public View getImageViewForForm(Bitmap bitmap, final PhotoInfo pi, final List<PhotoInfo> picList,
-                                    final org.apmem.tools.layouts.FlowLayout contentView){
+                                    final org.apmem.tools.layouts.FlowLayout contentView, final String url){
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         final View promptView = layoutInflater.inflate(R.layout.view_image, null);
 
 
         ImageView imageView = (ImageView) promptView.findViewById(R.id.image);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ImagePreviewActivity_.intent(context).url(url).flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+            }
+        });
 
         ImageView deleteButton = (ImageView) promptView.findViewById(R.id.btnDelete);
 
@@ -857,12 +865,13 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 //                BitmapFactory.decodeStream(fis, null, opts);
                 Bitmap bitmap = BitmapFactory.decodeStream(fis, null, opts);//BitmapFactory.decodeFile(file.getAbsolutePath());
 
-                View view = getImageViewForForm(bitmap, pi, picList, contentView);
+                View view = getImageViewForForm(bitmap, pi, picList, contentView, pi.getPhotoPath());
 
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 //                        Log.i("sslog", "image clicked, " + pi.getPhotoPath());
+                        ImagePreviewActivity_.intent(context).url(pi.getPhotoPath()).flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                     }
                 });
 

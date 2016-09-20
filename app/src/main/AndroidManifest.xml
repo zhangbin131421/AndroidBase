@@ -86,6 +86,10 @@
 
         <activity android:name=".activity.handle.CarManagementActivity_"
             ></activity>
+
+
+        <activity android:name=".activity.ImagePreviewActivity_"
+            ></activity>
     </application>
 
 </manifest>

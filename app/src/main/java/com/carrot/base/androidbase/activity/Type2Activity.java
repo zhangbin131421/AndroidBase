@@ -17,7 +17,6 @@ import com.carrot.base.androidbase.adapter.Type2Adapter;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
 import com.carrot.base.androidbase.error.SSErrorHandler;
-import com.carrot.base.androidbase.error.SSErrorWithoutDialogHandler;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.vo.TypeVo;
 import com.carrot.base.androidbase.vo.result.CountResult;
@@ -71,7 +70,7 @@ public class Type2Activity extends AppCompatActivity {
     ResolveRecordClient resolveRecordClient;
 
     @Bean
-    SSErrorWithoutDialogHandler ssErrorHandler;
+    SSErrorHandler ssErrorHandler;
 
     @AfterViews
     void bindAdapter(){
