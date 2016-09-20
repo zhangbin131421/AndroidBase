@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.carrot.base.androidbase.R;
@@ -31,10 +32,14 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
 
         public TextView flag;
 
+        public ImageView imgIcon;
+
         public DataObjectHolder(View itemView) {
             super(itemView);
             label = (TextView) itemView.findViewById(R.id.tv_card_view_row_name);
             flag = (TextView) itemView.findViewById(R.id.et_card_view_row_main_newFlag);
+            imgIcon = (ImageView) itemView.findViewById(R.id.img_icon);
+
             flag.setVisibility(View.INVISIBLE);
             Log.i(LOG_TAG, "Adding Listener");
             itemView.setOnClickListener(this);
@@ -68,7 +73,7 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.label.setText(mDataset.get(position).getName());
-
+        holder.imgIcon.setImageResource(mDataset.get(position).getSrc());
     }
 
     public void addItem(TypeVo dataObj, int index) {

@@ -149,12 +149,12 @@ public class TypeUtils {
 
 
 
-        TypeVo type4 = new TypeVo(TYPE_1, false);
+        TypeVo type4 = new TypeVo(TYPE_1, false, R.mipmap.manager4);
         List<TypeVo> subTypes4 = new ArrayList<>();
         String[] ss4 = new String[]{TYPE_1_1,TYPE_1_2,TYPE_1_3,TYPE_1_4,TYPE_1_5,TYPE_1_6,TYPE_1_7};
 
         for (String item : ss4) {
-            TypeVo itemVo = new TypeVo(item, true);
+            TypeVo itemVo = new TypeVo(item, true, R.mipmap.manager1);
             subTypes4.add(itemVo);
         }
         type4.setSubTypes(subTypes4);
@@ -162,7 +162,7 @@ public class TypeUtils {
         result.add(type4);
 
 
-        TypeVo type3 = new TypeVo(TYPE_2, false);
+        TypeVo type3 = new TypeVo(TYPE_2, false, R.mipmap.manager1);
         List<TypeVo> subTypes3 = new ArrayList<>();
         String[] ss3 = new String[]{TYPE_2_1,
                 TYPE_2_2,
@@ -175,7 +175,7 @@ public class TypeUtils {
         };
 
         for (String item : ss3) {
-            TypeVo itemVo = new TypeVo(item, true);
+            TypeVo itemVo = new TypeVo(item, true, R.mipmap.manager1);
             subTypes3.add(itemVo);
         }
         type3.setSubTypes(subTypes3);
@@ -184,26 +184,26 @@ public class TypeUtils {
 
 
 
-        TypeVo type2 = new TypeVo(TYPE_3, true);
+        TypeVo type2 = new TypeVo(TYPE_3, true, R.mipmap.manager3);
 
         result.add(type2);
         List<TypeVo> subTypes2 = new ArrayList<>();
         String[] ss2 = new String[]{TYPE_3_1};
 
         for (String item : ss2) {
-            TypeVo itemVo = new TypeVo(item, true);
+            TypeVo itemVo = new TypeVo(item, true, R.mipmap.manager1);
             subTypes2.add(itemVo);
         }
         type2.setSubTypes(subTypes2);
 
 
 
-        TypeVo type1 = new TypeVo(TYPE_4, false);
+        TypeVo type1 = new TypeVo(TYPE_4, false, R.mipmap.manager2);
         List<TypeVo> subTypes1 = new ArrayList<>();
         String[] ss1 = new String[]{TYPE_4_1};
 
         for (String item : ss1) {
-            TypeVo itemVo = new TypeVo(item, true);
+            TypeVo itemVo = new TypeVo(item, true, R.mipmap.manager1);
             subTypes1.add(itemVo);
         }
         type1.setSubTypes(subTypes1);

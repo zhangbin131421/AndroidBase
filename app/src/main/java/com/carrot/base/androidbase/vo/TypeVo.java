@@ -13,11 +13,14 @@ public class TypeVo implements Serializable{
 
     private boolean flag;
 
+    private int src;
+
     List<TypeVo> subTypes;
 
-    public TypeVo(String name, boolean flag){
+    public TypeVo(String name, boolean flag, int src){
         this.name = name;
         this.flag = flag;
+        this.src = src;
     }
 
     public String getName() {
@@ -43,5 +46,14 @@ public class TypeVo implements Serializable{
 
     public void setSubTypes(List<TypeVo> subTypes) {
         this.subTypes = subTypes;
+    }
+
+
+    public int getSrc() {
+        return src;
+    }
+
+    public void setSrc(int src) {
+        this.src = src;
     }
 }

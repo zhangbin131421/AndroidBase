@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!-- 主页文字大小 -->
-    <dimen name="text_size_main_card_view">40sp</dimen>
+    <dimen name="text_size_main_card_view">30sp</dimen>
     <!-- 任务主页文字大小 -->
     <dimen name="text_size_main_task_card_view">25sp</dimen>
     <!-- 任务列表文字大小1 -->
