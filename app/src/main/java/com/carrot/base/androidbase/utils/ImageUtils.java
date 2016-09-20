@@ -60,7 +60,7 @@ public class ImageUtils {
 
         ImageView imageView = (ImageView) promptView.findViewById(R.id.image);
 
-        Button deleteButton = (Button) promptView.findViewById(R.id.btnDelete);
+        ImageView deleteButton = (ImageView) promptView.findViewById(R.id.btnDelete);
 
         imageView.setImageBitmap(bitmap);
 
