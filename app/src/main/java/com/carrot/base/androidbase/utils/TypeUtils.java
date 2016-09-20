@@ -155,13 +155,13 @@ public class TypeUtils {
         TypeVo type4 = new TypeVo(TYPE_1, false, R.mipmap.manager4);
         List<TypeVo> subTypes4 = new ArrayList<>();
 
-        subTypes4.add(new TypeVo(TYPE_1_1, true, R.mipmap.manager1));
-        subTypes4.add(new TypeVo(TYPE_1_2, true, R.mipmap.manager1));
-        subTypes4.add(new TypeVo(TYPE_1_3, true, R.mipmap.manager1));
-        subTypes4.add(new TypeVo(TYPE_1_4, true, R.mipmap.manager1));
-        subTypes4.add(new TypeVo(TYPE_1_5, true, R.mipmap.manager1));
-        subTypes4.add(new TypeVo(TYPE_1_6, true, R.mipmap.manager1));
-        subTypes4.add(new TypeVo(TYPE_1_7, true, R.mipmap.manager1));
+        subTypes4.add(new TypeVo(TYPE_1_1, true, R.mipmap.type11));
+        subTypes4.add(new TypeVo(TYPE_1_2, true, R.mipmap.urine_collection));
+        subTypes4.add(new TypeVo(TYPE_1_3, true, R.mipmap.energy_meter));
+        subTypes4.add(new TypeVo(TYPE_1_4, true, R.mipmap.pressure));
+        subTypes4.add(new TypeVo(TYPE_1_5, true, R.mipmap.purchase_order));
+        subTypes4.add(new TypeVo(TYPE_1_6, true, R.mipmap.survey));
+        subTypes4.add(new TypeVo(TYPE_1_7, true, R.mipmap.disconnected));
 
         type4.setSubTypes(subTypes4);
 
@@ -171,14 +171,14 @@ public class TypeUtils {
         TypeVo type3 = new TypeVo(TYPE_2, false, R.mipmap.manager1);
         List<TypeVo> subTypes3 = new ArrayList<>();
 
-        subTypes3.add(new TypeVo(TYPE_2_1, true, R.mipmap.manager1));
-        subTypes3.add(new TypeVo(TYPE_2_2, true, R.mipmap.manager1));
-        subTypes3.add(new TypeVo(TYPE_2_3, true, R.mipmap.manager1));
-        subTypes3.add(new TypeVo(TYPE_2_4, true, R.mipmap.manager1));
-        subTypes3.add(new TypeVo(TYPE_2_5, true, R.mipmap.manager1));
-        subTypes3.add(new TypeVo(TYPE_2_6, true, R.mipmap.manager1));
-        subTypes3.add(new TypeVo(TYPE_2_7, true, R.mipmap.manager1));
-        subTypes3.add(new TypeVo(TYPE_2_8, true, R.mipmap.manager1));
+        subTypes3.add(new TypeVo(TYPE_2_1, true, R.mipmap.car_battery));
+        subTypes3.add(new TypeVo(TYPE_2_2, true, R.mipmap.scale));
+        subTypes3.add(new TypeVo(TYPE_2_3, true, R.mipmap.search));
+        subTypes3.add(new TypeVo(TYPE_2_4, true, R.mipmap.treatment_plan));
+        subTypes3.add(new TypeVo(TYPE_2_5, true, R.mipmap.electrical_sensor));
+        subTypes3.add(new TypeVo(TYPE_2_6, true, R.mipmap.plus_minus));
+        subTypes3.add(new TypeVo(TYPE_2_7, true, R.mipmap.thunderbolt));
+        subTypes3.add(new TypeVo(TYPE_2_8, true, R.mipmap.worker_with_roadblock));
 
         type3.setSubTypes(subTypes3);
 
@@ -190,7 +190,7 @@ public class TypeUtils {
 
         List<TypeVo> subTypes2 = new ArrayList<>();
 
-        subTypes2.add(new TypeVo(TYPE_3_1, true, R.mipmap.manager1));
+        subTypes2.add(new TypeVo(TYPE_3_1, true, R.mipmap.flow_chart));
         type2.setSubTypes(subTypes2);
         result.add(type2);
 
@@ -199,7 +199,7 @@ public class TypeUtils {
         List<TypeVo> subTypes1 = new ArrayList<>();
 
 
-        subTypes1.add(new TypeVo(TYPE_4_1, true, R.mipmap.manager1));
+        subTypes1.add(new TypeVo(TYPE_4_1, true, R.mipmap.garage));
 
         type1.setSubTypes(subTypes1);
 
