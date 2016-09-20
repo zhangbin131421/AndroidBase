@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.carrot.base.androidbase.R;
@@ -28,12 +29,15 @@ public class Type2Adapter extends RecyclerView.Adapter<Type2Adapter
 
         public TextView label;
         public TextView flag;
+        public ImageView imgIcon;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             label = (TextView) itemView.findViewById(R.id.tv_type_2_name);
             flag = (TextView) itemView.findViewById(R.id.et_card_view_row_type_2_newFlag);
-            Log.i(LOG_TAG, "Adding Listener");
+            imgIcon = (ImageView) itemView.findViewById(R.id.img_icon);
+
+
             itemView.setOnClickListener(this);
         }
 
@@ -65,6 +69,7 @@ public class Type2Adapter extends RecyclerView.Adapter<Type2Adapter
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.label.setText(mDataset.get(position).getName());
+        holder.imgIcon.setImageResource(mDataset.get(position).getSrc());
     }
 
     public void addItem(TypeVo dataObj, int index) {
