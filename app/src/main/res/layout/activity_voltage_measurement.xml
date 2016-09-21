@@ -29,6 +29,7 @@
         <LinearLayout style="@style/tableTitle">
             <TextView style="@style/tableColName"
                 android:text="任务派发"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -38,6 +39,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="任务编号"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -47,6 +49,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="台区名称"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etAreaName"
                 style="@style/spinner"/>
@@ -54,6 +57,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="配变容量（KVA）4"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -63,6 +67,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="配变型号"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etConfigB"
                 style="@style/spinner"/>
@@ -70,6 +75,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="配变类别"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etConfigC"
                 style="@style/spinner"/>
@@ -77,6 +83,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="额定电流（A）"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -86,6 +93,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="动力户数"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -95,6 +103,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="动力容量"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -104,6 +113,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="居民户数"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -113,6 +123,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="居民容量"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -122,6 +133,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="安全措施"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etSafetyMeasure"
                 style="@style/spinner"/>
@@ -129,6 +141,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="结束时间"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -138,6 +151,7 @@
         <LinearLayout style="@style/tableTitle">
             <TextView style="@style/tableColName"
                 android:text="测量情况"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -147,6 +161,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="时段"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etPeriod"
                 style="@style/spinner"/>
@@ -155,6 +170,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="A相电流（A）1"/>
+            <TextView style="@style/formDivider"/>
             <org.apmem.tools.layouts.FlowLayout
                 android:id="@+id/etCurrentA_content"
                 style="@style/tableColImageLayout">
@@ -169,6 +185,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="B相电流（A）2"/>
+            <TextView style="@style/formDivider"/>
             <org.apmem.tools.layouts.FlowLayout
                 android:id="@+id/etCurrentB_content"
                 style="@style/tableColImageLayout">
@@ -182,6 +199,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="C相电流（A）3"/>
+            <TextView style="@style/formDivider"/>
             <org.apmem.tools.layouts.FlowLayout
                 android:id="@+id/etCurrentC_content"
                 style="@style/tableColImageLayout">
@@ -196,6 +214,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="零线电流（A）"/>
+            <TextView style="@style/formDivider"/>
             <org.apmem.tools.layouts.FlowLayout
                 android:id="@+id/etZeoLineCurrent_content"
                 style="@style/tableColImageLayout">
@@ -209,6 +228,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="负载率（%）"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -218,6 +238,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="三相不平衡率（%）"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -228,6 +249,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="线路首端电压（V）"/>
+            <TextView style="@style/formDivider"/>
             <org.apmem.tools.layouts.FlowLayout
                 android:id="@+id/etHeaderVoltage_content"
                 style="@style/tableColImageLayout">
@@ -242,6 +264,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="线路末端电压（V）"/>
+            <TextView style="@style/formDivider"/>
             <org.apmem.tools.layouts.FlowLayout
                 android:id="@+id/etFooterVoltage_content"
                 style="@style/tableColImageLayout">
@@ -255,6 +278,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="是否越限"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etIsOutOfLimit"
                 style="@style/spinner"/>
@@ -262,6 +286,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="整改建议"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -271,6 +296,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="测量日期"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -280,6 +306,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="测量人员"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -289,6 +316,7 @@
         <LinearLayout style="@style/tableTitle">
             <TextView style="@style/tableColName"
                 android:text="任务结束"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -298,6 +326,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="已处理"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etIsHandled"
                 style="@style/spinner"/>
@@ -305,6 +334,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="未处理"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"

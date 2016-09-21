@@ -30,6 +30,7 @@
         <LinearLayout style="@style/tableTitle">
             <TextView style="@style/tableColName"
                 android:text="任务派发"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -39,6 +40,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="任务编号"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -48,6 +50,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="台区名称"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etAreaName"
                 style="@style/spinner"/>
@@ -55,6 +58,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="交跨点"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -64,6 +68,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="跨越物名称"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -73,6 +78,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="安全措施"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etSafetyMeasure"
                 style="@style/spinner"/>
@@ -80,6 +86,7 @@
         <LinearLayout style="@style/tableTitle">
             <TextView style="@style/tableColName"
                 android:text="测量情况"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -90,6 +97,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="对地距离（米）"/>
+            <TextView style="@style/formDivider"/>
             <org.apmem.tools.layouts.FlowLayout
                 android:id="@+id/etEarthDistance_content"
                 style="@style/tableColImageLayout">
@@ -104,6 +112,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="交跨距离（米）"/>
+            <TextView style="@style/formDivider"/>
             <org.apmem.tools.layouts.FlowLayout
                 android:id="@+id/etCrossDistance_content"
                 style="@style/tableColImageLayout">
@@ -117,6 +126,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="是否符合要求"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etIsQualified"
                 style="@style/spinner"/>
@@ -124,6 +134,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="整改意见"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -133,6 +144,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
             android:text="测量时间"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -142,6 +154,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="测量人员"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -151,6 +164,7 @@
         <LinearLayout style="@style/tableTitle">
             <TextView style="@style/tableColName"
                 android:text="任务结束"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"
@@ -160,6 +174,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="已处理"/>
+            <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etIsHandled"
                 style="@style/spinner"/>
@@ -167,6 +182,7 @@
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
                 android:text="未处理"/>
+            <TextView style="@style/formDivider"/>
             <com.andreabaccega.widget.FormEditText
                 style="@style/tableColInput"
                 whatever:emptyErrorString="@string/notEmpty"

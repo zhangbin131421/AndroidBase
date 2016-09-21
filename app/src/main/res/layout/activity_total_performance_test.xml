@@ -29,6 +29,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_title1"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -38,6 +39,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_num"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -47,6 +49,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_area_name"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--style="@style/tableColInput"-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
@@ -59,6 +62,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="保护线路"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--style="@style/tableColInput"-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
@@ -71,6 +75,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="型号"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--style="@style/tableColInput"-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
@@ -83,6 +88,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="安全措施"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--style="@style/tableColInput"-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
@@ -95,6 +101,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="结束时间"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -106,6 +113,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="检测情况"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -115,6 +123,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="分断动作电流（额定值）"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -124,6 +133,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="分断动作电流（实测值）"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--style="@style/tableColInput"-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
@@ -141,6 +151,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="分断动作时间（额定值）"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -150,6 +161,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="分断动作时间（实测值）"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--style="@style/tableColInput"-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
@@ -167,6 +179,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="投运时间"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -176,6 +189,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="测量时间"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -185,6 +199,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="检测结果"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--style="@style/tableColInput"-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
@@ -197,6 +212,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="采取措施"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -206,6 +222,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="测试人"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -218,6 +235,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_end_handle_tiem"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -227,6 +245,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -236,6 +255,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_unhandle_reason"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"

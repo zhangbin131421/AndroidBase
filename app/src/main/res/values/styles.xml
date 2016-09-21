@@ -44,6 +44,12 @@
         <item name="android:paddingLeft">10dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="formDivider">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/divider</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
     <!-- 表单右侧输入文本的样式 -->
     <style name="tableColInput">
         <item name="android:textSize">@dimen/text_size_form_right</item>

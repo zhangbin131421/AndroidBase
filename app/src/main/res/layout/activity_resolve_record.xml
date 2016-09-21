@@ -30,6 +30,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_title1"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_AssignmentTime"/>
             </LinearLayout>
@@ -37,6 +38,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_num"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_TaskNum"/>
             </LinearLayout>
@@ -44,6 +46,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷位置"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_DefectPlace"/>
             </LinearLayout>
@@ -51,6 +54,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷内容"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_DefectContent"/>
             </LinearLayout>
@@ -58,6 +62,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="结束时间"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_EndTime"/>
             </LinearLayout>
@@ -65,6 +70,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="安全措施"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_SafetyMeasure"/>
             </LinearLayout>
@@ -74,6 +80,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="现场处理"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_BeginHandleTime"/>
             </LinearLayout>
@@ -81,6 +88,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="工作性质"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_WorkType"/>-->
 
@@ -92,6 +100,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="工作票号"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_WorkInvoiceNum"/>
             </LinearLayout>
@@ -99,6 +108,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="停电范围"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_StopScope"/>
             </LinearLayout>
@@ -106,6 +116,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="申请人"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_Applier"/>
             </LinearLayout>
@@ -113,6 +124,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="工作许可人"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_WorkLicensor"/>
             </LinearLayout>
@@ -120,6 +132,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="工作负责人"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_WorkPrincipal"/>
             </LinearLayout>
@@ -127,6 +140,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="停电时间"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_StopTime"/>
             </LinearLayout>
@@ -134,6 +148,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="送电时间"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_EndStopTime"/>
             </LinearLayout>
@@ -141,6 +156,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="停送电人员"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_StopPeople"/>
             </LinearLayout>
@@ -148,6 +164,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="工作人员"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_Worker"/>
             </LinearLayout>
@@ -155,6 +172,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="操作票编号"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_OperationInvoiceNum"/>
             </LinearLayout>
@@ -162,6 +180,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="作业指导书"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_WorkInstruction"/>
             </LinearLayout>
@@ -169,6 +188,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="消缺情况"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_ResolveContent"/>-->
                 <LinearLayout
@@ -194,6 +214,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="工作日期"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_WorkDate"/>
             </LinearLayout>
@@ -203,6 +224,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_end_handle_tiem"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                 android:id="@+id/et_EndHandleTime"/>
             </LinearLayout>
@@ -210,6 +232,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_IsHandled"/>-->
 
@@ -227,6 +250,7 @@
                 <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
                         android:text="@string/task_unhandle_reason"/>
+                    <TextView style="@style/formDivider"/>
                     <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                               android:id="@+id/et_UnhandleReason"/>
                 </LinearLayout>

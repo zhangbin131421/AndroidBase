@@ -3,8 +3,8 @@
     android:shape="rectangle" >
     <!-- 标题，带背景色 -->
     <stroke
-        android:width="0.5dip"
-        android:color="@android:color/darker_gray" />
+        android:width="0.25dip"
+        android:color="@color/divider" />
 
     <solid android:color="@color/primary_light" />
 </shape>

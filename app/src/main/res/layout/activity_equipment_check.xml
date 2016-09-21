@@ -29,6 +29,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_title1"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
@@ -38,6 +39,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_num"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_task_num"/>
             </LinearLayout>
@@ -45,6 +47,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视种类"/>
+                <TextView style="@style/formDivider"/>
                 <!--<EditText style="@style/tableColInput"-->
                     <!--android:id="@+id/et_check_type"/>-->
                 <Spinner
@@ -55,6 +58,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视范围"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_check_scope" />-->
                 <Spinner
@@ -65,6 +69,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="安全措施"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_safety_measure"/>
             </LinearLayout>
@@ -72,6 +77,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="结束时间"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_end_time"/>
             </LinearLayout>
@@ -81,6 +87,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="巡视内容"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_begin_handle_time"/>
             </LinearLayout>
@@ -88,6 +95,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="存在问题"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_exist_defect"/>-->
 
@@ -104,6 +112,7 @@
                 <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
                         android:text="缺陷位置"/>
+                    <TextView style="@style/formDivider"/>
                     <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                         android:id="@+id/et_defect_place"/>
                 </LinearLayout>
@@ -111,6 +120,7 @@
                 <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
                         android:text="缺陷内容"/>
+                    <TextView style="@style/formDivider"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -139,6 +149,7 @@
                 <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
                         android:text="缺陷等级"/>
+                    <TextView style="@style/formDivider"/>
                     <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_defect_level"/>-->
 
@@ -150,14 +161,16 @@
                 <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
                         android:text="处理情况"/>
+                    <TextView style="@style/formDivider"/>
                     <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                         android:id="@+id/et_handle_content"/>
                 </LinearLayout>
 
                 <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
-                        android:text="是否上报计划改造"/>
+                        android:text="是否上报改造计划"/>
 
+                    <TextView style="@style/formDivider"/>
                     <Spinner
                         android:id="@+id/et_report"
                         style="@style/spinner"/>
@@ -167,6 +180,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视人员"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_check_people"/>
             </LinearLayout>
@@ -174,6 +188,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="巡视日期"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_check_time"/>
             </LinearLayout>
@@ -183,6 +198,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="任务结束"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_end_handle_time"/>
             </LinearLayout>
@@ -190,6 +206,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
                     <!--android:id="@+id/et_is_handled"/>-->
                 <Spinner
@@ -203,6 +220,7 @@
                 android:orientation="vertical"
                 android:id="@+id/llIsHandler">
 
+                <TextView style="@style/formDivider"/>
                 <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
                         android:text="@string/task_unhandle_reason"/>

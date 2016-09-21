@@ -30,6 +30,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_title1"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     whatever:emptyErrorString="@string/notEmpty"
                     style="@style/tableColInput"
@@ -39,6 +40,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_num"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     whatever:emptyErrorString="@string/notEmpty"
                     style="@style/tableColInput"
@@ -48,6 +50,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_area_name"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
                     <!--style="@style/tableColInput"-->
@@ -61,6 +64,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="线损率"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     whatever:emptyErrorString="@string/notEmpty"
                     style="@style/tableColInput"
@@ -71,6 +75,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="安全措施"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
                     <!--style="@style/tableColInput"-->
@@ -85,6 +90,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_handle"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     whatever:emptyErrorString="@string/notEmpty"
                     style="@style/tableColInput"
@@ -94,6 +100,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_unqualified_reason"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
                     <!--style="@style/tableColInput"-->
@@ -107,6 +114,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_handle_content"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--whatever:emptyErrorString="@string/notEmpty"-->
                     <!--style="@style/tableColInput"-->
@@ -124,6 +132,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_user_id"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     whatever:emptyErrorString="@string/notEmpty"
                     style="@style/tableColInput"
@@ -135,6 +144,7 @@
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_end_handle_tiem"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     whatever:emptyErrorString="@string/notEmpty"
                     style="@style/tableColInput"
@@ -144,6 +154,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     whatever:emptyErrorString="@string/notEmpty"
                     style="@style/tableColInput"
@@ -153,6 +164,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_unhandle_reason"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     whatever:emptyErrorString="@string/notEmpty"
                     style="@style/tableColInput"

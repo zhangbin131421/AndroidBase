@@ -32,6 +32,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="@string/task_title1"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_assignment_time"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -41,6 +42,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="@string/task_num"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_task_num"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -50,6 +52,7 @@
                 <TextView
                     android:text="@string/task_area_name"
                     style="@style/tableColName"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--android:id="@+id/et_area_name"-->
                     <!--whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>-->
@@ -62,6 +65,7 @@
                 <TextView
                     android:text="保护线路"
                     style="@style/tableColName"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_protect_line"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -71,6 +75,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="型号"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_type"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -80,6 +85,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="安全措施"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_safety_measure"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -89,6 +95,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="结束时间"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_end_time"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -100,6 +107,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="测量情况"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_begin_handle_time"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -109,6 +117,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="天气"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--android:id="@+id/et_wether"-->
                     <!--whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>-->
@@ -121,6 +130,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="试跳方法"/>
+                <TextView style="@style/formDivider"/>
                 <Spinner
                     android:id="@+id/et_test_way"
                     style="@style/spinner"/>
@@ -134,6 +144,7 @@
                     style="@style/tableColName"
                     android:text="A相接地试跳（mA)"/>
 
+                <TextView style="@style/formDivider"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -159,6 +170,7 @@
                     style="@style/tableColName"
                     android:text="B相接地试跳（mA)"/>
 
+                <TextView style="@style/formDivider"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -185,6 +197,7 @@
                     style="@style/tableColName"
                     android:text="C相接地试跳（mA)"/>
 
+                <TextView style="@style/formDivider"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -210,6 +223,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="检测结果"/>
+                <TextView style="@style/formDivider"/>
                 <Spinner
                     android:id="@+id/et_test_result"
                     style="@style/spinner"/>
@@ -222,6 +236,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="采取措施"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_handle_content"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -231,6 +246,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="测试人"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_tester"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -240,6 +256,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="试跳日期"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_testing_time"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -251,6 +268,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="@string/task_end_handle_tiem"/>
+                <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_end_handle_time"
                     whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
@@ -260,6 +278,7 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
+                <TextView style="@style/formDivider"/>
                 <!--<com.andreabaccega.widget.FormEditText-->
                     <!--android:id="@+id/et_is_handled"-->
                     <!--whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>-->
@@ -279,6 +298,7 @@
                     <TextView
                         style="@style/tableColName"
                         android:text="@string/task_unhandle_reason"/>
+                    <TextView style="@style/formDivider"/>
                     <com.andreabaccega.widget.FormEditText
                         android:id="@+id/et_unhandle_reason"
                         whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>
