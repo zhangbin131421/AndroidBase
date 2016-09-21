@@ -220,10 +220,10 @@
                 android:orientation="vertical"
                 android:id="@+id/llIsHandler">
 
-                <TextView style="@style/formDivider"/>
                 <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
                         android:text="@string/task_unhandle_reason"/>
+                    <TextView style="@style/formDivider"/>
                     <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                         android:id="@+id/et_unhandle_reason"/>
                 </LinearLayout>
