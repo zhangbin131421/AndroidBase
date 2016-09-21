@@ -138,14 +138,14 @@ public class CoreMeterTestResult {
 
         rtn.add(CoreMeterTestResult.AreaName, this.areaName.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.AssignByUserID, this.assignByUserID+"");
-        rtn.add(CoreMeterTestResult.AssignmentTime, this.assignmentTime.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime);
 //        rtn.add(CoreMeterTestResult.ATesting, this.aTesting);
-        rtn.add(CoreMeterTestResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.BeginHandleTime, this.beginHandleTime);
 //        rtn.add(CoreMeterTestResult.BTesting, this.bTesting);
-        rtn.add(CoreMeterTestResult.CreatedTime, this.createdTime);
+        rtn.add(CoreMeterTestResult.CreatedTime, this.createdTime == null ? "" : this.createdTime);
 //        rtn.add(CoreMeterTestResult.CTesting, this.cTesting);
-        rtn.add(CoreMeterTestResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
-        rtn.add(CoreMeterTestResult.EndTime, this.endTime.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.EndHandleTime, this.endHandleTime);
+        rtn.add(CoreMeterTestResult.EndTime, this.endTime);
         rtn.add(CoreMeterTestResult.HandleContent, this.handleContent.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.ID, this.id+"");
         rtn.add(CoreMeterTestResult.IsDelete, this.isDelete+"");
@@ -154,12 +154,12 @@ public class CoreMeterTestResult {
         rtn.add(CoreMeterTestResult.SafetyMeasure, this.safetyMeasure.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.TaskNum, this.taskNum.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.Tester, this.tester.getBytes("UTF-8"));
-        rtn.add(CoreMeterTestResult.TestingTime, this.testingTime.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.TestingTime, this.testingTime);
         rtn.add(CoreMeterTestResult.TestResult, this.testResult.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.TestWay, this.testWay.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.Type, this.type.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
-        rtn.add(CoreMeterTestResult.UpdatedTime, this.updatedTime.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.UpdatedTime, this.updatedTime == null ? "" : this.updatedTime);
         rtn.add(CoreMeterTestResult.UserID, this.userId+"");
         rtn.add(CoreMeterTestResult.Wether, this.wether.getBytes("UTF-8"));
 

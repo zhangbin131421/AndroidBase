@@ -1,12 +1,16 @@
 package com.carrot.base.androidbase.activity.handle;
 
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.CoreMeterTestClient;
+import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
+import com.carrot.base.androidbase.utils.TaskUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 
@@ -42,7 +46,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_task_num)
     FormEditText etTaskNum;
     @ViewById(R.id.et_area_name)
-    FormEditText etAreaName;
+    Spinner etAreaName;
     @ViewById(R.id.et_protect_line)
     FormEditText etProtectLine;
     @ViewById(R.id.et_type)
@@ -57,6 +61,12 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
     Spinner etWether;
     @ViewById(R.id.et_test_way)
     Spinner etTestWay;
+    @ViewById(R.id.btn_add_a_image)
+    ImageView addAImage;
+    @ViewById(R.id.btn_add_b_image)
+    ImageView addBImage;
+    @ViewById(R.id.btn_add_c_image)
+    ImageView addCImage;
     @ViewById(R.id.aTestingPicContent)
     org.apmem.tools.layouts.FlowLayout aTestingPicContent;
     @ViewById(R.id.bTestingPicContent)
@@ -74,7 +84,10 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_end_handle_time)
     FormEditText etEndHandleTime;
     @ViewById(R.id.et_is_handled)
-    FormEditText etIsHandled;
+    Spinner etIsHandled;
+
+    @ViewById(R.id.llIsHandler)
+    LinearLayout llIsHandler;
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
@@ -97,9 +110,39 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
     public void setValidateList(){
 
-        allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etAreaName, etProtectLine, etType,
+        allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etProtectLine, etType,
                 etSafetyMeasure, etEndTime, etBeginHandleTime, etHandleContent, etTester,
-                etTestingTime, etEndHandleTime, etIsHandled, etUnhandleReason};
+                etTestingTime, etEndHandleTime, etUnhandleReason};
+
+
+        addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
+
+        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
+
+        finishDisableList = allFields;
+
+        updateDisabledSpinnerList = new Spinner[] {};
+        finishDisabledSpinnerList = new Spinner[] {etWether, etTestWay, etTestResult, etIsHandled, etAreaName};
+
+        imageAddButtonList = new ImageView[] {addAImage,addBImage,addCImage};
+
+        openDateEditTextList = new OpenDateVo[] {
+                new OpenDateVo(etEndTime, 1),
+                new OpenDateVo(etEndHandleTime, 10),
+                new OpenDateVo(etBeginHandleTime, 10),
+                new OpenDateVo(etTestingTime, 10),
+        };
+
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
+                new ImageChooseVo(addAImage, aTestingImgList, aTestingPicContent),
+                new ImageChooseVo(addBImage, bTestingImgList, bTestingPicContent),
+                new ImageChooseVo(addCImage, cTestingImgList, cTestingPicContent)
+        };
+
+        showBySpinnerList = new ShowBySpinnerVo[]{
+                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
+
     }
 
     @Override
@@ -115,6 +158,10 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
         setDropDownListAdapter(etTestWay, TypeUtils.TEST_WAY);
 
         setDropDownListAdapter(etTestResult, TypeUtils.TEST_RESULT);
+
+
+        setDropDownListAdapter(etIsHandled, TypeUtils.TYPE_HANDLER);
+        setDropDownListAdapter(etAreaName, DataInstance.getInstance().areaInformationResults);
     }
 
     @Background
@@ -131,23 +178,13 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
+            etTaskNum.setText(TaskUtils.generatTaskNum());
+            etSafetyMeasure.setText("一人监督一人操作");
+            etEndTime.setText(DateUtils.getEndTime());
 
-            //test start
-//            etEndTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-//            etTestingTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-//            etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-//            etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-//
-//            etTaskNum.setText(DateUtils.getCurrentSecond());
-//            etAreaName.setText("area"+DateUtils.getCurrentSecond2());
-//            etProtectLine.setText("productionline"+DateUtils.getCurrentSecond2());
-//            etType.setText("type"+DateUtils.getCurrentSecond2());
-//            etSafetyMeasure.setText("safetyM"+DateUtils.getCurrentSecond2());
-//            etHandleContent.setText("措施"+DateUtils.getCurrentSecond2());
-//            etTester.setText("tester"+DateUtils.getCurrentSecond2());
-//            etIsHandled.setText("0");
-//            etUnhandleReason.setText("未处理原因"+DateUtils.getCurrentSecond2());
-            //test end
+            etTester.setText(userPrefs.name().get());
+            etTestingTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+
         }else{
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
@@ -159,16 +196,16 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
             etEndHandleTime.setText(coreMeterTestResult.endHandleTime);
 
             etTaskNum.setText(coreMeterTestResult.taskNum);
-            etAreaName.setText(coreMeterTestResult.areaName);
+            etAreaName.setSelection(getSelectedAreaIndex(coreMeterTestResult.areaName));
             etProtectLine.setText(coreMeterTestResult.protectLine);
             etType.setText(coreMeterTestResult.type);
             etSafetyMeasure.setText(coreMeterTestResult.safetyMeasure);
-            etWether.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CHECK_TYPE, coreMeterTestResult.wether));
-            etTestWay.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CHECK_TYPE, coreMeterTestResult.testWay));
+            etWether.setSelection(TypeUtils.getSelectedIndex(TypeUtils.WEATHERS, coreMeterTestResult.wether));
+            etTestWay.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TEST_WAY, coreMeterTestResult.testWay));
             etTestResult.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CHECK_TYPE, coreMeterTestResult.testResult));
             etHandleContent.setText(coreMeterTestResult.handleContent);
             etTester.setText(coreMeterTestResult.tester);
-            etIsHandled.setText(coreMeterTestResult.isHandled+"");
+            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, coreMeterTestResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(coreMeterTestResult.unhandleReason);
 
             getImage();
@@ -193,22 +230,6 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
     }
 
-    @Click(R.id.btn_add_a_image)
-    void addAImage(){
-
-        super.showChooseImage(aTestingImgList, aTestingPicContent);
-    }
-    @Click(R.id.btn_add_b_image)
-    void addBImage(){
-
-        super.showChooseImage(bTestingImgList, bTestingPicContent);
-    }
-    @Click(R.id.btn_add_c_image)
-    void addCImage(){
-
-        super.showChooseImage(cTestingImgList, cTestingPicContent);
-    }
-
     /**
      * 新增
      */
@@ -218,6 +239,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
         if(coreMeterTestResult.id == 0){
             coreMeterTestResult.assignByUserID = userPrefs.id().get();
             coreMeterTestResult.userId = userPrefs.id().get();
+            coreMeterTestResult.createdTime = DateUtils.getCurrentYYYY_MM_DD();
         }
 
         MultiValueMap<String, Object> data = null;
@@ -242,7 +264,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
             this.coreMeterTestResult.taskNum = etTaskNum.getText().toString();
 
-            this.coreMeterTestResult.areaName = etAreaName.getText().toString();
+            this.coreMeterTestResult.areaName = etAreaName.getSelectedItem().toString();
 
             this.coreMeterTestResult.protectLine = etProtectLine.getText().toString();
 
@@ -268,9 +290,18 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
             this.coreMeterTestResult.endHandleTime = etEndHandleTime.getText().toString();
 
-            this.coreMeterTestResult.isHandled = Integer.parseInt(etIsHandled.getText().toString());
+            this.coreMeterTestResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
-            this.coreMeterTestResult.unhandleReason = etUnhandleReason.getText().toString();
+            this.coreMeterTestResult.assignmentTime = etAssignmentTime.getText().toString();
+
+
+            if(this.coreMeterTestResult.isHandled == 1){//已处理
+                this.coreMeterTestResult.unhandleReason = "";
+
+            }else if(this.coreMeterTestResult.isHandled == 2) {//未处理
+                this.coreMeterTestResult.unhandleReason = etUnhandleReason.getText().toString();
+
+            }
 
             return true;
         }{

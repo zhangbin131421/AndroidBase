@@ -72,7 +72,7 @@
     <style name="spinner">
         <item name="android:textSize">@dimen/text_size_form_right</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:minWidth">100dp</item>
         <item name="android:minHeight">50dp</item>
     </style>
