@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -102,7 +103,11 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
 
     // Add a list of items
     public void addAll(List<TaskBaseVo> list) {
-        mDataset.addAll(list);
+        if(list != null){
+            mDataset.addAll(list);
+        }else{
+            mDataset.addAll(new ArrayList<TaskBaseVo>());
+        }
         notifyDataSetChanged();
     }
 
