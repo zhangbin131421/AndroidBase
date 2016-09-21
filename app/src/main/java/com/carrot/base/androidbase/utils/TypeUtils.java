@@ -152,33 +152,33 @@ public class TypeUtils {
         List<TypeVo> result = new ArrayList<>();
 
 
-        TypeVo type4 = new TypeVo(TYPE_1, false, R.mipmap.manager4);
+        TypeVo type4 = new TypeVo(TYPE_1, false, R.drawable.permanent_job);
         List<TypeVo> subTypes4 = new ArrayList<>();
 
-        subTypes4.add(new TypeVo(TYPE_1_1, true, R.mipmap.type11));
-        subTypes4.add(new TypeVo(TYPE_1_2, true, R.mipmap.urine_collection));
-        subTypes4.add(new TypeVo(TYPE_1_3, true, R.mipmap.energy_meter));
-        subTypes4.add(new TypeVo(TYPE_1_4, true, R.mipmap.pressure));
-        subTypes4.add(new TypeVo(TYPE_1_5, true, R.mipmap.purchase_order));
-        subTypes4.add(new TypeVo(TYPE_1_6, true, R.mipmap.survey));
-        subTypes4.add(new TypeVo(TYPE_1_7, true, R.mipmap.disconnected));
+        subTypes4.add(new TypeVo(TYPE_1_1, true, R.drawable.electrical));
+        subTypes4.add(new TypeVo(TYPE_1_2, true, R.drawable.urine_collection));
+        subTypes4.add(new TypeVo(TYPE_1_3, true, R.drawable.energy_meter));
+        subTypes4.add(new TypeVo(TYPE_1_4, true, R.drawable.multiple_devices));
+        subTypes4.add(new TypeVo(TYPE_1_5, true, R.drawable.purchase_order));
+        subTypes4.add(new TypeVo(TYPE_1_6, true, R.drawable.survey));
+        subTypes4.add(new TypeVo(TYPE_1_7, true, R.drawable.disconnected));
 
         type4.setSubTypes(subTypes4);
 
         result.add(type4);
 
 
-        TypeVo type3 = new TypeVo(TYPE_2, false, R.mipmap.manager1);
+        TypeVo type3 = new TypeVo(TYPE_2, false, R.drawable.maintenance);
         List<TypeVo> subTypes3 = new ArrayList<>();
 
-        subTypes3.add(new TypeVo(TYPE_2_1, true, R.mipmap.car_battery));
-        subTypes3.add(new TypeVo(TYPE_2_2, true, R.mipmap.scale));
-        subTypes3.add(new TypeVo(TYPE_2_3, true, R.mipmap.search));
-        subTypes3.add(new TypeVo(TYPE_2_4, true, R.mipmap.treatment_plan));
-        subTypes3.add(new TypeVo(TYPE_2_5, true, R.mipmap.electrical_sensor));
-        subTypes3.add(new TypeVo(TYPE_2_6, true, R.mipmap.plus_minus));
-        subTypes3.add(new TypeVo(TYPE_2_7, true, R.mipmap.thunderbolt));
-        subTypes3.add(new TypeVo(TYPE_2_8, true, R.mipmap.worker_with_roadblock));
+        subTypes3.add(new TypeVo(TYPE_2_1, true, R.drawable.car_battery));
+        subTypes3.add(new TypeVo(TYPE_2_2, true, R.drawable.multiple_devices));
+        subTypes3.add(new TypeVo(TYPE_2_3, true, R.drawable.search));
+        subTypes3.add(new TypeVo(TYPE_2_4, true, R.drawable.treatment_plan));
+        subTypes3.add(new TypeVo(TYPE_2_5, true, R.drawable.electrical));
+        subTypes3.add(new TypeVo(TYPE_2_6, true, R.drawable.plus_minus));
+        subTypes3.add(new TypeVo(TYPE_2_7, true, R.drawable.thunderbolt));
+        subTypes3.add(new TypeVo(TYPE_2_8, true, R.drawable.worker_with_roadblock));
 
         type3.setSubTypes(subTypes3);
 
@@ -186,20 +186,20 @@ public class TypeUtils {
 
 
 
-        TypeVo type2 = new TypeVo(TYPE_3, true, R.mipmap.manager3);
+        TypeVo type2 = new TypeVo(TYPE_3, true, R.drawable.accounting);
 
         List<TypeVo> subTypes2 = new ArrayList<>();
 
-        subTypes2.add(new TypeVo(TYPE_3_1, true, R.mipmap.flow_chart));
+        subTypes2.add(new TypeVo(TYPE_3_1, true, R.drawable.flow_chart));
         type2.setSubTypes(subTypes2);
         result.add(type2);
 
 
-        TypeVo type1 = new TypeVo(TYPE_4, false, R.mipmap.manager2);
+        TypeVo type1 = new TypeVo(TYPE_4, false, R.drawable.gears);
         List<TypeVo> subTypes1 = new ArrayList<>();
 
 
-        subTypes1.add(new TypeVo(TYPE_4_1, true, R.mipmap.garage));
+        subTypes1.add(new TypeVo(TYPE_4_1, true, R.drawable.garage));
 
         type1.setSubTypes(subTypes1);
 

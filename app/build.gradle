@@ -45,6 +45,7 @@ android {
 
         applicationId "com.carrot.base.androidbase" //JPush上注册的包名.
 
+
         ndk {
             //选择要添加的对应cpu类型的.so库。
             abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
@@ -67,6 +68,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
