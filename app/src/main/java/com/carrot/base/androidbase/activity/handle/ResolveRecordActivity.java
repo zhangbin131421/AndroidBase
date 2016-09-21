@@ -85,14 +85,14 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
     org.apmem.tools.layouts.FlowLayout et_ResolveContentPic;
     @ViewById(R.id.et_WorkDate)
     FormEditText et_WorkDate;
-    @ViewById(R.id.et_EndHandleTime)
-    FormEditText et_EndHandleTime;
+//    @ViewById(R.id.et_EndHandleTime)
+//    FormEditText et_EndHandleTime;
     @ViewById(R.id.et_IsHandled)
     Spinner et_IsHandled;
     @ViewById(R.id.et_UnhandleReason)
     FormEditText et_UnhandleReason;
-    @ViewById(R.id.et_BeginHandleTime)
-    FormEditText et_BeginHandleTime;
+//    @ViewById(R.id.et_BeginHandleTime)
+//    FormEditText et_BeginHandleTime;
 
     @ViewById(R.id.btn_add_image)
     ImageView imageAdd;
@@ -117,7 +117,8 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
                 et_DefectContent, et_EndTime, et_SafetyMeasure, et_WorkInvoiceNum, et_StopScope,
                 et_Applier, et_WorkLicensor, et_WorkPrincipal, et_StopTime, et_EndStopTime,
                 et_StopPeople, et_Worker, et_OperationInvoiceNum, et_WorkInstruction, et_WorkDate,
-                et_EndHandleTime, et_UnhandleReason, et_BeginHandleTime, et_ResolveContent};
+//                et_EndHandleTime,et_BeginHandleTime,
+                et_UnhandleReason, et_ResolveContent};
 
         addDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_SafetyMeasure, et_EndTime};
 
@@ -132,9 +133,9 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
         imageAddButtonList = new ImageView[] {imageAdd};
 
         openDateEditTextList = new OpenDateVo[] {
-                new OpenDateVo(et_BeginHandleTime, 10),
-                new OpenDateVo(et_WorkDate, 10),
-                new OpenDateVo(et_EndHandleTime, 10)
+//                new OpenDateVo(et_BeginHandleTime, 10),
+                new OpenDateVo(et_WorkDate, 10)
+//                ,new OpenDateVo(et_EndHandleTime, 10)
         };
         openTimeEditTextList = new OpenDateVo[] {
                 new OpenDateVo(et_StopTime, 10),
@@ -206,11 +207,11 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
             et_WorkInstruction.setText(resolveRecordResult.workInstruction);
             et_ResolveContent.setText(resolveRecordResult.resolveContent);
             et_WorkDate.setText(resolveRecordResult.workDate);
-            et_EndHandleTime.setText(resolveRecordResult.endHandleTime);
+//            et_EndHandleTime.setText(resolveRecordResult.endHandleTime);
             et_IsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, resolveRecordResult.isHandled == 2 ? "未处理" : "已处理"));
 
             et_UnhandleReason.setText(resolveRecordResult.unhandleReason);
-            et_BeginHandleTime.setText(resolveRecordResult.beginHandleTime);
+//            et_BeginHandleTime.setText(resolveRecordResult.beginHandleTime);
 
 
             getImage();
@@ -273,7 +274,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
             this.resolveRecordResult.safetyMeasure = et_SafetyMeasure.getText().toString();
 
-            this.resolveRecordResult.beginHandleTime = et_BeginHandleTime.getText().toString();
+//            this.resolveRecordResult.beginHandleTime = et_BeginHandleTime.getText().toString();
 
             this.resolveRecordResult.workType = et_WorkType.getSelectedItem().toString();
 
@@ -303,7 +304,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
             this.resolveRecordResult.workDate = et_WorkDate.getText().toString();
 
-            this.resolveRecordResult.endHandleTime = et_EndHandleTime.getText().toString();
+//            this.resolveRecordResult.endHandleTime = et_EndHandleTime.getText().toString();
 
             this.resolveRecordResult.isHandled = et_IsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 

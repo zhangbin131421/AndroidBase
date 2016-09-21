@@ -63,9 +63,9 @@ public class EquipmentCheckResult {
     @JsonProperty(value=EndTime)
     public String endTime;
 //            "":"2016-09-03 00:00:00",
-    public static final String BeginHandleTime = "BeginHandleTime";
-    @JsonProperty(value=BeginHandleTime)
-    public String beginHandleTime;
+//    public static final String BeginHandleTime = "BeginHandleTime";
+//    @JsonProperty(value=BeginHandleTime)
+//    public String beginHandleTime;
 //            "":"44",
     public static final String ExistDefect = "ExistDefect";
     @JsonProperty(value=ExistDefect)
@@ -126,7 +126,7 @@ public class EquipmentCheckResult {
 
         rtn.add(EquipmentCheckResult.AssignByUserID, this.assignByUserID+"");
         rtn.add(EquipmentCheckResult.AssignmentTime, this.assignmentTime.getBytes("UTF-8"));
-        rtn.add(EquipmentCheckResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
+//        rtn.add(EquipmentCheckResult.BeginHandleTime, this.beginHandleTime == null ? "" : this.beginHandleTime.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.CheckPeople, this.checkPeople.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.CheckScope, this.checkScope.getBytes("UTF-8"));
         rtn.add(EquipmentCheckResult.CheckTime, this.checkTime == null ? "" : this.checkTime.getBytes("UTF-8"));

@@ -81,8 +81,8 @@
                 <TextView style="@style/tableColName"
                     android:text="现场处理"/>
                 <TextView style="@style/formDivider"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                    android:id="@+id/et_BeginHandleTime"/>
+                <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
+                    <!--android:id="@+id/et_BeginHandleTime"/>-->
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -225,8 +225,8 @@
                 <TextView style="@style/tableColName"
                     android:text="@string/task_end_handle_tiem"/>
                 <TextView style="@style/formDivider"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                android:id="@+id/et_EndHandleTime"/>
+                <!--<com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"-->
+                <!--android:id="@+id/et_EndHandleTime"/>-->
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

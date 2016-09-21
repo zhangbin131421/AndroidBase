@@ -64,8 +64,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_end_time)
     FormEditText etEndTime;
 
-    @ViewById(R.id.et_begin_handle_time)
-    FormEditText etBeginHandleTime;
+//    @ViewById(R.id.et_begin_handle_time)
+//    FormEditText etBeginHandleTime;
 
     @ViewById(R.id.et_exist_defect)
     Spinner etExistDefect;
@@ -127,7 +127,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
     public void setValidateList(){
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
-                etBeginHandleTime, etDefectPlace, etHandleContent, etDefectContent, etCheckpeople, etCheckTime,
+//                etBeginHandleTime,
+                etDefectPlace, etHandleContent, etDefectContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason};
 
         addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
@@ -135,7 +136,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
-                etBeginHandleTime, etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
+//                etBeginHandleTime,
+                etDefectPlace, etHandleContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason, etDefectContent};
 
         updateDisabledSpinnerList = new Spinner[] {etCheckType, etCheckScope};
@@ -146,8 +148,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         openDateEditTextList = new OpenDateVo[] {
                 new OpenDateVo(etEndTime, 1),
                 new OpenDateVo(etCheckTime, 10),
-                new OpenDateVo(etEndHandleTime, 10),
-                new OpenDateVo(etBeginHandleTime, 10)
+                new OpenDateVo(etEndHandleTime, 10)
+//                ,new OpenDateVo(etBeginHandleTime, 10)
         };
 
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
@@ -211,11 +213,11 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             etSafetyMeasure.setText(equipmentCheckResult.safetyMeasure);
 
             etEndTime.setText(equipmentCheckResult.endTime == null ? DateUtils.getCurrentYYYY_MM_DD() : equipmentCheckResult.endTime.substring(0, 10));
-            if(equipmentCheckResult.beginHandleTime == null || equipmentCheckResult.beginHandleTime.equals("")){
-                etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-            }else{
-                etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime.substring(0, 10));
-            }
+//            if(equipmentCheckResult.beginHandleTime == null || equipmentCheckResult.beginHandleTime.equals("")){
+//                etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+//            }else{
+//                etBeginHandleTime.setText(equipmentCheckResult.beginHandleTime.substring(0, 10));
+//            }
 
             etExistDefect.setSelection(TypeUtils.getSelectedIndex(TypeUtils.EXIST_DEFECT, equipmentCheckResult.existDefect));
             etDefectPlace.setText(equipmentCheckResult.defectPlace);
@@ -298,7 +300,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             this.equipmentCheckResult.endTime = etEndTime.getText().toString();
 
-            this.equipmentCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
+//            this.equipmentCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
 
             this.equipmentCheckResult.existDefect = etExistDefect.getSelectedItem().toString();
 

@@ -68,9 +68,9 @@ public class ResolveRecordResult {
     @JsonProperty(value=SafetyMeasure)
     public String safetyMeasure;
 
-    public static final String BeginHandleTime = "BeginHandleTime";
-    @JsonProperty(value=BeginHandleTime)
-    public String beginHandleTime;
+//    public static final String BeginHandleTime = "BeginHandleTime";
+//    @JsonProperty(value=BeginHandleTime)
+//    public String beginHandleTime;
 
     public static final String WorkType = "WorkType";
     @JsonProperty(value=WorkType)
@@ -128,9 +128,9 @@ public class ResolveRecordResult {
     @JsonProperty(value=WorkDate)
     public String workDate;
 
-    public static final String EndHandleTime = "EndHandleTime";
-    @JsonProperty(value=EndHandleTime)
-    public String endHandleTime;
+//    public static final String EndHandleTime = "EndHandleTime";
+//    @JsonProperty(value=EndHandleTime)
+//    public String endHandleTime;
 
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
@@ -156,10 +156,10 @@ public class ResolveRecordResult {
         rtn.add(ResolveRecordResult.TaskNum, this.taskNum.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.UserID, this.userId+"");
         rtn.add(ResolveRecordResult.Applier, this.applier.getBytes("UTF-8"));
-        rtn.add(ResolveRecordResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
+//        rtn.add(ResolveRecordResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.DefectContent, this.defectContent.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.DefectPlace, this.defectPlace.getBytes("UTF-8"));
-        rtn.add(ResolveRecordResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
+//        rtn.add(ResolveRecordResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.EndStopTime, this.endStopTime.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.EndTime, this.endTime.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.IsHandled, this.isHandled+"");
