@@ -24,13 +24,21 @@
 
     <LinearLayout
         android:paddingTop="50dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="用户名:"/><!-- 18662149174 15001768927 15087523694  123 -->
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="用户名:"/>&lt;!&ndash; 18662149174 15001768927 15087523694  123 &ndash;&gt;-->
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/name"/>
         <EditText
             android:id="@+id/et_login_username"
             android:layout_width="match_parent"
@@ -40,13 +48,21 @@
 
     <LinearLayout
         android:paddingTop="20dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="密   码:"/>
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="密   码:"/>-->
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/password"/>
         <EditText
             android:id="@+id/et_login_password"
             android:layout_width="match_parent"
