@@ -133,20 +133,43 @@
                 <TextView
                     style="@style/tableColName"
                     android:text="A相接地试跳（mA)"/>
-                <org.apmem.tools.layouts.FlowLayout
-                    android:id="@+id/aTestingPicContent"
-                    style="@style/tableColImageLayout">
-                    <ImageView
-                        android:id="@+id/btn_add_a_image"
-                        style="@style/tableColImagAdd"/>
-                </org.apmem.tools.layouts.FlowLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.andreabaccega.widget.FormEditText
+                        android:hint="请输入缺陷内容"
+                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        android:id="@+id/et_atesting"/>
+
+                    <org.apmem.tools.layouts.FlowLayout
+                        android:id="@+id/aTestingPicContent"
+                        style="@style/tableColImageLayout">
+                        <ImageView
+                            android:id="@+id/btn_add_a_image"
+                            style="@style/tableColImagAdd"/>
+                    </org.apmem.tools.layouts.FlowLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView
                     style="@style/tableColName"
                     android:text="B相接地试跳（mA)"/>
-                <org.apmem.tools.layouts.FlowLayout
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.andreabaccega.widget.FormEditText
+                        android:hint="请输入缺陷内容"
+                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        android:id="@+id/et_btesting"/>
+
+                    <org.apmem.tools.layouts.FlowLayout
                     android:id="@+id/bTestingPicContent"
                     style="@style/tableColImageLayout">
                     <ImageView
@@ -154,13 +177,25 @@
                         android:id="@+id/btn_add_b_image"
                         style="@style/tableColImagAdd"/>
                 </org.apmem.tools.layouts.FlowLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView
                     style="@style/tableColName"
                     android:text="C相接地试跳（mA)"/>
-                <org.apmem.tools.layouts.FlowLayout
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.andreabaccega.widget.FormEditText
+                        android:hint="请输入缺陷内容"
+                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        android:id="@+id/et_ctesting"/>
+
+                    <org.apmem.tools.layouts.FlowLayout
                     android:id="@+id/cTestingPicContent"
                     style="@style/tableColImageLayout">
                     <ImageView
@@ -168,6 +203,7 @@
                         android:id="@+id/btn_add_c_image"
                         style="@style/tableColImagAdd"/>
                 </org.apmem.tools.layouts.FlowLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

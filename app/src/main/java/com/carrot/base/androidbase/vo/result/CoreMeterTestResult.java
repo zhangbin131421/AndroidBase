@@ -122,14 +122,23 @@ public class CoreMeterTestResult {
     public static final String ATestingPic = "ATestingPic";
     @JsonProperty(value=ATestingPic)
     public String aTestingPic;
+    public static final String ATesting = "ATesting";
+    @JsonProperty(value=ATesting)
+    public String aTesting;
 
     public static final String BTestingPic = "BTestingPic";
     @JsonProperty(value=BTestingPic)
     public String bTestingPic;
+    public static final String BTesting = "BTesting";
+    @JsonProperty(value=BTesting)
+    public String bTesting;
 
     public static final String CTestingPic = "CTestingPic";
     @JsonProperty(value=CTestingPic)
     public String cTestingPic;
+    public static final String CTesting = "CTesting";
+    @JsonProperty(value=CTesting)
+    public String cTesting;
 
 
     @JsonIgnore
@@ -139,11 +148,11 @@ public class CoreMeterTestResult {
         rtn.add(CoreMeterTestResult.AreaName, this.areaName.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.AssignByUserID, this.assignByUserID+"");
         rtn.add(CoreMeterTestResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime);
-//        rtn.add(CoreMeterTestResult.ATesting, this.aTesting);
+        rtn.add(CoreMeterTestResult.ATesting, this.aTesting == null ? "" : this.aTesting.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.BeginHandleTime, this.beginHandleTime);
-//        rtn.add(CoreMeterTestResult.BTesting, this.bTesting);
+        rtn.add(CoreMeterTestResult.BTesting, this.bTesting == null ? "" : this.bTesting.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.CreatedTime, this.createdTime == null ? "" : this.createdTime);
-//        rtn.add(CoreMeterTestResult.CTesting, this.cTesting);
+        rtn.add(CoreMeterTestResult.CTesting, this.cTesting == null ? "" : this.cTesting.getBytes("UTF-8"));
         rtn.add(CoreMeterTestResult.EndHandleTime, this.endHandleTime);
         rtn.add(CoreMeterTestResult.EndTime, this.endTime);
         rtn.add(CoreMeterTestResult.HandleContent, this.handleContent.getBytes("UTF-8"));

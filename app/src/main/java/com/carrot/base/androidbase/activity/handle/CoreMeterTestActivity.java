@@ -69,10 +69,16 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
     ImageView addCImage;
     @ViewById(R.id.aTestingPicContent)
     org.apmem.tools.layouts.FlowLayout aTestingPicContent;
+    @ViewById(R.id.et_atesting)
+    FormEditText aTesting;
     @ViewById(R.id.bTestingPicContent)
     org.apmem.tools.layouts.FlowLayout bTestingPicContent;
+    @ViewById(R.id.et_btesting)
+    FormEditText bTesting;
     @ViewById(R.id.cTestingPicContent)
     org.apmem.tools.layouts.FlowLayout cTestingPicContent;
+    @ViewById(R.id.et_ctesting)
+    FormEditText cTesting;
     @ViewById(R.id.et_test_result)
     Spinner etTestResult;
     @ViewById(R.id.et_handle_content)
@@ -112,7 +118,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etProtectLine, etType,
                 etSafetyMeasure, etEndTime, etBeginHandleTime, etHandleContent, etTester,
-                etTestingTime, etEndHandleTime, etUnhandleReason};
+                etTestingTime, etEndHandleTime, etUnhandleReason,aTesting,bTesting,cTesting};
 
 
         addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
@@ -208,6 +214,9 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
             etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, coreMeterTestResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(coreMeterTestResult.unhandleReason);
 
+            aTesting.setText(coreMeterTestResult.aTesting);
+            bTesting.setText(coreMeterTestResult.bTesting);
+            cTesting.setText(coreMeterTestResult.cTesting);
             getImage();
 
             this.saveStatus = 1;
@@ -294,6 +303,9 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
             this.coreMeterTestResult.assignmentTime = etAssignmentTime.getText().toString();
 
+            this.coreMeterTestResult.aTesting = aTesting.getText().toString();
+            this.coreMeterTestResult.bTesting = bTesting.getText().toString();
+            this.coreMeterTestResult.cTesting = cTesting.getText().toString();
 
             if(this.coreMeterTestResult.isHandled == 1){//已处理
                 this.coreMeterTestResult.unhandleReason = "";
