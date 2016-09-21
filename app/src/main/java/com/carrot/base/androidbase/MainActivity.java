@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPostResume() {
         super.onPostResume();
 
-        GeneratorUtils.getInstance().generate();
+//        GeneratorUtils.getInstance().generate();
 
         if(userPrefs.name().get().equals("")){
             LoginActivity_.intent(MainActivity.this).start();

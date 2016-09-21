@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -15,72 +17,56 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/tv_setting_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="用户名："/>
-
-
-        <TextView
-            android:id="@+id/tv_setting_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="用户名："/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:text="用户名："
+        android:drawableLeft="@drawable/worker_male_24"/>
 
 
-    </LinearLayout>
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_setting_dept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="部门："/>
-
-
-        <TextView
-            android:id="@+id/tv_setting_dept"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/department_24"/>
 
 
-    </LinearLayout>
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_setting_device_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="30dp"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/cell_phone_24"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="设备ID："/>
-
-
-        <TextView
-            android:id="@+id/tv_setting_device_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-    </LinearLayout>
 
     <Button
         android:id="@+id/btn_setting_change_psd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="修改密码"/>
 
     <Button
         android:id="@+id/btn_setting_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="退出登录"/>
 
 
