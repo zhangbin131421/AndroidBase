@@ -114,11 +114,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
 
         allFields = new FormEditText[] {et_DefectPlace,
-                et_DefectContent, et_EndTime, et_SafetyMeasure, et_WorkInvoiceNum, et_StopScope,
-                et_Applier, et_WorkLicensor, et_WorkPrincipal, et_StopTime, et_EndStopTime,
-                et_StopPeople, et_Worker, et_OperationInvoiceNum, et_WorkInstruction, et_WorkDate,
-//                et_EndHandleTime,et_BeginHandleTime,
-                et_UnhandleReason, et_ResolveContent};
+                et_DefectContent, et_EndTime, et_SafetyMeasure, et_WorkInvoiceNum};
 
         addDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_SafetyMeasure, et_EndTime};
 
