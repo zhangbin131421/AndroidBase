@@ -13,6 +13,7 @@ import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.vo.result.LoginResult;
 import com.carrot.base.androidbase.vo.result.UserResult;
+import com.wingjay.blurimageviewlib.BlurImageView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -49,6 +50,9 @@ public class LoginActivity extends Activity {
 
     @ViewById(R.id.btn_login_login)
     Button btnLogin;
+//
+//    @ViewById(R.id.bg)
+//    BlurImageView bgImage;
 
     ProgressDialog progress;
 
@@ -56,6 +60,11 @@ public class LoginActivity extends Activity {
     void initView(){
         progress = new ProgressDialog(this);
         userClient.setRestErrorHandler(ssErrorHandler);
+
+//        bgImage.setBlurFactor(0);
+
+//        BlurImageView fullBlurImageView = (BlurImageView) this.getba
+//        fullBlurImageView.setFullImageByUrl(blurImageUrl, normalImageUrl);
     }
 
     @Click(R.id.btn_login_login)

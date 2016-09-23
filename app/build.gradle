@@ -126,6 +126,9 @@ dependencies {
 
     //alert
     compile ('cn.pedant.sweetalert:library:1.3')
+
+    //blur
+    compile 'com.wingjay:blurimageviewlib:2.0.1'
     //    compile project(':easeui')
     //    compile files('libs/Parse-1.9.4.jar')
     //    compile files('libs/umeng-analytics-v5.2.4.jar')
