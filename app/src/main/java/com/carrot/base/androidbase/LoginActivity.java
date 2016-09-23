@@ -2,8 +2,10 @@ package com.carrot.base.androidbase;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.os.Build;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -61,6 +63,12 @@ public class LoginActivity extends Activity {
         progress = new ProgressDialog(this);
         userClient.setRestErrorHandler(ssErrorHandler);
 
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
 //        bgImage.setBlurFactor(0);
 
 //        BlurImageView fullBlurImageView = (BlurImageView) this.getba
