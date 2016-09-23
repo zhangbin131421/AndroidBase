@@ -150,8 +150,8 @@ public class ResolveRecordResult {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
         rtn.add(ResolveRecordResult.AssignByUserID, this.assignByUserID+"");
-        rtn.add(ResolveRecordResult.AssignmentTime, this.assignmentTime.getBytes("UTF-8"));
-        rtn.add(ResolveRecordResult.CreatedTime, this.createdTime.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.CreatedTime, this.createdTime == null ? "" : this.createdTime.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.ID, this.id+"");
         rtn.add(ResolveRecordResult.TaskNum, this.taskNum.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.UserID, this.userId+"");

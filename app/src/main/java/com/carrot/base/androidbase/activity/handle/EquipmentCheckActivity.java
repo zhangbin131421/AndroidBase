@@ -117,16 +117,13 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
     @AfterViews
     void bindAdapter(){
-
-
-
         super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
 
     }
 
 
     public void setValidateList(){
-        allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
+        allFields = new FormEditText[] {etSafetyMeasure, etEndTime,
 //                etBeginHandleTime,
                 etDefectPlace, etHandleContent, etDefectContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason};
@@ -196,8 +193,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
             equipmentCheckResult = new EquipmentCheckResult();
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-            etTaskNum.setText(TaskUtils.generatTaskNum());
-            etSafetyMeasure.setText("一人监督一人操作");
             etEndTime.setText(DateUtils.getEndTime());
 
             etCheckpeople.setText(userPrefs.name().get());

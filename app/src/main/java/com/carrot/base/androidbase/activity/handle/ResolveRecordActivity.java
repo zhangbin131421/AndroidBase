@@ -113,7 +113,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
 
 
-        allFields = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
+        allFields = new FormEditText[] {et_DefectPlace,
                 et_DefectContent, et_EndTime, et_SafetyMeasure, et_WorkInvoiceNum, et_StopScope,
                 et_Applier, et_WorkLicensor, et_WorkPrincipal, et_StopTime, et_EndStopTime,
                 et_StopPeople, et_Worker, et_OperationInvoiceNum, et_WorkInstruction, et_WorkDate,
@@ -125,7 +125,12 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
         updateDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
                 et_DefectContent, et_SafetyMeasure, et_EndTime};
 
-        finishDisableList = allFields;
+        finishDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
+                et_DefectContent, et_EndTime, et_SafetyMeasure, et_WorkInvoiceNum, et_StopScope,
+                et_Applier, et_WorkLicensor, et_WorkPrincipal, et_StopTime, et_EndStopTime,
+                et_StopPeople, et_Worker, et_OperationInvoiceNum, et_WorkInstruction, et_WorkDate,
+//                et_EndHandleTime,et_BeginHandleTime,
+                et_UnhandleReason, et_ResolveContent};
 
         updateDisabledSpinnerList = new Spinner[] {};
         finishDisabledSpinnerList = new Spinner[] {et_WorkType, et_IsHandled};
@@ -178,8 +183,6 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
-            et_TaskNum.setText(TaskUtils.generatTaskNum());
-            et_SafetyMeasure.setText("一人监督一人操作");
             et_EndTime.setText(DateUtils.getEndTime());
 
 
@@ -241,6 +244,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
         if(resolveRecordResult.id == 0){
             resolveRecordResult.assignByUserID = userPrefs.id().get();
             resolveRecordResult.userId = userPrefs.id().get();
+            resolveRecordResult.assignmentTime = DateUtils.getCurrentYYYY_MM_DD();
         }
 
 

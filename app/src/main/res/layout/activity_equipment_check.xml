@@ -71,6 +71,7 @@
                     android:text="安全措施"/>
                 <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                    android:text="@string/safetyMeasure"
                     android:id="@+id/et_safety_measure"/>
             </LinearLayout>
 
