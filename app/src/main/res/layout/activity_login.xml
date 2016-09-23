@@ -63,7 +63,7 @@
             android:background="#42A5F5"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:text="登陆"/>
+            android:text="登录"/>
     </LinearLayout>
 
 </FrameLayout>

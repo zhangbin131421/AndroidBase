@@ -2,12 +2,16 @@ package com.carrot.base.androidbase;
 
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.carrot.base.androidbase.activity.SettingActivity_;
 import com.carrot.base.androidbase.activity.TaskListActivity_;
@@ -82,6 +86,13 @@ public class MainActivity extends AppCompatActivity {
         this.setTitle("农电外勤通系统");
 
         setSupportActionBar(toolbar);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -114,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         if(userPrefs.id().get() > 0){
             CountResult ecCountVo = equipmentCheckClient.getUnFinishedByUserId(userPrefs.id().get());
             CountResult rrList = resolveRecordClient.getUnFinishedByUserId(userPrefs.id().get());
-            int count = ecCountVo.count + rrList.count;
+            int count = (ecCountVo == null ?  0 : ecCountVo.count) + (rrList == null ? 0 : rrList.count);
 
             if(count > 0){
                 showProduct(View.VISIBLE, count);
