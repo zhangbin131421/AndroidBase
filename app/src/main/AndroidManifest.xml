@@ -18,7 +18,8 @@
         tools:replace="android:icon"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity_" android:label="外勤通">
+        <activity android:name=".MainActivity_" android:label="外勤通"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,69 +27,93 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity_">
+        <activity android:name=".LoginActivity_"
+            android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".activity.TaskListActivity_" android:label="任务列表" android:launchMode="standard">
+        <activity android:name=".activity.TaskListActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
         </activity>
 
-        <activity android:name=".activity.SettingActivity_" android:label="设置">
+        <activity android:name=".activity.SettingActivity_" android:label="设置"
+            android:screenOrientation="portrait">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity_"/>
         </activity>
 
-        <activity android:name=".activity.ChangePsdActivity_" android:label="修改密码">
+        <activity android:name=".activity.ChangePsdActivity_" android:label="修改密码"
+            android:screenOrientation="portrait">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.SettingActivity_"/>
         </activity>
 
-        <activity android:name=".activity.Type2Activity_">
+        <activity android:name=".activity.Type2Activity_"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity android:name=".activity.handle.LineBrokenManagementActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.CollectResolveTroubleActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.ExtendBussinessSetupActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.MeterTroubleActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.OrderHandleActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.BusinessAuditeActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.StopStartElectricActivity_"
+            android:screenOrientation="portrait"
             ></activity>
 
 
         <activity android:name=".activity.handle.CoreMeterTestActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.TotalPerformanceTestActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.EquipmentCheckActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.ResolveRecordActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.CrossTestActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.VoltageMeasurementActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.EarthResistanceTestActivity_"
+            android:screenOrientation="portrait"
             ></activity>
         <activity android:name=".activity.handle.SpecialSecurityCheckActivity_"
+            android:screenOrientation="portrait"
             ></activity>
 
 
         <activity android:name=".activity.handle.DistributionNetworkEngineeringActivity_"
+            android:screenOrientation="portrait"
             ></activity>
 
 
         <activity android:name=".activity.handle.CarManagementActivity_"
+            android:screenOrientation="portrait"
             ></activity>
 
 
         <activity android:name=".activity.ImagePreviewActivity_"
+            android:screenOrientation="portrait"
             ></activity>
     </application>
 
