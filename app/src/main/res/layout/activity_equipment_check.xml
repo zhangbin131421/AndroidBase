@@ -52,7 +52,7 @@
                     <!--android:id="@+id/et_check_type"/>-->
                 <Spinner
                     android:id="@+id/et_check_type"
-                    style="@style/spinner" />
+                    style="@style/spinner_form_right" />
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -63,7 +63,7 @@
                     <!--android:id="@+id/et_check_scope" />-->
                 <Spinner
                     android:id="@+id/et_check_scope"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -102,7 +102,7 @@
 
                 <Spinner
                     android:id="@+id/et_exist_defect"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -156,7 +156,7 @@
 
                     <Spinner
                         android:id="@+id/et_defect_level"
-                        style="@style/spinner"/>
+                        style="@style/spinner_form_right"/>
                 </LinearLayout>
 
                 <LinearLayout style="@style/tableTitle2">
@@ -174,7 +174,7 @@
                     <TextView style="@style/formDivider"/>
                     <Spinner
                         android:id="@+id/et_report"
-                        style="@style/spinner"/>
+                        style="@style/spinner_form_right"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -212,7 +212,7 @@
                     <!--android:id="@+id/et_is_handled"/>-->
                 <Spinner
                     android:id="@+id/et_is_handled"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
 
             <LinearLayout

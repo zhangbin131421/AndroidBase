@@ -52,7 +52,7 @@
             <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etAreaName"
-                style="@style/spinner"/>
+                style="@style/spinner_form_right"/>
         </LinearLayout>
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
@@ -70,7 +70,7 @@
             <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etConfigB"
-                style="@style/spinner"/>
+                style="@style/spinner_form_right"/>
         </LinearLayout>
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
@@ -78,7 +78,7 @@
             <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etConfigC"
-                style="@style/spinner"/>
+                style="@style/spinner_form_right"/>
         </LinearLayout>
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
@@ -136,7 +136,7 @@
             <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etSafetyMeasure"
-                style="@style/spinner"/>
+                style="@style/spinner_form_right"/>
         </LinearLayout>
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
@@ -164,7 +164,7 @@
             <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etPeriod"
-                style="@style/spinner"/>
+                style="@style/spinner_form_right"/>
         </LinearLayout>
 
         <LinearLayout style="@style/tableTitle2">
@@ -281,7 +281,7 @@
             <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etIsOutOfLimit"
-                style="@style/spinner"/>
+                style="@style/spinner_form_right"/>
         </LinearLayout>
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"
@@ -329,7 +329,7 @@
             <TextView style="@style/formDivider"/>
             <Spinner
                 android:id="@+id/etIsHandled"
-                style="@style/spinner"/>
+                style="@style/spinner_form_right"/>
         </LinearLayout>
         <LinearLayout style="@style/tableTitle2">
             <TextView style="@style/tableColName"

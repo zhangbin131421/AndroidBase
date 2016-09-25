@@ -56,7 +56,7 @@
                     <!--android:id="@+id/etAreaName"/>-->
                 <Spinner
                     android:id="@+id/etAreaName"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -69,7 +69,7 @@
                     <!--android:id="@+id/etProtectLine"/>-->
                 <Spinner
                     android:id="@+id/etProtectLine"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -82,7 +82,7 @@
                     <!--android:id="@+id/etType"/>-->
                 <Spinner
                     android:id="@+id/etType"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -95,7 +95,7 @@
                     <!--android:id="@+id/etSafetyMeasure"/>-->
                 <Spinner
                     android:id="@+id/etSafetyMeasure"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -206,7 +206,7 @@
                     <!--android:id="@+id/etTestResult"/>-->
                 <Spinner
                     android:id="@+id/etTestResult"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

@@ -22,6 +22,9 @@
     <!-- 表单右侧字体大小 -->
     <dimen name="text_size_form_right">15sp</dimen>
 
+    <dimen name="form_radius">3dp</dimen>
+    <dimen name="form_right_height">40dp</dimen>
+
 
     <dimen name="widthTable1">100dp</dimen>
 

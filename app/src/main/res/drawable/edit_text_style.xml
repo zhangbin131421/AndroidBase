@@ -2,4 +2,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#ffffff" />
     <stroke android:width="1dip" android:color="@color/divider" />
+    <corners
+        android:bottomRightRadius="@dimen/form_radius"
+        android:bottomLeftRadius="@dimen/form_radius"
+        android:topLeftRadius="@dimen/form_radius"
+        android:topRightRadius="@dimen/form_radius"/>
 </shape>

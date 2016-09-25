@@ -50,7 +50,7 @@
                 <TextView style="@style/formDivider"/>
                 <Spinner
                     android:id="@+id/etAreaName"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -105,7 +105,7 @@
 
                 <Spinner
                     android:id="@+id/et_WorkType"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -249,7 +249,7 @@
 
                 <Spinner
                     android:id="@+id/et_IsHandled"
-                    style="@style/spinner"/>
+                    style="@style/spinner_form_right"/>
 
             </LinearLayout>
 
