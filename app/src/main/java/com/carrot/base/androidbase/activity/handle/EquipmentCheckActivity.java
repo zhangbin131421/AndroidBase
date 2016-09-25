@@ -289,7 +289,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             this.equipmentCheckResult.checkType = etCheckType.getSelectedItem().toString();
 
-            this.equipmentCheckResult.checkScope = ((AreaInformationResult)etCheckScope.getSelectedItem()).id+"";
+            this.equipmentCheckResult.checkScope = ((AreaInformationResult)etCheckScope.getSelectedItem()).areaName+"";
 
             this.equipmentCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
 
