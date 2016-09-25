@@ -12,12 +12,15 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.activity.taskList.TaskListResolveRecordActivity;
+import com.carrot.base.androidbase.activity.taskList.TaskListResolveRecordActivity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.adapter.Type2Adapter;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
 import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
+import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.TypeVo;
 import com.carrot.base.androidbase.vo.result.CountResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
@@ -152,10 +155,20 @@ public class Type2Activity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
 
-                TaskListActivity_.intent(getApplicationContext())
-                        .typeVo(typeVo)
-                        .subTypeVo(typeVo.getSubTypes().get(position))
-                        .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+
+                if(TypeUtils.TYPE_2_4.equals(typeVo.getSubTypes().get(position).getName())){
+                    Log.i("sslog", "init resolve record");
+                    TaskListResolveRecordActivity_.intent(getApplicationContext())
+                            .typeVo(typeVo)
+                            .subTypeVo(typeVo.getSubTypes().get(position))
+                            .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                }else{
+                    TaskListActivity_.intent(getApplicationContext())
+                            .typeVo(typeVo)
+                            .subTypeVo(typeVo.getSubTypes().get(position))
+                            .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                }
+
 
             }
         });

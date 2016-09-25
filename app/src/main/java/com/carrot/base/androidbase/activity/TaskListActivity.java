@@ -277,7 +277,7 @@ public class TaskListActivity extends AppCompatActivity {
                 break;
             }
             case TypeUtils.TYPE_2_4:{//OK
-                list = resolveRecordClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                list = resolveRecordClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
                 break;
             }
             case TypeUtils.TYPE_2_5:{//ok

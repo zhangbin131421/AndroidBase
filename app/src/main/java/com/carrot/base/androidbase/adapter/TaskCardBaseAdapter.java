@@ -1,7 +1,6 @@
 package com.carrot.base.androidbase.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +9,13 @@ import android.widget.TextView;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
-import org.androidannotations.annotations.Background;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by victor on 8/22/16.
  */
-public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
+public class TaskCardBaseAdapter extends RecyclerView.Adapter<TaskCardBaseAdapter
         .DataObjectHolder> {
 
     private static String LOG_TAG = "TaskCardAdapter";
@@ -57,7 +54,7 @@ public class TaskCardAdapter extends RecyclerView.Adapter<TaskCardAdapter
         this.myClickListener = myClickListener;
     }
 
-    public TaskCardAdapter(List<TaskBaseVo> myDataset) {
+    public TaskCardBaseAdapter(List<TaskBaseVo> myDataset) {
         mDataset = myDataset;
     }
 
