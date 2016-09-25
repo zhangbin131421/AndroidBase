@@ -184,7 +184,7 @@ public class ResolveRecordResult {
         rtn.add(ResolveRecordResult.WorkDate, this.workDate.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.Worker, this.worker.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.WorkInstruction, this.workInstruction.getBytes("UTF-8"));
-        rtn.add(ResolveRecordResult.WorkInvoiceNum, this.workInvoiceNum.getBytes("UTF-8"));
+        rtn.add(ResolveRecordResult.WorkInvoiceNum, this.workInvoiceNum == null ? "" : this.workInvoiceNum.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.WorkLicensor, this.workLicensor.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.WorkPrincipal, this.workPrincipal.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.WorkType, this.workType.getBytes("UTF-8"));
