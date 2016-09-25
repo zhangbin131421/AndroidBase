@@ -12,7 +12,7 @@
     <!-- 任务列表文字大小1 台区名称 -->
     <dimen name="text_size_task_list_1_area_name">16sp</dimen>
     <!-- 任务列表文字大小12 subtitle -->
-    <dimen name="text_size_task_list_1_subtitle">18sp</dimen>
+    <dimen name="text_size_task_list_1_subtitle">16sp</dimen>
     <!-- 任务列表文字大小2 -->
     <dimen name="text_size_task_list_2">13sp</dimen>
     <!-- 任务列表文字大小3 -->
