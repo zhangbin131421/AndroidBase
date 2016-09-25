@@ -143,6 +143,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginBottom">2.5dp</item>
+        <item name="android:layout_marginTop">2.5dp</item>
     </style>
     <style name="task_list_status_flag">
         <item name="android:textColor">#ff0000</item>

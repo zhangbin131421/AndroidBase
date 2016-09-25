@@ -91,7 +91,7 @@ public class TaskCardResolveRecordAdapter extends RecyclerView.Adapter<TaskCardR
         }
 
         holder.areaName.setText(taskBaseVo.areaName);
-        holder.defectContent.setText(taskBaseVo.defectContent);
+        holder.defectContent.setText("缺陷内容："+taskBaseVo.defectContent);
 
         if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
             holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
