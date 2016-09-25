@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -396,6 +397,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         if(editList != null){
             for(FormEditText editText : editList){
                 editText.setInputType(InputType.TYPE_NULL);
+                editText.setBackgroundColor(Color.TRANSPARENT);
             }
         }
     }
