@@ -472,6 +472,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     void setDropDownListAdapter(Spinner spinner, String[] values){
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, values);
         spinner.setAdapter(adapter);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     }
 
 

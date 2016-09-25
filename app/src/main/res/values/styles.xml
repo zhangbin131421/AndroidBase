@@ -60,6 +60,7 @@
         <item name="android:paddingRight">5dp</item>
         <item name="android:paddingLeft">8dp</item>
         <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginLeft">-3dp</item>
     </style>
     <!-- 存放图片的布局 -->
     <style name="tableColImageLayout">
@@ -77,12 +78,17 @@
         <item name="android:background">@color/divider</item>
         <item name="android:padding">10dp</item>
     </style>
+
+
     <style name="spinner">
         <item name="android:textSize">@dimen/text_size_form_right</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:minWidth">100dp</item>
         <item name="android:minHeight">50dp</item>
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:background">@drawable/spinner_bg</item>
+        <item name="android:layout_marginRight">5dp</item>
     </style>
 
     <!-- 下拉框文本状态 -->
@@ -153,4 +159,5 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
 </resources>
