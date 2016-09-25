@@ -58,7 +58,7 @@ public class ResolveRecordResult {
 
     public static final String AreaID = "AreaID";
     @JsonProperty(value=AreaID)
-    public int areaID;
+    public String areaID;
 
 
     public static final String DefectPlace = "DefectPlace";
