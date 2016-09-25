@@ -9,7 +9,6 @@
     card_view:cardCornerRadius="2dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    card_view:cardBackgroundColor="#CCFFFFFF"
     >
 <!-- card_view:cardBackgroundColor="#4DFFFFFF" -->
     <LinearLayout

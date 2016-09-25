@@ -7,10 +7,12 @@ import android.widget.Spinner;
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
+import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TaskUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.ResolveRecordResult;
 
 import org.androidannotations.annotations.AfterViews;
@@ -94,6 +96,9 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 //    @ViewById(R.id.et_BeginHandleTime)
 //    FormEditText et_BeginHandleTime;
 
+
+    @ViewById(R.id.etAreaName)
+    Spinner etAreaName;
     @ViewById(R.id.btn_add_image)
     ImageView imageAdd;
 
@@ -128,8 +133,8 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 //                et_EndHandleTime,et_BeginHandleTime,
                 et_UnhandleReason, et_ResolveContent};
 
-        updateDisabledSpinnerList = new Spinner[] {};
-        finishDisabledSpinnerList = new Spinner[] {et_WorkType, et_IsHandled};
+        updateDisabledSpinnerList = new Spinner[] {etAreaName};
+        finishDisabledSpinnerList = new Spinner[] {etAreaName, et_WorkType, et_IsHandled};
 
         imageAddButtonList = new ImageView[] {imageAdd};
 
@@ -161,6 +166,8 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
     void initDropDownList(){
         //下拉选择框
+        setDropDownListAdapter(etAreaName, DataInstance.getInstance().areaInformationResults);
+
         setDropDownListAdapter(et_WorkType, TypeUtils.WORK_TYPE);
 
 
@@ -211,6 +218,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
             et_UnhandleReason.setText(resolveRecordResult.unhandleReason);
 //            et_BeginHandleTime.setText(resolveRecordResult.beginHandleTime);
+            etAreaName.setSelection(getSelectedAreaIndex(resolveRecordResult.areaName));
 
 
             getImage();
@@ -273,6 +281,13 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
             this.resolveRecordResult.endTime = et_EndTime.getText().toString();
 
             this.resolveRecordResult.safetyMeasure = et_SafetyMeasure.getText().toString();
+
+            AreaInformationResult obj = (AreaInformationResult)etAreaName.getSelectedItem();
+
+            if(obj != null){
+                this.resolveRecordResult.areaName = obj.areaName;
+                this.resolveRecordResult.areaID = obj.id;
+            }
 
 //            this.resolveRecordResult.beginHandleTime = et_BeginHandleTime.getText().toString();
 

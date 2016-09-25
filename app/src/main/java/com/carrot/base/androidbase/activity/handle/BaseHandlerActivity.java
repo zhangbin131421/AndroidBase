@@ -201,8 +201,13 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
      */
     public int getSelectedAreaIndex(String item){
 
-        if(DataInstance.getInstance().areaInformationResults == null || DataInstance.getInstance().areaInformationResults.length == 0){
+        if(DataInstance.getInstance().areaInformationResults == null
+                || DataInstance.getInstance().areaInformationResults.length == 0){
             return -1;
+        }
+
+        if(item == null){
+            return 0;
         }
 
         int rtn = -1;

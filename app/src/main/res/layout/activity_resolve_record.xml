@@ -44,6 +44,16 @@
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
+                <TextView
+                    android:text="@string/task_area_name"
+                    style="@style/tableColName"/>
+                <TextView style="@style/formDivider"/>
+                <Spinner
+                    android:id="@+id/etAreaName"
+                    style="@style/spinner"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="缺陷位置"/>
                 <TextView style="@style/formDivider"/>
