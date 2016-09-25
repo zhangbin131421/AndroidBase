@@ -7,8 +7,12 @@
     <dimen name="text_size_main_card_view">30sp</dimen>
     <!-- 任务主页文字大小 -->
     <dimen name="text_size_main_task_card_view">14sp</dimen>
-    <!-- 任务列表文字大小1 -->
+    <!-- 任务列表文字大小1 任务编号 -->
     <dimen name="text_size_task_list_1">20sp</dimen>
+    <!-- 任务列表文字大小1 台区名称 -->
+    <dimen name="text_size_task_list_1_area_name">16sp</dimen>
+    <!-- 任务列表文字大小12 subtitle -->
+    <dimen name="text_size_task_list_1_subtitle">18sp</dimen>
     <!-- 任务列表文字大小2 -->
     <dimen name="text_size_task_list_2">13sp</dimen>
     <!-- 任务列表文字大小3 -->

@@ -273,7 +273,7 @@ public class TaskListActivity extends AppCompatActivity {
                 break;
             }
             case TypeUtils.TYPE_2_3:{//OK
-                list = equipmentCheckClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                list = equipmentCheckClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
                 break;
             }
             case TypeUtils.TYPE_2_4:{//OK

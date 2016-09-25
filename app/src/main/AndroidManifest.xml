@@ -36,6 +36,10 @@
             android:screenOrientation="portrait"
             android:label="任务列表" android:launchMode="standard">
         </activity>
+        <activity android:name=".activity.taskList.TaskListEquipmentCheckActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
         <activity android:name=".activity.taskList.TaskListResolveRecordActivity_"
             android:screenOrientation="portrait"
             android:label="任务列表" android:launchMode="standard">

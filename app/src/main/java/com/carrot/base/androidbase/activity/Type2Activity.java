@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.activity.taskList.TaskListEquipmentCheckActivity;
+import com.carrot.base.androidbase.activity.taskList.TaskListEquipmentCheckActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListResolveRecordActivity;
 import com.carrot.base.androidbase.activity.taskList.TaskListResolveRecordActivity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
@@ -155,21 +157,113 @@ public class Type2Activity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
 
-
-                if(TypeUtils.TYPE_2_4.equals(typeVo.getSubTypes().get(position).getName())){
-                    Log.i("sslog", "init resolve record");
-                    TaskListResolveRecordActivity_.intent(getApplicationContext())
-                            .typeVo(typeVo)
-                            .subTypeVo(typeVo.getSubTypes().get(position))
-                            .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
-                }else{
-                    TaskListActivity_.intent(getApplicationContext())
-                            .typeVo(typeVo)
-                            .subTypeVo(typeVo.getSubTypes().get(position))
-                            .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                switch (typeVo.getSubTypes().get(position).getName()){
+                    case TypeUtils.TYPE_1_1:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_1_2:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_1_3:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_1_4:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_1_5:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_1_6:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_1_7:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_2_1:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_2_2:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_2_3:{
+                        TaskListEquipmentCheckActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_2_4:{
+                        TaskListResolveRecordActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_2_5:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_2_6:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_2_7:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_2_8:{
+                        TaskListActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.getSubTypes().get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
                 }
-
-
             }
         });
     }
