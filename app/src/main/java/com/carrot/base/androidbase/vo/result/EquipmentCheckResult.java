@@ -54,6 +54,9 @@ public class EquipmentCheckResult {
     public static final String CheckScope = "CheckScope";
     @JsonProperty(value=CheckScope)
     public String checkScope;
+    public static final String AreaName = "AreaName";
+    @JsonProperty(value=AreaName)
+    public String areaName;
 //            "":"33",
     public static final String SafetyMeasure = "SafetyMeasure";
     @JsonProperty(value=SafetyMeasure)

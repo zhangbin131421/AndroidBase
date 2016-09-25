@@ -85,7 +85,7 @@ public class TaskCardEquipmentCheckAdapter extends RecyclerView.Adapter<TaskCard
             holder.creationTime.setText("");
         }
 
-        holder.areaName.setText(taskBaseVo.checkScope);
+        holder.areaName.setText(taskBaseVo.areaName);
 
         if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
             holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));

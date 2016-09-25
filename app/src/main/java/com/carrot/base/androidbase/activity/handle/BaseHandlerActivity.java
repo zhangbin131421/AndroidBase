@@ -221,6 +221,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         return rtn;
     }
 
+
     void initHideBySpinner(){
 
         if(showBySpinnerList == null){

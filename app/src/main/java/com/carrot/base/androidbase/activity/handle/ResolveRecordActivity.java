@@ -120,7 +120,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
 
         allFields = new FormEditText[] {et_DefectPlace,
-                et_DefectContent, et_EndTime, et_SafetyMeasure};
+                et_DefectContent, et_EndTime, et_SafetyMeasure,et_WorkDate};
 
         addDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_SafetyMeasure, et_EndTime};
 
@@ -189,6 +189,8 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
             et_EndTime.setText(DateUtils.getEndTime());
 
+            et_WorkDate.setText(DateUtils.getCurrentYYYY_MM_DD());
+
 
         }else{
 
@@ -213,13 +215,19 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
             et_OperationInvoiceNum.setText(resolveRecordResult.operationInvoiceNum);
             et_WorkInstruction.setText(resolveRecordResult.workInstruction);
             et_ResolveContent.setText(resolveRecordResult.resolveContent);
-            et_WorkDate.setText(resolveRecordResult.workDate);
+            if(resolveRecordResult.workDate!=null){
+                et_WorkDate.setText(resolveRecordResult.workDate);
+            }else{
+                et_WorkDate.setText(DateUtils.getCurrentYYYY_MM_DD());
+            }
+
 //            et_EndHandleTime.setText(resolveRecordResult.endHandleTime);
             et_IsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, resolveRecordResult.isHandled == 2 ? "未处理" : "已处理"));
 
             et_UnhandleReason.setText(resolveRecordResult.unhandleReason);
 //            et_BeginHandleTime.setText(resolveRecordResult.beginHandleTime);
             etAreaName.setSelection(getSelectedAreaIndex(resolveRecordResult.areaName));
+
 
 
             getImage();
