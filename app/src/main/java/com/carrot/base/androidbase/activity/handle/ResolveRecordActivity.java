@@ -1,5 +1,6 @@
 package com.carrot.base.androidbase.activity.handle;
 
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
