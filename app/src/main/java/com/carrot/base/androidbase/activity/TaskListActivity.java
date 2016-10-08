@@ -53,6 +53,8 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * Created by victor on 8/12/16.
  */
@@ -330,7 +332,14 @@ public class TaskListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
 
-                TypeUtils.openItem(subTypeVo.name, this, null, ACTIVITY_REQUEST_CODE, 0);
+                if(subTypeVo.addFlag == true){
+                    TypeUtils.openItem(subTypeVo.name, this, null, ACTIVITY_REQUEST_CODE, 0);
+                }else{
+                    new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("提示")
+                            .setContentText("该任务不允许新增")
+                            .show();
+                }
 
                 return true;
             case android.R.id.home:

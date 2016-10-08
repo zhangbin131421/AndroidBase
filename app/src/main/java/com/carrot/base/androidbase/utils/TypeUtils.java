@@ -171,7 +171,7 @@ public class TypeUtils {
         TypeVo type3 = new TypeVo(TYPE_2, false, R.drawable.maintenance, true);
         List<TypeVo> subTypes3 = new ArrayList<>();
 
-        subTypes3.add(new TypeVo(TYPE_2_1, true, R.drawable.car_battery, true));
+        subTypes3.add(new TypeVo(TYPE_2_1, true, R.drawable.car_battery, false));
         subTypes3.add(new TypeVo(TYPE_2_2, true, R.drawable.multiple_devices, true));
         subTypes3.add(new TypeVo(TYPE_2_3, true, R.drawable.search, true));
         subTypes3.add(new TypeVo(TYPE_2_4, true, R.drawable.treatment_plan, true));
