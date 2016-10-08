@@ -198,7 +198,10 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
             etInspector.setText(distributionNetworkEngineeringResult.inspector);
             etComplete.setText(distributionNetworkEngineeringResult.complete);
             etEndHandleTime.setText(distributionNetworkEngineeringResult.endHandleTime);
-            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, distributionNetworkEngineeringResult.isHandled));
+
+            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, distributionNetworkEngineeringResult.isHandled == 2 ? "未处理" : "已处理"));
+
+
             etUnhandleReason.setText(distributionNetworkEngineeringResult.unhandleReason);
 
 
@@ -303,7 +306,7 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
 
             this.distributionNetworkEngineeringResult.endHandleTime = etEndHandleTime.getText().toString();
 
-            this.distributionNetworkEngineeringResult.isHandled = etIsHandled.getSelectedItem().toString();
+            this.distributionNetworkEngineeringResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.distributionNetworkEngineeringResult.unhandleReason = etUnhandleReason.getText().toString();
 

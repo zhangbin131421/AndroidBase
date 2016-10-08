@@ -12,11 +12,25 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.activity.taskList.TaskListBusinessAuditeActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListCarManagementActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListCollectResolveTroubleActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListCoreMeterTestActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListCrossTestActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListDistributionNetworkEngineeringActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListEarthResistanceTestActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListEquipmentCheckActivity;
 import com.carrot.base.androidbase.activity.taskList.TaskListEquipmentCheckActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListExtendBussinessSetupActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListLineBrokenManagementActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListMeterTroubleActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListOrderHandleActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListResolveRecordActivity;
 import com.carrot.base.androidbase.activity.taskList.TaskListResolveRecordActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListSpecialSecurityCheckActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListStopStartElectricActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListTotalPerformanceTestActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListVoltageMeasurementActivity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.adapter.Type2Adapter;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
@@ -160,49 +174,49 @@ public class Type2Activity extends AppCompatActivity {
 
                 switch (typeVo.subTypes.get(position).name){
                     case TypeUtils.TYPE_1_1:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListLineBrokenManagementActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                         break;
                     }
                     case TypeUtils.TYPE_1_2:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListCollectResolveTroubleActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                         break;
                     }
                     case TypeUtils.TYPE_1_3:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListExtendBussinessSetupActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                         break;
                     }
                     case TypeUtils.TYPE_1_4:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListMeterTroubleActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                         break;
                     }
                     case TypeUtils.TYPE_1_5:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListOrderHandleActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                         break;
                     }
                     case TypeUtils.TYPE_1_6:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListBusinessAuditeActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                         break;
                     }
                     case TypeUtils.TYPE_1_7:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListStopStartElectricActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
@@ -216,7 +230,7 @@ public class Type2Activity extends AppCompatActivity {
                         break;
                     }
                     case TypeUtils.TYPE_2_2:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListTotalPerformanceTestActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
@@ -237,28 +251,42 @@ public class Type2Activity extends AppCompatActivity {
                         break;
                     }
                     case TypeUtils.TYPE_2_5:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListCrossTestActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                         break;
                     }
                     case TypeUtils.TYPE_2_6:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListVoltageMeasurementActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                         break;
                     }
                     case TypeUtils.TYPE_2_7:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListEarthResistanceTestActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
                         break;
                     }
                     case TypeUtils.TYPE_2_8:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListSpecialSecurityCheckActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.subTypes.get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_3_1:{
+                        TaskListDistributionNetworkEngineeringActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.subTypes.get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_4_1:{
+                        TaskListCarManagementActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();

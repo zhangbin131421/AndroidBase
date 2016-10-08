@@ -156,7 +156,9 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
             etTestDate.setText(earthResistanceTestResult.testDate);
             etTester.setText(earthResistanceTestResult.tester);
             etEndHandleTime.setText(earthResistanceTestResult.endHandleTime);
-            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, earthResistanceTestResult.isHandled));
+
+            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, earthResistanceTestResult.isHandled == 2 ? "未处理" : "已处理"));
+
             etUnhandleReason.setText(earthResistanceTestResult.unhandleReason);
 
             getImage();
@@ -192,7 +194,7 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
     @Override
     UpdateResult save(){
 
-        if(earthResistanceTestResult.iD == 0){
+        if(earthResistanceTestResult.id == 0){
             earthResistanceTestResult.assignByUserID = userPrefs.id().get();
             earthResistanceTestResult.userID = userPrefs.id().get();
         }
@@ -240,7 +242,7 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
 
             this.earthResistanceTestResult.endHandleTime = etEndHandleTime.getText().toString();
 
-            this.earthResistanceTestResult.isHandled = etIsHandled.getSelectedItem().toString();
+            this.earthResistanceTestResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.earthResistanceTestResult.unhandleReason = etUnhandleReason.getText().toString();
 

@@ -32,11 +32,48 @@
 
         </activity>
 
+        <!-- 任务列表 -->
         <activity android:name=".activity.TaskListActivity_"
             android:screenOrientation="portrait"
             android:label="任务列表" android:launchMode="standard">
         </activity>
+            <!-- 营销 -->
+
+        <activity android:name=".activity.taskList.TaskListLineBrokenManagementActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListCollectResolveTroubleActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListExtendBussinessSetupActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListMeterTroubleActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListOrderHandleActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListBusinessAuditeActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListStopStartElectricActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+
+        <!-- 生产 -->
         <activity android:name=".activity.taskList.TaskListCoreMeterTestActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListTotalPerformanceTestActivity_"
             android:screenOrientation="portrait"
             android:label="任务列表" android:launchMode="standard">
         </activity>
@@ -45,6 +82,32 @@
             android:label="任务列表" android:launchMode="standard">
         </activity>
         <activity android:name=".activity.taskList.TaskListResolveRecordActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListCrossTestActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListVoltageMeasurementActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListEarthResistanceTestActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <activity android:name=".activity.taskList.TaskListSpecialSecurityCheckActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <!-- 工程 -->
+        <activity android:name=".activity.taskList.TaskListDistributionNetworkEngineeringActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
+        <!-- 综合 -->
+        <activity android:name=".activity.taskList.TaskListCarManagementActivity_"
             android:screenOrientation="portrait"
             android:label="任务列表" android:launchMode="standard">
         </activity>

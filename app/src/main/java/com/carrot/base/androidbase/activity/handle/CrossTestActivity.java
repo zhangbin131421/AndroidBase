@@ -161,7 +161,8 @@ public class CrossTestActivity extends BaseHandlerActivity{
             etTestTime.setText(crossTestResult.testTime);
             etTester.setText(crossTestResult.tester);
             etEndHandleTime.setText(crossTestResult.endHandleTime);
-            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TEST, crossTestResult.isHandled));
+            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, crossTestResult.isHandled == 2 ? "未处理" : "已处理"));
+
             etUnhandleReason.setText(crossTestResult.unhandleReason);
 
             getImage();
@@ -256,7 +257,7 @@ public class CrossTestActivity extends BaseHandlerActivity{
 
             this.crossTestResult.endHandleTime = etEndHandleTime.getText().toString();
 
-            this.crossTestResult.isHandled = etIsHandled.getSelectedItem().toString();
+            this.crossTestResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.crossTestResult.unhandleReason = etUnhandleReason.getText().toString();
 

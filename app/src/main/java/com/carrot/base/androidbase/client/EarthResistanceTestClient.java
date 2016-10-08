@@ -45,7 +45,7 @@ public interface EarthResistanceTestClient extends RestClientErrorHandling {
 
     @Get("/GetByUserIDAndHandled/?UserID={userId}&IsHandled={isHandled}")
     @Accept(MediaType.APPLICATION_JSON)
-    List<TaskBaseVo> getByUserId(@Path int userId, @Path int isHandled);
+    List<EarthResistanceTestResult> getByUserId(@Path int userId, @Path int isHandled);
 
 
     @Post("/AddNew")

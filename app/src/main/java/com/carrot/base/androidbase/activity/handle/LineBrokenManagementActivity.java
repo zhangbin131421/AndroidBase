@@ -206,7 +206,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 //            this.lineBrokenManagementResult.handleContent = et_HandleContent.getText().toString();
             this.lineBrokenManagementResult.userId = Integer.parseInt(et_UserID.getText().toString());
             this.lineBrokenManagementResult.endHandleTiem = et_EndHandleTiem.getText().toString();
-            this.lineBrokenManagementResult.isHandled = et_IsHandled.getText().toString();
+            this.lineBrokenManagementResult.isHandled = et_IsHandled.getText().toString().equals("已处理") ? 1 : 2;
             this.lineBrokenManagementResult.unhandleReason = et_UnhandleReason.getText().toString();
 
 

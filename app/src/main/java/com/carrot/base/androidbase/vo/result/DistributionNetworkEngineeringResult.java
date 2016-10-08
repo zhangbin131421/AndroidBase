@@ -106,7 +106,7 @@ public class DistributionNetworkEngineeringResult {
     public String endHandleTime;
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
-    public String isHandled;
+    public int isHandled;
     public static final String UnhandleReason = "UnhandleReason";
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
@@ -143,7 +143,7 @@ public class DistributionNetworkEngineeringResult {
         rtn.add(DistributionNetworkEngineeringResult.Inspect, this.inspect.getBytes("UTF-8"));
         rtn.add(DistributionNetworkEngineeringResult.Complete, this.complete.getBytes("UTF-8"));
         rtn.add(DistributionNetworkEngineeringResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
-        rtn.add(DistributionNetworkEngineeringResult.IsHandled, this.isHandled.getBytes("UTF-8"));
+        rtn.add(DistributionNetworkEngineeringResult.IsHandled, this.isHandled);
         rtn.add(DistributionNetworkEngineeringResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
 
         return rtn;

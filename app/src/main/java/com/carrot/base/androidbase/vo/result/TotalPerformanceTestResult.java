@@ -134,7 +134,7 @@ public class TotalPerformanceTestResult {
 
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
-    public String isHandled;
+    public int isHandled;
 
 
     public static final String UnhandleReason = "UnhandleReason";
@@ -176,7 +176,7 @@ public class TotalPerformanceTestResult {
         rtn.add(TotalPerformanceTestResult.HandleContent, this.handleContent.getBytes("UTF-8"));
         rtn.add(TotalPerformanceTestResult.Tester, this.tester.getBytes("UTF-8"));
         rtn.add(TotalPerformanceTestResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
-        rtn.add(TotalPerformanceTestResult.IsHandled, this.isHandled.getBytes("UTF-8"));
+        rtn.add(TotalPerformanceTestResult.IsHandled, this.isHandled);
         rtn.add(TotalPerformanceTestResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
 
 

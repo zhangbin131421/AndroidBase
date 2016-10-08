@@ -120,7 +120,7 @@ public class VoltageMeasurementResult {
     public String endHandleTime;
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
-    public String isHandled;
+    public int isHandled;
     public static final String UnhandleReason = "UnhandleReason";
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
@@ -160,7 +160,7 @@ public class VoltageMeasurementResult {
         rtn.add(VoltageMeasurementResult.TestTime, this.testTime.getBytes("UTF-8"));
         rtn.add(VoltageMeasurementResult.Tester, this.tester.getBytes("UTF-8"));
         rtn.add(VoltageMeasurementResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
-        rtn.add(VoltageMeasurementResult.IsHandled, this.isHandled.getBytes("UTF-8"));
+        rtn.add(VoltageMeasurementResult.IsHandled, this.isHandled);
         rtn.add(VoltageMeasurementResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
 
         return rtn;

@@ -140,7 +140,9 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
             etUserID.setText(specialSecurityCheckResult.userID+"");
             etCheckDate.setText(specialSecurityCheckResult.checkDate);
             etEndHandleTime.setText(specialSecurityCheckResult.endHandleTime);
-            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, specialSecurityCheckResult.isHandled));
+
+            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, specialSecurityCheckResult.isHandled == 2 ? "未处理" : "已处理"));
+
             etUnhandleReason.setText(specialSecurityCheckResult.unhandleReason);
 
             getImage();
@@ -166,7 +168,7 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
     @Override
     UpdateResult save(){
 
-        if(specialSecurityCheckResult.iD == 0){
+        if(specialSecurityCheckResult.id == 0){
             specialSecurityCheckResult.assignByUserID = userPrefs.id().get();
             specialSecurityCheckResult.userID = userPrefs.id().get();
         }
@@ -208,7 +210,7 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
             this.specialSecurityCheckResult.endHandleTime = etEndHandleTime.getText().toString();
 
-            this.specialSecurityCheckResult.isHandled = etIsHandled.getSelectedItem().toString();
+            this.specialSecurityCheckResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.specialSecurityCheckResult.unhandleReason = etUnhandleReason.getText().toString();
 

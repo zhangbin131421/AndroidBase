@@ -75,7 +75,7 @@ public class CrossTestResult {
     public String endHandleTime;
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
-    public String isHandled;
+    public int isHandled;
     public static final String UnhandleReason = "UnhandleReason";
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
@@ -100,7 +100,7 @@ public class CrossTestResult {
         rtn.add(CrossTestResult.TestTime, this.testTime.getBytes("UTF-8"));
         rtn.add(CrossTestResult.Tester, this.tester.getBytes("UTF-8"));
         rtn.add(CrossTestResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
-        rtn.add(CrossTestResult.IsHandled, this.isHandled.getBytes("UTF-8"));
+        rtn.add(CrossTestResult.IsHandled, this.isHandled);
         rtn.add(CrossTestResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
 
         return rtn;

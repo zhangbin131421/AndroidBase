@@ -228,7 +228,9 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
             etTestTime.setText(voltageMeasurementResult.testTime);
             etTester.setText(voltageMeasurementResult.tester);
             etEndHandleTime.setText(voltageMeasurementResult.endHandleTime);
-            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, voltageMeasurementResult.isHandled));
+
+            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, voltageMeasurementResult.isHandled == 2 ? "未处理" : "已处理"));
+
             etUnhandleReason.setText(voltageMeasurementResult.unhandleReason);
 
             getImage();
@@ -387,7 +389,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
 
             this.voltageMeasurementResult.endHandleTime = etEndHandleTime.getText().toString();
 
-            this.voltageMeasurementResult.isHandled = etIsHandled.getSelectedItem().toString();
+            this.voltageMeasurementResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.voltageMeasurementResult.unhandleReason = etUnhandleReason.getText().toString();
 

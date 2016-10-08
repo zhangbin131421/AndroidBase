@@ -96,7 +96,7 @@ public class LineBrokenManagementResult {
 
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
-    public String isHandled;
+    public int isHandled;
 
 
 
@@ -105,6 +105,11 @@ public class LineBrokenManagementResult {
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
 
+
+
+    public static final String EndTime = "EndTime";
+    @JsonProperty(value=EndTime)
+    public String endTime;
 
 
 
@@ -125,7 +130,7 @@ public class LineBrokenManagementResult {
         rtn.add(LineBrokenManagementResult.UnqualifiedReason, this.unqualifiedReason.getBytes("UTF-8"));
         rtn.add(LineBrokenManagementResult.HandleContent, this.handleContent.getBytes("UTF-8"));
         rtn.add(LineBrokenManagementResult.EndHandleTiem, this.endHandleTiem.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.IsHandled, this.isHandled.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.IsHandled, this.isHandled);
         rtn.add(LineBrokenManagementResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
 
 

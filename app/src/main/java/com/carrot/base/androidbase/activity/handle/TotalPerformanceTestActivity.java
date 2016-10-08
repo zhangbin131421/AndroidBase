@@ -244,7 +244,7 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
             this.totalPerformanceTestResult.handleContent = etHandleContent.getText().toString();
             this.totalPerformanceTestResult.tester = etTester.getText().toString();
             this.totalPerformanceTestResult.endHandleTime = etEndHandleTime.getText().toString();
-            this.totalPerformanceTestResult.isHandled = etIsHandled.getText().toString();
+            this.totalPerformanceTestResult.isHandled = etIsHandled.getText().toString().equals("已处理") ? 1 : 2;
             this.totalPerformanceTestResult.unhandleReason = etUnhandleReason.getText().toString();
 
             return true;

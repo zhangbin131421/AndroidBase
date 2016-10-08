@@ -25,7 +25,8 @@ public class EarthResistanceTestResult {
 
     public static final String ID = "ID";
     @JsonProperty(value=ID)
-    public int iD;
+    public int id;
+
     public static final String UserID = "UserID";
     @JsonProperty(value=UserID)
     public int userID;
@@ -76,7 +77,7 @@ public class EarthResistanceTestResult {
     public String endHandleTime;
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
-    public String isHandled;
+    public int isHandled;
     public static final String UnhandleReason = "UnhandleReason";
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
@@ -86,7 +87,7 @@ public class EarthResistanceTestResult {
     public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
-        rtn.add(EarthResistanceTestResult.ID, this.iD+"");
+        rtn.add(EarthResistanceTestResult.ID, this.id+"");
         rtn.add(EarthResistanceTestResult.UserID, this.userID+"");
         rtn.add(EarthResistanceTestResult.AssignByUserID, this.assignByUserID+"");
         rtn.add(EarthResistanceTestResult.CreatedTime, this.createdTime.getBytes("UTF-8"));
@@ -103,7 +104,7 @@ public class EarthResistanceTestResult {
         rtn.add(EarthResistanceTestResult.TestDate, this.testDate.getBytes("UTF-8"));
         rtn.add(EarthResistanceTestResult.Tester, this.tester.getBytes("UTF-8"));
         rtn.add(EarthResistanceTestResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
-        rtn.add(EarthResistanceTestResult.IsHandled, this.isHandled.getBytes("UTF-8"));
+        rtn.add(EarthResistanceTestResult.IsHandled, this.isHandled);
         rtn.add(EarthResistanceTestResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
 
         return rtn;

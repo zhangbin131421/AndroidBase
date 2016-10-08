@@ -25,7 +25,7 @@ public class SpecialSecurityCheckResult {
 
     public static final String ID = "ID";
     @JsonProperty(value=ID)
-    public int iD;
+    public int id;
     public static final String UserID = "UserID";
     @JsonProperty(value=UserID)
     public int userID;
@@ -65,7 +65,7 @@ public class SpecialSecurityCheckResult {
     public String endHandleTime;
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
-    public String isHandled;
+    public int isHandled;
     public static final String UnhandleReason = "UnhandleReason";
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
@@ -75,7 +75,7 @@ public class SpecialSecurityCheckResult {
     public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
-        rtn.add(SpecialSecurityCheckResult.ID, this.iD+"");
+        rtn.add(SpecialSecurityCheckResult.ID, this.id+"");
         rtn.add(SpecialSecurityCheckResult.UserID, this.userID+"");
         rtn.add(SpecialSecurityCheckResult.AssignByUserID, this.assignByUserID+"");
         rtn.add(SpecialSecurityCheckResult.CreatedTime, this.createdTime.getBytes("UTF-8"));
@@ -88,7 +88,7 @@ public class SpecialSecurityCheckResult {
         rtn.add(SpecialSecurityCheckResult.ExistIssue, this.existIssue.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.CheckDate, this.checkDate.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
-        rtn.add(SpecialSecurityCheckResult.IsHandled, this.isHandled.getBytes("UTF-8"));
+        rtn.add(SpecialSecurityCheckResult.IsHandled, this.isHandled);
         rtn.add(SpecialSecurityCheckResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
 
         return rtn;
