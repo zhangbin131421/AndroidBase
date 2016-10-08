@@ -50,8 +50,8 @@ public class GeneratorUtils {
 
 
     public void generate(){
-        allEntity.add(new Entity("TotalPerformanceTest", TypeUtils.TYPE_2_2, COLUMNS_TotalPerformanceTest));
-//        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
+//        allEntity.add(new Entity("TotalPerformanceTest", TypeUtils.TYPE_2_2, COLUMNS_TotalPerformanceTest));
+        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
 //        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_6, COLUMNS_VoltageMeasurement));
 //        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_7, COLUMNS_EarthResistanceTest));
 //        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_8, COLUMNS_SpecialSecurityCheck));
@@ -103,7 +103,8 @@ public class GeneratorUtils {
             {"AreaName", "台区名称", T_SPINNER, T_STRING, "0"},
             {"CrossPoint", "交跨点", T_INPUT, T_STRING, "0"},
             {"CrossName", "跨越物名称", T_INPUT, T_STRING, "0"},
-            {"SafetyMeasure", "安全措施", T_SPINNER, T_STRING, "0"},
+            {"SafetyMeasure", "安全措施", T_INPUT, T_STRING, "0"},
+
             {"BeginHandleTime", "测量情况", T_INPUT, T_STRING, "1"},
             {"EarthDistance", "对地距离（米）", T_IMAGE, T_STRING, "0"},
             {"CrossDistance", "交跨距离（米）", T_IMAGE, T_STRING, "0"},
@@ -111,6 +112,7 @@ public class GeneratorUtils {
             {"ModificationOpinion", "整改意见", T_INPUT, T_STRING, "0"},
             {"TestTime", "测量时间", T_INPUT, T_STRING, "0"},
             {"Tester", "测量人员", T_INPUT, T_STRING, "0"},
+
             {"EndHandleTime", "任务结束", T_INPUT, T_STRING, "1"},
             {"IsHandled", "已处理", T_SPINNER, T_STRING, "0"},
             {"UnhandleReason", "未处理", T_INPUT, T_STRING, "0"}
@@ -582,21 +584,28 @@ public class GeneratorUtils {
                         "                    android:layout_height=\"wrap_content\" />\n" +
                         "            </LinearLayout>\n";
             }else if(item[2].equals(T_IMAGE)){
-                output +=
+                output += "<LinearLayout style=\"@style/tableTitle2\">\n" +
+                        "                    <TextView style=\"@style/tableColName\"\n" +
+                        "                        android:text=\""+item[1]+"\"/>\n" +
+                        "                    <TextView style=\"@style/formDivider\"/>\n" +
+                        "                    <LinearLayout\n" +
+                        "                        android:layout_width=\"match_parent\"\n" +
+                        "                        android:layout_height=\"wrap_content\"\n" +
+                        "                        android:orientation=\"vertical\">\n" +
+                        "                        <com.andreabaccega.widget.FormEditText\n" +
+                        "                            whatever:emptyErrorString=\"@string/notEmpty\" style=\"@style/tableColInputPic\"\n" +
+                        "                            android:id=\"@+id/et"+item[0]+"\"/>\n" +
+                        "                        <org.apmem.tools.layouts.FlowLayout\n" +
+                        "                            android:id=\"@+id/et_"+item[0]+"Pics\"\n" +
+                        "                            style=\"@style/tableColImageLayout\"\n" +
+                        "                            android:gravity=\"center_vertical\">\n" +
+                        "                            <ImageView\n" +
+                        "                                android:id=\"@+id/btnAddImage"+item[0]+"\"\n" +
+                        "                                style=\"@style/tableColImagAdd\"/>\n" +
+                        "                        </org.apmem.tools.layouts.FlowLayout>\n" +
+                        "                    </LinearLayout>\n" +
                         "\n" +
-                        "            <LinearLayout style=\"@style/tableTitle2\">\n" +
-                        "                <TextView style=\"@style/tableColName\"\n" +
-                        "                    android:text=\""+item[1]+"\"/>\n" +
-                        "                <org.apmem.tools.layouts.FlowLayout\n" +
-                        "                    android:id=\"@+id/et"+item[0]+"_content\"\n" +
-                        "                    style=\"@style/tableColImageLayout\">\n" +
-                        "                    <ImageView\n" +
-                        "                        android:layout_margin=\"5dp\"\n" +
-                        "                        android:id=\"@+id/btn_add_image"+item[0]+"\"\n" +
-                        "                        style=\"@style/tableColImagAdd\"/>\n" +
-                        "                </org.apmem.tools.layouts.FlowLayout>\n" +
-                        "            </LinearLayout>\n" +
-                        "\n";
+                        "                </LinearLayout>";
             }
         }
 
