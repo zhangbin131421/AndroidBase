@@ -338,6 +338,7 @@ public class TaskListActivity extends AppCompatActivity {
                     new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("提示")
                             .setContentText("该任务不允许新增")
+                            .setConfirmText("确定")
                             .show();
                 }
 
