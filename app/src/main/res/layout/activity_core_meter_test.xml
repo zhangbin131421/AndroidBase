@@ -151,8 +151,7 @@
                     android:orientation="vertical">
 
                     <com.andreabaccega.widget.FormEditText
-                        android:hint="请输入缺陷内容"
-                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInputPic"
                         android:id="@+id/et_atesting"/>
 
                     <org.apmem.tools.layouts.FlowLayout
@@ -177,18 +176,17 @@
                     android:orientation="vertical">
 
                     <com.andreabaccega.widget.FormEditText
-                        android:hint="请输入缺陷内容"
-                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInputPic"
                         android:id="@+id/et_btesting"/>
 
                     <org.apmem.tools.layouts.FlowLayout
-                    android:id="@+id/bTestingPicContent"
-                    style="@style/tableColImageLayout">
-                    <ImageView
-                        android:layout_margin="5dp"
-                        android:id="@+id/btn_add_b_image"
-                        style="@style/tableColImagAdd"/>
-                </org.apmem.tools.layouts.FlowLayout>
+                        android:id="@+id/bTestingPicContent"
+                        style="@style/tableColImageLayout">
+                        <ImageView
+                            android:layout_margin="5dp"
+                            android:id="@+id/btn_add_b_image"
+                            style="@style/tableColImagAdd"/>
+                    </org.apmem.tools.layouts.FlowLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -204,8 +202,7 @@
                     android:orientation="vertical">
 
                     <com.andreabaccega.widget.FormEditText
-                        android:hint="请输入缺陷内容"
-                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInputPic"
                         android:id="@+id/et_ctesting"/>
 
                     <org.apmem.tools.layouts.FlowLayout

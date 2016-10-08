@@ -121,14 +121,14 @@ public class Type2Activity extends AppCompatActivity {
         if(userPrefs.id().get() > 0){
             CountResult ecCountVo = equipmentCheckClient.getUnFinishedByUserId(userPrefs.id().get());
 
-            if(ecCountVo.count > 0){
+            if(ecCountVo != null && ecCountVo.count > 0){
                 showFlag(View.VISIBLE, ecCountVo.count, 2);
             }else{
                 showFlag(View.INVISIBLE, 0, 2);
             }
 
             CountResult rrCountVo = resolveRecordClient.getUnFinishedByUserId(userPrefs.id().get());
-            if(rrCountVo.count > 0){
+            if(rrCountVo != null && rrCountVo.count > 0){
                 showFlag(View.VISIBLE, rrCountVo.count, 3);
             }else{
                 showFlag(View.INVISIBLE, 0, 3);
