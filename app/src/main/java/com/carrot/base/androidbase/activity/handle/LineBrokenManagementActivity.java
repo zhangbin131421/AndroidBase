@@ -1,11 +1,6 @@
 package com.carrot.base.androidbase.activity.handle;
 
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -19,12 +14,11 @@ import org.springframework.util.MultiValueMap;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
-import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.client.LineBrokenManagementClient;
+import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
-import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
 import com.carrot.base.androidbase.vo.result.LineBrokenManagementResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
@@ -85,7 +79,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
     public void setValidateList(){
 
-        allFields = new FormEditText[] {et_AssignmentTime, et_TaskNum,
+        allValidateFields = new FormEditText[] {et_AssignmentTime, et_TaskNum,
                 et_BrokenRate, et_BeginHandleTime,
                 et_UserID, et_EndHandleTiem, et_IsHandled, et_UnhandleReason};
 
@@ -101,7 +95,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
     @Override
     void initDropDownList(){
         //下拉选择框
-        setDropDownListAdapter(et_AreaName, TypeUtils.AREA);
+        setDropDownListAdapter(et_AreaName, DataInstance.getInstance().areaInformationResults);
 
         setDropDownListAdapter(et_SafetyMeasure, TypeUtils.SAFETY_MEASURE);
 
@@ -127,7 +121,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
         }else{
             et_AssignmentTime.setText(lineBrokenManagementResult.assignmentTime);
             et_TaskNum.setText(lineBrokenManagementResult.taskNum);
-            et_AreaName.setSelection(TypeUtils.getSelectedIndex(TypeUtils.AREA, lineBrokenManagementResult.areaName));
+            et_AreaName.setSelection(getSelectedAreaIndex(lineBrokenManagementResult.areaName));
             et_BrokenRate.setText(lineBrokenManagementResult.brokenRate);
             et_SafetyMeasure.setSelection(TypeUtils.getSelectedIndex(TypeUtils.SAFETY_MEASURE, lineBrokenManagementResult.safetyMeasure));
             et_BeginHandleTime.setText(lineBrokenManagementResult.beginHandleTime);

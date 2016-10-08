@@ -2,8 +2,6 @@ package com.carrot.base.androidbase.utils;
 
 import android.util.Log;
 
-import org.springframework.util.ObjectUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,33 +26,16 @@ public class GeneratorUtils {
     }
 
 
-    public void generate(){
-//        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
-//        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_6, COLUMNS_VoltageMeasurement));
-//        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_7, COLUMNS_EarthResistanceTest));
-//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_8, COLUMNS_SpecialSecurityCheck));
-//
-        allEntity.add(new Entity("DistributionNetworkEngineering", TypeUtils.TYPE_3_1, COLUMNS_DistributionNetworkEngineering));
-//
-//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_4_1, COLUMNS_CarManagement));
-
-
-
-        for (Entity entity : allEntity) {
-//            gLayout(entity);
-//            gResult(entity);
-            gActivity(entity);
-        }
-    }
-
-    public final static String T_I = "1";
-    public final static String T_S = "2";
-    public final static String T_P = "3";
+    public final static String T_INPUT = "1";//edit text field
+    public final static String T_SPINNER = "2";//spinner
+    public final static String T_IMAGE = "3";//image
 
     public final static String T_INT = "int";
     public final static String T_STRING = "String";
     public final static String T_TIME = "Date";
 
+    public final static String TITLE_TYPE_1 = "1";//表格的样式，有背景色
+    public final static String TITLE_TYPE_0 = "0";//表格的样式，无背景色
 
 
     public List<Entity> allEntity = new ArrayList<>();
@@ -66,131 +47,180 @@ public class GeneratorUtils {
             {"CreatedTime", T_STRING}
     };
 
+
+
+    public void generate(){
+        allEntity.add(new Entity("TotalPerformanceTest", TypeUtils.TYPE_2_2, COLUMNS_TotalPerformanceTest));
+//        allEntity.add(new Entity("CrossTest", TypeUtils.TYPE_2_5, COLUMNS_CrossTest));
+//        allEntity.add(new Entity("VoltageMeasurement", TypeUtils.TYPE_2_6, COLUMNS_VoltageMeasurement));
+//        allEntity.add(new Entity("EarthResistanceTest", TypeUtils.TYPE_2_7, COLUMNS_EarthResistanceTest));
+//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_2_8, COLUMNS_SpecialSecurityCheck));
+//
+//        allEntity.add(new Entity("DistributionNetworkEngineering", TypeUtils.TYPE_3_1, COLUMNS_DistributionNetworkEngineering));
+//
+//        allEntity.add(new Entity("SpecialSecurityCheck", TypeUtils.TYPE_4_1, COLUMNS_CarManagement));
+
+
+
+        for (Entity entity : allEntity) {
+//            gLayout(entity);
+            gResult(entity);
+//            gActivity(entity);
+        }
+    }
+
+    public String[][] COLUMNS_TotalPerformanceTest = new String[][]{
+            //交叉跨越测量
+            {"AssignmentTime", "任务派发", T_INPUT, T_STRING, TITLE_TYPE_1},
+            {"TaskNum", "任务编号", T_INPUT, T_STRING, TITLE_TYPE_0},
+            {"AreaName", "台区名称", T_SPINNER, T_STRING, TITLE_TYPE_0},
+            {"ProtectLine", "保护线路", T_INPUT, T_STRING, TITLE_TYPE_0},
+            {"Type", "型号", T_INPUT, T_STRING, TITLE_TYPE_0},
+            {"SafetyMeasure", "安全措施", T_INPUT, T_STRING, TITLE_TYPE_0},
+            {"EndTime", "结束时间", T_INPUT, T_STRING, TITLE_TYPE_0},
+
+            {"BeginHandleTime", "检测情况", T_INPUT, T_STRING, TITLE_TYPE_1},
+            {"ElectricityA", "分断动作电流（额定值）", T_INPUT, T_STRING, TITLE_TYPE_0},
+            {"ElectricityB", "分断动作电流（实测值）", T_IMAGE, T_STRING, TITLE_TYPE_0},
+            {"ElectricityC", "分断动作时间（额定值）", T_INPUT, T_STRING, TITLE_TYPE_0},
+            {"ElectricityD", "分断动作时间（实测值）", T_IMAGE, T_STRING, TITLE_TYPE_0},
+            {"OperateTime", "投运时间", T_INPUT, T_STRING, TITLE_TYPE_0},
+            {"TestTime", "测量时间", T_INPUT, T_STRING, TITLE_TYPE_0},
+            {"TestResult", "检测结果", T_SPINNER, T_STRING, TITLE_TYPE_0},
+            {"HandleContent", "采取措施", T_INPUT, T_STRING, TITLE_TYPE_0},
+            {"Tester", "测试人", T_INPUT, T_STRING, TITLE_TYPE_0},
+
+            {"EndHandleTime", "任务结束", T_INPUT, T_STRING, TITLE_TYPE_1},
+            {"IsHandled", "已处理", T_SPINNER, T_INT, TITLE_TYPE_0},
+            {"UnhandleReason", "未处理", T_INPUT, T_STRING, TITLE_TYPE_0}
+    };
+
+
     public String[][] COLUMNS_CrossTest = new String[][]{
             //交叉跨越测量
-            {"AssignmentTime", "任务派发", T_I, T_STRING, "1"},
-            {"TaskNum", "任务编号", T_I, T_STRING, "0"},
-            {"AreaName", "台区名称", T_S, T_STRING, "0"},
-            {"CrossPoint", "交跨点", T_I, T_STRING, "0"},
-            {"CrossName", "跨越物名称", T_I, T_STRING, "0"},
-            {"SafetyMeasure", "安全措施", T_S, T_STRING, "0"},
-            {"BeginHandleTime", "测量情况", T_I, T_STRING, "1"},
-            {"EarthDistance", "对地距离（米）", T_P, T_STRING, "0"},
-            {"CrossDistance", "交跨距离（米）", T_P, T_STRING, "0"},
-            {"IsQualified", "是否符合要求", T_S, T_STRING, "0"},
-            {"ModificationOpinion", "整改意见", T_I, T_STRING, "0"},
-            {"TestTime", "测量时间", T_I, T_STRING, "0"},
-            {"Tester", "测量人员", T_I, T_STRING, "0"},
-            {"EndHandleTime", "任务结束", T_I, T_STRING, "1"},
-            {"IsHandled", "已处理", T_S, T_STRING, "0"},
-            {"UnhandleReason", "未处理", T_I, T_STRING, "0"}
+            {"AssignmentTime", "任务派发", T_INPUT, T_STRING, "1"},
+            {"TaskNum", "任务编号", T_INPUT, T_STRING, "0"},
+            {"AreaName", "台区名称", T_SPINNER, T_STRING, "0"},
+            {"CrossPoint", "交跨点", T_INPUT, T_STRING, "0"},
+            {"CrossName", "跨越物名称", T_INPUT, T_STRING, "0"},
+            {"SafetyMeasure", "安全措施", T_SPINNER, T_STRING, "0"},
+            {"BeginHandleTime", "测量情况", T_INPUT, T_STRING, "1"},
+            {"EarthDistance", "对地距离（米）", T_IMAGE, T_STRING, "0"},
+            {"CrossDistance", "交跨距离（米）", T_IMAGE, T_STRING, "0"},
+            {"IsQualified", "是否符合要求", T_SPINNER, T_STRING, "0"},
+            {"ModificationOpinion", "整改意见", T_INPUT, T_STRING, "0"},
+            {"TestTime", "测量时间", T_INPUT, T_STRING, "0"},
+            {"Tester", "测量人员", T_INPUT, T_STRING, "0"},
+            {"EndHandleTime", "任务结束", T_INPUT, T_STRING, "1"},
+            {"IsHandled", "已处理", T_SPINNER, T_STRING, "0"},
+            {"UnhandleReason", "未处理", T_INPUT, T_STRING, "0"}
 
     };
 
     public String[][] COLUMNS_VoltageMeasurement = new String[][]{
-            {"AssignmentTime", "任务派发", T_I, T_STRING, "1"},
-            {"TaskNum", "任务编号", T_I, T_STRING, "0"},
-            {"AreaName", "台区名称", T_S, T_STRING, "0"},
-            {"ConfigA", "配变容量（KVA）4", T_I, T_STRING, "0"},
-            {"ConfigB", "配变型号", T_S, T_STRING, "0"},
-            {"ConfigC", "配变类别", T_S, T_STRING, "0"},
-            {"RatedCurrent", "额定电流（A）", T_I, T_STRING, "0"},
-            {"PowerHouseholder", "动力户数", T_I, T_STRING, "0"},
-            {"PowerCapacity", "动力容量", T_I, T_STRING, "0"},
-            {"Householder", "居民户数", T_I, T_STRING, "0"},
-            {"HouseholderCapacity", "居民容量", T_I, T_STRING, "0"},
-            {"SafetyMeasure", "安全措施", T_S, T_STRING, "0"},
-            {"EndTime", "结束时间", T_I, T_STRING, "0"},
-            {"BeginHandleTime", "测量情况", T_I, T_STRING, "1"},
-            {"Period", "时段", T_S, T_STRING, "0"},
-            {"CurrentA", "A相电流（A）1", T_P, T_STRING, "0"},
-            {"CurrentB", "B相电流（A）2", T_P, T_STRING, "0"},
-            {"CurrentC", "C相电流（A）3", T_P, T_STRING, "0"},
-            {"ZeoLineCurrent", "零线电流（A）", T_P, T_STRING, "0"},
-            {"LoadRate", "负载率（%）", T_I, T_STRING, "0"},
-            {"ImbalanceRate", "三相不平衡率（%）", T_I, T_STRING, "0"},
-            {"HeaderVoltage", "线路首端电压（V）", T_P, T_STRING, "0"},
-            {"FooterVoltage", "线路末端电压（V）", T_P, T_STRING, "0"},
-            {"IsOutOfLimit", "是否越限", T_S, T_STRING, "0"},
-            {"ModificationOpinion", "整改建议", T_I, T_STRING, "0"},
-            {"TestTime", "测量日期", T_I, T_STRING, "0"},
-            {"Tester", "测量人员", T_I, T_STRING, "0"},
-            {"EndHandleTime", "任务结束", T_I, T_STRING, "1"},
-            {"IsHandled", "已处理", T_S, T_STRING, "0"},
-            {"UnhandleReason", "未处理", T_I, T_STRING, "0"}
+            {"AssignmentTime", "任务派发", T_INPUT, T_STRING, "1"},
+            {"TaskNum", "任务编号", T_INPUT, T_STRING, "0"},
+            {"AreaName", "台区名称", T_SPINNER, T_STRING, "0"},
+            {"ConfigA", "配变容量（KVA）4", T_INPUT, T_STRING, "0"},
+            {"ConfigB", "配变型号", T_SPINNER, T_STRING, "0"},
+            {"ConfigC", "配变类别", T_SPINNER, T_STRING, "0"},
+            {"RatedCurrent", "额定电流（A）", T_INPUT, T_STRING, "0"},
+            {"PowerHouseholder", "动力户数", T_INPUT, T_STRING, "0"},
+            {"PowerCapacity", "动力容量", T_INPUT, T_STRING, "0"},
+            {"Householder", "居民户数", T_INPUT, T_STRING, "0"},
+            {"HouseholderCapacity", "居民容量", T_INPUT, T_STRING, "0"},
+            {"SafetyMeasure", "安全措施", T_SPINNER, T_STRING, "0"},
+            {"EndTime", "结束时间", T_INPUT, T_STRING, "0"},
+            {"BeginHandleTime", "测量情况", T_INPUT, T_STRING, "1"},
+            {"Period", "时段", T_SPINNER, T_STRING, "0"},
+            {"CurrentA", "A相电流（A）1", T_IMAGE, T_STRING, "0"},
+            {"CurrentB", "B相电流（A）2", T_IMAGE, T_STRING, "0"},
+            {"CurrentC", "C相电流（A）3", T_IMAGE, T_STRING, "0"},
+            {"ZeoLineCurrent", "零线电流（A）", T_IMAGE, T_STRING, "0"},
+            {"LoadRate", "负载率（%）", T_INPUT, T_STRING, "0"},
+            {"ImbalanceRate", "三相不平衡率（%）", T_INPUT, T_STRING, "0"},
+            {"HeaderVoltage", "线路首端电压（V）", T_IMAGE, T_STRING, "0"},
+            {"FooterVoltage", "线路末端电压（V）", T_IMAGE, T_STRING, "0"},
+            {"IsOutOfLimit", "是否越限", T_SPINNER, T_STRING, "0"},
+            {"ModificationOpinion", "整改建议", T_INPUT, T_STRING, "0"},
+            {"TestTime", "测量日期", T_INPUT, T_STRING, "0"},
+            {"Tester", "测量人员", T_INPUT, T_STRING, "0"},
+            {"EndHandleTime", "任务结束", T_INPUT, T_STRING, "1"},
+            {"IsHandled", "已处理", T_SPINNER, T_STRING, "0"},
+            {"UnhandleReason", "未处理", T_INPUT, T_STRING, "0"}
     };
 
     public String[][] COLUMNS_EarthResistanceTest = new String[][]{
 
-            {"AssignmentTime", "任务派发", T_I, T_STRING, "1"},
-            {"TaskNum", "任务编号", T_I, T_STRING, "0"},
-            {"AreaName", "台区名称", T_S, T_STRING, "0"},
-            {"EarthPlace", "接地装置位置", T_I, T_STRING, "0"},
-            {"EarthEquipmentName", "接地设备名称", T_I, T_STRING, "0"},
-            {"ResistanceValue", "投运时电阻值Ω", T_I, T_STRING, "0"},
-            {"SafetyMeasure", "安全措施", T_S, T_STRING, "0"},
-            {"BeginHandleTime", "测量情况", T_I, T_STRING, "1"},
-            {"Wether", "天气", T_S, T_STRING, "0"},
-            {"TestResistanceValue", "测量电阻值Ω", T_P, T_STRING, "0"},
-            {"TestDate", "测量日期", T_I, T_STRING, "0"},
-            {"Tester", "测量人员", T_I, T_STRING, "0"},
-            {"EndHandleTime", "处理结果", T_I, T_STRING, "1"},
-            {"IsHandled", "已处理", T_S, T_STRING, "0"},
-            {"UnhandleReason", "未处理", T_I, T_STRING, "0"}
+            {"AssignmentTime", "任务派发", T_INPUT, T_STRING, "1"},
+            {"TaskNum", "任务编号", T_INPUT, T_STRING, "0"},
+            {"AreaName", "台区名称", T_SPINNER, T_STRING, "0"},
+            {"EarthPlace", "接地装置位置", T_INPUT, T_STRING, "0"},
+            {"EarthEquipmentName", "接地设备名称", T_INPUT, T_STRING, "0"},
+            {"ResistanceValue", "投运时电阻值Ω", T_INPUT, T_STRING, "0"},
+            {"SafetyMeasure", "安全措施", T_SPINNER, T_STRING, "0"},
+            {"BeginHandleTime", "测量情况", T_INPUT, T_STRING, "1"},
+            {"Wether", "天气", T_SPINNER, T_STRING, "0"},
+            {"TestResistanceValue", "测量电阻值Ω", T_IMAGE, T_STRING, "0"},
+            {"TestDate", "测量日期", T_INPUT, T_STRING, "0"},
+            {"Tester", "测量人员", T_INPUT, T_STRING, "0"},
+            {"EndHandleTime", "处理结果", T_INPUT, T_STRING, "1"},
+            {"IsHandled", "已处理", T_SPINNER, T_STRING, "0"},
+            {"UnhandleReason", "未处理", T_INPUT, T_STRING, "0"}
     };
     public String[][] COLUMNS_SpecialSecurityCheck = new String[][]{
-            {"AssignmentTime", "任务派发", T_I, T_STRING, "1"},
-            {"TaskNum", "任务编号", T_I, T_STRING, "0"},
-            {"BeginTime", "开始时间", T_I, T_STRING, "0"},
-            {"EndTime", "结束时间", T_I, T_STRING, "0"},
-            {"SafetyMeasure", "安全措施", T_S, T_STRING, "0"},
-            {"BeginHandleTime", "检查情况", T_I, T_STRING, "1"},
-            {"ExistIssue", "存在问题", T_I, T_STRING, "0"},
-            {"UserID", "检查人员", T_I, T_STRING, "0"},
-            {"CheckDate", "检查日期", T_I, T_STRING, "0"},
-            {"EndHandleTime", "处理结果", T_I, T_STRING, "1"},
-            {"IsHandled", "已处理", T_S, T_STRING, "0"},
-            {"UnhandleReason", "未处理", T_I, T_STRING, "0"}};
+            {"AssignmentTime", "任务派发", T_INPUT, T_STRING, "1"},
+            {"TaskNum", "任务编号", T_INPUT, T_STRING, "0"},
+            {"BeginTime", "开始时间", T_INPUT, T_STRING, "0"},
+            {"EndTime", "结束时间", T_INPUT, T_STRING, "0"},
+            {"SafetyMeasure", "安全措施", T_SPINNER, T_STRING, "0"},
+            {"BeginHandleTime", "检查情况", T_INPUT, T_STRING, "1"},
+            {"ExistIssue", "存在问题", T_INPUT, T_STRING, "0"},
+            {"UserID", "检查人员", T_INPUT, T_STRING, "0"},
+            {"CheckDate", "检查日期", T_INPUT, T_STRING, "0"},
+            {"EndHandleTime", "处理结果", T_INPUT, T_STRING, "1"},
+            {"IsHandled", "已处理", T_SPINNER, T_STRING, "0"},
+            {"UnhandleReason", "未处理", T_INPUT, T_STRING, "0"}};
 
 
     public String[][] COLUMNS_DistributionNetworkEngineering = new String[][]{
-            {"AssignmentTime", "工单派发", T_I, T_STRING, "1"},
-            {"TaskNum", "工单编号", T_I, T_STRING, "0"},
-            {"EngineeringName", "工程名称", T_I, T_STRING, "0"},
-            {"EngineeringNum", "工程编号", T_I, T_STRING, "0"},
-            {"AreaName", "台区名称", T_S, T_STRING, "0"},
-            {"ExecutionCompany", "施工单位", T_S, T_STRING, "0"},
-            {"WorkContent", "工作内容", T_I, T_STRING, "0"},
-            {"WorkPlace", "工作地点", T_I, T_STRING, "0"},
-            {"StopScope", "停电范围", T_I, T_STRING, "0"},
-            {"StopTime", "停电时间", T_I, T_STRING, "0"},
-            {"WorkLicensor", "工作许可人", T_I, T_STRING, "0"},
-            {"BeginHandleTime", "现场处理", T_I, T_STRING, "1"},
-            {"WorkInvoiceNum", "工作票号", T_I, T_STRING, "0"},
-            {"ExecutionResponsible", "施工队责任人", T_I, T_STRING, "0"},
-            {"WorkResponsible", "工作负责人", T_I, T_STRING, "0"},
-            {"WorkContent2", "工作内容", T_I, T_STRING, "0"},
-            {"SafetyMeasure", "安全措施", T_I, T_STRING, "0"},
-            {"ActualStopTime", "实际停电时间", T_I, T_STRING, "0"},
-            {"EndStopTime", "送电时间", T_I, T_STRING, "0"},
-            {"Inspector", "督察人员", T_I, T_STRING, "0"},
-            {"Inspect", "督察情况", T_P, T_STRING, "0"},
-            {"Complete", "完成情况", T_I, T_STRING, "0"},
-            {"EndHandleTime", "处理结果", T_I, T_STRING, "1"},
-            {"IsHandled", "已完成", T_S, T_STRING, "0"},
-            {"UnhandleReason", "未完成", T_I, T_STRING, "0"}};
+            {"AssignmentTime", "工单派发", T_INPUT, T_STRING, "1"},
+            {"TaskNum", "工单编号", T_INPUT, T_STRING, "0"},
+            {"EngineeringName", "工程名称", T_INPUT, T_STRING, "0"},
+            {"EngineeringNum", "工程编号", T_INPUT, T_STRING, "0"},
+            {"AreaName", "台区名称", T_SPINNER, T_STRING, "0"},
+            {"ExecutionCompany", "施工单位", T_SPINNER, T_STRING, "0"},
+            {"WorkContent", "工作内容", T_INPUT, T_STRING, "0"},
+            {"WorkPlace", "工作地点", T_INPUT, T_STRING, "0"},
+            {"StopScope", "停电范围", T_INPUT, T_STRING, "0"},
+            {"StopTime", "停电时间", T_INPUT, T_STRING, "0"},
+            {"WorkLicensor", "工作许可人", T_INPUT, T_STRING, "0"},
+            {"BeginHandleTime", "现场处理", T_INPUT, T_STRING, "1"},
+            {"WorkInvoiceNum", "工作票号", T_INPUT, T_STRING, "0"},
+            {"ExecutionResponsible", "施工队责任人", T_INPUT, T_STRING, "0"},
+            {"WorkResponsible", "工作负责人", T_INPUT, T_STRING, "0"},
+            {"WorkContent2", "工作内容", T_INPUT, T_STRING, "0"},
+            {"SafetyMeasure", "安全措施", T_INPUT, T_STRING, "0"},
+            {"ActualStopTime", "实际停电时间", T_INPUT, T_STRING, "0"},
+            {"EndStopTime", "送电时间", T_INPUT, T_STRING, "0"},
+            {"Inspector", "督察人员", T_INPUT, T_STRING, "0"},
+            {"Inspect", "督察情况", T_IMAGE, T_STRING, "0"},
+            {"Complete", "完成情况", T_INPUT, T_STRING, "0"},
+            {"EndHandleTime", "处理结果", T_INPUT, T_STRING, "1"},
+            {"IsHandled", "已完成", T_SPINNER, T_STRING, "0"},
+            {"UnhandleReason", "未完成", T_INPUT, T_STRING, "0"}};
 
 
     public String[][] COLUMNS_CarManagement = new String[][]{
-            {"ApplyTime", "申请", T_I, T_STRING, "1"},
-            {"ApplyNum", "申请编号", T_I, T_STRING, "0"},
-            {"CarID", "车号", T_I, T_STRING, "0"},
-            {"ArrivalPlace", "到达地点", T_I, T_STRING, "0"},
-            {"DriveOutTime", "出车时间", T_I, T_STRING, "0"},
-            {"BackTime", "回来时间", T_I, T_STRING, "0"},
-            {"StartDistanceCode", "起始路码", T_I, T_STRING, "0"},
-            {"EndDistanceCode", "终止路码", T_I, T_STRING, "0"},
-            {"Cost", "费用", T_I, T_STRING, "0"}};
+            {"ApplyTime", "申请", T_INPUT, T_STRING, "1"},
+            {"ApplyNum", "申请编号", T_INPUT, T_STRING, "0"},
+            {"CarID", "车号", T_INPUT, T_STRING, "0"},
+            {"ArrivalPlace", "到达地点", T_INPUT, T_STRING, "0"},
+            {"DriveOutTime", "出车时间", T_INPUT, T_STRING, "0"},
+            {"BackTime", "回来时间", T_INPUT, T_STRING, "0"},
+            {"StartDistanceCode", "起始路码", T_INPUT, T_STRING, "0"},
+            {"EndDistanceCode", "终止路码", T_INPUT, T_STRING, "0"},
+            {"Cost", "费用", T_INPUT, T_STRING, "0"}};
 
 
 
@@ -261,7 +291,7 @@ public class GeneratorUtils {
                 "\n");
 
         for (String[] item : entity.columns) {
-            if(item[2].equals(T_P)){
+            if(item[2].equals(T_IMAGE)){
                 output.append(
                 "    List<PhotoInfo> "+parseToLowFirst(item[0])+"List = new ArrayList<>();\n" +
                 "\n");
@@ -278,17 +308,17 @@ public class GeneratorUtils {
                 "\n");
 
         for (String[] item : entity.columns) {
-            if(item[2].equals(T_I)){
+            if(item[2].equals(T_INPUT)){
                 output.append(
                 "    @ViewById(R.id.et"+item[0]+")\n" +
                 "    FormEditText et"+item[0]+";\n" +
                 "\n");
-            }else if(item[2].equals(T_S)){
+            }else if(item[2].equals(T_SPINNER)){
                 output.append(
                 "    @ViewById(R.id.et"+item[0]+")\n" +
                     "    Spinner et"+item[0]+";\n" +
                     "\n");
-            }else if(item[2].equals(T_P)){//et"+item[0]+"_content
+            }else if(item[2].equals(T_IMAGE)){//et"+item[0]+"_content
                 output.append(
                     "    @ViewById(R.id.et"+item[0]+"_content)\n" +
                     "    org.apmem.tools.layouts.FlowLayout et"+item[0]+"Content;\n" +
@@ -307,7 +337,7 @@ public class GeneratorUtils {
 
         String validateStr = "";
                 for(String[] item : entity.columns){
-                    if(item[2].equals(T_I)){
+                    if(item[2].equals(T_INPUT)){
                         validateStr += "et"+item[0] + ",";
                     }
                 }
@@ -322,7 +352,7 @@ public class GeneratorUtils {
                 "        //下拉选择框\n");
 
         for(String[] item : entity.columns){
-            if(item[2].equals(T_S)){
+            if(item[2].equals(T_SPINNER)){
                 output.append(
                 "        setDropDownListAdapter(et"+item[0]+", TypeUtils.TYPE_TEST);\n" +
                 "\n");
@@ -362,10 +392,10 @@ public class GeneratorUtils {
                 "\n");
 
         for(String[] item : entity.columns){
-            if(item[2].equals(T_I)){
+            if(item[2].equals(T_INPUT)){
                 output.append(
                 "            et"+item[0]+".setText("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+");\n");
-            }else if(item[2].equals(T_S)){
+            }else if(item[2].equals(T_SPINNER)){
                 output.append(
                 "            et"+item[0]+".setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TEST, "+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+"));\n");
             }
@@ -387,7 +417,7 @@ public class GeneratorUtils {
                 "\n");
 
         for(String[] item : entity.columns){
-            if(item[2].equals(T_P)){
+            if(item[2].equals(T_IMAGE)){
                 output.append(
                 "        super.getImageFromURL("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+", et"+item[0]+"Content);\n" +
                 "\n");
@@ -400,7 +430,7 @@ public class GeneratorUtils {
                 "\n");
 
         for(String[] item : entity.columns){
-            if(item[2].equals(T_P)){
+            if(item[2].equals(T_IMAGE)){
                 output.append(
                 "    @Click(R.id.btn_add_image"+item[0]+")\n" +
                 "    void addImage"+item[0]+"(){\n" +
@@ -441,7 +471,7 @@ public class GeneratorUtils {
                 "        }\n" +
                 "\n");
         for(String[] item : entity.columns){
-            if(item[2].equals(T_P)){
+            if(item[2].equals(T_IMAGE)){
                 output.append(
                 "        FileUtils.addImageToData(data, "+entity.nameEnglish+"Result."+item[0]+", "+parseToLowFirst(item[0])+"List, this);\n");
             }
@@ -461,11 +491,11 @@ public class GeneratorUtils {
 
         for(String[] item : entity.columns){
 
-            if(item[2].equals(T_I)){
+            if(item[2].equals(T_INPUT)){
                 output.append(
                 "            this."+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+" = et"+item[0]+".getText().toString();\n" +
                 "\n");
-            }else if(item[2].equals(T_S)){
+            }else if(item[2].equals(T_SPINNER)){
                 output.append(
                 "            this."+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+" = et"+item[0]+".getSelectedItem().toString();\n" +
                 "\n");
@@ -530,7 +560,7 @@ public class GeneratorUtils {
 
             String columnStyle = item[4].equals("0") ? "tableTitle2" : "tableTitle";
 
-            if(item[2].equals(T_I)){
+            if(item[2].equals(T_INPUT)){
                 output += "            <LinearLayout style=\"@style/"+columnStyle+"\">\n" +
                         "                <TextView style=\"@style/tableColName\"\n" +
                         "                    android:text=\""+item[1]+"\"/>\n" +
@@ -541,7 +571,7 @@ public class GeneratorUtils {
                         "            </LinearLayout>\n" +
                         "\n";
             }else
-            if(item[2].equals(T_S)){
+            if(item[2].equals(T_SPINNER)){
                 output +=
                         "            <LinearLayout style=\"@style/tableTitle2\">\n" +
                         "                <TextView style=\"@style/tableColName\"\n" +
@@ -551,7 +581,7 @@ public class GeneratorUtils {
                         "                    android:layout_width=\"match_parent\"\n" +
                         "                    android:layout_height=\"wrap_content\" />\n" +
                         "            </LinearLayout>\n";
-            }else if(item[2].equals(T_P)){
+            }else if(item[2].equals(T_IMAGE)){
                 output +=
                         "\n" +
                         "            <LinearLayout style=\"@style/tableTitle2\">\n" +
@@ -620,7 +650,7 @@ public class GeneratorUtils {
             output +=
                     "    public static final String "+item[0]+" = \""+item[0]+"\";\n" +
                             "    @JsonProperty(value="+item[0]+")\n" +
-                            "    public "+item[1]+" "+parseToLowFirst(item[0])+";\n";
+                            "    public "+item[1]+" "+parseToLowFirst(item[0])+";\n\n";
 
         }
 
@@ -628,7 +658,7 @@ public class GeneratorUtils {
             output +=
                     "    public static final String "+item[0]+" = \""+item[0]+"\";\n" +
                             "    @JsonProperty(value="+item[0]+")\n" +
-                            "    public "+item[3]+" "+parseToLowFirst(item[0])+";\n";
+                            "    public "+item[3]+" "+parseToLowFirst(item[0])+";\n\n";
 
         }
 

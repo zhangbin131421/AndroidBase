@@ -102,7 +102,7 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEarthPlace,etEarthEquipmentName,
+        allValidateFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEarthPlace,etEarthEquipmentName,
                 etResistanceValue,etBeginHandleTime,etTestDate,etTester,etEndHandleTime,etUnhandleReason};
 
     }

@@ -15,10 +15,8 @@ import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
-import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.UiThread;
@@ -119,7 +117,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
     public void setValidateList(){
 
-        allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etProtectLine, etType,
+        allValidateFields = new FormEditText[] {etAssignmentTime, etTaskNum, etProtectLine, etType,
                 etSafetyMeasure, etEndTime, etHandleContent, etTester,
                 etTestingTime, etEndHandleTime, etUnhandleReason,aTesting,bTesting,cTesting};
 

@@ -1,6 +1,5 @@
 package com.carrot.base.androidbase.activity.handle;
 
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -11,7 +10,6 @@ import com.carrot.base.androidbase.client.ResolveRecordClient;
 import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
-import com.carrot.base.androidbase.utils.TaskUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.ResolveRecordResult;
@@ -19,10 +17,8 @@ import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
-import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
 import org.springframework.util.MultiValueMap;
@@ -120,7 +116,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
 
 
-        allFields = new FormEditText[] {et_DefectPlace,
+        allValidateFields = new FormEditText[] {et_DefectPlace,
                 et_DefectContent, et_EndTime, et_SafetyMeasure,et_WorkDate};
 
         addDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_SafetyMeasure, et_EndTime};

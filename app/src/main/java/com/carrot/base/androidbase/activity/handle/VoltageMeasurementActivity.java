@@ -156,7 +156,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etConfigA,etRatedCurrent,
+        allValidateFields = new FormEditText[] {etAssignmentTime,etTaskNum,etConfigA,etRatedCurrent,
                 etPowerHouseholder,etPowerCapacity,etHouseholder,etHouseholderCapacity,
                 etEndTime,etBeginHandleTime,etLoadRate,etImbalanceRate,etModificationOpinion,
                 etTestTime,etTester,etEndHandleTime,etUnhandleReason};

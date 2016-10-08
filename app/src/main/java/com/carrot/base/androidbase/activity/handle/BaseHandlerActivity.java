@@ -12,7 +12,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,8 +32,6 @@ import com.carrot.base.androidbase.image.UILImageLoader;
 import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.DateUtils;
-import com.carrot.base.androidbase.utils.FileUtils;
-import com.carrot.base.androidbase.utils.ImageUtils;
 import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
@@ -94,6 +91,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     //完成时不可编辑的下拉选项
     public Spinner[] finishDisabledSpinnerList;
 
+    //所有的增加图片的按钮，finish的需要隐藏
     public ImageView[] imageAddButtonList;
 
     public OpenDateVo[] openDateEditTextList;
@@ -109,6 +107,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         //哪些状态需要显示, 1:update, 10:add+update
         int status;
+        public static final int UPDATE = 10;
+        public static final int UPDATE_ADD = 1;
 
         public OpenDateVo(FormEditText et, int s){
             editText = et;
@@ -150,7 +150,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     /**
      * 需要验证的字段
      */
-    FormEditText[] allFields;
+    FormEditText[] allValidateFields;
 
     void afterInitView(String title, Context context, Resources resources){
 
@@ -585,7 +585,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         boolean exFlag = false;
 
-        for (FormEditText field: allFields) {
+        for (FormEditText field: allValidateFields) {
             exFlag = false;
 
             if(showBySpinnerList != null){

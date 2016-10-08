@@ -110,7 +110,7 @@ public class TypeUtils {
     /**
      * 台区名称
      */
-    public final static String[] AREA = new String[]{"台区1","台区2","台区3","台区4"};
+//    public final static String[] AREA = new String[]{"台区1","台区2","台区3","台区4"};
     /**
      * 安全措施
      */

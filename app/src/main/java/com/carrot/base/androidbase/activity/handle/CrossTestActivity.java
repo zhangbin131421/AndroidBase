@@ -109,7 +109,7 @@ public class CrossTestActivity extends BaseHandlerActivity{
 
     public void setValidateList(){
 
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etCrossPoint,etCrossName,
+        allValidateFields = new FormEditText[] {etAssignmentTime,etTaskNum,etCrossPoint,etCrossName,
                 etBeginHandleTime,etModificationOpinion,etTestTime,etTester,etEndHandleTime,etUnhandleReason};
     }
 

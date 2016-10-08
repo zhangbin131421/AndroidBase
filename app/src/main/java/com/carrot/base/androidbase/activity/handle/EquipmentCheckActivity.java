@@ -10,7 +10,6 @@ import com.carrot.base.androidbase.client.EquipmentCheckClient;
 import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
-import com.carrot.base.androidbase.utils.TaskUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
@@ -29,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.model.PhotoInfo;
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by victor on 8/22/16.
@@ -125,7 +123,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allFields = new FormEditText[] {etSafetyMeasure, etEndTime,
+        allValidateFields = new FormEditText[] {etSafetyMeasure, etEndTime,
 //                etBeginHandleTime,
                 etDefectPlace, etHandleContent, etDefectContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason};

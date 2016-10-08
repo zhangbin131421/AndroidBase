@@ -9,14 +9,12 @@ import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.SpecialSecurityCheckClient;
 import com.carrot.base.androidbase.utils.DateUtils;
-import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.SpecialSecurityCheckResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.UiThread;
@@ -25,10 +23,6 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import org.springframework.util.MultiValueMap;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
-import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by victor on 8/22/16.
@@ -93,7 +87,7 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
     public void setValidateList(){
 
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginTime,etEndTime,etBeginHandleTime,etExistIssue,etUserID,etCheckDate,etEndHandleTime,etUnhandleReason};
+        allValidateFields = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginTime,etEndTime,etBeginHandleTime,etExistIssue,etUserID,etCheckDate,etEndHandleTime,etUnhandleReason};
 
 
     }

@@ -134,7 +134,7 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEngineeringName,
+        allValidateFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEngineeringName,
                 etEngineeringNum,etWorkContent,etWorkPlace,etStopScope,etStopTime,etWorkLicensor,
                 etBeginHandleTime,etWorkInvoiceNum,etExecutionResponsible,etWorkResponsible,etWorkContent2,
                 etSafetyMeasure,etActualStopTime,etEndStopTime,etInspector,etComplete,etEndHandleTime,etUnhandleReason};

@@ -43,17 +43,14 @@
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
-                    android:id="@+id/etTaskNum"/>
+                    android:id="@+id/etTaskNum"
+                    android:hint="@string/taskNumberHint"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="@string/task_area_name"/>
                 <TextView style="@style/formDivider"/>
-                <!--<com.andreabaccega.widget.FormEditText-->
-                    <!--style="@style/tableColInput"-->
-                    <!--whatever:emptyErrorString="@string/notEmpty"-->
-                    <!--android:id="@+id/etAreaName"/>-->
                 <Spinner
                     android:id="@+id/etAreaName"
                     style="@style/spinner_form_right"/>
@@ -63,39 +60,40 @@
                 <TextView style="@style/tableColName"
                     android:text="保护线路"/>
                 <TextView style="@style/formDivider"/>
-                <!--<com.andreabaccega.widget.FormEditText-->
-                    <!--style="@style/tableColInput"-->
-                    <!--whatever:emptyErrorString="@string/notEmpty"-->
-                    <!--android:id="@+id/etProtectLine"/>-->
-                <Spinner
-                    android:id="@+id/etProtectLine"
-                    style="@style/spinner_form_right"/>
+                <!--<Spinner-->
+                    <!--android:id="@+id/etProtectLine"-->
+                    <!--style="@style/spinner_form_right"/>-->
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/etProtectLine"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="型号"/>
                 <TextView style="@style/formDivider"/>
-                <!--<com.andreabaccega.widget.FormEditText-->
-                    <!--style="@style/tableColInput"-->
-                    <!--whatever:emptyErrorString="@string/notEmpty"-->
-                    <!--android:id="@+id/etType"/>-->
-                <Spinner
-                    android:id="@+id/etType"
-                    style="@style/spinner_form_right"/>
+                <!--<Spinner-->
+                    <!--android:id="@+id/etType"-->
+                    <!--style="@style/spinner_form_right"/>-->
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/etType"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="安全措施"/>
                 <TextView style="@style/formDivider"/>
-                <!--<com.andreabaccega.widget.FormEditText-->
-                    <!--style="@style/tableColInput"-->
-                    <!--whatever:emptyErrorString="@string/notEmpty"-->
-                    <!--android:id="@+id/etSafetyMeasure"/>-->
-                <Spinner
+                <!--<Spinner-->
+                    <!--android:id="@+id/etSafetyMeasure"-->
+                    <!--style="@style/spinner_form_right"/>-->
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
                     android:id="@+id/etSafetyMeasure"
-                    style="@style/spinner_form_right"/>
+                    android:text="@string/safetyMeasure"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -134,18 +132,27 @@
                 <TextView style="@style/tableColName"
                     android:text="分断动作电流（实测值）"/>
                 <TextView style="@style/formDivider"/>
-                <!--<com.andreabaccega.widget.FormEditText-->
-                    <!--style="@style/tableColInput"-->
-                    <!--whatever:emptyErrorString="@string/notEmpty"-->
-                    <!--android:id="@+id/etElectricityB"/>-->
-                <org.apmem.tools.layouts.FlowLayout
-                    android:id="@+id/etElectricityB"
-                    style="@style/tableColImageLayout">
-                    <ImageView
-                        android:layout_margin="5dp"
-                        android:id="@+id/btn_add_b_image"
-                        style="@style/tableColImagAdd"/>
-                </org.apmem.tools.layouts.FlowLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.andreabaccega.widget.FormEditText
+                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInputPic"
+                        android:id="@+id/etElectricityB"/>
+                    <org.apmem.tools.layouts.FlowLayout
+                        android:id="@+id/etElectricityBPic"
+                        style="@style/tableColImageLayout"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:id="@+id/btn_add_b_image"
+                            style="@style/tableColImagAdd"/>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/my_recycler_view_b"
+                            android:scrollbars="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </org.apmem.tools.layouts.FlowLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -162,18 +169,27 @@
                 <TextView style="@style/tableColName"
                     android:text="分断动作时间（实测值）"/>
                 <TextView style="@style/formDivider"/>
-                <!--<com.andreabaccega.widget.FormEditText-->
-                    <!--style="@style/tableColInput"-->
-                    <!--whatever:emptyErrorString="@string/notEmpty"-->
-                    <!--android:id="@+id/etElectricityD"/>-->
-                <org.apmem.tools.layouts.FlowLayout
-                    android:id="@+id/etElectricityD"
-                    style="@style/tableColImageLayout">
-                    <ImageView
-                        android:layout_margin="5dp"
-                        android:id="@+id/btn_add_d_image"
-                        style="@style/tableColImagAdd"/>
-                </org.apmem.tools.layouts.FlowLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.andreabaccega.widget.FormEditText
+                        whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInputPic"
+                        android:id="@+id/etElectricityD"/>
+                    <org.apmem.tools.layouts.FlowLayout
+                        android:id="@+id/etElectricityDPic"
+                        style="@style/tableColImageLayout"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:id="@+id/btn_add_d_image"
+                            style="@style/tableColImagAdd"/>
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/my_recycler_view_d"
+                            android:scrollbars="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </org.apmem.tools.layouts.FlowLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -209,14 +225,23 @@
                     style="@style/spinner_form_right"/>
             </LinearLayout>
 
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="采取措施"/>
-                <TextView style="@style/formDivider"/>
-                <com.andreabaccega.widget.FormEditText
-                    style="@style/tableColInput"
-                    whatever:emptyErrorString="@string/notEmpty"
-                    android:id="@+id/etHandleContent"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llTestResult">
+
+
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="采取措施"/>
+                    <TextView style="@style/formDivider"/>
+                    <com.andreabaccega.widget.FormEditText
+                        style="@style/tableColInput"
+                        whatever:emptyErrorString="@string/notEmpty"
+                        android:id="@+id/etHandleContent"/>
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -246,22 +271,28 @@
                 <TextView style="@style/tableColName"
                     android:text="@string/task_is_handled"/>
                 <TextView style="@style/formDivider"/>
-                <com.andreabaccega.widget.FormEditText
-                    style="@style/tableColInput"
-                    whatever:emptyErrorString="@string/notEmpty"
-                    android:id="@+id/etIsHandled"/>
+                <Spinner android:id="@+id/etIsHandled"
+                style="@style/spinner_form_right"/>
             </LinearLayout>
 
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="@string/task_unhandle_reason"/>
-                <TextView style="@style/formDivider"/>
-                <com.andreabaccega.widget.FormEditText
-                    style="@style/tableColInput"
-                    whatever:emptyErrorString="@string/notEmpty"
-                    android:id="@+id/etUnhandleReason"/>
-            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/llIsHandler">
+
+                <LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="@string/task_unhandle_reason"/>
+                    <TextView style="@style/formDivider"/>
+                    <com.andreabaccega.widget.FormEditText
+                        style="@style/tableColInput"
+                        whatever:emptyErrorString="@string/notEmpty"
+                        android:id="@+id/etUnhandleReason"/>
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

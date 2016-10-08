@@ -8,4 +8,5 @@
     </string-array>
 
     <string name="safetyMeasure">穿长袖衣服和绝缘鞋，戴好安全帽</string>
+    <string name="taskNumberHint">后台自动生成</string>
 </resources>

@@ -1,10 +1,13 @@
 package com.carrot.base.androidbase.activity.handle;
 
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.TotalPerformanceTestClient;
+import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
@@ -13,7 +16,6 @@ import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.UiThread;
@@ -51,11 +53,11 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
     @ViewById(R.id.etAreaName)
     Spinner etAreaName;
     @ViewById(R.id.etProtectLine)
-    Spinner etProtectLine;
+    FormEditText etProtectLine;
     @ViewById(R.id.etType)
-    Spinner etType;
+    FormEditText etType;
     @ViewById(R.id.etSafetyMeasure)
-    Spinner etSafetyMeasure;
+    FormEditText etSafetyMeasure;
     @ViewById(R.id.etEndTime)
     FormEditText etEndTime;
     @ViewById(R.id.etBeginHandleTime)
@@ -63,11 +65,11 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
     @ViewById(R.id.etElectricityA)
     FormEditText etElectricityA;
     @ViewById(R.id.etElectricityB)
-    org.apmem.tools.layouts.FlowLayout etElectricityB;
+    FormEditText etElectricityB;
     @ViewById(R.id.etElectricityC)
     FormEditText etElectricityC;
     @ViewById(R.id.etElectricityD)
-    org.apmem.tools.layouts.FlowLayout etElectricityD;
+    FormEditText etElectricityD;
     @ViewById(R.id.etOperateTime)
     FormEditText etOperateTime;
     @ViewById(R.id.etTestTime)
@@ -81,23 +83,68 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
     @ViewById(R.id.etEndHandleTime)
     FormEditText etEndHandleTime;
     @ViewById(R.id.etIsHandled)
-    FormEditText etIsHandled;
+    Spinner etIsHandled;
     @ViewById(R.id.etUnhandleReason)
     FormEditText etUnhandleReason;
+
+    @ViewById(R.id.btn_add_b_image)
+    ImageView imageAddB;
+    @ViewById(R.id.etElectricityBPic)
+    org.apmem.tools.layouts.FlowLayout etElectricityBPicLL;
+
+    @ViewById(R.id.btn_add_d_image)
+    ImageView imageAddD;
+    @ViewById(R.id.etElectricityDPic)
+    org.apmem.tools.layouts.FlowLayout etElectricityDPicLL;
+
+    @ViewById(R.id.llIsHandler)
+    LinearLayout llIsHandler;
+
+    @ViewById(R.id.llTestResult)
+    LinearLayout llTestResult;
 
     @AfterViews
     void bindAdapter(){
 
-        super.afterInitView(TypeUtils.TYPE_2_3, getApplicationContext(), getResources());
+        super.afterInitView(TypeUtils.TYPE_2_2, getApplicationContext(), getResources());
 
     }
 
 
     public void setValidateList(){
-        allFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,etBeginHandleTime,
-                etElectricityA,etElectricityC,etOperateTime,etTestTime,etHandleContent,
-                etTester,etEndHandleTime,etIsHandled,etUnhandleReason};
+        allValidateFields = new FormEditText[] {etSafetyMeasure, etType, etProtectLine, etAssignmentTime,
+                etEndTime, etElectricityA,etElectricityB,etElectricityC,etElectricityD,etOperateTime,
+                etTestTime,etHandleContent, etTester,etEndHandleTime,etUnhandleReason};
 
+        addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure};
+
+        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure};
+
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,etBeginHandleTime,
+                etElectricityA,etElectricityC,etOperateTime,etTestTime,etHandleContent, etSafetyMeasure,
+                etTester,etEndHandleTime,etUnhandleReason};
+
+        updateDisabledSpinnerList = new Spinner[] {};
+        finishDisabledSpinnerList = new Spinner[] {etIsHandled, etTestResult};
+
+        imageAddButtonList = new ImageView[] {imageAddB, imageAddD};
+
+        openDateEditTextList = new OpenDateVo[] {
+                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etOperateTime, OpenDateVo.UPDATE_ADD),
+                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+                new OpenDateVo(etTestTime, OpenDateVo.UPDATE_ADD)
+        };
+
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
+                new ImageChooseVo(imageAddB, electricityBPicList, etElectricityBPicLL),
+                new ImageChooseVo(imageAddD, electricityDPicList, etElectricityDPicLL)
+        };
+
+        showBySpinnerList = new ShowBySpinnerVo[]{
+                new ShowBySpinnerVo(etTestResult, llTestResult, "不合格", new FormEditText[]{etHandleContent}),
+                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
     }
 
 
@@ -109,15 +156,17 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
     @Override
     void initDropDownList(){
         //下拉选择框
-        setDropDownListAdapter(etAreaName, TypeUtils.AREA);
+        setDropDownListAdapter(etAreaName, DataInstance.getInstance().areaInformationResults);
 
-        setDropDownListAdapter(etProtectLine, TypeUtils.PRODUCTION_LINE);
-
-        setDropDownListAdapter(etType, TypeUtils.TYPE_TPT);
-
-        setDropDownListAdapter(etSafetyMeasure, TypeUtils.SAFETY_MEASURE);
+//        setDropDownListAdapter(etProtectLine, TypeUtils.PRODUCTION_LINE);
+//
+//        setDropDownListAdapter(etType, TypeUtils.TYPE_TPT);
+//
+//        setDropDownListAdapter(etSafetyMeasure, TypeUtils.SAFETY_MEASURE);
 
         setDropDownListAdapter(etTestResult, TypeUtils.TEST_RESULT);
+
+        setDropDownListAdapter(etIsHandled, TypeUtils.TYPE_HANDLER);
     }
 
 
@@ -135,14 +184,13 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
-            //test start
+            etEndTime.setText(DateUtils.getEndTime());
 
-
-            //test end
+            etTester.setText(userPrefs.name().get());
         }else{
             etAssignmentTime.setText(totalPerformanceTestResult.assignmentTime);
             etTaskNum.setText(totalPerformanceTestResult.taskNum);
-            etAreaName.setSelection(TypeUtils.getSelectedIndex(TypeUtils.AREA, totalPerformanceTestResult.areaName));
+            etAreaName.setSelection(getSelectedAreaIndex(totalPerformanceTestResult.areaName));
             etProtectLine.setSelection(TypeUtils.getSelectedIndex(TypeUtils.PRODUCTION_LINE, totalPerformanceTestResult.protectLine));
             etType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TPT, totalPerformanceTestResult.type));
             etSafetyMeasure.setSelection(TypeUtils.getSelectedIndex(TypeUtils.SAFETY_MEASURE, totalPerformanceTestResult.safetyMeasure));
@@ -150,9 +198,9 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
             etBeginHandleTime.setText(totalPerformanceTestResult.beginHandleTime);
             etElectricityA.setText(totalPerformanceTestResult.electricityA);
-//            etElectricityB.setText(totalPerformanceTestResult.assignmentTime);
+            etElectricityB.setText(totalPerformanceTestResult.electricityB);
             etElectricityC.setText(totalPerformanceTestResult.electricityC);
-//            etElectricityD.setText(totalPerformanceTestResult.assignmentTime);
+            etElectricityD.setText(totalPerformanceTestResult.electricityD);
             etOperateTime.setText(totalPerformanceTestResult.operateTime);
             etTestTime.setText(totalPerformanceTestResult.testTime);
             etTestResult.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TEST_RESULT, totalPerformanceTestResult.testResult));
@@ -160,7 +208,8 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
             etTester.setText(totalPerformanceTestResult.tester);
 
             etEndHandleTime.setText(totalPerformanceTestResult.endHandleTime);
-            etIsHandled.setText(totalPerformanceTestResult.isHandled);
+            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, totalPerformanceTestResult.isHandled == 2 ? "未处理" : "已处理"));
+
             etUnhandleReason.setText(totalPerformanceTestResult.unhandleReason);
             getImage();
 
@@ -176,26 +225,10 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
-        super.getImageFromURL(totalPerformanceTestResult.ElectricityBPic, etElectricityB);
-        super.getImageFromURL(totalPerformanceTestResult.ElectricityDPic, etElectricityD);
+        super.getImageFromURL(totalPerformanceTestResult.ElectricityBPic, etElectricityBPicLL);
+        super.getImageFromURL(totalPerformanceTestResult.ElectricityDPic, etElectricityDPicLL);
 
     }
-
-
-    @Click(R.id.btn_add_b_image)
-    void addImageB(){
-
-        super.showChooseImage(electricityBPicList, etElectricityB);
-
-    }
-
-    @Click(R.id.btn_add_d_image)
-    void addImageC(){
-
-        super.showChooseImage(electricityDPicList, etElectricityD);
-
-    }
-
 
     /**
      * 新增
@@ -205,7 +238,7 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
         if(totalPerformanceTestResult.id == 0){
             totalPerformanceTestResult.assignByUserID = userPrefs.id().get();
-            totalPerformanceTestResult.userId = userPrefs.id().get();
+            totalPerformanceTestResult.userID = userPrefs.id().get();
         }
 
         MultiValueMap<String, Object> data = null;
@@ -231,20 +264,22 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
             this.totalPerformanceTestResult.assignmentTime = etAssignmentTime.getText().toString();
             this.totalPerformanceTestResult.taskNum = etTaskNum.getText().toString();
             this.totalPerformanceTestResult.areaName = etAreaName.getSelectedItem().toString();
-            this.totalPerformanceTestResult.protectLine = etProtectLine.getSelectedItem().toString();
-            this.totalPerformanceTestResult.type = etType.getSelectedItem().toString();
-            this.totalPerformanceTestResult.safetyMeasure = etSafetyMeasure.getSelectedItem().toString();
+            this.totalPerformanceTestResult.protectLine = etProtectLine.getText().toString();
+            this.totalPerformanceTestResult.type = etType.getText().toString();
+            this.totalPerformanceTestResult.safetyMeasure = etSafetyMeasure.getText().toString();
             this.totalPerformanceTestResult.endTime = etEndTime.getText().toString();
             this.totalPerformanceTestResult.beginHandleTime = etBeginHandleTime.getText().toString();
             this.totalPerformanceTestResult.electricityA = etElectricityA.getText().toString();
+            this.totalPerformanceTestResult.electricityB = etElectricityB.getText().toString();
             this.totalPerformanceTestResult.electricityC = etElectricityC.getText().toString();
+            this.totalPerformanceTestResult.electricityD = etElectricityD.getText().toString();
             this.totalPerformanceTestResult.operateTime = etOperateTime.getText().toString();
             this.totalPerformanceTestResult.testTime = etTestTime.getText().toString();
             this.totalPerformanceTestResult.testResult = etTestResult.getSelectedItem().toString();
             this.totalPerformanceTestResult.handleContent = etHandleContent.getText().toString();
             this.totalPerformanceTestResult.tester = etTester.getText().toString();
             this.totalPerformanceTestResult.endHandleTime = etEndHandleTime.getText().toString();
-            this.totalPerformanceTestResult.isHandled = etIsHandled.getText().toString().equals("已处理") ? 1 : 2;
+            this.totalPerformanceTestResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
             this.totalPerformanceTestResult.unhandleReason = etUnhandleReason.getText().toString();
 
             return true;
