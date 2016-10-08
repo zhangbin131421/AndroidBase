@@ -235,81 +235,81 @@ public class TaskListActivity extends AppCompatActivity {
 
     List<TaskBaseVo> getResultListFromServer(){
         List<TaskBaseVo> list = null;
-
-        switch (subTypeVo.name){
-            case TypeUtils.TYPE_1_1:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_1_2:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_1_3:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_1_4:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_1_5:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_1_6:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_1_7:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            //======================================
-            case TypeUtils.TYPE_2_1:{//OK
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_2_2:{//OK
-                list = totalPerformanceTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_2_3:{//OK
-//                list = equipmentCheckClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_2_4:{//OK
-//                list = resolveRecordClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_2_5:{//ok
-                list = crossTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_2_6:{//ok
-                list = voltageMeasurementClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_2_7:{//ok
-                list = earthResistanceTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            case TypeUtils.TYPE_2_8:{
-                list = specialSecurityCheckClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            //====================
-            case TypeUtils.TYPE_3_1:{
-                list = distributionNetworkEngineeringClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-            //=====================
-            case TypeUtils.TYPE_4_1:{
-                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
-                break;
-            }
-
-        }
+//
+//        switch (subTypeVo.name){
+//            case TypeUtils.TYPE_1_1:{
+////                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_1_2:{
+////                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_1_3:{
+////                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_1_4:{
+////                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_1_5:{
+////                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_1_6:{
+////                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_1_7:{
+////                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            //======================================
+//            case TypeUtils.TYPE_2_1:{//OK
+////                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_2_2:{//OK
+////                list = totalPerformanceTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_2_3:{//OK
+////                list = equipmentCheckClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_2_4:{//OK
+////                list = resolveRecordClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_2_5:{//ok
+//                list = crossTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_2_6:{//ok
+//                list = voltageMeasurementClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_2_7:{//ok
+//                list = earthResistanceTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            case TypeUtils.TYPE_2_8:{
+//                list = specialSecurityCheckClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            //====================
+//            case TypeUtils.TYPE_3_1:{
+//                list = distributionNetworkEngineeringClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//            //=====================
+//            case TypeUtils.TYPE_4_1:{
+//                list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+//                break;
+//            }
+//
+//        }
 
         return list;
     }

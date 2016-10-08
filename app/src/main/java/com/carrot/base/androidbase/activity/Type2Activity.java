@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.activity.taskList.TaskListCoreMeterTestActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListEquipmentCheckActivity;
 import com.carrot.base.androidbase.activity.taskList.TaskListEquipmentCheckActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListResolveRecordActivity;
@@ -208,7 +209,7 @@ public class Type2Activity extends AppCompatActivity {
                         break;
                     }
                     case TypeUtils.TYPE_2_1:{
-                        TaskListActivity_.intent(getApplicationContext())
+                        TaskListCoreMeterTestActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();

@@ -47,7 +47,7 @@ public interface CoreMeterTestClient  extends RestClientErrorHandling {
 
     @Get("/GetByUserIDAndHandled/?UserID={userId}&IsHandled={isHandled}")
     @Accept(MediaType.APPLICATION_JSON)
-    List<TaskBaseVo> getByUserId(@Path int userId, @Path int isHandled);
+    List<CoreMeterTestResult> getByUserId(@Path int userId, @Path int isHandled);
 
     @Post("/AddNew")
     @Accept(MediaType.APPLICATION_JSON)
