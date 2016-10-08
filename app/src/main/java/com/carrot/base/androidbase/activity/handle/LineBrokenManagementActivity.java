@@ -26,6 +26,7 @@ import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
 import com.carrot.base.androidbase.vo.result.LineBrokenManagementResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -170,7 +171,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void save(){
+    UpdateResult save(){
 
         if(lineBrokenManagementResult.id == 0){
             lineBrokenManagementResult.assignByUserID = userPrefs.id().get();
@@ -187,7 +188,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
         FileUtils.addImageToData(data, LineBrokenManagementResult.HandleContentPic, handleContentPicList, this);
 
-        lineBrokenManagementClient.update(data);
+        return lineBrokenManagementClient.update(data);
     }
 
     @Override

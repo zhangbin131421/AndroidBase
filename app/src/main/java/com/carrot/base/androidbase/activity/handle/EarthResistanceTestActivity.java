@@ -11,6 +11,7 @@ import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.EarthResistanceTestResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -189,7 +190,7 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void save(){
+    UpdateResult save(){
 
         if(earthResistanceTestResult.iD == 0){
             earthResistanceTestResult.assignByUserID = userPrefs.id().get();
@@ -205,7 +206,8 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
         }
 
         FileUtils.addImageToData(data, EarthResistanceTestResult.TestResistanceValuePic, testResistanceValueList, this);
-        earthResistanceTestClient.update(data);
+        return earthResistanceTestClient.update(data);
+
     }
 
 

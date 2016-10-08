@@ -9,6 +9,7 @@ import com.carrot.base.androidbase.client.VoltageMeasurementClient;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 import com.carrot.base.androidbase.vo.result.VoltageMeasurementResult;
 
 import org.androidannotations.annotations.AfterViews;
@@ -311,7 +312,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void save(){
+    UpdateResult save(){
 
         if(voltageMeasurementResult.id == 0){
             voltageMeasurementResult.assignByUserID = userPrefs.id().get();
@@ -331,8 +332,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
         FileUtils.addImageToData(data, VoltageMeasurementResult.ZeoLineCurrentPic, zeoLineCurrentList, this);
         FileUtils.addImageToData(data, VoltageMeasurementResult.HeaderVoltagePic, headerVoltageList, this);
         FileUtils.addImageToData(data, VoltageMeasurementResult.FooterVoltagePic, footerVoltageList, this);
-        voltageMeasurementClient.update(data);
-
+        return voltageMeasurementClient.update(data);
     }
 
 

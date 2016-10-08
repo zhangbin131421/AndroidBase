@@ -11,6 +11,7 @@ import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.DistributionNetworkEngineeringResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -232,7 +233,7 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void save(){
+    UpdateResult save(){
 
         if(distributionNetworkEngineeringResult.id == 0){
 
@@ -248,7 +249,7 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
         }
 
         FileUtils.addImageToData(data, DistributionNetworkEngineeringResult.Inspect, inspectList, this);
-        distributionNetworkEngineeringClient.update(data);
+        return distributionNetworkEngineeringClient.update(data);
     }
 
 

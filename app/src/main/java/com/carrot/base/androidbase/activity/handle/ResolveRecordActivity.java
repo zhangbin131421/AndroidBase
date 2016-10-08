@@ -15,6 +15,7 @@ import com.carrot.base.androidbase.utils.TaskUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.ResolveRecordResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -252,7 +253,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
     /**
      * 新增
      */
-    void save(){
+    UpdateResult save(){
 
         if(resolveRecordResult.id == 0){
             resolveRecordResult.assignByUserID = userPrefs.id().get();
@@ -270,7 +271,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
         FileUtils.addImageToData(data, ResolveRecordResult.ResolveContentPic, defectContentPicList, this);
 
-        resolveRecordClient.update(data);
+        return resolveRecordClient.update(data);
 
     }
 

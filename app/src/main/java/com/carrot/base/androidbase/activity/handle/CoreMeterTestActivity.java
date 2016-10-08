@@ -13,6 +13,7 @@ import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TaskUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
@@ -119,7 +120,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
     public void setValidateList(){
 
         allFields = new FormEditText[] {etAssignmentTime, etTaskNum, etProtectLine, etType,
-                etSafetyMeasure, etEndTime, etBeginHandleTime, etHandleContent, etTester,
+                etSafetyMeasure, etEndTime, etHandleContent, etTester,
                 etTestingTime, etEndHandleTime, etUnhandleReason,aTesting,bTesting,cTesting};
 
 
@@ -127,7 +128,9 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime, etBeginHandleTime};
 
-        finishDisableList = allFields;
+        finishDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etProtectLine, etType,
+                etSafetyMeasure, etEndTime, etBeginHandleTime, etHandleContent, etTester,
+                etTestingTime, etEndHandleTime, etUnhandleReason,aTesting,bTesting,cTesting};
 
         updateDisabledSpinnerList = new Spinner[] {};
         finishDisabledSpinnerList = new Spinner[] {etWether, etTestWay, etTestResult, etIsHandled, etAreaName};
@@ -188,7 +191,6 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
             etTaskNum.setHint(TaskUtils.generatTaskNum());
-            etSafetyMeasure.setText("一人监督一人操作");
             etEndTime.setText(DateUtils.getEndTime());
 
             etTester.setText(userPrefs.name().get());
@@ -203,7 +205,13 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
             etEndTime.setText(coreMeterTestResult.endTime);
             etTestingTime.setText(coreMeterTestResult.testingTime);
             etBeginHandleTime.setText(coreMeterTestResult.beginHandleTime);
-            etEndHandleTime.setText(coreMeterTestResult.endHandleTime);
+
+            if(coreMeterTestResult.endHandleTime == null || coreMeterTestResult.endHandleTime.equals("")){
+
+            }else{
+                etEndHandleTime.setText(coreMeterTestResult.endHandleTime);
+            }
+
 
             etTaskNum.setText(coreMeterTestResult.taskNum);
             etAreaName.setSelection(getSelectedAreaIndex(coreMeterTestResult.areaName));
@@ -214,7 +222,13 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
             etTestWay.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TEST_WAY, coreMeterTestResult.testWay));
             etTestResult.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CHECK_TYPE, coreMeterTestResult.testResult));
             etHandleContent.setText(coreMeterTestResult.handleContent);
-            etTester.setText(coreMeterTestResult.tester);
+
+            if(coreMeterTestResult.tester == null || coreMeterTestResult.tester.equals("")){
+                etTester.setText(userPrefs.name().get());
+            }else{
+                etTester.setText(coreMeterTestResult.tester);
+            }
+
             etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, coreMeterTestResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(coreMeterTestResult.unhandleReason);
 
@@ -247,7 +261,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void save(){
+    UpdateResult save(){
 
         if(coreMeterTestResult.id == 0){
             coreMeterTestResult.assignByUserID = userPrefs.id().get();
@@ -266,7 +280,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
         FileUtils.addImageToData(data, CoreMeterTestResult.BTestingPic, bTestingImgList, this);
         FileUtils.addImageToData(data, CoreMeterTestResult.CTestingPic, cTestingImgList, this);
 
-        coreMeterTestClient.update(data);
+        return coreMeterTestClient.update(data);
     }
 
 

@@ -3,6 +3,7 @@ package com.carrot.base.androidbase.client;
 import com.carrot.base.androidbase.vo.result.CountResult;
 import com.carrot.base.androidbase.vo.result.LineBrokenManagementResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.rest.spring.annotations.Accept;
 import org.androidannotations.rest.spring.annotations.Body;
@@ -56,7 +57,7 @@ public interface LineBrokenManagementClient extends RestClientErrorHandling {
     @Headers({
             @Header(name = HttpHeaders.CONTENT_TYPE, value = "multipart/form-data")})
     @Accept(MediaType.APPLICATION_JSON)
-    void update(@Body MultiValueMap<String, Object> data);
+    UpdateResult update(@Body MultiValueMap<String, Object> data);
 
 
     @Post("/Delete/?ID={id}")

@@ -2,6 +2,7 @@ package com.carrot.base.androidbase.client;
 
 import com.carrot.base.androidbase.vo.result.CountResult;
 import com.carrot.base.androidbase.vo.result.ResolveRecordResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.rest.spring.annotations.Accept;
 import org.androidannotations.rest.spring.annotations.Body;
@@ -55,7 +56,7 @@ public interface ResolveRecordClient extends RestClientErrorHandling {
     @Headers({
             @Header(name = HttpHeaders.CONTENT_TYPE, value = "multipart/form-data"),
             @Header(name = "keep-alive", value = "360")})
-    void update(@Body MultiValueMap<String, Object> data);
+    UpdateResult update(@Body MultiValueMap<String, Object> data);
 
 
     @Post("/Delete/?ID={id}")

@@ -14,6 +14,7 @@ import com.carrot.base.androidbase.utils.TaskUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.model.PhotoInfo;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by victor on 8/22/16.
@@ -259,7 +261,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
     }
 
-    void save(){
+    UpdateResult save(){
 
         if(equipmentCheckResult.id == 0){
             equipmentCheckResult.assignByUserID = userPrefs.id().get();
@@ -275,7 +277,7 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
         FileUtils.addImageToData(data, EquipmentCheckResult.DefectContentPic, defectContentPicList, this);
 
-        equipmentCheckClient.update(data);
+        return equipmentCheckClient.update(data);
     }
 
 

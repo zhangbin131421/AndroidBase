@@ -9,6 +9,7 @@ import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.TotalPerformanceTestResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -200,7 +201,7 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void save(){
+    UpdateResult save(){
 
         if(totalPerformanceTestResult.id == 0){
             totalPerformanceTestResult.assignByUserID = userPrefs.id().get();
@@ -217,8 +218,7 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
         FileUtils.addImageToData(data, TotalPerformanceTestResult.ElectricityBPic, electricityBPicList, this);
         FileUtils.addImageToData(data, TotalPerformanceTestResult.ElectricityDPic, electricityDPicList, this);
 
-        totalPerformanceTestClient.update(data);
-
+        return totalPerformanceTestClient.update(data);
     }
 
 

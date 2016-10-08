@@ -12,6 +12,7 @@ import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.SpecialSecurityCheckResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -163,7 +164,7 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void save(){
+    UpdateResult save(){
 
         if(specialSecurityCheckResult.iD == 0){
             specialSecurityCheckResult.assignByUserID = userPrefs.id().get();
@@ -177,8 +178,7 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
             e.printStackTrace();
         }
 
-        specialSecurityCheckClient.update(data);
-
+        return specialSecurityCheckClient.update(data);
     }
 
 

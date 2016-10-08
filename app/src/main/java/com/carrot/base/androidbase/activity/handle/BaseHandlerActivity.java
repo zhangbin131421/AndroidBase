@@ -37,6 +37,7 @@ import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.ImageUtils;
 import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -438,13 +439,23 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
         showLoading();
 
-        save();
+        UpdateResult result = save();
+
+
+        if(result != null && result.message.equals(UpdateResult.Message_OK)){
+            alert("成功", "保存成功", SweetAlertDialog.SUCCESS_TYPE, new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    Intent intent = new Intent();
+                    setResult(ResultCodeConstant.RESULT_CODE_REFRESH, intent);
+                    finish();
+                }
+            });
+        }else{
+            alert("失败", "保存失败", SweetAlertDialog.ERROR_TYPE, null);
+        }
 
         dissmisLoading();
-
-        Intent intent = new Intent();
-        setResult(ResultCodeConstant.RESULT_CODE_REFRESH, intent);
-        finish();
     }
 
 
@@ -452,7 +463,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
     /**
      * 新增
      */
-    abstract void save();
+    abstract UpdateResult save();
 
 
     void getImageFromURL(String urls, org.apmem.tools.layouts.FlowLayout imageContent){
@@ -725,13 +736,22 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         }
     }
 
+    /**
+     *
+     * @param title
+     * @param msg
+     * @param type  SweetAlertDialog.ERROR_TYPE
+     */
     @UiThread
-    public void alert(String msg){
-//        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                .setTitleText("糟糕")
-                .setContentText(msg)
-                .show();
+    public void alert(String title, String msg, int type, SweetAlertDialog.OnSweetClickListener confirmClickListener){
+        final SweetAlertDialog dialog = new SweetAlertDialog(this, type)
+                        .setTitleText(title)
+                        .setContentText(msg)
+                .setConfirmText("确定");
+        if(confirmClickListener != null){
+            dialog.setConfirmClickListener(confirmClickListener);
+        }
+        dialog.show();
     }
 
 

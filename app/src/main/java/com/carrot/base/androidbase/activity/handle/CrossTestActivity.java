@@ -11,6 +11,7 @@
         import com.carrot.base.androidbase.utils.FileUtils;
         import com.carrot.base.androidbase.utils.TypeUtils;
         import com.carrot.base.androidbase.vo.result.CrossTestResult;
+        import com.carrot.base.androidbase.vo.result.UpdateResult;
 
         import org.androidannotations.annotations.AfterViews;
         import org.androidannotations.annotations.Background;
@@ -204,7 +205,7 @@ public class CrossTestActivity extends BaseHandlerActivity{
      * 新增
      */
     @Override
-    void save(){
+    UpdateResult save(){
 
         if(crossTestResult.id == 0){
             crossTestResult.assignByUserID = userPrefs.id().get();
@@ -222,7 +223,7 @@ public class CrossTestActivity extends BaseHandlerActivity{
 
         FileUtils.addImageToData(data, CrossTestResult.EarthDistancePic, earthDistanceList, this);
         FileUtils.addImageToData(data, CrossTestResult.CrossDistancePic, crossDistanceList, this);
-        crossTestClient.update(data);
+        return crossTestClient.update(data);
     }
 
 
