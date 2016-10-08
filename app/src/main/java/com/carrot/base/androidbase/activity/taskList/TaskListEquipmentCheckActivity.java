@@ -67,7 +67,7 @@ public class TaskListEquipmentCheckActivity extends TaskListBaseActivity {
 
                 TaskBaseVo taskBaseVo = new TaskBaseVo();
                 taskBaseVo.id = mAdapter.getItem(position).id;
-                TypeUtils.openItem(subTypeVo.getName(), context, taskBaseVo, ACTIVITY_REQUEST_CODE, status.equals("已完成") ? 2 : 1);
+                TypeUtils.openItem(subTypeVo.name, context, taskBaseVo, ACTIVITY_REQUEST_CODE, status.equals("已完成") ? 2 : 1);
             }
         });
 

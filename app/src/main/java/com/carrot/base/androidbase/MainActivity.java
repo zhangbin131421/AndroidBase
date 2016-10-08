@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new GridLayoutManager(getApplicationContext(), 2, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MainCardAdapter(TypeUtils.getAllItems(getResources()));
+        mAdapter = new MainCardAdapter(TypeUtils.getAllItems());
         mRecyclerView.setAdapter(mAdapter);
 
         useTimer();
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(int position, View v) {
                 TypeVo typeVo = ((MainCardAdapter) mAdapter).getItem(position);
 
-                if(typeVo.getSubTypes() == null || typeVo.getSubTypes().size() == 0){
+                if(typeVo.subTypes == null || typeVo.subTypes.size() == 0){
                     TaskListActivity_.intent(getApplicationContext())
                             .flags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             .typeVo(null)

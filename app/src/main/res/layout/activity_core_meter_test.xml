@@ -229,7 +229,8 @@
                     <!--whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"/>-->
             </LinearLayout>
 
-            <LinearLayout style="@style/tableTitle2">
+            <LinearLayout style="@style/tableTitle2"
+                android:id="@+id/handleContentll">
                 <TextView
                     style="@style/tableColName"
                     android:text="采取措施"/>

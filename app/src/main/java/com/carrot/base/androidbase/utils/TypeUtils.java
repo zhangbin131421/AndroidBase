@@ -147,61 +147,61 @@ public class TypeUtils {
     }
 
 
-    public static List<TypeVo> getAllItems(Resources resource){
+    public static List<TypeVo> getAllItems(){
 
         List<TypeVo> result = new ArrayList<>();
 
 
-        TypeVo type4 = new TypeVo(TYPE_1, false, R.drawable.permanent_job);
+        TypeVo type4 = new TypeVo(TYPE_1, false, R.drawable.permanent_job, true);
         List<TypeVo> subTypes4 = new ArrayList<>();
 
-        subTypes4.add(new TypeVo(TYPE_1_1, true, R.drawable.electrical));
-        subTypes4.add(new TypeVo(TYPE_1_2, true, R.drawable.urine_collection));
-        subTypes4.add(new TypeVo(TYPE_1_3, true, R.drawable.energy_meter));
-        subTypes4.add(new TypeVo(TYPE_1_4, true, R.drawable.multiple_devices));
-        subTypes4.add(new TypeVo(TYPE_1_5, true, R.drawable.purchase_order));
-        subTypes4.add(new TypeVo(TYPE_1_6, true, R.drawable.survey));
-        subTypes4.add(new TypeVo(TYPE_1_7, true, R.drawable.disconnected));
+        subTypes4.add(new TypeVo(TYPE_1_1, true, R.drawable.electrical, true));
+        subTypes4.add(new TypeVo(TYPE_1_2, true, R.drawable.urine_collection, true));
+        subTypes4.add(new TypeVo(TYPE_1_3, true, R.drawable.energy_meter, true));
+        subTypes4.add(new TypeVo(TYPE_1_4, true, R.drawable.multiple_devices, true));
+        subTypes4.add(new TypeVo(TYPE_1_5, true, R.drawable.purchase_order, true));
+        subTypes4.add(new TypeVo(TYPE_1_6, true, R.drawable.survey, true));
+        subTypes4.add(new TypeVo(TYPE_1_7, true, R.drawable.disconnected, true));
 
-        type4.setSubTypes(subTypes4);
+        type4.subTypes = subTypes4;
 
         result.add(type4);
 
 
-        TypeVo type3 = new TypeVo(TYPE_2, false, R.drawable.maintenance);
+        TypeVo type3 = new TypeVo(TYPE_2, false, R.drawable.maintenance, true);
         List<TypeVo> subTypes3 = new ArrayList<>();
 
-        subTypes3.add(new TypeVo(TYPE_2_1, true, R.drawable.car_battery));
-        subTypes3.add(new TypeVo(TYPE_2_2, true, R.drawable.multiple_devices));
-        subTypes3.add(new TypeVo(TYPE_2_3, true, R.drawable.search));
-        subTypes3.add(new TypeVo(TYPE_2_4, true, R.drawable.treatment_plan));
-        subTypes3.add(new TypeVo(TYPE_2_5, true, R.drawable.electrical));
-        subTypes3.add(new TypeVo(TYPE_2_6, true, R.drawable.plus_minus));
-        subTypes3.add(new TypeVo(TYPE_2_7, true, R.drawable.thunderbolt));
-        subTypes3.add(new TypeVo(TYPE_2_8, true, R.drawable.worker_with_roadblock));
+        subTypes3.add(new TypeVo(TYPE_2_1, true, R.drawable.car_battery, true));
+        subTypes3.add(new TypeVo(TYPE_2_2, true, R.drawable.multiple_devices, true));
+        subTypes3.add(new TypeVo(TYPE_2_3, true, R.drawable.search, true));
+        subTypes3.add(new TypeVo(TYPE_2_4, true, R.drawable.treatment_plan, true));
+        subTypes3.add(new TypeVo(TYPE_2_5, true, R.drawable.electrical, true));
+        subTypes3.add(new TypeVo(TYPE_2_6, true, R.drawable.plus_minus, true));
+        subTypes3.add(new TypeVo(TYPE_2_7, true, R.drawable.thunderbolt, true));
+        subTypes3.add(new TypeVo(TYPE_2_8, true, R.drawable.worker_with_roadblock, true));
 
-        type3.setSubTypes(subTypes3);
+        type3.subTypes = subTypes3;
 
         result.add(type3);
 
 
 
-        TypeVo type2 = new TypeVo(TYPE_3, true, R.drawable.accounting);
+        TypeVo type2 = new TypeVo(TYPE_3, true, R.drawable.accounting, true);
 
         List<TypeVo> subTypes2 = new ArrayList<>();
 
-        subTypes2.add(new TypeVo(TYPE_3_1, true, R.drawable.flow_chart));
-        type2.setSubTypes(subTypes2);
+        subTypes2.add(new TypeVo(TYPE_3_1, true, R.drawable.flow_chart, true));
+        type2.subTypes = subTypes2;
         result.add(type2);
 
 
-        TypeVo type1 = new TypeVo(TYPE_4, false, R.drawable.gears);
+        TypeVo type1 = new TypeVo(TYPE_4, false, R.drawable.gears, true);
         List<TypeVo> subTypes1 = new ArrayList<>();
 
 
-        subTypes1.add(new TypeVo(TYPE_4_1, true, R.drawable.garage));
+        subTypes1.add(new TypeVo(TYPE_4_1, true, R.drawable.garage, true));
 
-        type1.setSubTypes(subTypes1);
+        type1.subTypes = subTypes1;
 
         result.add(type1);
 

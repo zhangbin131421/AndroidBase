@@ -164,7 +164,7 @@ public class TaskListActivity extends AppCompatActivity {
             }
         });
 
-        setTitle(subTypeVo.getName() + "任务列表");
+        setTitle(subTypeVo.name + "任务列表");
 
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -196,7 +196,7 @@ public class TaskListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position, View v) {
 
-                TypeUtils.openItem(subTypeVo.getName(), context, mAdapter.getItem(position), ACTIVITY_REQUEST_CODE, status.equals("已完成") ? 2 : 1);
+                TypeUtils.openItem(subTypeVo.name, context, mAdapter.getItem(position), ACTIVITY_REQUEST_CODE, status.equals("已完成") ? 2 : 1);
             }
         });
 
@@ -234,7 +234,7 @@ public class TaskListActivity extends AppCompatActivity {
     List<TaskBaseVo> getResultListFromServer(){
         List<TaskBaseVo> list = null;
 
-        switch (subTypeVo.getName()){
+        switch (subTypeVo.name){
             case TypeUtils.TYPE_1_1:{
                 list = coreMeterTestClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
                 break;
@@ -330,7 +330,7 @@ public class TaskListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
 
-                TypeUtils.openItem(subTypeVo.getName(), this, null, ACTIVITY_REQUEST_CODE, 0);
+                TypeUtils.openItem(subTypeVo.name, this, null, ACTIVITY_REQUEST_CODE, 0);
 
                 return true;
             case android.R.id.home:

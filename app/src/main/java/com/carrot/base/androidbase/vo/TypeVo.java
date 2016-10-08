@@ -8,52 +8,20 @@ import java.util.List;
  */
 public class TypeVo implements Serializable{
 
+    public String name = "";
 
-    private String name = "";
+    public boolean flag;//是否有下级，默认有
 
-    private boolean flag;
+    public boolean addFlag = true;//是否允许app新增，默认true
 
-    private int src;
+    public int src;//icon的地址
 
-    List<TypeVo> subTypes;
+    public List<TypeVo> subTypes;
 
-    public TypeVo(String name, boolean flag, int src){
+    public TypeVo(String name, boolean flag, int src, boolean addFlag){
         this.name = name;
         this.flag = flag;
         this.src = src;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isFlag() {
-        return flag;
-    }
-
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
-
-
-    public List<TypeVo> getSubTypes() {
-        return subTypes;
-    }
-
-    public void setSubTypes(List<TypeVo> subTypes) {
-        this.subTypes = subTypes;
-    }
-
-
-    public int getSrc() {
-        return src;
-    }
-
-    public void setSrc(int src) {
-        this.src = src;
+        this.addFlag = addFlag;
     }
 }

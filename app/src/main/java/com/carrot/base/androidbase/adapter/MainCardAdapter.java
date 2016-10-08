@@ -72,8 +72,8 @@ public class MainCardAdapter extends RecyclerView.Adapter<MainCardAdapter
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.label.setText(mDataset.get(position).getName());
-        holder.imgIcon.setImageResource(mDataset.get(position).getSrc());
+        holder.label.setText(mDataset.get(position).name);
+        holder.imgIcon.setImageResource(mDataset.get(position).src);
     }
 
     public void addItem(TypeVo dataObj, int index) {

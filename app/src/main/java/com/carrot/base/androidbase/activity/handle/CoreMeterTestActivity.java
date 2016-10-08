@@ -83,6 +83,8 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
     Spinner etTestResult;
     @ViewById(R.id.et_handle_content)
     FormEditText etHandleContent;
+    @ViewById(R.id.handleContentll)
+    LinearLayout handleContentll;
     @ViewById(R.id.et_tester)
     FormEditText etTester;
     @ViewById(R.id.et_testing_time)
@@ -121,9 +123,9 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
                 etTestingTime, etEndHandleTime, etUnhandleReason,aTesting,bTesting,cTesting};
 
 
-        addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
+        addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime, etBeginHandleTime};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
+        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime, etBeginHandleTime};
 
         finishDisableList = allFields;
 
@@ -133,9 +135,9 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
         imageAddButtonList = new ImageView[] {addAImage,addBImage,addCImage};
 
         openDateEditTextList = new OpenDateVo[] {
-                new OpenDateVo(etEndTime, 1),
+//                new OpenDateVo(etEndTime, 1),
                 new OpenDateVo(etEndHandleTime, 10),
-                new OpenDateVo(etBeginHandleTime, 10),
+//                new OpenDateVo(etBeginHandleTime, 1),
                 new OpenDateVo(etTestingTime, 10),
         };
 
@@ -146,7 +148,8 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
         };
 
         showBySpinnerList = new ShowBySpinnerVo[]{
-                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason}),
+                new ShowBySpinnerVo(etTestResult, handleContentll, "不合格", new FormEditText[]{etHandleContent})
         };
 
     }
@@ -184,12 +187,13 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
-            etTaskNum.setText(TaskUtils.generatTaskNum());
+            etTaskNum.setHint(TaskUtils.generatTaskNum());
             etSafetyMeasure.setText("一人监督一人操作");
             etEndTime.setText(DateUtils.getEndTime());
 
             etTester.setText(userPrefs.name().get());
             etTestingTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            etBeginHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
         }else{
 

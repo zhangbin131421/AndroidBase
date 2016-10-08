@@ -122,7 +122,7 @@ public abstract class TaskListBaseActivity extends AppCompatActivity {
             }
         });
 
-        setTitle(subTypeVo.getName() + "任务列表");
+        setTitle(subTypeVo.name + "任务列表");
 
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -182,7 +182,7 @@ public abstract class TaskListBaseActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_task_list_new:
 
-                TypeUtils.openItem(subTypeVo.getName(), this, null, ACTIVITY_REQUEST_CODE, 0);
+                TypeUtils.openItem(subTypeVo.name, this, null, ACTIVITY_REQUEST_CODE, 0);
 
                 return true;
             case android.R.id.home:

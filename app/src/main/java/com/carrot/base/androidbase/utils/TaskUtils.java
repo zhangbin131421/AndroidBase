@@ -6,6 +6,7 @@ package com.carrot.base.androidbase.utils;
 public class TaskUtils {
 
     public static String generatTaskNum(){
-        return "T" + DateUtils.getCurrentSecond();
+        return "后台自动生成";
+//        return "T" + DateUtils.getCurrentSecond();
     }
 }
