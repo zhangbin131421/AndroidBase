@@ -442,7 +442,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         UpdateResult result = save();
 
 
-        if(result != null && result.message.equals(UpdateResult.Message_OK)){
+        if(result != null && result.code == 1){
             alert("成功", "保存成功", SweetAlertDialog.SUCCESS_TYPE, new SweetAlertDialog.OnSweetClickListener() {
                 @Override
                 public void onClick(SweetAlertDialog sweetAlertDialog) {

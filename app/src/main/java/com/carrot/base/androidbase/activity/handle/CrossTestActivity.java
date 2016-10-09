@@ -114,7 +114,9 @@ public class CrossTestActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etCrossPoint,
+                                etCrossName, etSafetyMeasure, etCrossDistance, etEarthDistance, etModificationOpinion,
+                                etTestTime, etTester, etEndHandleTime, etUnhandleReason};
 
         updateDisabledSpinnerList = new Spinner[] {spnAreaName};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName, spnIsHandled, spnIsQualified};
