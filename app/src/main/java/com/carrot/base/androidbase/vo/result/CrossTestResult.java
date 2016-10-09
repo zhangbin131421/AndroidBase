@@ -77,9 +77,17 @@ public class CrossTestResult {
     @JsonProperty(value=EarthDistance)
     public String earthDistance;
 
+    public static final String EarthDistancePic = "EarthDistancePic";
+    @JsonProperty(value=EarthDistancePic)
+    public String earthDistancePic;
+
     public static final String CrossDistance = "CrossDistance";
     @JsonProperty(value=CrossDistance)
     public String crossDistance;
+
+    public static final String CrossDistancePic = "CrossDistancePic";
+    @JsonProperty(value=CrossDistancePic)
+    public String crossDistancePic;
 
     public static final String IsQualified = "IsQualified";
     @JsonProperty(value=IsQualified)

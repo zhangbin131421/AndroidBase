@@ -198,8 +198,8 @@ public class CrossTestActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
-        super.getImageFromURL(crossTestResult.earthDistance, llEarthDistance);
-        super.getImageFromURL(crossTestResult.crossDistance, llCrossDistance);
+        super.getImageFromURL(crossTestResult.earthDistancePic, llEarthDistance);
+        super.getImageFromURL(crossTestResult.crossDistancePic, llCrossDistance);
 
     }
 
@@ -217,9 +217,9 @@ public class CrossTestActivity extends BaseHandlerActivity{
             e.printStackTrace();
         }
 
-        FileUtils.addImageToData(data, CrossTestResult.EarthDistance, earthDistancePicList, this);
+        FileUtils.addImageToData(data, CrossTestResult.EarthDistancePic, earthDistancePicList, this);
 
-        FileUtils.addImageToData(data, CrossTestResult.CrossDistance, crossDistancePicList, this);
+        FileUtils.addImageToData(data, CrossTestResult.CrossDistancePic, crossDistancePicList, this);
 
         return crossTestClient.update(data);
     }
