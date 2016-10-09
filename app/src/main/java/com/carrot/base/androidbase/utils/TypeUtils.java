@@ -80,6 +80,11 @@ public class TypeUtils {
      */
     public final static String[] DEFECT_LEVEL = new String[]{"一般","重大","紧急"};
 
+    /**
+     * 是否符合要求 （如：符合、不符合）
+     */
+    public final static String[] QUALIFIED  = new String[]{"符合","不符合"};
+
 
     /**
      * 存在问题

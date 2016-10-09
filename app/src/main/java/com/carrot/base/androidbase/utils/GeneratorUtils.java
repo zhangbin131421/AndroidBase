@@ -1,7 +1,9 @@
 package com.carrot.base.androidbase.utils;
 
-import android.util.Log;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +43,8 @@ public class GeneratorUtils {
     public List<Entity> allEntity = new ArrayList<>();
 
     public String[][] ENTITY_BASE = new String[][]{
-            {"ID", T_INT},
-            {"UserID", T_INT},
+            {"Id", T_INT},
+            {"UserId", T_INT},
             {"AssignByUserID", T_INT},
             {"CreatedTime", T_STRING}
     };
@@ -63,9 +65,9 @@ public class GeneratorUtils {
 
 
         for (Entity entity : allEntity) {
-//            gLayout(entity);
+            gLayout(entity);
             gResult(entity);
-//            gActivity(entity);
+            gActivity(entity);
         }
     }
 
@@ -114,7 +116,7 @@ public class GeneratorUtils {
             {"Tester", "测量人员", T_INPUT, T_STRING, "0"},
 
             {"EndHandleTime", "任务结束", T_INPUT, T_STRING, "1"},
-            {"IsHandled", "已处理", T_SPINNER, T_STRING, "0"},
+            {"IsHandled", "已处理", T_SPINNER, T_INT, "0"},
             {"UnhandleReason", "未处理", T_INPUT, T_STRING, "0"}
 
     };
@@ -245,33 +247,27 @@ public class GeneratorUtils {
 
     private void gActivity(Entity entity){
         StringBuffer output = new StringBuffer();
-        output.append("\n" +
-                "\n" +
-                "\n" +
-                "<!-- *********************"+entity.nameEnglish+" Activity ********************** -->"+
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n");
-
         output.append("package com.carrot.base.androidbase.activity.handle;\n" +
                 "\n" +
+                "import android.widget.ImageView;\n" +
+                "import android.widget.LinearLayout;\n" +
                 "import android.widget.Spinner;\n" +
                 "\n" +
                 "import com.andreabaccega.widget.FormEditText;\n" +
                 "import com.carrot.base.androidbase.R;\n" +
                 "import com.carrot.base.androidbase.client."+entity.nameEnglish+"Client;\n" +
+                "import com.carrot.base.androidbase.preferences.DataInstance;\n" +
                 "import com.carrot.base.androidbase.utils.DateUtils;\n" +
                 "import com.carrot.base.androidbase.utils.FileUtils;\n" +
                 "import com.carrot.base.androidbase.utils.TypeUtils;\n" +
+                "import com.carrot.base.androidbase.vo.result.AreaInformationResult;\n" +
                 "import com.carrot.base.androidbase.vo.result."+entity.nameEnglish+"Result;\n" +
+                "import com.carrot.base.androidbase.vo.result.UpdateResult;\n" +
                 "\n" +
                 "import org.androidannotations.annotations.AfterViews;\n" +
                 "import org.androidannotations.annotations.Background;\n" +
-                "import org.androidannotations.annotations.Click;\n" +
                 "import org.androidannotations.annotations.EActivity;\n" +
                 "import org.androidannotations.annotations.OptionsMenu;\n" +
-                "import org.androidannotations.annotations.UiThread;\n" +
                 "import org.androidannotations.annotations.ViewById;\n" +
                 "import org.androidannotations.rest.spring.annotations.RestService;\n" +
                 "import org.springframework.util.MultiValueMap;\n" +
@@ -285,235 +281,230 @@ public class GeneratorUtils {
                 "/**\n" +
                 " * Created by victor on 8/22/16.\n" +
                 " */\n" +
-                "@EActivity(R.layout.activity_)\n" +
+                "@EActivity(R.layout.activity_"+parseToUnder(entity.nameEnglish)+")\n" +
                 "@OptionsMenu(R.menu.task_item)\n" +
                 "public class "+entity.nameEnglish+"Activity extends BaseHandlerActivity{\n" +
                 "\n" +
                 "\n" +
                 "\n");
-
-        for (String[] item : entity.columns) {
-            if(item[2].equals(T_IMAGE)){
-                output.append(
-                "    List<PhotoInfo> "+parseToLowFirst(item[0])+"List = new ArrayList<>();\n" +
-                "\n");
+        for (String[] items: entity.columns) {
+            if(items[2].equals(T_IMAGE)){
+                output.append("    List<PhotoInfo> "+ getActivityPicListName(items[0]) + " = new ArrayList<>();\n");
             }
         }
 
         output.append(
-                "\n" +
-                "    "+entity.nameEnglish+"Result "+parseToLowFirst(entity.nameEnglish)+"Result;\n" +
-                "\n" +
-                "    @RestService\n" +
-                "    "+entity.nameEnglish+"Client "+parseToLowFirst(entity.nameEnglish)+"Client;\n" +
-                "\n" +
-                "\n");
-
-        for (String[] item : entity.columns) {
-            if(item[2].equals(T_INPUT)){
+                "\n\n" +
+                        "    "+entity.nameEnglish+"Result "+parseToLowFirst(entity.nameEnglish)+"Result;\n" +
+                        "\n" +
+                        "    @RestService\n" +
+                        "    "+entity.nameEnglish+"Client "+parseToLowFirst(entity.nameEnglish)+"Client;\n" +
+                        "\n" +
+                        "\n" +
+                        "\n");
+        for(String[] items : entity.columns){
+            if(items[2].equals(T_IMAGE)){
                 output.append(
-                "    @ViewById(R.id.et"+item[0]+")\n" +
-                "    FormEditText et"+item[0]+";\n" +
-                "\n");
-            }else if(item[2].equals(T_SPINNER)){
+                        "\n" +
+                                "    @ViewById(R.id."+getLayoutImageLLName(items[0])+")\n" +
+                                "    org.apmem.tools.layouts.FlowLayout "+getActivityImageLLName(items[0])+";\n" +
+                                "\n" +
+                                "\n" +
+                                "    @ViewById(R.id."+getLayoutAddImageButtonName(items[0])+")\n" +
+                                "    ImageView "+getActivityAddImageButtonName(items[0])+";\n" +
+                                "\n" +
+                                "    @ViewById(R.id."+getLayoutName(items[0])+")\n" +
+                                "    FormEditText "+getActivityName(items[0])+";\n" +
+                                "\n");
+            }else if(items[2].equals(T_INPUT)){
                 output.append(
-                "    @ViewById(R.id.et"+item[0]+")\n" +
-                    "    Spinner et"+item[0]+";\n" +
-                    "\n");
-            }else if(item[2].equals(T_IMAGE)){//et"+item[0]+"_content
+                        "    @ViewById(R.id."+getLayoutName(items[0])+")\n" +
+                                "    FormEditText "+getActivityName(items[0])+";\n");
+            }else if(items[2].equals(T_SPINNER)){
                 output.append(
-                    "    @ViewById(R.id.et"+item[0]+"_content)\n" +
-                    "    org.apmem.tools.layouts.FlowLayout et"+item[0]+"Content;\n" +
-                    "\n");
+                        "    @ViewById(R.id."+getSpinnerLayoutName(items[0])+")\n" +
+                                "    Spinner "+getSpinnerActivityName(items[0])+";\n");
             }
+
         }
 
         output.append(
                 "\n" +
-                "    @AfterViews\n" +
-                "    void bindAdapter(){\n" +
-                "\n" +
-                "        super.afterInitView(\""+entity.nameChinese+"\", getApplicationContext(), getResources());\n" +
-                "\n" +
-                "        allFields = new FormEditText[] {");
+                        "\n" +
+                        "\n" +
+                        "    @AfterViews\n" +
+                        "    void bindAdapter(){\n" +
+                        "        super.afterInitView(TypeUtils.TYPE_, getApplicationContext(), getResources());\n" +
+                        "\n" +
+                        "    }\n" +
+                        "\n" +
+                        "\n" +
+                        "    public void setValidateList(){\n" +
+                        "        allValidateFields = new FormEditText[] {};\n" +
+                        "\n" +
+                        "        addDisableList = new FormEditText[] {};\n" +
+                        "\n" +
+                        "        updateDisableList = new FormEditText[] {};\n" +
+                        "\n" +
+                        "        finishDisableList = new FormEditText[] {};\n" +
+                        "\n" +
+                        "        updateDisabledSpinnerList = new Spinner[] {};\n" +
+                        "        finishDisabledSpinnerList = new Spinner[] {};\n" +"\n" +
+                        "        openDateEditTextList = new OpenDateVo[] {};\n" +
+                        "\n" +
+                        "        showBySpinnerList = new ShowBySpinnerVo[]{};\n" +
+                        "\n" +
+                        "\n" +
+                        "\n");
 
-        String validateStr = "";
-                for(String[] item : entity.columns){
-                    if(item[2].equals(T_INPUT)){
-                        validateStr += "et"+item[0] + ",";
-                    }
-                }
-        validateStr = validateStr.substring(0, validateStr.length()-2);
+        for(String[] items : entity.columns){
+            output.append("        imageAddButtonList = new ImageView[] {");
+            if(items[2].equals(T_IMAGE)){
+                output.append(getActivityAddImageButtonName(items[0])+",");
+            }
+            output.append("};\n");
+        }
 
-        output.append(validateStr +
-                        "};\n" +
-                "    }\n" +
+        output.append("        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {");
+        for(String[] items : entity.columns){
+            if(items[2].equals(T_IMAGE)){
+                output.append("\n                new ImageChooseVo("+getActivityAddImageButtonName(items[0])+", "+getActivityPicListName(items[0])+", "+getActivityImageLLName(items[0])+"),\n");
+            }
+        }
+        output.append("};\n");
+
+
+        output.append(
                 "\n" +
-                "    @Override\n" +
-                "    void initDropDownList(){\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    @Override\n" +
+                        "    public void setErrorHandler(){\n" +
+                        "        "+parseToLowFirst(entity.nameEnglish)+"Client.setRestErrorHandler(ssErrorHandler);\n" +
+                        "    }\n" +
+                        "\n");
+
+        output.append("    void initDropDownList(){\n" +
                 "        //下拉选择框\n");
-
-        for(String[] item : entity.columns){
-            if(item[2].equals(T_SPINNER)){
-                output.append(
-                "        setDropDownListAdapter(et"+item[0]+", TypeUtils.TYPE_TEST);\n" +
-                "\n");
+        for(String[] items : entity.columns){
+            if(items[2].equals(T_SPINNER)){output.append(
+                    "        setDropDownListAdapter("+getSpinnerActivityName(items[0])+", TypeUtils.);\n");
             }
-        }
 
+        }
         output.append(
                 "    }\n" +
-                "\n" +
-                "\n" +
-                "    @Override\n" +
-                "    @Background\n" +
-                "    void getObject(){\n" +
-                "        showLoading();\n" +
-                "\n" +
-                "        if(taskBaseVo == null){\n" +
-                "\n" +
-                "        }else{\n" +
-                "            "+parseToLowFirst(entity.nameEnglish)+"Result = "+parseToLowFirst(entity.nameEnglish)+"Client.getById(taskBaseVo.id);\n" +
-                "        }\n" +
-                "\n" +
-                "        refreshView();\n" +
-                "        dissmisLoading();\n" +
-                "    }\n" +
-                "\n" +
-                "\n" +
-                "    @UiThread\n" +
-                "    void refreshView(){\n" +
-                "        if("+parseToLowFirst(entity.nameEnglish)+"Result == null){\n" +
-                "\n" +
-                "            "+parseToLowFirst(entity.nameEnglish)+"Result = new "+entity.nameEnglish+"Result();\n" +
-                "\n" +
-                "            etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());\n" +
-                "\n" +
-                "\n" +
-                "        }else{\n" +
-                "\n");
+                        "\n" +
+                        "\n");
 
-        for(String[] item : entity.columns){
-            if(item[2].equals(T_INPUT)){
-                output.append(
-                "            et"+item[0]+".setText("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+");\n");
-            }else if(item[2].equals(T_SPINNER)){
-                output.append(
-                "            et"+item[0]+".setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TEST, "+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+"));\n");
+        output.append(
+                "    void getEntityFromServer(){\n" +
+                        "        "+parseToLowFirst(entity.nameEnglish)+"Result = "+parseToLowFirst(entity.nameEnglish)+"Client.getById(taskBaseVo.id);\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    void refreshViewAfterGetEntity(){\n" +
+                        "        if("+parseToLowFirst(entity.nameEnglish)+"Result == null){\n" +
+                        "\n" +
+                        "            "+parseToLowFirst(entity.nameEnglish)+"Result = new "+entity.nameEnglish+"Result();\n" +
+                        "\n" +
+                        "\n" +
+                        "        }else{\n" +
+                        "\n");
+        for(String[] items : entity.columns){
+            if(items[2].equals(T_INPUT) || items[2].equals(T_IMAGE)){
+                output.append("            "+getActivityName(items[0])+".setText("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(items[0])+");\n");
+            }else if(items[2].equals(T_SPINNER)){
+                output.append("            "+getSpinnerActivityName(items[0])+".setSelection(TypeUtils.getSelectedIndex(TypeUtils., "+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(items[0])+"));\n");
             }
         }
         output.append(
                 "\n" +
-                "            getImage();\n" +
-                "\n" +
-                "            this.saveStatus = 1;\n" +
-                "        }\n" +
-                "\n" +
-                "    }\n" +
-                "\n" +
-                "    /**\n" +
-                "     * update,打开页面后，获取当前数据，并获取网络图片\n" +
-                "     */\n" +
-                "    @Background\n" +
-                "    void getImage(){\n" +
-                "\n");
-
-        for(String[] item : entity.columns){
-            if(item[2].equals(T_IMAGE)){
-                output.append(
-                "        super.getImageFromURL("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+", et"+item[0]+"Content);\n" +
-                "\n");
-            }
-        }
-
-        output.append(
-                "    }\n" +
-                "\n" +
-                "\n");
-
-        for(String[] item : entity.columns){
-            if(item[2].equals(T_IMAGE)){
-                output.append(
-                "    @Click(R.id.btn_add_image"+item[0]+")\n" +
-                "    void addImage"+item[0]+"(){\n" +
-                "\n" +
-                "        super.showChooseImage("+parseToLowFirst(item[0])+"List, et"+item[0]+"Content);\n" +
-                "\n" +
-                "    }\n" +
-                "\n" +
-                "\n");
+                        "            getImage();\n" +
+                        "        }\n" +
+                        "    }\n" +
+                        "\n" +
+                        "    /**\n" +
+                        "     * update,打开页面后，获取当前数据，并获取网络图片\n" +
+                        "     */\n" +
+                        "    @Background\n" +
+                        "    void getImage(){\n" +
+                        "\n");
+        for (String[] items : entity.columns){
+            if(items[2].equals(T_IMAGE)){
+                output.append("        super.getImageFromURL("+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(items[0])+", "+this.getActivityImageLLName(items[0])+");\n");
             }
         }
 
         output.append(
                 "\n" +
-                "    /**\n" +
-                "     * 新增\n" +
-                "     */\n" +
-                "    @Override\n" +
-                "    void add(){\n" +
-                "\n" +
-                "        "+parseToLowFirst(entity.nameEnglish)+"Result.assignByUserID = userPrefs.id().get();\n" +
-                "        "+parseToLowFirst(entity.nameEnglish)+"Result.userID = userPrefs.id().get();\n" +
-                "\n" +
-                "        "+parseToLowFirst(entity.nameEnglish)+"Client.add("+parseToLowFirst(entity.nameEnglish)+"Result);\n" +
-                "    }\n" +
-                "\n" +
-                "    /**\n" +
-                "     * 更新\n" +
-                "     */\n" +
-                "    @Override\n" +
-                "    void update(){\n" +
-                "\n" +
-                "        MultiValueMap<String, Object> data = null;\n" +
-                "        try {\n" +
-                "            data = "+parseToLowFirst(entity.nameEnglish)+"Result.parseToMultiValueMap();\n" +
-                "        } catch (UnsupportedEncodingException e) {\n" +
-                "            e.printStackTrace();\n" +
-                "        }\n" +
-                "\n");
-        for(String[] item : entity.columns){
-            if(item[2].equals(T_IMAGE)){
+                        "    }\n" +
+                        "\n" +
+                        "    UpdateResult save(){\n" +
+                        "\n" +
+                        "        if("+parseToLowFirst(entity.nameEnglish)+"Result.id == 0){\n" +
+                        "            "+parseToLowFirst(entity.nameEnglish)+"Result.assignByUserID = userPrefs.id().get();\n" +
+                        "            "+parseToLowFirst(entity.nameEnglish)+"Result.userId = userPrefs.id().get();\n" +
+                        "        }\n" +
+                        "\n" +
+                        "        MultiValueMap<String, Object> data = null;\n" +
+                        "        try {\n" +
+                        "            data = "+parseToLowFirst(entity.nameEnglish)+"Result.parseToMultiValueMap();\n" +
+                        "        } catch (UnsupportedEncodingException e) {\n" +
+                        "            e.printStackTrace();\n" +
+                        "        }\n" +
+                        "\n");
+        for(String[] items : entity.columns){
+            if(items[2].equals(T_IMAGE)){
                 output.append(
-                "        FileUtils.addImageToData(data, "+entity.nameEnglish+"Result."+item[0]+", "+parseToLowFirst(item[0])+"List, this);\n");
+                        "        FileUtils.addImageToData(data, "+entity.nameEnglish+"Result."+items[0]+", "+this.getActivityPicListName(items[0])+", this);\n" +
+                                "\n"
+                );
             }
         }
+
         output.append(
-                "        "+parseToLowFirst(entity.nameEnglish)+"Client.update(data);\n" +
-                "\n" +
-                "    }\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "    @Override\n" +
-                "    boolean validate(){\n" +
-                "\n" +
-                "        if(super.validate()) {\n" +
-                "\n");
+                "        return "+parseToLowFirst(entity.nameEnglish)+"Client.update(data);\n" +
+                        "    }\n" +
+                        "\n" +
+                        "\n" +
+                        "    boolean validate(){\n" +
+                        "\n" +
+                        "        if(super.validate()) {\n" +
+                        "\n");
 
-        for(String[] item : entity.columns){
-
-            if(item[2].equals(T_INPUT)){
+        for (String[] items : entity.columns){
+            if(items[2].equals(T_INPUT) || items[2].equals(T_IMAGE)){
+                output.append("            this."+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(items[0])+" = "+getActivityName(items[0])+".getText().toString();\n");
+            }else if(items[2].equals(T_SPINNER)){
                 output.append(
-                "            this."+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+" = et"+item[0]+".getText().toString();\n" +
-                "\n");
-            }else if(item[2].equals(T_SPINNER)){
-                output.append(
-                "            this."+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(item[0])+" = et"+item[0]+".getSelectedItem().toString();\n" +
-                "\n");
-
+                        "            this."+parseToLowFirst(entity.nameEnglish)+"Result."+parseToLowFirst(items[0])+" = "+getSpinnerActivityName(items[0])+".getSelectedItem().toString();\n" +
+                                "\n");
             }
+
         }
+
         output.append(
-                "            return true;\n" +
-                "        }{\n" +
-                "            return false;\n" +
-                "        }\n" +
-                "    }\n" +
                 "\n" +
-                "}\n");
+                        "\n" +
+                        "            return true;\n" +
+                        "        }{\n" +
+                        "            return false;\n" +
+                        "        }\n" +
+                        "    }\n" +
+                        "\n" +
+                        "}\n");
 
         print(output.toString());
+        try {
+            FileOutputStream fos = new FileOutputStream(new File("/Users/victor/Desktop/workspace_android/AndroidBase/app/src/main/java/com/carrot/base/androidbase/activity/handle/"+entity.nameEnglish+"Activity.java"));
+            fos.write(output.toString().getBytes());
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -522,13 +513,13 @@ public class GeneratorUtils {
     public void gLayout(Entity entity){
         String output =
                 "\n" +
-                "\n" +
-                "\n" +
-                "<!-- *********************"+entity.nameEnglish+" Layout ********************** -->"+
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n";
+                        "\n" +
+                        "\n" +
+                        "<!-- *********************"+entity.nameEnglish+" Layout ********************** -->"+
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "\n";
 
         output = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
                 "<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
@@ -566,23 +557,24 @@ public class GeneratorUtils {
                 output += "            <LinearLayout style=\"@style/"+columnStyle+"\">\n" +
                         "                <TextView style=\"@style/tableColName\"\n" +
                         "                    android:text=\""+item[1]+"\"/>\n" +
+                        "                <TextView style=\"@style/formDivider\"/>\n"+
                         "                <com.andreabaccega.widget.FormEditText\n" +
                         "                    style=\"@style/tableColInput\"\n" +
                         "                    whatever:emptyErrorString=\"@string/notEmpty\"\n" +
-                        "                    android:id=\"@+id/et"+item[0]+"\"/>\n" +
+                        "                    android:id=\"@+id/"+this.getLayoutName(item[0])+"\"/>\n" +
                         "            </LinearLayout>\n" +
                         "\n";
             }else
             if(item[2].equals(T_SPINNER)){
                 output +=
                         "            <LinearLayout style=\"@style/tableTitle2\">\n" +
-                        "                <TextView style=\"@style/tableColName\"\n" +
-                        "                    android:text=\""+item[1]+"\"/>\n" +
-                        "                <Spinner\n" +
-                        "                    android:id=\"@+id/et"+item[0]+"\"\n" +
-                        "                    android:layout_width=\"match_parent\"\n" +
-                        "                    android:layout_height=\"wrap_content\" />\n" +
-                        "            </LinearLayout>\n";
+                                "                <TextView style=\"@style/tableColName\"\n" +
+                                "                    android:text=\""+item[1]+"\"/>\n" +
+                                "                <TextView style=\"@style/formDivider\"/>\n"+
+                                "                <Spinner\n" +
+                                "                    android:id=\"@+id/"+this.getSpinnerLayoutName(item[0])+"\"\n" +
+                                "                    style=\"@style/spinner_form_right\"" +
+                                "            </LinearLayout>\n";
             }else if(item[2].equals(T_IMAGE)){
                 output += "<LinearLayout style=\"@style/tableTitle2\">\n" +
                         "                    <TextView style=\"@style/tableColName\"\n" +
@@ -594,13 +586,13 @@ public class GeneratorUtils {
                         "                        android:orientation=\"vertical\">\n" +
                         "                        <com.andreabaccega.widget.FormEditText\n" +
                         "                            whatever:emptyErrorString=\"@string/notEmpty\" style=\"@style/tableColInputPic\"\n" +
-                        "                            android:id=\"@+id/et"+item[0]+"\"/>\n" +
+                        "                            android:id=\"@+id/"+this.getLayoutName(item[0])+"\"/>\n" +
                         "                        <org.apmem.tools.layouts.FlowLayout\n" +
-                        "                            android:id=\"@+id/et_"+item[0]+"Pics\"\n" +
+                        "                            android:id=\"@+id/"+this.getLayoutImageLLName(item[0])+"\"\n" +
                         "                            style=\"@style/tableColImageLayout\"\n" +
                         "                            android:gravity=\"center_vertical\">\n" +
                         "                            <ImageView\n" +
-                        "                                android:id=\"@+id/btnAddImage"+item[0]+"\"\n" +
+                        "                                android:id=\"@+id/"+this.getLayoutAddImageButtonName(item[0])+"\"\n" +
                         "                                style=\"@style/tableColImagAdd\"/>\n" +
                         "                        </org.apmem.tools.layouts.FlowLayout>\n" +
                         "                    </LinearLayout>\n" +
@@ -611,25 +603,37 @@ public class GeneratorUtils {
 
         output +=
                 "\n" +
-                "        </LinearLayout>\n" +
-                "    </ScrollView>\n" +
-                "</LinearLayout>";
+                        "        </LinearLayout>\n" +
+                        "    </ScrollView>\n" +
+                        "</LinearLayout>";
 
 
 //        Log.i("sslog", output);
         print(output);
+        try {
+            String filename = "/Users/victor/Desktop/workspace_android/AndroidBase/app/src/main/res/layout/activity_"+this.parseToUnder(entity.nameEnglish)+".xml";
+            FileOutputStream fos = new FileOutputStream(new File(filename));
+            System.out.println(filename);
+            fos.write(output.toString().getBytes());
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void gResult(Entity entity){
         String output =
                 "\n" +
-                "\n" +
-                "\n" +
-                "<!-- *********************"+entity.nameEnglish+" Result ********************** -->"+
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n";;
+                        "\n" +
+                        "\n" +
+                        "// *********************"+entity.nameEnglish+" Result ********************** \n"+
+                        "// *********************"+entity.nameChinese+"        ********************** \n" +
+                        "\n" +
+                        "\n" +
+                        "\n";;
 
         output += "package com.carrot.base.androidbase.vo.result;\n" +
                 "\n" +
@@ -673,21 +677,21 @@ public class GeneratorUtils {
 
         output +=
                 "\n" +
-                "\n";
+                        "\n";
 
         output +=
                 "    @JsonIgnore\n" +
-                "    public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {\n" +
-                "        MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();\n" +
-                "\n";
+                        "    public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {\n" +
+                        "        MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();\n" +
+                        "\n";
 
         for(String[] item : ENTITY_BASE){
             if(item[1].equals(T_INT)){
                 output +=
-                "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+"+\"\");\n";
+                        "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+"+\"\");\n";
             }else if(item[1].equals(T_STRING)){
                 output +=
-                "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+".getBytes(\"UTF-8\"));\n";
+                        "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+".getBytes(\"UTF-8\"));\n";
 
             }else if(item[1].equals(T_TIME)){
 
@@ -696,10 +700,10 @@ public class GeneratorUtils {
         for (String[] item : entity.columns){
             if(item[3].equals(T_INT)){
                 output +=
-                "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+"+\"\");\n";
+                        "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+"+\"\");\n";
             }else if(item[3].equals(T_STRING)){
                 output +=
-                "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+".getBytes(\"UTF-8\"));\n";
+                        "        rtn.add("+entity.nameEnglish+"Result."+item[0]+", this."+parseToLowFirst(item[0])+".getBytes(\"UTF-8\"));\n";
 
             }else if(item[3].equals(T_TIME)){
 
@@ -709,12 +713,24 @@ public class GeneratorUtils {
 
         output +=
                 "\n" +
-                "        return rtn;\n" +
-                "    }\n" +
-                "}\n";
+                        "        return rtn;\n" +
+                        "    }\n" +
+                        "}\n";
 
 
-        print(output);
+        print(output.toString());
+        try {
+            String filename = "/Users/victor/Desktop/workspace_android/AndroidBase/app/src/main/java/com/carrot/base/androidbase/vo/result/"+entity.nameEnglish+"Result.java";
+            FileOutputStream fos = new FileOutputStream(new File(filename));
+            System.out.println(filename);
+            fos.write(output.toString().getBytes());
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -726,13 +742,70 @@ public class GeneratorUtils {
         return item.substring(0,1).toLowerCase()+item.substring(1);
     }
 
+    public String getLayoutName(String item){
+        return "et_" + parseToUnder(item);
+    }
+
+    public String getActivityName(String item){
+        return "et" + item;
+    }
+
+    public String getLayoutImageLLName(String item){
+        return "ll_" + parseToUnder(item);
+    }
+
+    public String getActivityImageLLName(String item){
+        return "ll" + item;
+    }
+
+    public String getLayoutAddImageButtonName(String item){
+        return "btn_add_image_" + parseToUnder(item);
+    }
+    public String getActivityAddImageButtonName(String item){
+        return "btnAddImage" + item;
+    }
+
+    public String getSpinnerLayoutName(String item){
+        return "spn_" + parseToUnder(item);
+    }
+
+    public String getSpinnerActivityName(String item){
+        return "spn" + item;
+    }
+
+    public String getActivityPicListName(String item){
+        return parseToLowFirst(item) + "PicList";
+    }
+
+    public String parseToUnder(String item){
+        StringBuffer sb = new StringBuffer("");
+        int i = 0;
+        for(i = 0; i < item.length() ;i++){
+            char chr = item.charAt(i);
+
+            if(i == 0){
+                sb.append(String.valueOf(chr).toLowerCase());
+            }else{
+                if(chr >= 'A' && chr <= 'Z'){
+                    break;
+                }
+                sb.append(String.valueOf(chr).toLowerCase());
+            }
+        }
+        if(i < item.length()){
+            return sb.append("_").append(parseToUnder(item.substring(i))).toString();
+        }else{
+            return sb.toString();
+        }
+    }
+
     void print(String veryLongString){
         int maxLogSize = 1000;
         for(int i = 0; i <= veryLongString.length() / maxLogSize; i++) {
             int start = i * maxLogSize;
             int end = (i+1) * maxLogSize;
             end = end > veryLongString.length() ? veryLongString.length() : end;
-            Log.i("sslog", veryLongString.substring(start, end));
+            System.out.println(veryLongString.substring(start, end));
         }
     }
 }

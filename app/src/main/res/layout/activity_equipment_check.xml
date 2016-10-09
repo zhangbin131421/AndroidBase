@@ -42,7 +42,7 @@
                 <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:id="@+id/et_task_num"
-                    android:hint="后台生成任务编号"/>
+                    android:hint="@string/taskNumberHint"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

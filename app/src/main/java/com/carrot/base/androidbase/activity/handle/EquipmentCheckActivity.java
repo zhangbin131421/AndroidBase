@@ -64,9 +64,6 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_end_time)
     FormEditText etEndTime;
 
-//    @ViewById(R.id.et_begin_handle_time)
-//    FormEditText etBeginHandleTime;
-
     @ViewById(R.id.et_exist_defect)
     Spinner etExistDefect;
 
