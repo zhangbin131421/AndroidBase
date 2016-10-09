@@ -1,6 +1,7 @@
 package com.carrot.base.androidbase.activity.handle;
 
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
@@ -98,6 +99,8 @@ public class CrossTestActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
+    @ViewById(R.id.llIsHandler)
+    LinearLayout llIsHandler;
 
 
     @AfterViews
@@ -126,7 +129,9 @@ public class CrossTestActivity extends BaseHandlerActivity{
                 new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD)
         };
 
-        showBySpinnerList = new ShowWithSpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
 
 
         imageAddButtonList = new ImageView[] {btnAddImageEarthDistance,btnAddImageCrossDistance,};
