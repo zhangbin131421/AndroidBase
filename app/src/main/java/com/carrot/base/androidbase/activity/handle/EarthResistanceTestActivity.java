@@ -1,24 +1,24 @@
-
-
 package com.carrot.base.androidbase.activity.handle;
 
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.EarthResistanceTestClient;
+import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.EarthResistanceTestResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
-import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
 import org.springframework.util.MultiValueMap;
@@ -38,7 +38,7 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
 
 
 
-    List<PhotoInfo> testResistanceValueList = new ArrayList<>();
+    List<PhotoInfo> testResistanceValuePicList = new ArrayList<>();
 
 
     EarthResistanceTestResult earthResistanceTestResult;
@@ -47,93 +47,102 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
     EarthResistanceTestClient earthResistanceTestClient;
 
 
-    @ViewById(R.id.etAssignmentTime)
+
+    @ViewById(R.id.et_assignment_time)
     FormEditText etAssignmentTime;
-
-    @ViewById(R.id.etTaskNum)
+    @ViewById(R.id.et_task_num)
     FormEditText etTaskNum;
-
-    @ViewById(R.id.etAreaName)
-    Spinner etAreaName;
-
-    @ViewById(R.id.etEarthPlace)
+    @ViewById(R.id.spn_area_name)
+    Spinner spnAreaName;
+    @ViewById(R.id.et_earth_place)
     FormEditText etEarthPlace;
-
-    @ViewById(R.id.etEarthEquipmentName)
+    @ViewById(R.id.et_earth_equipment_name)
     FormEditText etEarthEquipmentName;
-
-    @ViewById(R.id.etResistanceValue)
+    @ViewById(R.id.et_resistance_value)
     FormEditText etResistanceValue;
-
-    @ViewById(R.id.etSafetyMeasure)
-    Spinner etSafetyMeasure;
-
-    @ViewById(R.id.etBeginHandleTime)
+    @ViewById(R.id.et_safety_measure)
+    FormEditText etSafetyMeasure;
+    @ViewById(R.id.et_begin_handle_time)
     FormEditText etBeginHandleTime;
+    @ViewById(R.id.spn_wether)
+    Spinner spnWether;
 
-    @ViewById(R.id.etWether)
-    Spinner etWether;
+    @ViewById(R.id.ll_test_resistance_value)
+    org.apmem.tools.layouts.FlowLayout llTestResistanceValue;
 
-    @ViewById(R.id.etTestResistanceValue_content)
-    org.apmem.tools.layouts.FlowLayout etTestResistanceValueContent;
 
-    @ViewById(R.id.etTestDate)
+    @ViewById(R.id.btn_add_image_test_resistance_value)
+    ImageView btnAddImageTestResistanceValue;
+
+    @ViewById(R.id.et_test_resistance_value)
+    FormEditText etTestResistanceValue;
+
+    @ViewById(R.id.et_test_date)
     FormEditText etTestDate;
-
-    @ViewById(R.id.etTester)
+    @ViewById(R.id.et_tester)
     FormEditText etTester;
-
-    @ViewById(R.id.etEndHandleTime)
+    @ViewById(R.id.et_end_handle_time)
     FormEditText etEndHandleTime;
-
-    @ViewById(R.id.etIsHandled)
-    Spinner etIsHandled;
-
-    @ViewById(R.id.etUnhandleReason)
+    @ViewById(R.id.spn_is_handled)
+    Spinner spnIsHandled;
+    @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
+
 
 
     @AfterViews
     void bindAdapter(){
+        super.afterInitView(TypeUtils.TYPE_2_7, getApplicationContext(), getResources());
 
-
-        super.afterInitView("接地电阻测量", getApplicationContext(), getResources());
     }
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {etAssignmentTime,etTaskNum,etEarthPlace,etEarthEquipmentName,
-                etResistanceValue,etBeginHandleTime,etTestDate,etTester,etEndHandleTime,etUnhandleReason};
+        allValidateFields = new FormEditText[] {};
+
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEarthPlace,etEarthEquipmentName,etResistanceValue,etSafetyMeasure,etBeginHandleTime,etTestResistanceValue,etTestDate,etTester,etEndHandleTime,etUnhandleReason,};
+
+        updateDisabledSpinnerList = new Spinner[] {};
+        finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnWether,spnIsHandled,};
+
+        openDateEditTextList = new OpenDateVo[] {
+            new OpenDateVo(etBeginHandleTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etTestDate, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+        };
+
+        showBySpinnerList = new ShowWithSpinnerVo[]{};
+
+
+
+        imageAddButtonList = new ImageView[] {btnAddImageTestResistanceValue,        };
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
+                new ImageChooseVo(btnAddImageTestResistanceValue, testResistanceValuePicList, llTestResistanceValue),
+        };
 
     }
-
 
     @Override
     public void setErrorHandler(){
         earthResistanceTestClient.setRestErrorHandler(ssErrorHandler);
     }
 
-    @Override
     void initDropDownList(){
         //下拉选择框
-        setDropDownListAdapter(etAreaName, TypeUtils.TYPE_TEST);
-
-        setDropDownListAdapter(etSafetyMeasure, TypeUtils.TYPE_TEST);
-
-        setDropDownListAdapter(etWether, TypeUtils.TYPE_TEST);
-
-        setDropDownListAdapter(etIsHandled, TypeUtils.TYPE_HANDLER);
-
+        setDropDownListAdapter(spnAreaName, DataInstance.getInstance().areaInformationResults);
+        setDropDownListAdapter(spnWether, TypeUtils.WEATHERS);
+        setDropDownListAdapter(spnIsHandled, TypeUtils.TYPE_HANDLER);
     }
 
 
-
-    @Background
     void getEntityFromServer(){
         earthResistanceTestResult = earthResistanceTestClient.getById(taskBaseVo.id);
     }
 
-    @UiThread
     void refreshViewAfterGetEntity(){
         if(earthResistanceTestResult == null){
 
@@ -141,31 +150,26 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
-
         }else{
 
             etAssignmentTime.setText(earthResistanceTestResult.assignmentTime);
             etTaskNum.setText(earthResistanceTestResult.taskNum);
-            etAreaName.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TEST, earthResistanceTestResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndex(earthResistanceTestResult.areaName));
             etEarthPlace.setText(earthResistanceTestResult.earthPlace);
             etEarthEquipmentName.setText(earthResistanceTestResult.earthEquipmentName);
             etResistanceValue.setText(earthResistanceTestResult.resistanceValue);
-            etSafetyMeasure.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TEST, earthResistanceTestResult.safetyMeasure));
+            etSafetyMeasure.setText(earthResistanceTestResult.safetyMeasure);
             etBeginHandleTime.setText(earthResistanceTestResult.beginHandleTime);
-            etWether.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TEST, earthResistanceTestResult.wether));
+            spnWether.setSelection(TypeUtils.getSelectedIndex(TypeUtils.WEATHERS, earthResistanceTestResult.wether));
+            etTestResistanceValue.setText(earthResistanceTestResult.testResistanceValue);
             etTestDate.setText(earthResistanceTestResult.testDate);
             etTester.setText(earthResistanceTestResult.tester);
             etEndHandleTime.setText(earthResistanceTestResult.endHandleTime);
-
-            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, earthResistanceTestResult.isHandled == 2 ? "未处理" : "已处理"));
-
+            spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, earthResistanceTestResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(earthResistanceTestResult.unhandleReason);
 
             getImage();
-
-            this.saveStatus = 1;
         }
-
     }
 
     /**
@@ -174,77 +178,54 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
-        super.getImageFromURL(earthResistanceTestResult.testResistanceValuePic, etTestResistanceValueContent);
+        super.getImageFromURL(earthResistanceTestResult.testResistanceValuePic, llTestResistanceValue);
 
     }
 
-
-    @Click(R.id.btn_add_imageTestResistanceValue)
-    void addImageTestResistanceValue(){
-
-        super.showChooseImage(testResistanceValueList, etTestResistanceValueContent);
-
-    }
-
-
-
-    /**
-     * 新增
-     */
-    @Override
     UpdateResult save(){
 
-        if(earthResistanceTestResult.id == 0){
+        if(earthResistanceTestResult.iD == 0){
             earthResistanceTestResult.assignByUserID = userPrefs.id().get();
             earthResistanceTestResult.userID = userPrefs.id().get();
         }
 
-
         MultiValueMap<String, Object> data = null;
         try {
             data = earthResistanceTestResult.parseToMultiValueMap();
-        } catch(UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        FileUtils.addImageToData(data, EarthResistanceTestResult.TestResistanceValuePic, testResistanceValueList, this);
-        return earthResistanceTestClient.update(data);
+        FileUtils.addImageToData(data, EarthResistanceTestResult.TestResistanceValuePic, testResistanceValuePicList, this);
 
+        return earthResistanceTestClient.update(data);
     }
 
 
-    @Override
     boolean validate(){
 
         if(super.validate()) {
 
             this.earthResistanceTestResult.assignmentTime = etAssignmentTime.getText().toString();
-
             this.earthResistanceTestResult.taskNum = etTaskNum.getText().toString();
+            this.earthResistanceTestResult.areaName = spnAreaName.getSelectedItem().toString();
 
-            this.earthResistanceTestResult.areaName = etAreaName.getSelectedItem().toString();
-
+            this.earthResistanceTestResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
             this.earthResistanceTestResult.earthPlace = etEarthPlace.getText().toString();
-
             this.earthResistanceTestResult.earthEquipmentName = etEarthEquipmentName.getText().toString();
-
             this.earthResistanceTestResult.resistanceValue = etResistanceValue.getText().toString();
-
-            this.earthResistanceTestResult.safetyMeasure = etSafetyMeasure.getSelectedItem().toString();
-
+            this.earthResistanceTestResult.safetyMeasure = etSafetyMeasure.getText().toString();
             this.earthResistanceTestResult.beginHandleTime = etBeginHandleTime.getText().toString();
+            this.earthResistanceTestResult.wether = spnWether.getSelectedItem().toString();
 
-            this.earthResistanceTestResult.wether = etWether.getSelectedItem().toString();
-
+            this.earthResistanceTestResult.testResistanceValue = etTestResistanceValue.getText().toString();
             this.earthResistanceTestResult.testDate = etTestDate.getText().toString();
-
             this.earthResistanceTestResult.tester = etTester.getText().toString();
-
             this.earthResistanceTestResult.endHandleTime = etEndHandleTime.getText().toString();
-
-            this.earthResistanceTestResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
+            this.earthResistanceTestResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.earthResistanceTestResult.unhandleReason = etUnhandleReason.getText().toString();
+
 
             return true;
         }{
