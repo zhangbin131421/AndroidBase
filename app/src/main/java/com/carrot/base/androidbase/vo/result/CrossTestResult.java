@@ -118,21 +118,21 @@ public class CrossTestResult {
         rtn.add(CrossTestResult.Id, this.id+"");
         rtn.add(CrossTestResult.UserId, this.userId+"");
         rtn.add(CrossTestResult.AssignByUserID, this.assignByUserID+"");
-        rtn.add(CrossTestResult.CreatedTime, this.createdTime.getBytes("UTF-8"));
-        rtn.add(CrossTestResult.AssignmentTime, this.assignmentTime.getBytes("UTF-8"));
+        rtn.add(CrossTestResult.CreatedTime, this.createdTime == null ? "" : this.createdTime.getBytes("UTF-8"));
+        rtn.add(CrossTestResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));
         rtn.add(CrossTestResult.TaskNum, this.taskNum.getBytes("UTF-8"));
         rtn.add(CrossTestResult.AreaName, this.areaName.getBytes("UTF-8"));
         rtn.add(CrossTestResult.CrossPoint, this.crossPoint.getBytes("UTF-8"));
         rtn.add(CrossTestResult.CrossName, this.crossName.getBytes("UTF-8"));
         rtn.add(CrossTestResult.SafetyMeasure, this.safetyMeasure.getBytes("UTF-8"));
-        rtn.add(CrossTestResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
-        rtn.add(CrossTestResult.EarthDistance, this.earthDistance.getBytes("UTF-8"));
-        rtn.add(CrossTestResult.CrossDistance, this.crossDistance.getBytes("UTF-8"));
+        rtn.add(CrossTestResult.BeginHandleTime, this.beginHandleTime == null ? "" : this.beginHandleTime.getBytes("UTF-8"));
+        rtn.add(CrossTestResult.EarthDistance, this.earthDistance == null ? "" : this.earthDistance.getBytes("UTF-8"));
+        rtn.add(CrossTestResult.CrossDistance, this.crossDistance == null ? "" : this.crossDistance.getBytes("UTF-8"));
         rtn.add(CrossTestResult.IsQualified, this.isQualified.getBytes("UTF-8"));
         rtn.add(CrossTestResult.ModificationOpinion, this.modificationOpinion.getBytes("UTF-8"));
-        rtn.add(CrossTestResult.TestTime, this.testTime.getBytes("UTF-8"));
+        rtn.add(CrossTestResult.TestTime, this.testTime == null ? "" : this.testTime.getBytes("UTF-8"));
         rtn.add(CrossTestResult.Tester, this.tester.getBytes("UTF-8"));
-        rtn.add(CrossTestResult.EndHandleTime, this.endHandleTime.getBytes("UTF-8"));
+        rtn.add(CrossTestResult.EndHandleTime, this.endHandleTime == null ? "" : this.endHandleTime.getBytes("UTF-8"));
         rtn.add(CrossTestResult.IsHandled, this.isHandled+"");
         rtn.add(CrossTestResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
 

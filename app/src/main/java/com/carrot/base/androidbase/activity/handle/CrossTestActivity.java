@@ -112,37 +112,25 @@ public class CrossTestActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {};
 
-        addDisableList = new FormEditText[] {};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
-        updateDisableList = new FormEditText[] {};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
-        finishDisableList = new FormEditText[] {};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
-        updateDisabledSpinnerList = new Spinner[] {};
-        finishDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName};
+        finishDisabledSpinnerList = new Spinner[] {spnAreaName, spnIsHandled, spnIsQualified};
 
-        openDateEditTextList = new OpenDateVo[] {};
+        openDateEditTextList = new OpenDateVo[] {
+                new OpenDateVo(etTestTime, OpenDateVo.UPDATE_ADD),
+                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD)
+        };
 
         showBySpinnerList = new ShowBySpinnerVo[]{};
 
 
+        imageAddButtonList = new ImageView[] {btnAddImageEarthDistance,btnAddImageCrossDistance,};
 
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {btnAddImageEarthDistance,};
-        imageAddButtonList = new ImageView[] {btnAddImageCrossDistance,};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
-        imageAddButtonList = new ImageView[] {};
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
             new ImageChooseVo(btnAddImageEarthDistance, earthDistancePicList, llEarthDistance),
 
