@@ -1,7 +1,6 @@
 package com.carrot.base.androidbase.activity.handle;
 
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
@@ -11,7 +10,6 @@ import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
-import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.CrossTestResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
@@ -126,7 +124,7 @@ public class CrossTestActivity extends BaseHandlerActivity{
                 new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD)
         };
 
-        showBySpinnerList = new ShowBySpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{};
 
 
         imageAddButtonList = new ImageView[] {btnAddImageEarthDistance,btnAddImageCrossDistance,};

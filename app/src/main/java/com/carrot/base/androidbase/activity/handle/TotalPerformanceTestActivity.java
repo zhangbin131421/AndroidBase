@@ -141,9 +141,9 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
                 new ImageChooseVo(imageAddD, electricityDPicList, etElectricityDPicLL)
         };
 
-        showBySpinnerList = new ShowBySpinnerVo[]{
-                new ShowBySpinnerVo(etTestResult, llTestResult, "不合格", new FormEditText[]{etHandleContent}),
-                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(etTestResult, llTestResult, "不合格", new FormEditText[]{etHandleContent}),
+                new ShowWithSpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
         };
     }
 

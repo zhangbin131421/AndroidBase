@@ -65,6 +65,14 @@ public class TypeUtils {
      * 测试
      */
     public final static String[] TYPE_TEST = new String[]{"测试1", "测试2"};
+    /**
+     * 时段
+     */
+    public final static String[] TIME_PERIOD = new String[]{"峰值","平值","谷值"};
+    /**
+     * 时段
+     */
+    public final static String[] OUT_LIMIT = new String[]{"是","否"};
 
     /**
      * 处理情况

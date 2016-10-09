@@ -352,7 +352,7 @@ public class GeneratorUtils {
                         "        finishDisabledSpinnerList = new Spinner[] {};\n" +"\n" +
                         "        openDateEditTextList = new OpenDateVo[] {};\n" +
                         "\n" +
-                        "        showBySpinnerList = new ShowBySpinnerVo[]{};\n" +
+                        "        showBySpinnerList = new ShowWithSpinnerVo[]{};\n" +
                         "\n" +
                         "\n" +
                         "\n");

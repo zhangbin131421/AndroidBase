@@ -150,8 +150,8 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
                 new ImageChooseVo(imageAdd, defectContentPicList, et_ResolveContentPic)
         };
 
-        showBySpinnerList = new ShowBySpinnerVo[]{
-                new ShowBySpinnerVo(et_IsHandled, llIsHandler, "未处理", new FormEditText[]{et_UnhandleReason})
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(et_IsHandled, llIsHandler, "未处理", new FormEditText[]{et_UnhandleReason})
         };
 
 

@@ -29,12 +29,12 @@ import java.io.UnsupportedEncodingException;
 public class CrossTestResult {
 
 
-    public static final String Id = "Id";
-    @JsonProperty(value=Id)
+    public static final String ID = "ID";
+    @JsonProperty(value=ID)
     public int id;
 
-    public static final String UserId = "UserId";
-    @JsonProperty(value=UserId)
+    public static final String UserID = "UserID";
+    @JsonProperty(value=UserID)
     public int userId;
 
     public static final String AssignByUserID = "AssignByUserID";
@@ -115,8 +115,8 @@ public class CrossTestResult {
     public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
-        rtn.add(CrossTestResult.Id, this.id+"");
-        rtn.add(CrossTestResult.UserId, this.userId+"");
+        rtn.add(CrossTestResult.ID, this.id+"");
+        rtn.add(CrossTestResult.UserID, this.userId+"");
         rtn.add(CrossTestResult.AssignByUserID, this.assignByUserID+"");
         rtn.add(CrossTestResult.CreatedTime, this.createdTime == null ? "" : this.createdTime.getBytes("UTF-8"));
         rtn.add(CrossTestResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));

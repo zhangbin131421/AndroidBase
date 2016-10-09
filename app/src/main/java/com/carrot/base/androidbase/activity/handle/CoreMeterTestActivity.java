@@ -148,9 +148,9 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
                 new ImageChooseVo(addCImage, cTestingImgList, cTestingPicContent)
         };
 
-        showBySpinnerList = new ShowBySpinnerVo[]{
-                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason}),
-                new ShowBySpinnerVo(etTestResult, handleContentll, "不合格", new FormEditText[]{etHandleContent})
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason}),
+                new ShowWithSpinnerVo(etTestResult, handleContentll, "不合格", new FormEditText[]{etHandleContent})
         };
 
     }

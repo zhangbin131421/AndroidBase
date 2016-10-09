@@ -99,7 +99,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     public ImageChooseVo[] openChooseImageList;
 
-    public ShowBySpinnerVo[] showBySpinnerList;
+    public ShowWithSpinnerVo[] showBySpinnerList;
 
     class OpenDateVo{
 
@@ -230,7 +230,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
             return;
         }
 
-        for(final ShowBySpinnerVo ss : showBySpinnerList){
+        for(final ShowWithSpinnerVo ss : showBySpinnerList){
             ss.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -589,9 +589,9 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
             exFlag = false;
 
             if(showBySpinnerList != null){
-                for(ShowBySpinnerVo showBySpinnerVo : showBySpinnerList){
-                    if(showBySpinnerVo.showLayout.getVisibility() == View.GONE){//隐藏后，不需要验证其中的项
-                        for(FormEditText editText : showBySpinnerVo.exValidateList){
+                for(ShowWithSpinnerVo showWithSpinnerVo : showBySpinnerList){
+                    if(showWithSpinnerVo.showLayout.getVisibility() == View.GONE){//隐藏后，不需要验证其中的项
+                        for(FormEditText editText : showWithSpinnerVo.exValidateList){
                             if(editText.getId() == field.getId()){
                                 exFlag = true;
                                 break;
@@ -718,13 +718,16 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         }
     }
 
-    class ShowBySpinnerVo{
+    /**
+     * 某些控件需要根据下拉框具体的选值显示或隐藏
+     */
+    class ShowWithSpinnerVo {
         public Spinner spinner;
         public LinearLayout showLayout;
         public String showText;
         public FormEditText[] exValidateList;
 
-        public ShowBySpinnerVo(Spinner sp, LinearLayout ll, String tx, FormEditText[] ex){
+        public ShowWithSpinnerVo(Spinner sp, LinearLayout ll, String tx, FormEditText[] ex){
             spinner = sp;
             showLayout = ll;
             showText = tx;

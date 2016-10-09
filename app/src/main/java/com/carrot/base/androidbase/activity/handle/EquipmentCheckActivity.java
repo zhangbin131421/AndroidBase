@@ -150,9 +150,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
                 new ImageChooseVo(imageAdd, defectContentPicList, etDefectContentPic)
         };
 
-        showBySpinnerList = new ShowBySpinnerVo[]{
-                new ShowBySpinnerVo(etExistDefect, llHasDefect, "有", new FormEditText[]{etDefectPlace, etHandleContent, etDefectContent}),
-                new ShowBySpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(etExistDefect, llHasDefect, "有", new FormEditText[]{etDefectPlace, etHandleContent, etDefectContent}),
+                new ShowWithSpinnerVo(etIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
         };
 
 
