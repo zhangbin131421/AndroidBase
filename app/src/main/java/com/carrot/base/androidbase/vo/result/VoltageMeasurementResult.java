@@ -57,6 +57,10 @@ public class VoltageMeasurementResult {
     @JsonProperty(value=AreaName)
     public String areaName;
 
+    public static final String AreaID = "AreaID";
+    @JsonProperty(value=AreaID)
+    public int areaID;
+
     public static final String ConfigA = "ConfigA";
     @JsonProperty(value=ConfigA)
     public String configA;
@@ -109,17 +113,33 @@ public class VoltageMeasurementResult {
     @JsonProperty(value=CurrentA)
     public String currentA;
 
+    public static final String CurrentAPic = "CurrentAPic";
+    @JsonProperty(value=CurrentAPic)
+    public String currentAPic;
+
     public static final String CurrentB = "CurrentB";
     @JsonProperty(value=CurrentB)
     public String currentB;
+
+    public static final String CurrentBPic = "CurrentBPic";
+    @JsonProperty(value=CurrentBPic)
+    public String currentBPic;
 
     public static final String CurrentC = "CurrentC";
     @JsonProperty(value=CurrentC)
     public String currentC;
 
+    public static final String CurrentCPic = "CurrentCPic";
+    @JsonProperty(value=CurrentCPic)
+    public String currentCPic;
+
     public static final String ZeoLineCurrent = "ZeoLineCurrent";
     @JsonProperty(value=ZeoLineCurrent)
     public String zeoLineCurrent;
+
+    public static final String ZeoLineCurrentPic = "ZeoLineCurrentPic";
+    @JsonProperty(value=ZeoLineCurrentPic)
+    public String zeoLineCurrentPic;
 
     public static final String LoadRate = "LoadRate";
     @JsonProperty(value=LoadRate)
@@ -133,9 +153,17 @@ public class VoltageMeasurementResult {
     @JsonProperty(value=HeaderVoltage)
     public String headerVoltage;
 
+    public static final String HeaderVoltagePic = "HeaderVoltagePic";
+    @JsonProperty(value=HeaderVoltagePic)
+    public String headerVoltagePic;
+
     public static final String FooterVoltage = "FooterVoltage";
     @JsonProperty(value=FooterVoltage)
     public String footerVoltage;
+
+    public static final String FooterVoltagePic = "FooterVoltagePic";
+    @JsonProperty(value=FooterVoltagePic)
+    public String footerVoltagePic;
 
     public static final String IsOutOfLimit = "IsOutOfLimit";
     @JsonProperty(value=IsOutOfLimit)
@@ -178,6 +206,7 @@ public class VoltageMeasurementResult {
         rtn.add(VoltageMeasurementResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));
         rtn.add(VoltageMeasurementResult.TaskNum, this.taskNum == null ? "" : this.taskNum.getBytes("UTF-8"));
         rtn.add(VoltageMeasurementResult.AreaName, this.areaName == null ? "" : this.areaName.getBytes("UTF-8"));
+        rtn.add(VoltageMeasurementResult.AreaID, this.areaID+"");
         rtn.add(VoltageMeasurementResult.ConfigA, this.configA == null ? "" : this.configA.getBytes("UTF-8"));
         rtn.add(VoltageMeasurementResult.ConfigB, this.configB == null ? "" : this.configB.getBytes("UTF-8"));
         rtn.add(VoltageMeasurementResult.ConfigC, this.configC == null ? "" : this.configC.getBytes("UTF-8"));

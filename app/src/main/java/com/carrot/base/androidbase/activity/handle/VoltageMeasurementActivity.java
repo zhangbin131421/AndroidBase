@@ -180,22 +180,26 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {};
 
-        addDisableList = new FormEditText[] {};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
-        updateDisableList = new FormEditText[] {};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
-        finishDisableList = new FormEditText[] {};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etConfigA,etConfigB,etConfigC,etRatedCurrent,etPowerHouseholder,etPowerCapacity,etHouseholder,etHouseholderCapacity,etSafetyMeasure,etEndTime,etBeginHandleTime,etCurrentA,etCurrentB,etCurrentC,etZeoLineCurrent,etLoadRate,etImbalanceRate,etHeaderVoltage,etFooterVoltage,etModificationOpinion,etTestTime,etTester,etEndHandleTime,etUnhandleReason,};
 
         updateDisabledSpinnerList = new Spinner[] {};
-        finishDisabledSpinnerList = new Spinner[] {};
+        finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnPeriod,spnIsOutOfLimit,spnIsHandled,};
 
-        openDateEditTextList = new OpenDateVo[] {};
+        openDateEditTextList = new OpenDateVo[] {
+            new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etTestTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+        };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{};
 
 
 
-        imageAddButtonList = new ImageView[] {btnAddImageCurrentA,btnAddImageCurrentB,btnAddImageCurrentC,btnAddImageZeoLineCurrent,btnAddImageHeaderVoltage,btnAddImageFooterVoltage,};
+        imageAddButtonList = new ImageView[] {btnAddImageCurrentA,btnAddImageCurrentB,btnAddImageCurrentC,btnAddImageZeoLineCurrent,btnAddImageHeaderVoltage,btnAddImageFooterVoltage,        };
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
                 new ImageChooseVo(btnAddImageCurrentA, currentAPicList, llCurrentA),
 
@@ -208,7 +212,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
                 new ImageChooseVo(btnAddImageHeaderVoltage, headerVoltagePicList, llHeaderVoltage),
 
                 new ImageChooseVo(btnAddImageFooterVoltage, footerVoltagePicList, llFooterVoltage),
-};
+        };
 
     }
 
@@ -235,6 +239,8 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
 
             voltageMeasurementResult = new VoltageMeasurementResult();
 
+            etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            etEndTime.setText(DateUtils.getEndTime());
 
         }else{
 
@@ -279,12 +285,12 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
-        super.getImageFromURL(voltageMeasurementResult.currentA, llCurrentA);
-        super.getImageFromURL(voltageMeasurementResult.currentB, llCurrentB);
-        super.getImageFromURL(voltageMeasurementResult.currentC, llCurrentC);
-        super.getImageFromURL(voltageMeasurementResult.zeoLineCurrent, llZeoLineCurrent);
-        super.getImageFromURL(voltageMeasurementResult.headerVoltage, llHeaderVoltage);
-        super.getImageFromURL(voltageMeasurementResult.footerVoltage, llFooterVoltage);
+        super.getImageFromURL(voltageMeasurementResult.currentAPic, llCurrentA);
+        super.getImageFromURL(voltageMeasurementResult.currentBPic, llCurrentB);
+        super.getImageFromURL(voltageMeasurementResult.currentCPic, llCurrentC);
+        super.getImageFromURL(voltageMeasurementResult.zeoLineCurrentPic, llZeoLineCurrent);
+        super.getImageFromURL(voltageMeasurementResult.headerVoltagePic, llHeaderVoltage);
+        super.getImageFromURL(voltageMeasurementResult.footerVoltagePic, llFooterVoltage);
 
     }
 
@@ -302,17 +308,17 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
             e.printStackTrace();
         }
 
-        FileUtils.addImageToData(data, VoltageMeasurementResult.CurrentA, currentAPicList, this);
+        FileUtils.addImageToData(data, VoltageMeasurementResult.CurrentAPic, currentAPicList, this);
 
-        FileUtils.addImageToData(data, VoltageMeasurementResult.CurrentB, currentBPicList, this);
+        FileUtils.addImageToData(data, VoltageMeasurementResult.CurrentBPic, currentBPicList, this);
 
-        FileUtils.addImageToData(data, VoltageMeasurementResult.CurrentC, currentCPicList, this);
+        FileUtils.addImageToData(data, VoltageMeasurementResult.CurrentCPic, currentCPicList, this);
 
-        FileUtils.addImageToData(data, VoltageMeasurementResult.ZeoLineCurrent, zeoLineCurrentPicList, this);
+        FileUtils.addImageToData(data, VoltageMeasurementResult.ZeoLineCurrentPic, zeoLineCurrentPicList, this);
 
-        FileUtils.addImageToData(data, VoltageMeasurementResult.HeaderVoltage, headerVoltagePicList, this);
+        FileUtils.addImageToData(data, VoltageMeasurementResult.HeaderVoltagePic, headerVoltagePicList, this);
 
-        FileUtils.addImageToData(data, VoltageMeasurementResult.FooterVoltage, footerVoltagePicList, this);
+        FileUtils.addImageToData(data, VoltageMeasurementResult.FooterVoltagePic, footerVoltagePicList, this);
 
         return voltageMeasurementClient.update(data);
     }
@@ -326,6 +332,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
             this.voltageMeasurementResult.taskNum = etTaskNum.getText().toString();
             this.voltageMeasurementResult.areaName = spnAreaName.getSelectedItem().toString();
 
+            this.voltageMeasurementResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
             this.voltageMeasurementResult.configA = etConfigA.getText().toString();
             this.voltageMeasurementResult.configB = etConfigB.getText().toString();
             this.voltageMeasurementResult.configC = etConfigC.getText().toString();
