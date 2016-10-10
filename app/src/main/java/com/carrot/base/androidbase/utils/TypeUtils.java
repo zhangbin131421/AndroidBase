@@ -81,6 +81,10 @@ public class TypeUtils {
      * 业扩报装 - 业扩类型
      */
     public final static String[] EXTEND_TYPE = new String[]{"新装","增容"};
+    /**
+     * 营业普查 - 普查内容
+     */
+    public final static String[] AUDITE_CONTENT = new String[]{"定比定扣","窃电违约用电","零电量"};
 
 
 

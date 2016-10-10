@@ -51,8 +51,8 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
     FormEditText etAssignmentTime;
     @ViewById(R.id.et_task_num)
     FormEditText etTaskNum;
-    @ViewById(R.id.et_audite_content)
-    FormEditText etAuditeContent;
+    @ViewById(R.id.spn_audite_content)
+    Spinner spnAuditeContent;
     @ViewById(R.id.et_audite_scope)
     FormEditText etAuditeScope;
     @ViewById(R.id.et_safety_measure)
@@ -82,16 +82,18 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {};
 
-        addDisableList = new FormEditText[] {};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,};
 
-        updateDisableList = new FormEditText[] {};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etAuditeContent,etAuditeScope,etSafetyMeasure,etBeginAuditeTime,etAuditeHouseholdNum,etAuditeResult,etEndAuditeTime,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etAuditeScope,etSafetyMeasure,etBeginAuditeTime,etAuditeHouseholdNum,etAuditeResult,etEndAuditeTime,etUnhandleReason,};
 
         updateDisabledSpinnerList = new Spinner[] {};
-        finishDisabledSpinnerList = new Spinner[] {spnIsHandled,};
+        finishDisabledSpinnerList = new Spinner[] {spnAuditeContent,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
+            new OpenDateVo(etBeginAuditeTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndAuditeTime, OpenDateVo.UPDATE_ADD),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{};
@@ -110,6 +112,7 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
 
     void initDropDownList(){
         //下拉选择框
+        setDropDownListAdapter(spnAuditeContent, TypeUtils.AUDITE_CONTENT);
         setDropDownListAdapter(spnIsHandled, TypeUtils.TYPE_HANDLER);
     }
 
@@ -129,7 +132,7 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(businessAuditeResult.assignmentTime);
             etTaskNum.setText(businessAuditeResult.taskNum);
-            etAuditeContent.setText(businessAuditeResult.auditeContent);
+            spnAuditeContent.setSelection(TypeUtils.getSelectedIndex(TypeUtils.AUDITE_CONTENT, businessAuditeResult.auditeContent));
             etAuditeScope.setText(businessAuditeResult.auditeScope);
             etSafetyMeasure.setText(businessAuditeResult.safetyMeasure);
             etBeginAuditeTime.setText(businessAuditeResult.beginAuditeTime);
@@ -176,7 +179,8 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
 
             this.businessAuditeResult.assignmentTime = etAssignmentTime.getText().toString();
             this.businessAuditeResult.taskNum = etTaskNum.getText().toString();
-            this.businessAuditeResult.auditeContent = etAuditeContent.getText().toString();
+            this.businessAuditeResult.auditeContent = spnAuditeContent.getSelectedItem().toString();
+
             this.businessAuditeResult.auditeScope = etAuditeScope.getText().toString();
             this.businessAuditeResult.safetyMeasure = etSafetyMeasure.getText().toString();
             this.businessAuditeResult.beginAuditeTime = etBeginAuditeTime.getText().toString();
