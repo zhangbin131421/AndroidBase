@@ -120,12 +120,12 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,etBeginHandleTime,
-                etElectricityA,etElectricityC,etOperateTime,etTestTime,etHandleContent, etSafetyMeasure,
-                etTester,etEndHandleTime,etUnhandleReason};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,etBeginHandleTime,etProtectLine,
+                etElectricityA,etElectricityC,etOperateTime,etTestTime,etHandleContent, etSafetyMeasure,etType,
+                etTester,etEndHandleTime,etUnhandleReason,etElectricityB,etElectricityD};
 
-        updateDisabledSpinnerList = new Spinner[] {};
-        finishDisabledSpinnerList = new Spinner[] {etIsHandled, etTestResult};
+        updateDisabledSpinnerList = new Spinner[] {etAreaName};
+        finishDisabledSpinnerList = new Spinner[] {etIsHandled, etTestResult,etAreaName};
 
         imageAddButtonList = new ImageView[] {imageAddB, imageAddD};
 
@@ -191,8 +191,8 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
             etAssignmentTime.setText(totalPerformanceTestResult.assignmentTime);
             etTaskNum.setText(totalPerformanceTestResult.taskNum);
             etAreaName.setSelection(getSelectedAreaIndex(totalPerformanceTestResult.areaName));
-            etProtectLine.setSelection(TypeUtils.getSelectedIndex(TypeUtils.PRODUCTION_LINE, totalPerformanceTestResult.protectLine));
-            etType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TPT, totalPerformanceTestResult.type));
+            etProtectLine.setText(totalPerformanceTestResult.protectLine);
+            etType.setText(totalPerformanceTestResult.type);
             etSafetyMeasure.setSelection(TypeUtils.getSelectedIndex(TypeUtils.SAFETY_MEASURE, totalPerformanceTestResult.safetyMeasure));
             etEndTime.setText(totalPerformanceTestResult.endTime);
 
@@ -225,8 +225,8 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
-        super.getImageFromURL(totalPerformanceTestResult.ElectricityBPic, etElectricityBPicLL);
-        super.getImageFromURL(totalPerformanceTestResult.ElectricityDPic, etElectricityDPicLL);
+        super.getImageFromURL(totalPerformanceTestResult.electricityBPic, etElectricityBPicLL);
+        super.getImageFromURL(totalPerformanceTestResult.electricityDPic, etElectricityDPicLL);
 
     }
 

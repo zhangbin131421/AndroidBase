@@ -62,7 +62,7 @@ public class TaskCardTotalPerformanceTestAdapter extends RecyclerView.Adapter<Ta
     public DataObjectHolder onCreateViewHolder(ViewGroup parent,
                                                int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_total_performance_test, parent, false);
+                .inflate(R.layout.card_view_row_fragment_task_list_total_performance_test, parent, false);
 
 
 
