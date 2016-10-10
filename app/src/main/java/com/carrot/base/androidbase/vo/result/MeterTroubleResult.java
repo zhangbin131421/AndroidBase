@@ -85,9 +85,17 @@ public class MeterTroubleResult {
     @JsonProperty(value=TroubleReason)
     public String troubleReason;
 
+    public static final String TroubleReasonPic = "TroubleReasonPic";
+    @JsonProperty(value=TroubleReasonPic)
+    public String troubleReasonPic;
+
     public static final String HandleContent = "HandleContent";
     @JsonProperty(value=HandleContent)
     public String handleContent;
+
+    public static final String HandleContentPic = "HandleContentPic";
+    @JsonProperty(value=HandleContentPic)
+    public String handleContentPic;
 
     public static final String EndHandleTime = "EndHandleTime";
     @JsonProperty(value=EndHandleTime)

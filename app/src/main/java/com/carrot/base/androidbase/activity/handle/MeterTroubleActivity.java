@@ -38,6 +38,8 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
 
 
 
+    List<PhotoInfo> troubleReasonPicList = new ArrayList<>();
+    List<PhotoInfo> handleContentPicList = new ArrayList<>();
 
 
     MeterTroubleResult meterTroubleResult;
@@ -63,10 +65,28 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
     FormEditText etSafetyMeasure;
     @ViewById(R.id.et_begin_handle_time)
     FormEditText etBeginHandleTime;
+
+    @ViewById(R.id.ll_trouble_reason)
+    org.apmem.tools.layouts.FlowLayout llTroubleReason;
+
+
+    @ViewById(R.id.btn_add_image_trouble_reason)
+    ImageView btnAddImageTroubleReason;
+
     @ViewById(R.id.et_trouble_reason)
     FormEditText etTroubleReason;
+
+
+    @ViewById(R.id.ll_handle_content)
+    org.apmem.tools.layouts.FlowLayout llHandleContent;
+
+
+    @ViewById(R.id.btn_add_image_handle_content)
+    ImageView btnAddImageHandleContent;
+
     @ViewById(R.id.et_handle_content)
     FormEditText etHandleContent;
+
     @ViewById(R.id.et_end_handle_time)
     FormEditText etEndHandleTime;
     @ViewById(R.id.spn_is_handled)
@@ -86,9 +106,9 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {};
 
-        addDisableList = new FormEditText[] {};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
-        updateDisableList = new FormEditText[] {};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etHouseholdNum,etMeterNum,etTroubleAddress,etSafetyMeasure,etBeginHandleTime,etTroubleReason,etHandleContent,etEndHandleTime,etUnhandleReason,};
 
@@ -96,14 +116,19 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{};
 
 
 
-        imageAddButtonList = new ImageView[] {        };
-        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {        };
+        imageAddButtonList = new ImageView[] {btnAddImageTroubleReason,btnAddImageHandleContent,        };
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
+                new ImageChooseVo(btnAddImageTroubleReason, troubleReasonPicList, llTroubleReason),
+
+                new ImageChooseVo(btnAddImageHandleContent, handleContentPicList, llHandleContent),
+        };
 
     }
 
@@ -156,6 +181,8 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
+        super.getImageFromURL(meterTroubleResult.troubleReasonPic, llTroubleReason);
+        super.getImageFromURL(meterTroubleResult.handleContentPic, llHandleContent);
 
     }
 
@@ -172,6 +199,10 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
+        FileUtils.addImageToData(data, MeterTroubleResult.TroubleReasonPic, troubleReasonPicList, this);
+
+        FileUtils.addImageToData(data, MeterTroubleResult.HandleContentPic, handleContentPicList, this);
 
         return meterTroubleClient.update(data);
     }
