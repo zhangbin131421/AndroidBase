@@ -73,7 +73,17 @@ public class TypeUtils {
      * 时段
      */
     public final static String[] OUT_LIMIT = new String[]{"是","否"};
+    /**
+     * 采集消缺 - 故障原因
+     */
+    public final static String[] TROUBLE_REASON = new String[]{"终端","卡","信号"};
 
+
+
+    /**
+     * 线损管理	- 不合格原因	(如:窃电、采集、表计故障等）
+     */
+    public final static String[] LB_NOOK_REASON = new String[]{"窃电","采集","表计故障"};
     /**
      * 处理情况
      */
@@ -235,30 +245,44 @@ public class TypeUtils {
         switch (typeName){
             case TYPE_1_1:
                 LineBrokenManagementActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
+                        .isFinished(status)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_2:
                 CollectResolveTroubleActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
+                        .isFinished(status)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_3:
                 ExtendBussinessSetupActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
+                        .isFinished(status)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_4:
                 MeterTroubleActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
+                        .isFinished(status)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_5:
                 OrderHandleActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
+                        .isFinished(status)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_6:
                 BusinessAuditeActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
+                        .isFinished(status)
                         .startForResult(requestCode);
                 break;
             case TYPE_1_7:
                 StopStartElectricActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
+                        .isFinished(status)
                         .startForResult(requestCode);
                 //-------------------------
             case TYPE_2_1:
@@ -323,6 +347,8 @@ public class TypeUtils {
 
             case TYPE_4_1:
                 CarManagementActivity_.intent(context)
+//                        .taskBaseVo(taskBaseVo)
+//                        .isFinished(status)
                         .startForResult(requestCode);
                 break;
 

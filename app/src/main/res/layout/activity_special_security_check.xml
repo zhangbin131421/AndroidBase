@@ -21,128 +21,122 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <LinearLayout style="@style/tableTitle">
-            <TextView style="@style/tableColName"
-                android:text="任务派发"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-                android:id="@+id/etAssignmentTime"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle">
+                <TextView style="@style/tableColName"
+                    android:text="任务派发"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_assignment_time"/>
+            </LinearLayout>
 
-        <LinearLayout style="@style/tableTitle2">
-            <TextView style="@style/tableColName"
-                android:text="任务编号"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-                android:id="@+id/etTaskNum"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="任务编号"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_task_num"
+                    android:hint="@string/taskNumberHint"/>
+            </LinearLayout>
 
-        <LinearLayout style="@style/tableTitle2">
-            <TextView style="@style/tableColName"
-                android:text="开始时间"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-                android:id="@+id/etBeginTime"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="开始时间"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_begin_time"/>
+            </LinearLayout>
 
-        <LinearLayout style="@style/tableTitle2">
-            <TextView style="@style/tableColName"
-                android:text="结束时间"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-                android:id="@+id/etEndTime"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="结束时间"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_end_time"/>
+            </LinearLayout>
 
-        <LinearLayout style="@style/tableTitle2">
-            <TextView style="@style/tableColName"
-                android:text="安全措施"/>
-            <TextView style="@style/formDivider"/>
-            <Spinner
-                android:id="@+id/etSafetyMeasure"
-                style="@style/spinner_form_right"/>
-        </LinearLayout>
-        <LinearLayout style="@style/tableTitle">
-            <TextView style="@style/tableColName"
-                android:text="检查情况"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-                android:id="@+id/etBeginHandleTime"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="安全措施"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_safety_measure"
+                    android:text="@string/safetyMeasure"/>
+            </LinearLayout>
 
-        <LinearLayout style="@style/tableTitle2">
-            <TextView style="@style/tableColName"
-                android:text="存在问题"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-                android:id="@+id/etExistIssue"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle">
+                <TextView style="@style/tableColName"
+                    android:text="检查情况"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_begin_handle_time"/>
+            </LinearLayout>
 
-        <LinearLayout style="@style/tableTitle2">
-            <TextView style="@style/tableColName"
-            android:text="检查人员"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-                android:id="@+id/etUserID"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="存在问题"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_exist_issue"/>
+            </LinearLayout>
 
-        <LinearLayout style="@style/tableTitle2">
-            <TextView style="@style/tableColName"
-                android:text="检查日期"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-                android:id="@+id/etCheckDate"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="检查日期"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_check_date"/>
+            </LinearLayout>
 
-        <LinearLayout style="@style/tableTitle">
-            <TextView style="@style/tableColName"
-                android:text="处理结果"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-            android:id="@+id/etEndHandleTime"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle">
+                <TextView style="@style/tableColName"
+                    android:text="处理结果"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_end_handle_time"/>
+            </LinearLayout>
 
-        <LinearLayout style="@style/tableTitle2">
-            <TextView style="@style/tableColName"
-                android:text="已处理"/>
-            <TextView style="@style/formDivider"/>
-            <Spinner
-                android:id="@+id/etIsHandled"
-                style="@style/spinner_form_right"/>
-        </LinearLayout>
-        <LinearLayout style="@style/tableTitle2">
-            <TextView style="@style/tableColName"
-                android:text="未处理"/>
-            <TextView style="@style/formDivider"/>
-            <com.andreabaccega.widget.FormEditText
-                style="@style/tableColInput"
-                whatever:emptyErrorString="@string/notEmpty"
-                android:id="@+id/etUnhandleReason"/>
-        </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="已处理"/>
+                <TextView style="@style/formDivider"/>
+                <Spinner
+                    android:id="@+id/spn_is_handled"
+                    style="@style/spinner_form_right"/>
+            </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="未处理"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_unhandle_reason"/>
+            </LinearLayout>
 
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

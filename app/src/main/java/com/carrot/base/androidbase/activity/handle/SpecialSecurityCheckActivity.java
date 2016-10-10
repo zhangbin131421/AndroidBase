@@ -1,15 +1,17 @@
-
-
-
 package com.carrot.base.androidbase.activity.handle;
 
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.client.SpecialSecurityCheckClient;
+import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
+import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.SpecialSecurityCheckResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
@@ -17,12 +19,15 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
-import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
 import org.springframework.util.MultiValueMap;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by victor on 8/22/16.
@@ -34,61 +39,72 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
 
 
+
     SpecialSecurityCheckResult specialSecurityCheckResult;
 
     @RestService
     SpecialSecurityCheckClient specialSecurityCheckClient;
 
 
-    @ViewById(R.id.etAssignmentTime)
+
+    @ViewById(R.id.et_assignment_time)
     FormEditText etAssignmentTime;
-
-    @ViewById(R.id.etTaskNum)
+    @ViewById(R.id.et_task_num)
     FormEditText etTaskNum;
-
-    @ViewById(R.id.etBeginTime)
+    @ViewById(R.id.et_begin_time)
     FormEditText etBeginTime;
-
-    @ViewById(R.id.etEndTime)
+    @ViewById(R.id.et_end_time)
     FormEditText etEndTime;
-
-    @ViewById(R.id.etSafetyMeasure)
-    Spinner etSafetyMeasure;
-
-    @ViewById(R.id.etBeginHandleTime)
+    @ViewById(R.id.et_safety_measure)
+    FormEditText etSafetyMeasure;
+    @ViewById(R.id.et_begin_handle_time)
     FormEditText etBeginHandleTime;
-
-    @ViewById(R.id.etExistIssue)
+    @ViewById(R.id.et_exist_issue)
     FormEditText etExistIssue;
-
-    @ViewById(R.id.etUserID)
-    FormEditText etUserID;
-
-    @ViewById(R.id.etCheckDate)
+    @ViewById(R.id.et_check_date)
     FormEditText etCheckDate;
-
-    @ViewById(R.id.etEndHandleTime)
+    @ViewById(R.id.et_end_handle_time)
     FormEditText etEndHandleTime;
-
-    @ViewById(R.id.etIsHandled)
-    Spinner etIsHandled;
-
-    @ViewById(R.id.etUnhandleReason)
+    @ViewById(R.id.spn_is_handled)
+    Spinner spnIsHandled;
+    @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
+
 
 
     @AfterViews
     void bindAdapter(){
-
-        super.afterInitView("专项安全检查", getApplicationContext(), getResources());
+        super.afterInitView(TypeUtils.TYPE_2_8, getApplicationContext(), getResources());
 
     }
 
 
     public void setValidateList(){
+        allValidateFields = new FormEditText[] {};
 
-        allValidateFields = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginTime,etEndTime,etBeginHandleTime,etExistIssue,etUserID,etCheckDate,etEndHandleTime,etUnhandleReason};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,};
 
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,};
+
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginTime,etEndTime,etSafetyMeasure,etBeginHandleTime,etExistIssue,etCheckDate,etEndHandleTime,etUnhandleReason,};
+
+        updateDisabledSpinnerList = new Spinner[] {};
+        finishDisabledSpinnerList = new Spinner[] {spnIsHandled,};
+
+        openDateEditTextList = new OpenDateVo[] {
+            new OpenDateVo(etBeginTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etBeginHandleTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etCheckDate, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+        };
+
+        showBySpinnerList = new ShowWithSpinnerVo[]{};
+
+
+
+        imageAddButtonList = new ImageView[] {        };
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {        };
 
     }
 
@@ -97,30 +113,23 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
         specialSecurityCheckClient.setRestErrorHandler(ssErrorHandler);
     }
 
-    @Override
     void initDropDownList(){
         //下拉选择框
-        setDropDownListAdapter(etSafetyMeasure, TypeUtils.TYPE_TEST);
-
-        setDropDownListAdapter(etIsHandled, TypeUtils.TYPE_HANDLER);
-
+        setDropDownListAdapter(spnIsHandled, TypeUtils.TYPE_HANDLER);
     }
 
 
-
-    @Background
     void getEntityFromServer(){
         specialSecurityCheckResult = specialSecurityCheckClient.getById(taskBaseVo.id);
     }
 
-    @UiThread
     void refreshViewAfterGetEntity(){
         if(specialSecurityCheckResult == null){
 
             specialSecurityCheckResult = new SpecialSecurityCheckResult();
 
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-
+            etEndTime.setText(DateUtils.getEndTime());
 
         }else{
 
@@ -128,22 +137,16 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
             etTaskNum.setText(specialSecurityCheckResult.taskNum);
             etBeginTime.setText(specialSecurityCheckResult.beginTime);
             etEndTime.setText(specialSecurityCheckResult.endTime);
-            etSafetyMeasure.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_TEST, specialSecurityCheckResult.safetyMeasure));
+            etSafetyMeasure.setText(specialSecurityCheckResult.safetyMeasure);
             etBeginHandleTime.setText(specialSecurityCheckResult.beginHandleTime);
             etExistIssue.setText(specialSecurityCheckResult.existIssue);
-            etUserID.setText(specialSecurityCheckResult.userID+"");
             etCheckDate.setText(specialSecurityCheckResult.checkDate);
             etEndHandleTime.setText(specialSecurityCheckResult.endHandleTime);
-
-            etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, specialSecurityCheckResult.isHandled == 2 ? "未处理" : "已处理"));
-
+            spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, specialSecurityCheckResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(specialSecurityCheckResult.unhandleReason);
 
             getImage();
-
-            this.saveStatus = 1;
         }
-
     }
 
     /**
@@ -152,17 +155,12 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
+
     }
 
-
-
-    /**
-     * 新增
-     */
-    @Override
     UpdateResult save(){
 
-        if(specialSecurityCheckResult.id == 0){
+        if(specialSecurityCheckResult.iD == 0){
             specialSecurityCheckResult.assignByUserID = userPrefs.id().get();
             specialSecurityCheckResult.userID = userPrefs.id().get();
         }
@@ -178,35 +176,23 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
     }
 
 
-
-    @Override
     boolean validate(){
 
         if(super.validate()) {
 
             this.specialSecurityCheckResult.assignmentTime = etAssignmentTime.getText().toString();
-
             this.specialSecurityCheckResult.taskNum = etTaskNum.getText().toString();
-
             this.specialSecurityCheckResult.beginTime = etBeginTime.getText().toString();
-
             this.specialSecurityCheckResult.endTime = etEndTime.getText().toString();
-
-            this.specialSecurityCheckResult.safetyMeasure = etSafetyMeasure.getSelectedItem().toString();
-
+            this.specialSecurityCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
             this.specialSecurityCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
-
             this.specialSecurityCheckResult.existIssue = etExistIssue.getText().toString();
-
-            this.specialSecurityCheckResult.userID = Integer.parseInt(etUserID.getText().toString());
-
             this.specialSecurityCheckResult.checkDate = etCheckDate.getText().toString();
-
             this.specialSecurityCheckResult.endHandleTime = etEndHandleTime.getText().toString();
-
-            this.specialSecurityCheckResult.isHandled = etIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
+            this.specialSecurityCheckResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.specialSecurityCheckResult.unhandleReason = etUnhandleReason.getText().toString();
+
 
             return true;
         }{

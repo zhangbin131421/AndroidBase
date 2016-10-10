@@ -84,11 +84,11 @@ public class TaskCardOrderHandleAdapter extends RecyclerView.Adapter<TaskCardOrd
         }
 
 
-        if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
-            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
-        }else{
-            holder.endTime.setText("");
-        }
+//        if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
+//            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
+//        }else{
+//            holder.endTime.setText("");
+//        }
 
         if(taskBaseVo.isHandled == 2){
             holder.tv_unfinished.setText("未完成");

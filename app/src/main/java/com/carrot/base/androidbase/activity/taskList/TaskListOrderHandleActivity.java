@@ -63,7 +63,7 @@ public class TaskListOrderHandleActivity extends TaskListBaseActivity {
             public void onItemClick(int position, View v) {
 
                 TaskBaseVo taskBaseVo = new TaskBaseVo();
-                taskBaseVo.id = mAdapter.getItem(position).id;
+                taskBaseVo.id = mAdapter.getItem(position).iD;
                 TypeUtils.openItem(subTypeVo.name, context, taskBaseVo, ACTIVITY_REQUEST_CODE, status.equals("已完成") ? 2 : 1);
             }
         });

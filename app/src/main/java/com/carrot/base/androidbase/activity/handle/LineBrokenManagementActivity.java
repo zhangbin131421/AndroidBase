@@ -1,16 +1,8 @@
 package com.carrot.base.androidbase.activity.handle;
 
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
-
-import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.Click;
-import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.OptionsMenu;
-import org.androidannotations.annotations.UiThread;
-import org.androidannotations.annotations.ViewById;
-import org.androidannotations.rest.spring.annotations.RestService;
-import org.springframework.util.MultiValueMap;
 
 import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
@@ -19,8 +11,17 @@ import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.LineBrokenManagementResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.ViewById;
+import org.androidannotations.rest.spring.annotations.RestService;
+import org.springframework.util.MultiValueMap;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -36,7 +37,9 @@ import cn.finalteam.galleryfinal.model.PhotoInfo;
 public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
 
-    List<PhotoInfo> handleContentPicList = new ArrayList<>();;
+
+    List<PhotoInfo> handleContentPicList = new ArrayList<>();
+
 
     LineBrokenManagementResult lineBrokenManagementResult;
 
@@ -44,101 +47,115 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
     LineBrokenManagementClient lineBrokenManagementClient;
 
 
-    @ViewById(R.id.et_AssignmentTime)
-    FormEditText et_AssignmentTime;
-    @ViewById(R.id.et_TaskNum)
-    FormEditText et_TaskNum;
-    @ViewById(R.id.et_AreaName)
-    Spinner et_AreaName;
-    @ViewById(R.id.et_BrokenRate)
-    FormEditText et_BrokenRate;
-    @ViewById(R.id.et_SafetyMeasure)
-    Spinner et_SafetyMeasure;
-    @ViewById(R.id.et_BeginHandleTime)
-    FormEditText et_BeginHandleTime;
-    @ViewById(R.id.et_UnqualifiedReason)
-    Spinner et_UnqualifiedReason;
-    @ViewById(R.id.et_HandleContent)
-    org.apmem.tools.layouts.FlowLayout et_HandleContent;
-    @ViewById(R.id.et_UserID)
-    FormEditText et_UserID;
-    @ViewById(R.id.et_EndHandleTiem)
-    FormEditText et_EndHandleTiem;
-    @ViewById(R.id.et_IsHandled)
-    FormEditText et_IsHandled;
-    @ViewById(R.id.et_UnhandleReason)
-    FormEditText et_UnhandleReason;
+
+    @ViewById(R.id.et_assignment_time)
+    FormEditText etAssignmentTime;
+    @ViewById(R.id.et_task_num)
+    FormEditText etTaskNum;
+    @ViewById(R.id.spn_area_name)
+    Spinner spnAreaName;
+    @ViewById(R.id.et_broken_rate)
+    FormEditText etBrokenRate;
+    @ViewById(R.id.et_safety_measure)
+    FormEditText etSafetyMeasure;
+    @ViewById(R.id.et_begin_handle_time)
+    FormEditText etBeginHandleTime;
+    @ViewById(R.id.spn_unqualified_reason)
+    Spinner spnUnqualifiedReason;
+
+    @ViewById(R.id.ll_handle_content)
+    org.apmem.tools.layouts.FlowLayout llHandleContent;
+
+
+    @ViewById(R.id.btn_add_image_handle_content)
+    ImageView btnAddImageHandleContent;
+
+    @ViewById(R.id.et_handle_content)
+    FormEditText etHandleContent;
+
+    @ViewById(R.id.et_end_handle_tiem)
+    FormEditText etEndHandleTiem;
+    @ViewById(R.id.spn_is_handled)
+    Spinner spnIsHandled;
+    @ViewById(R.id.et_unhandle_reason)
+    FormEditText etUnhandleReason;
+
+
 
     @AfterViews
     void bindAdapter(){
-
         super.afterInitView(TypeUtils.TYPE_1_1, getApplicationContext(), getResources());
 
     }
 
 
     public void setValidateList(){
+        allValidateFields = new FormEditText[] {};
 
-        allValidateFields = new FormEditText[] {et_AssignmentTime, et_TaskNum,
-                et_BrokenRate, et_BeginHandleTime,
-                et_UserID, et_EndHandleTiem, et_IsHandled, et_UnhandleReason};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBrokenRate,etSafetyMeasure,etBeginHandleTime,etHandleContent,etEndHandleTiem,etUnhandleReason,};
+
+        updateDisabledSpinnerList = new Spinner[] {};
+        finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnUnqualifiedReason,spnIsHandled,};
+
+        openDateEditTextList = new OpenDateVo[] {
+            new OpenDateVo(etEndHandleTiem, OpenDateVo.UPDATE_ADD),
+        };
+
+        showBySpinnerList = new ShowWithSpinnerVo[]{};
+
+
+
+        imageAddButtonList = new ImageView[] {btnAddImageHandleContent,        };
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
+                new ImageChooseVo(btnAddImageHandleContent, handleContentPicList, llHandleContent),
+        };
 
     }
-
 
     @Override
     public void setErrorHandler(){
         lineBrokenManagementClient.setRestErrorHandler(ssErrorHandler);
     }
 
-
-    @Override
     void initDropDownList(){
         //下拉选择框
-        setDropDownListAdapter(et_AreaName, DataInstance.getInstance().areaInformationResults);
-
-        setDropDownListAdapter(et_SafetyMeasure, TypeUtils.SAFETY_MEASURE);
-
-        setDropDownListAdapter(et_UnqualifiedReason, TypeUtils.UNQUALIFIED_REASON);
+        setDropDownListAdapter(spnAreaName, DataInstance.getInstance().areaInformationResults);
+        setDropDownListAdapter(spnUnqualifiedReason, TypeUtils.LB_NOOK_REASON);
+        setDropDownListAdapter(spnIsHandled, TypeUtils.TYPE_HANDLER);
     }
 
 
-
-    @Background
     void getEntityFromServer(){
         lineBrokenManagementResult = lineBrokenManagementClient.getById(taskBaseVo.id);
     }
 
-    @UiThread
     void refreshViewAfterGetEntity(){
         if(lineBrokenManagementResult == null){
 
             lineBrokenManagementResult = new LineBrokenManagementResult();
 
-            et_AssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
-
+            etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
         }else{
-            et_AssignmentTime.setText(lineBrokenManagementResult.assignmentTime);
-            et_TaskNum.setText(lineBrokenManagementResult.taskNum);
-            et_AreaName.setSelection(getSelectedAreaIndex(lineBrokenManagementResult.areaName));
-            et_BrokenRate.setText(lineBrokenManagementResult.brokenRate);
-            et_SafetyMeasure.setSelection(TypeUtils.getSelectedIndex(TypeUtils.SAFETY_MEASURE, lineBrokenManagementResult.safetyMeasure));
-            et_BeginHandleTime.setText(lineBrokenManagementResult.beginHandleTime);
-            et_UnqualifiedReason.setSelection(TypeUtils.getSelectedIndex(TypeUtils.UNQUALIFIED_REASON, lineBrokenManagementResult.unqualifiedReason));
-//            et_HandleContent.setText(lineBrokenManagementResult.handleContent);
-            et_UserID.setText(lineBrokenManagementResult.userId);
-            et_EndHandleTiem.setText(lineBrokenManagementResult.endHandleTiem);
-            et_IsHandled.setText(lineBrokenManagementResult.isHandled);
-            et_UnhandleReason.setText(lineBrokenManagementResult.unhandleReason);
 
-
+            etAssignmentTime.setText(lineBrokenManagementResult.assignmentTime);
+            etTaskNum.setText(lineBrokenManagementResult.taskNum);
+            spnAreaName.setSelection(getSelectedAreaIndex(lineBrokenManagementResult.areaName));
+            etBrokenRate.setText(lineBrokenManagementResult.brokenRate);
+            etSafetyMeasure.setText(lineBrokenManagementResult.safetyMeasure);
+            etBeginHandleTime.setText(lineBrokenManagementResult.beginHandleTime);
+            spnUnqualifiedReason.setSelection(TypeUtils.getSelectedIndex(TypeUtils.LB_NOOK_REASON, lineBrokenManagementResult.unqualifiedReason));
+            etHandleContent.setText(lineBrokenManagementResult.handleContent);
+            etEndHandleTiem.setText(lineBrokenManagementResult.endHandleTiem);
+            spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, lineBrokenManagementResult.isHandled == 2 ? "未处理" : "已处理"));
+            etUnhandleReason.setText(lineBrokenManagementResult.unhandleReason);
 
             getImage();
-
-            this.saveStatus = 1;
         }
-
     }
 
     /**
@@ -147,31 +164,16 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
-        super.getImageFromURL(lineBrokenManagementResult.handleContentPic, et_HandleContent);
+        super.getImageFromURL(lineBrokenManagementResult.handleContentPic, llHandleContent);
 
     }
 
-
-    @Click(R.id.btn_add_image)
-    void addImageLocal(){
-
-        super.showChooseImage(handleContentPicList, et_HandleContent);
-
-    }
-
-
-
-    /**
-     * 新增
-     */
-    @Override
     UpdateResult save(){
 
-        if(lineBrokenManagementResult.id == 0){
+        if(lineBrokenManagementResult.iD == 0){
             lineBrokenManagementResult.assignByUserID = userPrefs.id().get();
-            lineBrokenManagementResult.userId = userPrefs.id().get();
+            lineBrokenManagementResult.userID = userPrefs.id().get();
         }
-
 
         MultiValueMap<String, Object> data = null;
         try {
@@ -185,23 +187,26 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
         return lineBrokenManagementClient.update(data);
     }
 
-    @Override
+
     boolean validate(){
 
         if(super.validate()) {
 
-            this.lineBrokenManagementResult.assignmentTime = et_AssignmentTime.getText().toString();
-            this.lineBrokenManagementResult.taskNum = et_TaskNum.getText().toString();
-            this.lineBrokenManagementResult.areaName = et_AreaName.getSelectedItem().toString();
-            this.lineBrokenManagementResult.brokenRate = et_BrokenRate.getText().toString();
-            this.lineBrokenManagementResult.safetyMeasure = et_SafetyMeasure.getSelectedItem().toString();
-            this.lineBrokenManagementResult.beginHandleTime = et_BeginHandleTime.getText().toString();
-            this.lineBrokenManagementResult.unqualifiedReason = et_UnqualifiedReason.getSelectedItem().toString();
-//            this.lineBrokenManagementResult.handleContent = et_HandleContent.getText().toString();
-            this.lineBrokenManagementResult.userId = Integer.parseInt(et_UserID.getText().toString());
-            this.lineBrokenManagementResult.endHandleTiem = et_EndHandleTiem.getText().toString();
-            this.lineBrokenManagementResult.isHandled = et_IsHandled.getText().toString().equals("已处理") ? 1 : 2;
-            this.lineBrokenManagementResult.unhandleReason = et_UnhandleReason.getText().toString();
+            this.lineBrokenManagementResult.assignmentTime = etAssignmentTime.getText().toString();
+            this.lineBrokenManagementResult.taskNum = etTaskNum.getText().toString();
+            this.lineBrokenManagementResult.areaName = spnAreaName.getSelectedItem().toString();
+
+            this.lineBrokenManagementResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
+            this.lineBrokenManagementResult.brokenRate = etBrokenRate.getText().toString();
+            this.lineBrokenManagementResult.safetyMeasure = etSafetyMeasure.getText().toString();
+            this.lineBrokenManagementResult.beginHandleTime = etBeginHandleTime.getText().toString();
+            this.lineBrokenManagementResult.unqualifiedReason = spnUnqualifiedReason.getSelectedItem().toString();
+
+            this.lineBrokenManagementResult.handleContent = etHandleContent.getText().toString();
+            this.lineBrokenManagementResult.endHandleTiem = etEndHandleTiem.getText().toString();
+            this.lineBrokenManagementResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
+
+            this.lineBrokenManagementResult.unhandleReason = etUnhandleReason.getText().toString();
 
 
             return true;
@@ -209,6 +214,5 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
             return false;
         }
     }
-
 
 }

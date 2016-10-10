@@ -1,57 +1,204 @@
 package com.carrot.base.androidbase.activity.handle;
 
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 
+import com.andreabaccega.widget.FormEditText;
 import com.carrot.base.androidbase.R;
+import com.carrot.base.androidbase.client.ExtendBussinessSetupClient;
+import com.carrot.base.androidbase.preferences.DataInstance;
+import com.carrot.base.androidbase.utils.DateUtils;
+import com.carrot.base.androidbase.utils.FileUtils;
+import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
+import com.carrot.base.androidbase.vo.result.ExtendBussinessSetupResult;
+import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.rest.spring.annotations.RestService;
+import org.springframework.util.MultiValueMap;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.finalteam.galleryfinal.model.PhotoInfo;
 
 /**
  * Created by victor on 8/22/16.
  */
 @EActivity(R.layout.activity_extend_bussiness_setup)
 @OptionsMenu(R.menu.task_item)
-public class ExtendBussinessSetupActivity extends AppCompatActivity{
+public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
 
 
-    @ViewById(R.id.tb_extend_business_setup_tool_bar)
-    Toolbar toolbar;
+
+
+
+    ExtendBussinessSetupResult extendBussinessSetupResult;
+
+    @RestService
+    ExtendBussinessSetupClient extendBussinessSetupClient;
+
+
+
+    @ViewById(R.id.et_assignment_time)
+    FormEditText etAssignmentTime;
+    @ViewById(R.id.et_task_num)
+    FormEditText etTaskNum;
+    @ViewById(R.id.spn_area_name)
+    Spinner spnAreaName;
+    @ViewById(R.id.et_extend_type)
+    FormEditText etExtendType;
+    @ViewById(R.id.et_setup_address)
+    FormEditText etSetupAddress;
+    @ViewById(R.id.et_safety_measure)
+    FormEditText etSafetyMeasure;
+    @ViewById(R.id.et_end_time)
+    FormEditText etEndTime;
+    @ViewById(R.id.et_begin_handle_time)
+    FormEditText etBeginHandleTime;
+    @ViewById(R.id.et_handle_content)
+    FormEditText etHandleContent;
+    @ViewById(R.id.et_end_handle_time)
+    FormEditText etEndHandleTime;
+    @ViewById(R.id.spn_is_handled)
+    Spinner spnIsHandled;
+    @ViewById(R.id.et_unhandle_reason)
+    FormEditText etUnhandleReason;
+
+
 
     @AfterViews
     void bindAdapter(){
-
-
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        super.afterInitView(TypeUtils.TYPE_1_3, getApplicationContext(), getResources());
 
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_task_item_save:
-                Toast.makeText(ExtendBussinessSetupActivity.this, "SAVE!", Toast.LENGTH_SHORT).show();
+    public void setValidateList(){
+        allValidateFields = new FormEditText[] {};
 
-                return true;
-            case android.R.id.home:
-                if (getParentActivityIntent() == null) {
-                    onBackPressed();
-                } else {
-                    NavUtils.navigateUpFromSameTask(this);
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        addDisableList = new FormEditText[] {};
+
+        updateDisableList = new FormEditText[] {};
+
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etExtendType,etSetupAddress,etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,etEndHandleTime,etUnhandleReason,};
+
+        updateDisabledSpinnerList = new Spinner[] {};
+        finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
+
+        openDateEditTextList = new OpenDateVo[] {
+        };
+
+        showBySpinnerList = new ShowWithSpinnerVo[]{};
+
+
+
+        imageAddButtonList = new ImageView[] {        };
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {        };
+
+    }
+
+    @Override
+    public void setErrorHandler(){
+        extendBussinessSetupClient.setRestErrorHandler(ssErrorHandler);
+    }
+
+    void initDropDownList(){
+        //下拉选择框
+        setDropDownListAdapter(spnAreaName, DataInstance.getInstance().areaInformationResults);
+        setDropDownListAdapter(spnIsHandled, TypeUtils.TYPE_HANDLER);
+    }
+
+
+    void getEntityFromServer(){
+        extendBussinessSetupResult = extendBussinessSetupClient.getById(taskBaseVo.id);
+    }
+
+    void refreshViewAfterGetEntity(){
+        if(extendBussinessSetupResult == null){
+
+            extendBussinessSetupResult = new ExtendBussinessSetupResult();
+
+            etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+            etEndTime.setText(DateUtils.getEndTime());
+
+        }else{
+
+            etAssignmentTime.setText(extendBussinessSetupResult.assignmentTime);
+            etTaskNum.setText(extendBussinessSetupResult.taskNum);
+            spnAreaName.setSelection(getSelectedAreaIndex(extendBussinessSetupResult.areaName));
+            etExtendType.setText(extendBussinessSetupResult.extendType);
+            etSetupAddress.setText(extendBussinessSetupResult.setupAddress);
+            etSafetyMeasure.setText(extendBussinessSetupResult.safetyMeasure);
+            etEndTime.setText(extendBussinessSetupResult.endTime);
+            etBeginHandleTime.setText(extendBussinessSetupResult.beginHandleTime);
+            etHandleContent.setText(extendBussinessSetupResult.handleContent);
+            etEndHandleTime.setText(extendBussinessSetupResult.endHandleTime);
+            spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, extendBussinessSetupResult.isHandled == 2 ? "未处理" : "已处理"));
+            etUnhandleReason.setText(extendBussinessSetupResult.unhandleReason);
+
+            getImage();
+        }
+    }
+
+    /**
+     * update,打开页面后，获取当前数据，并获取网络图片
+     */
+    @Background
+    void getImage(){
+
+
+    }
+
+    UpdateResult save(){
+
+        if(extendBussinessSetupResult.iD == 0){
+            extendBussinessSetupResult.assignByUserID = userPrefs.id().get();
+            extendBussinessSetupResult.userID = userPrefs.id().get();
+        }
+
+        MultiValueMap<String, Object> data = null;
+        try {
+            data = extendBussinessSetupResult.parseToMultiValueMap();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return extendBussinessSetupClient.update(data);
+    }
+
+
+    boolean validate(){
+
+        if(super.validate()) {
+
+            this.extendBussinessSetupResult.assignmentTime = etAssignmentTime.getText().toString();
+            this.extendBussinessSetupResult.taskNum = etTaskNum.getText().toString();
+            this.extendBussinessSetupResult.areaName = spnAreaName.getSelectedItem().toString();
+
+            this.extendBussinessSetupResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
+            this.extendBussinessSetupResult.extendType = etExtendType.getText().toString();
+            this.extendBussinessSetupResult.setupAddress = etSetupAddress.getText().toString();
+            this.extendBussinessSetupResult.safetyMeasure = etSafetyMeasure.getText().toString();
+            this.extendBussinessSetupResult.endTime = etEndTime.getText().toString();
+            this.extendBussinessSetupResult.beginHandleTime = etBeginHandleTime.getText().toString();
+            this.extendBussinessSetupResult.handleContent = etHandleContent.getText().toString();
+            this.extendBussinessSetupResult.endHandleTime = etEndHandleTime.getText().toString();
+            this.extendBussinessSetupResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
+
+            this.extendBussinessSetupResult.unhandleReason = etUnhandleReason.getText().toString();
+
+
+            return true;
+        }{
+            return false;
         }
     }
 

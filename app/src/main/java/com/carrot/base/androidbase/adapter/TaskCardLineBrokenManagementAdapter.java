@@ -89,8 +89,8 @@ public class TaskCardLineBrokenManagementAdapter extends RecyclerView.Adapter<Ta
 
         holder.areaName.setText(taskBaseVo.areaName);
 
-        if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
-            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
+        if(taskBaseVo.EndHandleTiem != null && !taskBaseVo.EndHandleTiem.equals("")){
+            holder.endTime.setText("结束日期：" + taskBaseVo.EndHandleTiem.substring(0,10));
         }else{
             holder.endTime.setText("");
         }

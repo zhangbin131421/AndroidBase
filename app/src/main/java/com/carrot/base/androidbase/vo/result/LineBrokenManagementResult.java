@@ -1,3 +1,11 @@
+
+
+
+// *********************LineBrokenManagement Result ********************** 
+// *********************线损管理        ********************** 
+
+
+
 package com.carrot.base.androidbase.vo.result;
 
 
@@ -23,58 +31,51 @@ public class LineBrokenManagementResult {
 
     public static final String ID = "ID";
     @JsonProperty(value=ID)
-    public int id;
+    public int iD;
+
     public static final String UserID = "UserID";
     @JsonProperty(value=UserID)
-    public int userId;
+    public int userID;
+
     public static final String AssignByUserID = "AssignByUserID";
     @JsonProperty(value=AssignByUserID)
     public int assignByUserID;
+
     public static final String CreatedTime = "CreatedTime";
     @JsonProperty(value=CreatedTime)
     public String createdTime;
-    public static final String TaskNum = "TaskNum";
-    @JsonProperty(value=TaskNum)
-    public String taskNum;
+
     public static final String AssignmentTime = "AssignmentTime";
     @JsonProperty(value=AssignmentTime)
     public String assignmentTime;
 
+    public static final String TaskNum = "TaskNum";
+    @JsonProperty(value=TaskNum)
+    public String taskNum;
 
     public static final String AreaName = "AreaName";
     @JsonProperty(value=AreaName)
     public String areaName;
 
-
-
+    public static final String AreaID = "AreaID";
+    @JsonProperty(value=AreaID)
+    public int areaID;
 
     public static final String BrokenRate = "BrokenRate";
     @JsonProperty(value=BrokenRate)
     public String brokenRate;
 
-
-
-
     public static final String SafetyMeasure = "SafetyMeasure";
     @JsonProperty(value=SafetyMeasure)
     public String safetyMeasure;
-
-
-
 
     public static final String BeginHandleTime = "BeginHandleTime";
     @JsonProperty(value=BeginHandleTime)
     public String beginHandleTime;
 
-
-
-
     public static final String UnqualifiedReason = "UnqualifiedReason";
     @JsonProperty(value=UnqualifiedReason)
     public String unqualifiedReason;
-
-
-
 
     public static final String HandleContent = "HandleContent";
     @JsonProperty(value=HandleContent)
@@ -84,22 +85,13 @@ public class LineBrokenManagementResult {
     @JsonProperty(value=HandleContentPic)
     public String handleContentPic;
 
-
-
-
     public static final String EndHandleTiem = "EndHandleTiem";
     @JsonProperty(value=EndHandleTiem)
     public String endHandleTiem;
 
-
-
-
     public static final String IsHandled = "IsHandled";
     @JsonProperty(value=IsHandled)
     public int isHandled;
-
-
-
 
     public static final String UnhandleReason = "UnhandleReason";
     @JsonProperty(value=UnhandleReason)
@@ -107,32 +99,26 @@ public class LineBrokenManagementResult {
 
 
 
-    public static final String EndTime = "EndTime";
-    @JsonProperty(value=EndTime)
-    public String endTime;
-
-
-
     @JsonIgnore
     public MultiValueMap<String, Object> parseToMultiValueMap() throws UnsupportedEncodingException {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
+        rtn.add(LineBrokenManagementResult.ID, this.iD+"");
+        rtn.add(LineBrokenManagementResult.UserID, this.userID+"");
         rtn.add(LineBrokenManagementResult.AssignByUserID, this.assignByUserID+"");
-        rtn.add(LineBrokenManagementResult.AssignmentTime, this.assignmentTime.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.CreatedTime, this.createdTime.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.ID, this.id+"");
-        rtn.add(LineBrokenManagementResult.TaskNum, this.taskNum.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.UserID, this.userId+"");
-        rtn.add(LineBrokenManagementResult.AreaName, this.areaName.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.BrokenRate, this.brokenRate.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.SafetyMeasure, this.safetyMeasure.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.UnqualifiedReason, this.unqualifiedReason.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.HandleContent, this.handleContent.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.EndHandleTiem, this.endHandleTiem.getBytes("UTF-8"));
-        rtn.add(LineBrokenManagementResult.IsHandled, this.isHandled);
-        rtn.add(LineBrokenManagementResult.UnhandleReason, this.unhandleReason.getBytes("UTF-8"));
-
+        rtn.add(LineBrokenManagementResult.CreatedTime, this.createdTime == null ? "" : this.createdTime.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.TaskNum, this.taskNum == null ? "" : this.taskNum.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.AreaName, this.areaName == null ? "" : this.areaName.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.AreaID, this.areaID+"");
+        rtn.add(LineBrokenManagementResult.BrokenRate, this.brokenRate == null ? "" : this.brokenRate.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.SafetyMeasure, this.safetyMeasure == null ? "" : this.safetyMeasure.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.BeginHandleTime, this.beginHandleTime == null ? "" : this.beginHandleTime.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.UnqualifiedReason, this.unqualifiedReason == null ? "" : this.unqualifiedReason.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.HandleContent, this.handleContent == null ? "" : this.handleContent.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.EndHandleTiem, this.endHandleTiem == null ? "" : this.endHandleTiem.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.IsHandled, this.isHandled+"");
+        rtn.add(LineBrokenManagementResult.UnhandleReason, this.unhandleReason == null ? "" : this.unhandleReason.getBytes("UTF-8"));
 
         return rtn;
     }
