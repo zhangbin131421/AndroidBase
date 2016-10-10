@@ -75,26 +75,26 @@ public class TaskCardCarManagementAdapter extends RecyclerView.Adapter<TaskCardC
 
         CarManagementResult taskBaseVo = mDataset.get(position);
 
-        holder.name.setText(taskBaseVo.taskNum);
+        holder.name.setText(taskBaseVo.applyNum);
 
-        if(taskBaseVo.assignmentTime != null && !taskBaseVo.assignmentTime.equals("")){
-            holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));
-        }else{
-            holder.creationTime.setText("");
-        }
-
-        if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
-            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
-        }else{
-            holder.endTime.setText("");
-        }
-
-        if(taskBaseVo.isHandled == 2){
-            holder.tv_unfinished.setText("未完成");
-            holder.tv_unfinished.setVisibility(View.VISIBLE);
-        }else{
-            holder.tv_unfinished.setVisibility(View.GONE);
-        }
+//        if(taskBaseVo.assignmentTime != null && !taskBaseVo.assignmentTime.equals("")){
+//            holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));
+//        }else{
+//            holder.creationTime.setText("");
+//        }
+//
+//        if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
+//            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
+//        }else{
+//            holder.endTime.setText("");
+//        }
+//
+//        if(taskBaseVo.isHandled == 2){
+//            holder.tv_unfinished.setText("未完成");
+//            holder.tv_unfinished.setVisibility(View.VISIBLE);
+//        }else{
+//            holder.tv_unfinished.setVisibility(View.GONE);
+//        }
 
     }
 

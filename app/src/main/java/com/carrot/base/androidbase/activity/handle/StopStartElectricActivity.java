@@ -38,6 +38,7 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
 
 
 
+    List<PhotoInfo> isHandledPicList = new ArrayList<>();
 
 
     StopStartElectricResult stopStartElectricResult;
@@ -57,12 +58,21 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
     FormEditText etStopStartElectricAddress;
     @ViewById(R.id.et_begin_handle_time)
     FormEditText etBeginHandleTime;
-    @ViewById(R.id.et_handle_content)
-    FormEditText etHandleContent;
+    @ViewById(R.id.spn_handle_content)
+    Spinner spnHandleContent;
     @ViewById(R.id.et_end_handle_time)
     FormEditText etEndHandleTime;
+
+    @ViewById(R.id.ll_is_handled)
+    org.apmem.tools.layouts.FlowLayout llIsHandled;
+
+
+    @ViewById(R.id.btn_add_image_is_handled)
+    ImageView btnAddImageIsHandled;
+
     @ViewById(R.id.spn_is_handled)
     Spinner spnIsHandled;
+
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
@@ -78,24 +88,27 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {};
 
-        addDisableList = new FormEditText[] {};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
-        updateDisableList = new FormEditText[] {};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etStopStartElectricAddress,etBeginHandleTime,etHandleContent,etEndHandleTime,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etStopStartElectricAddress,etBeginHandleTime,etEndHandleTime,etUnhandleReason,};
 
         updateDisabledSpinnerList = new Spinner[] {};
-        finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
+        finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnHandleContent,spnIsHandled};
 
         openDateEditTextList = new OpenDateVo[] {
+                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{};
 
 
 
-        imageAddButtonList = new ImageView[] {        };
-        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {        };
+        imageAddButtonList = new ImageView[] {btnAddImageIsHandled,        };
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
+                new ImageChooseVo(btnAddImageIsHandled, isHandledPicList, llIsHandled),
+        };
 
     }
 
@@ -107,6 +120,7 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
     void initDropDownList(){
         //下拉选择框
         setDropDownListAdapter(spnAreaName, DataInstance.getInstance().areaInformationResults);
+        setDropDownListAdapter(spnHandleContent, TypeUtils.SS_HANDLER);
         setDropDownListAdapter(spnIsHandled, TypeUtils.TYPE_HANDLER);
     }
 
@@ -129,7 +143,7 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
             spnAreaName.setSelection(getSelectedAreaIndex(stopStartElectricResult.areaName));
             etStopStartElectricAddress.setText(stopStartElectricResult.stopStartElectricAddress);
             etBeginHandleTime.setText(stopStartElectricResult.beginHandleTime);
-            etHandleContent.setText(stopStartElectricResult.handleContent);
+            spnHandleContent.setSelection(TypeUtils.getSelectedIndex(TypeUtils.SS_HANDLER, stopStartElectricResult.handleContent));
             etEndHandleTime.setText(stopStartElectricResult.endHandleTime);
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, stopStartElectricResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(stopStartElectricResult.unhandleReason);
@@ -144,6 +158,7 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
+        super.getImageFromURL(stopStartElectricResult.handleContentPic, llIsHandled);
 
     }
 
@@ -161,6 +176,8 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
             e.printStackTrace();
         }
 
+        FileUtils.addImageToData(data, StopStartElectricResult.HandleContentPic, isHandledPicList, this);
+
         return stopStartElectricClient.update(data);
     }
 
@@ -176,10 +193,10 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
             this.stopStartElectricResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
             this.stopStartElectricResult.stopStartElectricAddress = etStopStartElectricAddress.getText().toString();
             this.stopStartElectricResult.beginHandleTime = etBeginHandleTime.getText().toString();
-            this.stopStartElectricResult.handleContent = etHandleContent.getText().toString();
+            this.stopStartElectricResult.handleContent = spnHandleContent.getSelectedItem().toString();
+
             this.stopStartElectricResult.endHandleTime = etEndHandleTime.getText().toString();
             this.stopStartElectricResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
-
             this.stopStartElectricResult.unhandleReason = etUnhandleReason.getText().toString();
 
 

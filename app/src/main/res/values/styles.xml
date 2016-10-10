@@ -93,7 +93,6 @@
 
     <!-- 表单右侧，下拉框的样式 -->
     <style name="spinner_form_right">
-        <item name="android:layout_marginLeft">-3dp</item>
         <item name="android:textSize">@dimen/text_size_form_right</item>
         <item name="android:layout_height">@dimen/form_right_height</item>
         <item name="android:layout_width">match_parent</item>

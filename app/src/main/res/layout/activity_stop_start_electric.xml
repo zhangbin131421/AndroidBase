@@ -79,12 +79,10 @@
                 <TextView style="@style/tableColName"
                     android:text="处理内容"/>
                 <TextView style="@style/formDivider"/>
-                <com.andreabaccega.widget.FormEditText
-                    style="@style/tableColInput"
-                    whatever:emptyErrorString="@string/notEmpty"
-                    android:id="@+id/et_handle_content"/>
+                <Spinner
+                    android:id="@+id/spn_handle_content"
+                    style="@style/spinner_form_right"/>
             </LinearLayout>
-
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="处理结果"/>
@@ -95,14 +93,28 @@
                     android:id="@+id/et_end_handle_time"/>
             </LinearLayout>
 
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
-                    android:text="已处理"/>
-                <TextView style="@style/formDivider"/>
-                <Spinner
-                    android:id="@+id/spn_is_handled"
-                    style="@style/spinner_form_right"/>
-            </LinearLayout>
+<LinearLayout style="@style/tableTitle2">
+                    <TextView style="@style/tableColName"
+                        android:text="已处理"/>
+                    <TextView style="@style/formDivider"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <Spinner
+                            android:id="@+id/spn_is_handled"
+                            style="@style/spinner_form_right"/>
+                        <org.apmem.tools.layouts.FlowLayout
+                            android:id="@+id/ll_is_handled"
+                            style="@style/tableColImageLayout"
+                            android:gravity="center_vertical">
+                            <ImageView
+                                android:id="@+id/btn_add_image_is_handled"
+                                style="@style/tableColImagAdd"/>
+                        </org.apmem.tools.layouts.FlowLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="未处理"/>

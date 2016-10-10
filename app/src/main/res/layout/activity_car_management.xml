@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:whatever="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!-- 车辆管理		 -->
+    <!-- 车辆管理 -->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,194 +13,116 @@
             android:id="@+id/tb_tool_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="申请"/>
-        <EditText
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22" />
-    </LinearLayout>
+            android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="申请编号"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016071401"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle">
+                <TextView style="@style/tableColName"
+                    android:text="申请"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_apply_time"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="车号"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="（选择）"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="申请编号"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_apply_num"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="到达地点"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="车号"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_car_i_d"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="出车时间"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="到达地点"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_arrival_place"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="回来时间"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="出车时间"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_drive_out_time"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="起始路码"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="回来时间"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_back_time"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="终止路码"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="起始路码"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_start_distance_code"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="费用"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="(如停车费、过路桥费、加油费、旅差费）"/>
-    </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="终止路码"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_end_distance_code"/>
+            </LinearLayout>
 
-    <!-- ********************* -->
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="费用"/>
+                <TextView style="@style/formDivider"/>
+                <Spinner
+                    android:id="@+id/spn_cost"
+                    style="@style/spinner_form_right"/>
+            </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="申请状态"/>
+                <TextView style="@style/formDivider"/>
+                <Spinner
+                    android:id="@+id/spn_apply_status"
+                    style="@style/spinner_form_right"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_light">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="提交"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="2016-08-22"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="备品备件领用"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="工器具领用"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="@dimen/widthTable1"
-            android:layout_height="wrap_content"
-            android:text="通知、报表"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=""/>
-    </LinearLayout>
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

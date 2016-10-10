@@ -81,6 +81,10 @@ public class StopStartElectricResult {
     @JsonProperty(value=IsHandled)
     public int isHandled;
 
+    public static final String HandleContentPic = "HandleContentPic";
+    @JsonProperty(value=HandleContentPic)
+    public String handleContentPic;
+
     public static final String UnhandleReason = "UnhandleReason";
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;

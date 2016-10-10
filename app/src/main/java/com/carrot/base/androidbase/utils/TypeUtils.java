@@ -85,6 +85,18 @@ public class TypeUtils {
      * 营业普查 - 普查内容
      */
     public final static String[] AUDITE_CONTENT = new String[]{"定比定扣","窃电违约用电","零电量"};
+    /**
+     * 停复电 - 处理内容
+     */
+    public final static String[] SS_HANDLER = new String[]{"停电","复电"};
+    /**
+     * 车辆管理 - 费用
+     */
+    public final static String[] CAR_COST = new String[]{"停车费","过路桥费","加油费","旅差费"};
+    /**
+     * 车辆管理 - 申请状态
+     */
+    public final static String[] APPLY_STATUS = new String[]{"申请中","申请通过","已领用","取消申请","申请被拒绝"};
 
 
 
@@ -292,6 +304,7 @@ public class TypeUtils {
                         .taskBaseVo(taskBaseVo)
                         .isFinished(status)
                         .startForResult(requestCode);
+                break;
                 //-------------------------
             case TYPE_2_1:
                 CoreMeterTestActivity_.intent(context)
