@@ -62,7 +62,7 @@ public class TaskCardExtendBussinessSetupAdapter extends RecyclerView.Adapter<Ta
     public DataObjectHolder onCreateViewHolder(ViewGroup parent,
                                                int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_extend_bussiness_setup, parent, false);
+                .inflate(R.layout.card_view_row_fragment_task_list_extend_bussiness_setup, parent, false);
 
 
 

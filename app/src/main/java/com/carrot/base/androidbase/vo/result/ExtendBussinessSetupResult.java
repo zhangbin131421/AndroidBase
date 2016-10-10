@@ -85,6 +85,10 @@ public class ExtendBussinessSetupResult {
     @JsonProperty(value=HandleContent)
     public String handleContent;
 
+    public static final String HandleContentPic = "HandleContentPic";
+    @JsonProperty(value=HandleContentPic)
+    public String handleContentPic;
+
     public static final String EndHandleTime = "EndHandleTime";
     @JsonProperty(value=EndHandleTime)
     public String endHandleTime;

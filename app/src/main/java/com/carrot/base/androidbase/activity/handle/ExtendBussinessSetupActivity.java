@@ -38,6 +38,7 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
 
 
 
+    List<PhotoInfo> handleContentPicList = new ArrayList<>();
 
 
     ExtendBussinessSetupResult extendBussinessSetupResult;
@@ -53,8 +54,8 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
     FormEditText etTaskNum;
     @ViewById(R.id.spn_area_name)
     Spinner spnAreaName;
-    @ViewById(R.id.et_extend_type)
-    FormEditText etExtendType;
+    @ViewById(R.id.spn_extend_type)
+    Spinner spnExtendType;
     @ViewById(R.id.et_setup_address)
     FormEditText etSetupAddress;
     @ViewById(R.id.et_safety_measure)
@@ -63,8 +64,17 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
     FormEditText etEndTime;
     @ViewById(R.id.et_begin_handle_time)
     FormEditText etBeginHandleTime;
+
+    @ViewById(R.id.ll_handle_content)
+    org.apmem.tools.layouts.FlowLayout llHandleContent;
+
+
+    @ViewById(R.id.btn_add_image_handle_content)
+    ImageView btnAddImageHandleContent;
+
     @ViewById(R.id.et_handle_content)
     FormEditText etHandleContent;
+
     @ViewById(R.id.et_end_handle_time)
     FormEditText etEndHandleTime;
     @ViewById(R.id.spn_is_handled)
@@ -84,24 +94,28 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {};
 
-        addDisableList = new FormEditText[] {};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
-        updateDisableList = new FormEditText[] {};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etExtendType,etSetupAddress,etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,etEndHandleTime,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSetupAddress,etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,etEndHandleTime,etUnhandleReason,};
 
         updateDisabledSpinnerList = new Spinner[] {};
-        finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
+        finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnExtendType,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
+            new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{};
 
 
 
-        imageAddButtonList = new ImageView[] {        };
-        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {        };
+        imageAddButtonList = new ImageView[] {btnAddImageHandleContent,        };
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
+                new ImageChooseVo(btnAddImageHandleContent, handleContentPicList, llHandleContent),
+        };
 
     }
 
@@ -113,6 +127,7 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
     void initDropDownList(){
         //下拉选择框
         setDropDownListAdapter(spnAreaName, DataInstance.getInstance().areaInformationResults);
+        setDropDownListAdapter(spnExtendType, TypeUtils.EXTEND_TYPE);
         setDropDownListAdapter(spnIsHandled, TypeUtils.TYPE_HANDLER);
     }
 
@@ -134,7 +149,7 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
             etAssignmentTime.setText(extendBussinessSetupResult.assignmentTime);
             etTaskNum.setText(extendBussinessSetupResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndex(extendBussinessSetupResult.areaName));
-            etExtendType.setText(extendBussinessSetupResult.extendType);
+            spnExtendType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.EXTEND_TYPE, extendBussinessSetupResult.extendType));
             etSetupAddress.setText(extendBussinessSetupResult.setupAddress);
             etSafetyMeasure.setText(extendBussinessSetupResult.safetyMeasure);
             etEndTime.setText(extendBussinessSetupResult.endTime);
@@ -154,6 +169,7 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
+        super.getImageFromURL(extendBussinessSetupResult.handleContentPic, llHandleContent);
 
     }
 
@@ -171,6 +187,8 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
             e.printStackTrace();
         }
 
+        FileUtils.addImageToData(data, ExtendBussinessSetupResult.HandleContentPic, handleContentPicList, this);
+
         return extendBussinessSetupClient.update(data);
     }
 
@@ -184,7 +202,8 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
             this.extendBussinessSetupResult.areaName = spnAreaName.getSelectedItem().toString();
 
             this.extendBussinessSetupResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
-            this.extendBussinessSetupResult.extendType = etExtendType.getText().toString();
+            this.extendBussinessSetupResult.extendType = spnExtendType.getSelectedItem().toString();
+
             this.extendBussinessSetupResult.setupAddress = etSetupAddress.getText().toString();
             this.extendBussinessSetupResult.safetyMeasure = etSafetyMeasure.getText().toString();
             this.extendBussinessSetupResult.endTime = etEndTime.getText().toString();

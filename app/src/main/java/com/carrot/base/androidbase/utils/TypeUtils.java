@@ -77,6 +77,10 @@ public class TypeUtils {
      * 采集消缺 - 故障原因
      */
     public final static String[] TROUBLE_REASON = new String[]{"终端","卡","信号"};
+    /**
+     * 业扩报装 - 业扩类型
+     */
+    public final static String[] EXTEND_TYPE = new String[]{"新装","增容"};
 
 
 
