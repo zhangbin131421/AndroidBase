@@ -38,6 +38,7 @@ public class OrderHandleActivity extends BaseHandlerActivity{
 
 
 
+    List<PhotoInfo> handleContentPicList = new ArrayList<>();
 
 
     OrderHandleResult orderHandleResult;
@@ -55,8 +56,17 @@ public class OrderHandleActivity extends BaseHandlerActivity{
     FormEditText etOrderContent;
     @ViewById(R.id.et_begin_handle_time)
     FormEditText etBeginHandleTime;
+
+    @ViewById(R.id.ll_handle_content)
+    org.apmem.tools.layouts.FlowLayout llHandleContent;
+
+
+    @ViewById(R.id.btn_add_image_handle_content)
+    ImageView btnAddImageHandleContent;
+
     @ViewById(R.id.et_handle_content)
     FormEditText etHandleContent;
+
     @ViewById(R.id.et_end_handle_time)
     FormEditText etEndHandleTime;
     @ViewById(R.id.spn_is_handled)
@@ -76,9 +86,9 @@ public class OrderHandleActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {};
 
-        addDisableList = new FormEditText[] {};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
-        updateDisableList = new FormEditText[] {};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etOrderContent,etBeginHandleTime,etHandleContent,etEndHandleTime,etUnhandleReason,};
 
@@ -86,14 +96,17 @@ public class OrderHandleActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{};
 
 
 
-        imageAddButtonList = new ImageView[] {        };
-        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {        };
+        imageAddButtonList = new ImageView[] {btnAddImageHandleContent,        };
+        openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
+                new ImageChooseVo(btnAddImageHandleContent, handleContentPicList, llHandleContent),
+        };
 
     }
 
@@ -140,6 +153,7 @@ public class OrderHandleActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
+        super.getImageFromURL(orderHandleResult.handleContentPic, llHandleContent);
 
     }
 
@@ -156,6 +170,8 @@ public class OrderHandleActivity extends BaseHandlerActivity{
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
+        FileUtils.addImageToData(data, OrderHandleResult.HandleContentPic, handleContentPicList, this);
 
         return orderHandleClient.update(data);
     }
