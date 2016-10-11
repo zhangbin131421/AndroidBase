@@ -12,6 +12,7 @@ import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TaskUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.CoreMeterTestResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
@@ -117,9 +118,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
     public void setValidateList(){
 
-        allValidateFields = new FormEditText[] {etAssignmentTime, etTaskNum, etProtectLine, etType,
-                etSafetyMeasure, etEndTime, etHandleContent, etTester,
-                etTestingTime, etEndHandleTime, etUnhandleReason,aTesting,bTesting,cTesting};
+        allValidateFields = new FormEditText[] {etUnhandleReason, etHandleContent};
 
 
         addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime, etBeginHandleTime};
@@ -290,6 +289,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
             this.coreMeterTestResult.taskNum = etTaskNum.getText().toString();
 
             this.coreMeterTestResult.areaName = etAreaName.getSelectedItem().toString();
+            this.coreMeterTestResult.areaID = ((AreaInformationResult)etAreaName.getSelectedItem()).id;
 
             this.coreMeterTestResult.protectLine = etProtectLine.getText().toString();
 

@@ -30,6 +30,7 @@ public class TaskCardCoreMeterTestAdapter extends RecyclerView.Adapter<TaskCardC
         TextView creationTime;
         TextView endTime;
         TextView areaName;
+        TextView type;
 
         TextView tv_unfinished;
 
@@ -38,6 +39,7 @@ public class TaskCardCoreMeterTestAdapter extends RecyclerView.Adapter<TaskCardC
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
 
             areaName = (TextView) itemView.findViewById(R.id.tv_area_name);
+            type = (TextView) itemView.findViewById(R.id.tv_type);
 
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
@@ -88,6 +90,7 @@ public class TaskCardCoreMeterTestAdapter extends RecyclerView.Adapter<TaskCardC
         }
 
         holder.areaName.setText(taskBaseVo.areaName);
+        holder.type.setText(taskBaseVo.protectLine);
 
         if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
             holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));

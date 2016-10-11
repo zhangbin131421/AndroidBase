@@ -52,6 +52,9 @@ public class CoreMeterTestResult {
     public static final String AreaName = "AreaName";
     @JsonProperty(value=AreaName)
     public String areaName;
+    public static final String AreaID = "AreaID";
+    @JsonProperty(value=AreaID)
+    public int areaID;
 
     public static final String ProtectLine = "ProtectLine";
     @JsonProperty(value=ProtectLine)
@@ -146,6 +149,7 @@ public class CoreMeterTestResult {
         MultiValueMap<String, Object> rtn = new LinkedMultiValueMap<>();
 
         rtn.add(CoreMeterTestResult.AreaName, this.areaName.getBytes("UTF-8"));
+        rtn.add(CoreMeterTestResult.AreaID, this.areaID+"");
         rtn.add(CoreMeterTestResult.AssignByUserID, this.assignByUserID+"");
         rtn.add(CoreMeterTestResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime);
         rtn.add(CoreMeterTestResult.ATesting, this.aTesting == null ? "" : this.aTesting.getBytes("UTF-8"));
