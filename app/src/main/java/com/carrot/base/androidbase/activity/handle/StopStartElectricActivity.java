@@ -63,12 +63,12 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_end_handle_time)
     FormEditText etEndHandleTime;
 
-    @ViewById(R.id.ll_is_handled)
-    org.apmem.tools.layouts.FlowLayout llIsHandled;
+//    @ViewById(R.id.ll_is_handled)
+//    org.apmem.tools.layouts.FlowLayout llIsHandled;
 
 
-    @ViewById(R.id.btn_add_image_is_handled)
-    ImageView btnAddImageIsHandled;
+//    @ViewById(R.id.btn_add_image_is_handled)
+//    ImageView btnAddImageIsHandled;
 
     @ViewById(R.id.spn_is_handled)
     Spinner spnIsHandled;
@@ -76,6 +76,8 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
+    @ViewById(R.id.ll_is_handler)
+    LinearLayout llIsHandler;
 
 
     @AfterViews
@@ -86,7 +88,7 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {};
+        allValidateFields = new FormEditText[] {etUnhandleReason};
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
@@ -101,13 +103,15 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
                 new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
-        showBySpinnerList = new ShowWithSpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
 
 
 
-        imageAddButtonList = new ImageView[] {btnAddImageIsHandled,        };
+        imageAddButtonList = new ImageView[] {        };
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {
-                new ImageChooseVo(btnAddImageIsHandled, isHandledPicList, llIsHandled),
+//                new ImageChooseVo(btnAddImageIsHandled, isHandledPicList, llIsHandled),
         };
 
     }
@@ -158,7 +162,7 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
     @Background
     void getImage(){
 
-        super.getImageFromURL(stopStartElectricResult.handleContentPic, llIsHandled);
+//        super.getImageFromURL(stopStartElectricResult.handleContentPic, llIsHandled);
 
     }
 

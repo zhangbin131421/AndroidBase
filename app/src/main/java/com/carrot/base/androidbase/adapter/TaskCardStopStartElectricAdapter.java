@@ -27,6 +27,7 @@ public class TaskCardStopStartElectricAdapter extends RecyclerView.Adapter<TaskC
             .OnClickListener {
 
         TextView name;
+        TextView address;
         TextView creationTime;
         TextView endTime;
 
@@ -35,6 +36,7 @@ public class TaskCardStopStartElectricAdapter extends RecyclerView.Adapter<TaskC
         public DataObjectHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
+            address = (TextView) itemView.findViewById(R.id.tv_area_name);
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
@@ -83,6 +85,7 @@ public class TaskCardStopStartElectricAdapter extends RecyclerView.Adapter<TaskC
             holder.creationTime.setText("");
         }
 
+        holder.address.setText(taskBaseVo.stopStartElectricAddress);
 
 //        if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
 //            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
