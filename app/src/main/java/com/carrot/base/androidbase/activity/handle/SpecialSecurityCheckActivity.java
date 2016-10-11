@@ -70,6 +70,9 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
+    @ViewById(R.id.ll_is_handler)
+    LinearLayout llIsHandler;
+
 
 
     @AfterViews
@@ -80,11 +83,11 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {};
+        allValidateFields = new FormEditText[] {etUnhandleReason};
 
-        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginTime,etEndTime,etSafetyMeasure,etBeginHandleTime,etExistIssue,etCheckDate,etEndHandleTime,etUnhandleReason,};
 
@@ -99,7 +102,9 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
             new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
-        showBySpinnerList = new ShowWithSpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
 
 
 

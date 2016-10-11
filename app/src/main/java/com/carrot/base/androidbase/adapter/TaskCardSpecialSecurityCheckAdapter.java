@@ -29,12 +29,14 @@ public class TaskCardSpecialSecurityCheckAdapter extends RecyclerView.Adapter<Ta
         TextView name;
         TextView creationTime;
         TextView endTime;
+        TextView scope;
 
         TextView tv_unfinished;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
+            scope = (TextView) itemView.findViewById(R.id.tv_area_name);
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
@@ -76,6 +78,7 @@ public class TaskCardSpecialSecurityCheckAdapter extends RecyclerView.Adapter<Ta
         SpecialSecurityCheckResult taskBaseVo = mDataset.get(position);
 
         holder.name.setText(taskBaseVo.taskNum);
+//        holder.scope.setText(taskBaseVo.);
 
         if(taskBaseVo.assignmentTime != null && !taskBaseVo.assignmentTime.equals("")){
             holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));
