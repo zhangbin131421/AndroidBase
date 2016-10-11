@@ -95,6 +95,8 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
     FormEditText etUnhandleReason;
 
 
+    @ViewById(R.id.ll_is_handler)
+    LinearLayout llIsHandler;
 
     @AfterViews
     void bindAdapter(){
@@ -104,11 +106,11 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {};
+        allValidateFields = new FormEditText[] {etUnhandleReason};
 
-        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etHouseholdNum,etMeterNum,etTroubleAddress,etSafetyMeasure,etBeginHandleTime,etTroubleReason,etHandleContent,etEndHandleTime,etUnhandleReason,};
 
@@ -119,7 +121,9 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
             new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
-        showBySpinnerList = new ShowWithSpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
 
 
 
