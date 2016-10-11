@@ -29,12 +29,14 @@ public class TaskCardCollectResolveTroubleAdapter extends RecyclerView.Adapter<T
         TextView name;
         TextView creationTime;
         TextView endTime;
+        TextView troubleAddress;
 
         TextView tv_unfinished;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
+            troubleAddress = (TextView) itemView.findViewById(R.id.tv_area_name);
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
@@ -83,6 +85,7 @@ public class TaskCardCollectResolveTroubleAdapter extends RecyclerView.Adapter<T
             holder.creationTime.setText("");
         }
 
+        holder.troubleAddress.setText(taskBaseVo.troubleAddress);
 
         if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
             holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
