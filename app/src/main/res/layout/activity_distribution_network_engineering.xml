@@ -275,7 +275,8 @@
                     android:id="@+id/spn_is_handled"
                     style="@style/spinner_form_right"/>
             </LinearLayout>
-            <LinearLayout style="@style/tableTitle2">
+            <LinearLayout style="@style/tableTitle2"
+                android:id="@id/ll_is_handler">
                 <TextView style="@style/tableColName"
                     android:text="未完成"/>
                 <TextView style="@style/formDivider"/>

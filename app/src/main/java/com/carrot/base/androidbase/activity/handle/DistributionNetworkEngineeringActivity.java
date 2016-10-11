@@ -21,6 +21,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
+import org.apmem.tools.layouts.FlowLayout;
 import org.springframework.util.MultiValueMap;
 
 import java.io.UnsupportedEncodingException;
@@ -108,7 +109,8 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
-
+    @ViewById(R.id.ll_is_handler)
+    LinearLayout llIsHandler;
 
     @AfterViews
     void bindAdapter(){
@@ -118,7 +120,7 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {};
+        allValidateFields = new FormEditText[] {etUnhandleReason};
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
@@ -136,7 +138,9 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
             new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
-        showBySpinnerList = new ShowWithSpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
 
 
 
