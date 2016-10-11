@@ -83,6 +83,8 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
     FormEditText etUnhandleReason;
 
 
+    @ViewById(R.id.ll_is_handler)
+    LinearLayout llIsHandler;
 
     @AfterViews
     void bindAdapter(){
@@ -92,11 +94,11 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {};
+        allValidateFields = new FormEditText[] {etUnhandleReason};
 
-        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSetupAddress,etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,etEndHandleTime,etUnhandleReason,};
 
@@ -108,7 +110,9 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
             new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
-        showBySpinnerList = new ShowWithSpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
 
 
 

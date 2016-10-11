@@ -198,7 +198,7 @@ public class TypeUtils {
         TypeVo type4 = new TypeVo(TYPE_1, false, R.drawable.permanent_job, true);
         List<TypeVo> subTypes4 = new ArrayList<>();
 
-        subTypes4.add(new TypeVo(TYPE_1_1, true, R.drawable.electrical, true));
+        subTypes4.add(new TypeVo(TYPE_1_1, true, R.drawable.electrical, false));
         subTypes4.add(new TypeVo(TYPE_1_2, true, R.drawable.urine_collection, true));
         subTypes4.add(new TypeVo(TYPE_1_3, true, R.drawable.energy_meter, true));
         subTypes4.add(new TypeVo(TYPE_1_4, true, R.drawable.multiple_devices, true));

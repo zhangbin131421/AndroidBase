@@ -30,11 +30,16 @@ public class TaskCardExtendBussinessSetupAdapter extends RecyclerView.Adapter<Ta
         TextView creationTime;
         TextView endTime;
 
+        TextView type;
+        TextView address;
+
         TextView tv_unfinished;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
+            type = (TextView) itemView.findViewById(R.id.tv_area_name);
+            address = (TextView) itemView.findViewById(R.id.tv_address);
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
@@ -76,6 +81,9 @@ public class TaskCardExtendBussinessSetupAdapter extends RecyclerView.Adapter<Ta
         ExtendBussinessSetupResult taskBaseVo = mDataset.get(position);
 
         holder.name.setText(taskBaseVo.taskNum);
+
+        holder.type.setText(taskBaseVo.extendType);
+        holder.address.setText("报装地址:"+taskBaseVo.setupAddress);
 
         if(taskBaseVo.assignmentTime != null && !taskBaseVo.assignmentTime.equals("")){
             holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));

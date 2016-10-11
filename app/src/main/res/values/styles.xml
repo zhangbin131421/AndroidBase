@@ -122,6 +122,12 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/secondary_text</item>
     </style>
+    <style name="task_list_single_line">
+        <item name="android:textSize">@dimen/text_size_task_list_1_area_name</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
 
     <style name="task_list_subtitle">
         <item name="android:textColor">@color/secondary_text</item>
