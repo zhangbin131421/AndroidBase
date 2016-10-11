@@ -11,6 +11,7 @@ import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.CrossTestResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
@@ -111,7 +112,7 @@ public class CrossTestActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {};
+        allValidateFields = new FormEditText[] {etUnhandleReason};
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
@@ -232,6 +233,7 @@ public class CrossTestActivity extends BaseHandlerActivity{
             this.crossTestResult.assignmentTime = etAssignmentTime.getText().toString();
             this.crossTestResult.taskNum = etTaskNum.getText().toString();
             this.crossTestResult.areaName = spnAreaName.getSelectedItem().toString();
+            this.crossTestResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
 
             this.crossTestResult.crossPoint = etCrossPoint.getText().toString();
             this.crossTestResult.crossName = etCrossName.getText().toString();

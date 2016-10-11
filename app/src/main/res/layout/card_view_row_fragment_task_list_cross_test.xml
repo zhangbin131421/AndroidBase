@@ -17,6 +17,12 @@
                 android:id="@+id/tv_area_name"
                 style="@style/task_list_area_name"/>
         </LinearLayout>
+        <LinearLayout style="@style/task_list_line">
+
+            <TextView
+                android:id="@+id/tv_cross_point"
+                style="@style/task_list_task_num"/>
+        </LinearLayout>
 
         <LinearLayout style="@style/task_list_line">
             <TextView

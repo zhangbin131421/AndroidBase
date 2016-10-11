@@ -56,6 +56,9 @@ public class CrossTestResult {
     public static final String AreaName = "AreaName";
     @JsonProperty(value=AreaName)
     public String areaName;
+    public static final String AreaID = "AreaID";
+    @JsonProperty(value=AreaID)
+    public int areaID;
 
     public static final String CrossPoint = "CrossPoint";
     @JsonProperty(value=CrossPoint)
@@ -130,6 +133,7 @@ public class CrossTestResult {
         rtn.add(CrossTestResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));
         rtn.add(CrossTestResult.TaskNum, this.taskNum.getBytes("UTF-8"));
         rtn.add(CrossTestResult.AreaName, this.areaName.getBytes("UTF-8"));
+        rtn.add(CrossTestResult.AreaID, this.areaID+"");
         rtn.add(CrossTestResult.CrossPoint, this.crossPoint.getBytes("UTF-8"));
         rtn.add(CrossTestResult.CrossName, this.crossName.getBytes("UTF-8"));
         rtn.add(CrossTestResult.SafetyMeasure, this.safetyMeasure.getBytes("UTF-8"));

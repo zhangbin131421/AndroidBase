@@ -29,12 +29,16 @@ public class TaskCardCrossTestAdapter extends RecyclerView.Adapter<TaskCardCross
         TextView name;
         TextView creationTime;
         TextView endTime;
+        TextView areaName;
+        TextView crossPoint;
 
         TextView tv_unfinished;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
+            areaName = (TextView) itemView.findViewById(R.id.tv_area_name);
+            crossPoint = (TextView) itemView.findViewById(R.id.tv_cross_point);
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
@@ -76,6 +80,8 @@ public class TaskCardCrossTestAdapter extends RecyclerView.Adapter<TaskCardCross
         CrossTestResult taskBaseVo = mDataset.get(position);
 
         holder.name.setText(taskBaseVo.taskNum);
+        holder.areaName.setText(taskBaseVo.areaName);
+        holder.crossPoint.setText(taskBaseVo.crossPoint);
 
         if(taskBaseVo.assignmentTime != null && !taskBaseVo.assignmentTime.equals("")){
             holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));
