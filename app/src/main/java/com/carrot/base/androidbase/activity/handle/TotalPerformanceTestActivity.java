@@ -11,6 +11,7 @@ import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.utils.DateUtils;
 import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
+import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.TotalPerformanceTestResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
@@ -264,6 +265,7 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
             this.totalPerformanceTestResult.assignmentTime = etAssignmentTime.getText().toString();
             this.totalPerformanceTestResult.taskNum = etTaskNum.getText().toString();
             this.totalPerformanceTestResult.areaName = etAreaName.getSelectedItem().toString();
+            this.totalPerformanceTestResult.areaID = ((AreaInformationResult)etAreaName.getSelectedItem()).id;
             this.totalPerformanceTestResult.protectLine = etProtectLine.getText().toString();
             this.totalPerformanceTestResult.type = etType.getText().toString();
             this.totalPerformanceTestResult.safetyMeasure = etSafetyMeasure.getText().toString();

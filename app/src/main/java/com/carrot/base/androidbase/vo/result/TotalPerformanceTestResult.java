@@ -43,6 +43,9 @@ public class TotalPerformanceTestResult {
     public static final String AreaName = "AreaName";
     @JsonProperty(value=AreaName)
     public String areaName;
+    public static final String AreaID = "AreaID";
+    @JsonProperty(value=AreaID)
+    public int areaID;
     public static final String ProtectLine = "ProtectLine";
     @JsonProperty(value=ProtectLine)
     public String protectLine;
@@ -120,6 +123,7 @@ public class TotalPerformanceTestResult {
         rtn.add(TotalPerformanceTestResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));
         rtn.add(TotalPerformanceTestResult.TaskNum, this.taskNum.getBytes("UTF-8"));
         rtn.add(TotalPerformanceTestResult.AreaName, this.areaName.getBytes("UTF-8"));
+        rtn.add(TotalPerformanceTestResult.AreaID, this.areaID+"");
         rtn.add(TotalPerformanceTestResult.ProtectLine, this.protectLine.getBytes("UTF-8"));
         rtn.add(TotalPerformanceTestResult.Type, this.type.getBytes("UTF-8"));
         rtn.add(TotalPerformanceTestResult.SafetyMeasure, this.safetyMeasure.getBytes("UTF-8"));

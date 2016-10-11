@@ -19,6 +19,13 @@
         </LinearLayout>
 
         <LinearLayout style="@style/task_list_line">
+
+            <TextView
+                android:id="@+id/tv_production_line"
+                style="@style/task_list_single_line"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/task_list_line">
             <TextView
                 android:id="@+id/tv_creation_time"
                 style="@style/task_list_time"/>
