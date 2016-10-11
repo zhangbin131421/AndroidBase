@@ -74,6 +74,8 @@ public class OrderHandleActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
+    @ViewById(R.id.ll_is_handler)
+    LinearLayout llIsHandler;
 
 
     @AfterViews
@@ -84,7 +86,7 @@ public class OrderHandleActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {};
+        allValidateFields = new FormEditText[] {etUnhandleReason};
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
@@ -99,7 +101,9 @@ public class OrderHandleActivity extends BaseHandlerActivity{
             new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
-        showBySpinnerList = new ShowWithSpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
 
 
 

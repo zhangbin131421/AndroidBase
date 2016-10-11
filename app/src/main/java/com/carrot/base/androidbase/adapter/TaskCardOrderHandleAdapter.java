@@ -27,6 +27,8 @@ public class TaskCardOrderHandleAdapter extends RecyclerView.Adapter<TaskCardOrd
             .OnClickListener {
 
         TextView name;
+        TextView type;
+        TextView address;
         TextView creationTime;
         TextView endTime;
 
@@ -35,6 +37,8 @@ public class TaskCardOrderHandleAdapter extends RecyclerView.Adapter<TaskCardOrd
         public DataObjectHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
+            type = (TextView) itemView.findViewById(R.id.tv_area_name);
+            address = (TextView) itemView.findViewById(R.id.tv_address);
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
@@ -76,6 +80,9 @@ public class TaskCardOrderHandleAdapter extends RecyclerView.Adapter<TaskCardOrd
         OrderHandleResult taskBaseVo = mDataset.get(position);
 
         holder.name.setText(taskBaseVo.taskNum);
+        //TODO 类型、地址
+//        holder.type.setText(taskBaseVo.);
+//        holder.address.setText(taskBaseVo.);
 
         if(taskBaseVo.assignmentTime != null && !taskBaseVo.assignmentTime.equals("")){
             holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));
@@ -84,11 +91,11 @@ public class TaskCardOrderHandleAdapter extends RecyclerView.Adapter<TaskCardOrd
         }
 
 
-//        if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
-//            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
-//        }else{
-//            holder.endTime.setText("");
-//        }
+        if(taskBaseVo.endHandleTime != null && !taskBaseVo.endHandleTime.equals("")){
+            holder.endTime.setText("结束日期：" + taskBaseVo.endHandleTime.substring(0,10));
+        }else{
+            holder.endTime.setText("");
+        }
 
         if(taskBaseVo.isHandled == 2){
             holder.tv_unfinished.setText("未完成");
