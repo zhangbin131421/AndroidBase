@@ -416,6 +416,8 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
                 if(validate()){
                     conform();
+                }else{
+                    alert("提示", "请输入必填项！", SweetAlertDialog.WARNING_TYPE, null);
                 }
 
                 return true;
