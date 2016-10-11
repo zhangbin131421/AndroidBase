@@ -29,12 +29,14 @@ public class TaskCardEarthResistanceTestAdapter extends RecyclerView.Adapter<Tas
         TextView name;
         TextView creationTime;
         TextView endTime;
+        TextView area;
 
         TextView tv_unfinished;
 
         public DataObjectHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
+            area = (TextView) itemView.findViewById(R.id.tv_area_name);
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
@@ -76,6 +78,8 @@ public class TaskCardEarthResistanceTestAdapter extends RecyclerView.Adapter<Tas
         EarthResistanceTestResult taskBaseVo = mDataset.get(position);
 
         holder.name.setText(taskBaseVo.taskNum);
+
+        holder.area.setText(taskBaseVo.areaName);
 
         if(taskBaseVo.assignmentTime != null && !taskBaseVo.assignmentTime.equals("")){
             holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));
