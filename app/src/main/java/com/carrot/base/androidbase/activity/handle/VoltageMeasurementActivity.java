@@ -168,6 +168,8 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
+    @ViewById(R.id.ll_is_handler)
+    LinearLayout llIsHandler;
 
 
     @AfterViews
@@ -178,11 +180,11 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {};
+        allValidateFields = new FormEditText[] {etUnhandleReason, etHouseholder, etPowerHouseholder};
 
-        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etConfigA,etConfigB,etConfigC,etRatedCurrent,etPowerHouseholder,etPowerCapacity,etHouseholder,etHouseholderCapacity,etSafetyMeasure,etEndTime,etBeginHandleTime,etCurrentA,etCurrentB,etCurrentC,etZeoLineCurrent,etLoadRate,etImbalanceRate,etHeaderVoltage,etFooterVoltage,etModificationOpinion,etTestTime,etTester,etEndHandleTime,etUnhandleReason,};
 
@@ -195,7 +197,9 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
             new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
-        showBySpinnerList = new ShowWithSpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
 
 
 
