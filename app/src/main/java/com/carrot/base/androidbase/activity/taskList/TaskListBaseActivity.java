@@ -67,7 +67,7 @@ public abstract class TaskListBaseActivity extends AppCompatActivity {
     @ViewById(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
-    private RecyclerView.LayoutManager mLayoutManager;
+    protected RecyclerView.LayoutManager mLayoutManager;
 
 
     @ViewById(R.id.tl_task_list_tabs)

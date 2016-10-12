@@ -36,27 +36,19 @@ public interface CarManagementClient extends RestClientErrorHandling {
     @Accept(MediaType.APPLICATION_JSON)
     CarManagementResult getById(@Path int id);
 
+    @Get("/GetAll")
+    @Accept(MediaType.APPLICATION_JSON)
+    List<CarManagementResult> getAll();
+
 
     @Get("/GetByUserID/?UserID={userId}")
     @Accept(MediaType.APPLICATION_JSON)
     List<CarManagementResult> getByUserId(@Path int userId);
 
 
-    @Get("/GetByUserIDAndHandled/?UserID={userId}&IsHandled={isHandled}")
-    @Accept(MediaType.APPLICATION_JSON)
-    List<CarManagementResult> getByUserId(@Path int userId, @Path int isHandled);
-
-
     @Post("/AddNew")
     @Accept(MediaType.APPLICATION_JSON)
-    void add(@Body CarManagementResult crossTestResult);
-
-
-    @Post("/Update")
-    @Headers({
-            @Header(name = HttpHeaders.CONTENT_TYPE, value = "multipart/form-data")})
-    @Accept(MediaType.APPLICATION_JSON)
-    UpdateResult update(@Body MultiValueMap<String, Object> data);
+    UpdateResult add(@Body CarManagementResult carManagementResult);
 
 
     @Post("/Delete/?ID={id}")
@@ -64,8 +56,4 @@ public interface CarManagementClient extends RestClientErrorHandling {
     void delete(@Path int id);
 
 
-    //
-    @Get("/GetNewTaskNum/?UserID={userId}")
-    @Accept(MediaType.APPLICATION_JSON)
-    CountResult getUnFinishedByUserId(@Path int userId);
 }

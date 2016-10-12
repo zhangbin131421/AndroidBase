@@ -27,12 +27,5 @@
                 android:id="@+id/tv_end_time"
                 style="@style/task_list_time"/>
         </LinearLayout>
-
-
-        <LinearLayout style="@style/task_list_line">
-            <TextView
-                android:id="@+id/tv_unfinished"
-                style="@style/task_list_status_flag"/>
-        </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

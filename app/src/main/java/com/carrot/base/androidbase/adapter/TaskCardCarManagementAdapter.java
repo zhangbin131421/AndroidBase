@@ -27,6 +27,7 @@ public class TaskCardCarManagementAdapter extends RecyclerView.Adapter<TaskCardC
             .OnClickListener {
 
         TextView name;
+        TextView status;
         TextView creationTime;
         TextView endTime;
 
@@ -35,6 +36,7 @@ public class TaskCardCarManagementAdapter extends RecyclerView.Adapter<TaskCardC
         public DataObjectHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
+            status = (TextView) itemView.findViewById(R.id.tv_area_name);
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
@@ -76,12 +78,13 @@ public class TaskCardCarManagementAdapter extends RecyclerView.Adapter<TaskCardC
         CarManagementResult taskBaseVo = mDataset.get(position);
 
         holder.name.setText(taskBaseVo.applyNum);
+        holder.status.setText(taskBaseVo.applyStatus);
 
-//        if(taskBaseVo.assignmentTime != null && !taskBaseVo.assignmentTime.equals("")){
-//            holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));
-//        }else{
-//            holder.creationTime.setText("");
-//        }
+        if(taskBaseVo.createdTime != null && !taskBaseVo.createdTime.equals("")){
+            holder.creationTime.setText("申请日期：" + taskBaseVo.createdTime.substring(0,10));
+        }else{
+            holder.creationTime.setText("");
+        }
 //
 //        if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
 //            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));

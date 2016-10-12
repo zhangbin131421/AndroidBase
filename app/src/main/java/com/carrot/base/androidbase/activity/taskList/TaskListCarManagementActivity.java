@@ -1,11 +1,14 @@
 package com.carrot.base.androidbase.activity.taskList;
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.adapter.TaskCardCarManagementAdapter;
+import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
 import com.carrot.base.androidbase.client.CarManagementClient;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.CarManagementResult;
@@ -37,6 +40,8 @@ public class TaskListCarManagementActivity extends TaskListBaseActivity {
 
         afterInitTabs();
 
+        tlTabs.setVisibility(View.GONE);
+
         carManagementClient.setRestErrorHandler(ssErrorHandler);
 
     }
@@ -64,7 +69,7 @@ public class TaskListCarManagementActivity extends TaskListBaseActivity {
 
                 TaskBaseVo taskBaseVo = new TaskBaseVo();
                 taskBaseVo.id = mAdapter.getItem(position).iD;
-                TypeUtils.openItem(subTypeVo.name, context, taskBaseVo, ACTIVITY_REQUEST_CODE, status.equals("已完成") ? 2 : 1);
+                TypeUtils.openItem(subTypeVo.name, context, taskBaseVo, ACTIVITY_REQUEST_CODE, status.equals("已完成") ? 2 : 2);
             }
         });
 
@@ -83,7 +88,7 @@ public class TaskListCarManagementActivity extends TaskListBaseActivity {
     }
 
     List<CarManagementResult> getResultListFromServer(){
-        return carManagementClient.getByUserId(userPrefs.id().get(), status.equals("已完成") ? 1 : 0);
+        return carManagementClient.getAll();
     }
 
 

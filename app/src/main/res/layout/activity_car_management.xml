@@ -43,7 +43,8 @@
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
-                    android:id="@+id/et_apply_num"/>
+                    android:id="@+id/et_apply_num"
+                    android:hint="@string/taskNumberHint"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">

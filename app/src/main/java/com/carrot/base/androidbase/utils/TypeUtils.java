@@ -368,8 +368,8 @@ public class TypeUtils {
 
             case TYPE_4_1:
                 CarManagementActivity_.intent(context)
-//                        .taskBaseVo(taskBaseVo)
-//                        .isFinished(status)
+                        .taskBaseVo(taskBaseVo)
+                        .isFinished(status)
                         .startForResult(requestCode);
                 break;
 

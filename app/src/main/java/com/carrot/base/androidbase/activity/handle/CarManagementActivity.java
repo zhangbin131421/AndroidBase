@@ -82,11 +82,11 @@ public class CarManagementActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etApplyTime,etApplyNum,};
 
-        updateDisableList = new FormEditText[] {etApplyTime,etApplyNum,};
+        updateDisableList = new FormEditText[] {etApplyTime,etApplyNum,etCarID,etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode};
 
         finishDisableList = new FormEditText[] {etApplyTime,etApplyNum,etCarID,etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode,};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnCost,spnApplyStatus,};
         finishDisabledSpinnerList = new Spinner[] {spnCost,spnApplyStatus,};
 
         openDateEditTextList = new OpenDateVo[] {
@@ -165,7 +165,7 @@ public class CarManagementActivity extends BaseHandlerActivity{
             e.printStackTrace();
         }
 
-        return carManagementClient.update(data);
+        return carManagementClient.add(carManagementResult);
     }
 
 
