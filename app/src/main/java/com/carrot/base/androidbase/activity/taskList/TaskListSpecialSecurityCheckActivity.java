@@ -6,13 +6,10 @@ import android.view.View;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.adapter.TaskCardSpecialSecurityCheckAdapter;
-import com.carrot.base.androidbase.adapter.TaskCardTotalPerformanceTestAdapter;
 import com.carrot.base.androidbase.client.SpecialSecurityCheckClient;
-import com.carrot.base.androidbase.client.TotalPerformanceTestClient;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.SpecialSecurityCheckResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
-import com.carrot.base.androidbase.vo.result.TotalPerformanceTestResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -27,7 +24,7 @@ import java.util.List;
  * Created by victor on 8/12/16.
  */
 @EActivity(R.layout.activity_task_list)
-@OptionsMenu(R.menu.task_list)
+@OptionsMenu(R.menu.task_list_no_add)
 public class TaskListSpecialSecurityCheckActivity extends TaskListBaseActivity {
 
     @RestService

@@ -13,10 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.carrot.base.androidbase.R;
-import com.carrot.base.androidbase.activity.handle.CoreMeterTestActivity_;
 import com.carrot.base.androidbase.adapter.TaskCardAdapter;
 import com.carrot.base.androidbase.adapter.TaskListFragmentAdapter;
 import com.carrot.base.androidbase.client.AreaInformationClient;
@@ -35,7 +33,6 @@ import com.carrot.base.androidbase.preferences.DataInstance;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.TypeVo;
-import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
@@ -43,7 +40,6 @@ import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
-import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
@@ -58,8 +54,9 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 /**
  * Created by victor on 8/12/16.
  */
+@Deprecated
 @EActivity(R.layout.activity_task_list)
-@OptionsMenu(R.menu.task_list)
+@OptionsMenu(R.menu.task_list_add)
 public class TaskListActivity extends AppCompatActivity {
 
     private static final int ACTIVITY_REQUEST_CODE = 1001;

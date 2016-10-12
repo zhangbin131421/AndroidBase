@@ -6,12 +6,9 @@ import android.view.View;
 
 import com.carrot.base.androidbase.R;
 import com.carrot.base.androidbase.adapter.TaskCardEquipmentCheckAdapter;
-import com.carrot.base.androidbase.adapter.TaskCardResolveRecordAdapter;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
-import com.carrot.base.androidbase.client.ResolveRecordClient;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.EquipmentCheckResult;
-import com.carrot.base.androidbase.vo.result.ResolveRecordResult;
 import com.carrot.base.androidbase.vo.result.TaskBaseVo;
 
 import org.androidannotations.annotations.AfterViews;
@@ -27,7 +24,7 @@ import java.util.List;
  * Created by victor on 8/12/16.
  */
 @EActivity(R.layout.activity_task_list)
-@OptionsMenu(R.menu.task_list)
+@OptionsMenu(R.menu.task_list_add)
 public class TaskListEquipmentCheckActivity extends TaskListBaseActivity {
 
     @RestService

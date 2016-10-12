@@ -24,7 +24,7 @@ import java.util.List;
  * Created by victor on 8/12/16.
  */
 @EActivity(R.layout.activity_task_list)
-@OptionsMenu(R.menu.task_list)
+@OptionsMenu(R.menu.task_list_no_add)
 public class TaskListExtendBussinessSetupActivity extends TaskListBaseActivity {
 
     @RestService
