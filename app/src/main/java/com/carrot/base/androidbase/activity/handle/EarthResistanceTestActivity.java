@@ -113,8 +113,8 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
 
         openDateEditTextList = new OpenDateVo[] {
             new OpenDateVo(etBeginHandleTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etTestDate, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etTestDate, OpenDateVo.UPDATE),
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -173,6 +173,10 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
             etUnhandleReason.setText(earthResistanceTestResult.unhandleReason);
 
             getImage();
+        }
+
+        if(earthResistanceTestResult.tester == null || earthResistanceTestResult.tester.equals("")){
+            etTester.setText(userPrefs.name().get());
         }
     }
 
