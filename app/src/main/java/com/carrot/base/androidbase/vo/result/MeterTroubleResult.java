@@ -69,6 +69,10 @@ public class MeterTroubleResult {
     @JsonProperty(value=MeterNum)
     public String meterNum;
 
+    public static final String EndTime = "EndTime";
+    @JsonProperty(value=EndTime)
+    public String endTime;
+
     public static final String TroubleAddress = "TroubleAddress";
     @JsonProperty(value=TroubleAddress)
     public String troubleAddress;
@@ -109,6 +113,10 @@ public class MeterTroubleResult {
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
 
+    public static final String Worker = "Worker";
+    @JsonProperty(value=Worker)
+    public String worker;
+
 
 
     @JsonIgnore
@@ -133,7 +141,8 @@ public class MeterTroubleResult {
         rtn.add(MeterTroubleResult.EndHandleTime, this.endHandleTime == null ? "" : this.endHandleTime.getBytes("UTF-8"));
         rtn.add(MeterTroubleResult.IsHandled, this.isHandled+"");
         rtn.add(MeterTroubleResult.UnhandleReason, this.unhandleReason == null ? "" : this.unhandleReason.getBytes("UTF-8"));
-
+        rtn.add(MeterTroubleResult.Worker, this.worker == null ? "" : this.worker.getBytes("UTF-8"));
+        rtn.add(MeterTroubleResult.EndTime, this.endTime == null ? "" : this.endTime.getBytes("UTF-8"));
         return rtn;
     }
 }

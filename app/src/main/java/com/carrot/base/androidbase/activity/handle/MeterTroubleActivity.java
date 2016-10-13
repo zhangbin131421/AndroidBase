@@ -94,6 +94,10 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
+    @ViewById(R.id.et_end_time)
+    FormEditText etEndTime;
+    @ViewById(R.id.et_worker)
+    FormEditText etWorker;
 
     @ViewById(R.id.ll_is_handler)
     LinearLayout llIsHandler;
@@ -112,13 +116,17 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etHouseholdNum,etMeterNum,etTroubleAddress,etSafetyMeasure,etBeginHandleTime,etTroubleReason,etHandleContent,etEndHandleTime,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etHouseholdNum,
+                etMeterNum,etTroubleAddress,etSafetyMeasure,etBeginHandleTime,etTroubleReason,
+                etHandleContent,etEndHandleTime,etUnhandleReason,
+                etEndTime, etWorker};
 
         updateDisabledSpinnerList = new Spinner[] {};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
             new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+                new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -175,7 +183,14 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, meterTroubleResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(meterTroubleResult.unhandleReason);
 
+            etEndTime.setText(meterTroubleResult.endTime);
+            etWorker.setText(meterTroubleResult.worker);
+
             getImage();
+        }
+
+        if(meterTroubleResult.worker == null || meterTroubleResult.worker.equals("")){
+            etWorker.setText(userPrefs.name().get());
         }
     }
 
@@ -232,6 +247,10 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
             this.meterTroubleResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.meterTroubleResult.unhandleReason = etUnhandleReason.getText().toString();
+
+
+            this.meterTroubleResult.endTime = etEndTime.getText().toString();
+            this.meterTroubleResult.worker = etWorker.getText().toString();
 
 
             return true;
