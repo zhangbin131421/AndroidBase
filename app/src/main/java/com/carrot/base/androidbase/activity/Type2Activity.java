@@ -33,8 +33,23 @@ import com.carrot.base.androidbase.activity.taskList.TaskListTotalPerformanceTes
 import com.carrot.base.androidbase.activity.taskList.TaskListVoltageMeasurementActivity_;
 import com.carrot.base.androidbase.adapter.MainCardAdapter;
 import com.carrot.base.androidbase.adapter.Type2Adapter;
+import com.carrot.base.androidbase.client.BusinessAuditeClient;
+import com.carrot.base.androidbase.client.CarManagementClient;
+import com.carrot.base.androidbase.client.CollectResolveTroubleClient;
+import com.carrot.base.androidbase.client.CoreMeterTestClient;
+import com.carrot.base.androidbase.client.CrossTestClient;
+import com.carrot.base.androidbase.client.DistributionNetworkEngineeringClient;
+import com.carrot.base.androidbase.client.EarthResistanceTestClient;
 import com.carrot.base.androidbase.client.EquipmentCheckClient;
+import com.carrot.base.androidbase.client.ExtendBussinessSetupClient;
+import com.carrot.base.androidbase.client.LineBrokenManagementClient;
+import com.carrot.base.androidbase.client.MeterTroubleClient;
+import com.carrot.base.androidbase.client.OrderHandleClient;
 import com.carrot.base.androidbase.client.ResolveRecordClient;
+import com.carrot.base.androidbase.client.SpecialSecurityCheckClient;
+import com.carrot.base.androidbase.client.StopStartElectricClient;
+import com.carrot.base.androidbase.client.TotalPerformanceTestClient;
+import com.carrot.base.androidbase.client.VoltageMeasurementClient;
 import com.carrot.base.androidbase.error.SSErrorHandler;
 import com.carrot.base.androidbase.preferences.UserPrefs_;
 import com.carrot.base.androidbase.utils.TypeUtils;
@@ -84,10 +99,47 @@ public class Type2Activity extends AppCompatActivity {
     @Pref
     UserPrefs_ userPrefs;
 
+
+    @RestService
+    CoreMeterTestClient coreMeterTestClient;
+    @RestService
+    TotalPerformanceTestClient totalPerformanceTestClient;
     @RestService
     EquipmentCheckClient equipmentCheckClient;
     @RestService
     ResolveRecordClient resolveRecordClient;
+    @RestService
+    CrossTestClient crossTestClient;
+    @RestService
+    VoltageMeasurementClient voltageMeasurementClient;
+    @RestService
+    EarthResistanceTestClient earthResistanceTestClient;
+    @RestService
+    SpecialSecurityCheckClient specialSecurityCheckClient;
+
+
+    @RestService
+    LineBrokenManagementClient lineBrokenManagementClient;
+    @RestService
+    CollectResolveTroubleClient collectResolveTroubleClient;
+    @RestService
+    ExtendBussinessSetupClient extendBussinessSetupClient;
+    @RestService
+    MeterTroubleClient meterTroubleClient;
+    @RestService
+    OrderHandleClient orderHandleClient;
+    @RestService
+    BusinessAuditeClient businessAuditeClient;
+    @RestService
+    StopStartElectricClient stopStartElectricClient;
+
+
+    @RestService
+    DistributionNetworkEngineeringClient distributionNetworkEngineeringClient;
+
+
+    @RestService
+    CarManagementClient carManagementClient;
 
     @Bean
     SSErrorHandler ssErrorHandler;
@@ -95,8 +147,28 @@ public class Type2Activity extends AppCompatActivity {
     @AfterViews
     void bindAdapter(){
 
+        coreMeterTestClient.setRestErrorHandler(ssErrorHandler);
+        totalPerformanceTestClient.setRestErrorHandler(ssErrorHandler);
         equipmentCheckClient.setRestErrorHandler(ssErrorHandler);
         resolveRecordClient.setRestErrorHandler(ssErrorHandler);
+        crossTestClient.setRestErrorHandler(ssErrorHandler);
+        voltageMeasurementClient.setRestErrorHandler(ssErrorHandler);
+        earthResistanceTestClient.setRestErrorHandler(ssErrorHandler);
+        specialSecurityCheckClient.setRestErrorHandler(ssErrorHandler);
+
+
+        lineBrokenManagementClient.setRestErrorHandler(ssErrorHandler);
+        collectResolveTroubleClient.setRestErrorHandler(ssErrorHandler);
+        extendBussinessSetupClient.setRestErrorHandler(ssErrorHandler);
+        meterTroubleClient.setRestErrorHandler(ssErrorHandler);
+        orderHandleClient.setRestErrorHandler(ssErrorHandler);
+        businessAuditeClient.setRestErrorHandler(ssErrorHandler);
+        stopStartElectricClient.setRestErrorHandler(ssErrorHandler);
+
+
+        distributionNetworkEngineeringClient.setRestErrorHandler(ssErrorHandler);
+
+        carManagementClient.setRestErrorHandler(ssErrorHandler);
 
         setSupportActionBar(toolbar);
 
@@ -134,21 +206,160 @@ public class Type2Activity extends AppCompatActivity {
     @Background
     void getUnHandled(){
         if(userPrefs.id().get() > 0){
-            CountResult ecCountVo = equipmentCheckClient.getUnFinishedByUserId(userPrefs.id().get());
-
-            if(ecCountVo != null && ecCountVo.count > 0){
-                showFlag(View.VISIBLE, ecCountVo.count, 2);
-            }else{
-                showFlag(View.INVISIBLE, 0, 2);
+            if(typeVo.name.equals(TypeUtils.TYPE_1)){
+                getunHandled1();
             }
-
-            CountResult rrCountVo = resolveRecordClient.getUnFinishedByUserId(userPrefs.id().get());
-            if(rrCountVo != null && rrCountVo.count > 0){
-                showFlag(View.VISIBLE, rrCountVo.count, 3);
-            }else{
-                showFlag(View.INVISIBLE, 0, 3);
+            if(typeVo.name.equals(TypeUtils.TYPE_2)){
+                getunHandled2();
+            }
+            if(typeVo.name.equals(TypeUtils.TYPE_3)){
+                getunHandled3();
+            }
+            if(typeVo.name.equals(TypeUtils.TYPE_4)){
+                getunHandled4();
             }
         }
+    }
+
+    void getunHandled1(){
+
+        CountResult c11 = lineBrokenManagementClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c12 = collectResolveTroubleClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c13 = extendBussinessSetupClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c14 = meterTroubleClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c15 = orderHandleClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c16 = businessAuditeClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c17 = stopStartElectricClient.getUnFinishedByUserId(userPrefs.id().get());
+
+        int index = 0;
+        if(c11 != null && c11.count > 0){
+            showFlag(View.VISIBLE, c11.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 1;
+        if(c12 != null && c12.count > 0){
+            showFlag(View.VISIBLE, c12.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 2;
+        if(c13 != null && c13.count > 0){
+            showFlag(View.VISIBLE, c13.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 3;
+        if(c14 != null && c14.count > 0){
+            showFlag(View.VISIBLE, c14.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 4;
+        if(c15 != null && c15.count > 0){
+            showFlag(View.VISIBLE, c15.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 5;
+        if(c16 != null && c16.count > 0){
+            showFlag(View.VISIBLE, c16.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 6;
+        if(c17 != null && c17.count > 0){
+            showFlag(View.VISIBLE, c17.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+    }
+    void getunHandled2(){
+
+        CountResult c21 = coreMeterTestClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c22 = totalPerformanceTestClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c23 = equipmentCheckClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c24 = resolveRecordClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c25 = crossTestClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c26 = voltageMeasurementClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c27 = earthResistanceTestClient.getUnFinishedByUserId(userPrefs.id().get());
+        CountResult c28 = specialSecurityCheckClient.getUnFinishedByUserId(userPrefs.id().get());
+
+        int index = 0;
+        if(c21 != null && c21.count > 0){
+            showFlag(View.VISIBLE, c21.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 1;
+        if(c22 != null && c22.count > 0){
+            showFlag(View.VISIBLE, c22.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 2;
+        if(c23 != null && c23.count > 0){
+            showFlag(View.VISIBLE, c23.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 3;
+        if(c24 != null && c24.count > 0){
+            showFlag(View.VISIBLE, c24.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 4;
+        if(c25 != null && c25.count > 0){
+            showFlag(View.VISIBLE, c25.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 5;
+        if(c26 != null && c26.count > 0){
+            showFlag(View.VISIBLE, c26.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 6;
+        if(c27 != null && c27.count > 0){
+            showFlag(View.VISIBLE, c27.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+        index = 7;
+        if(c28 != null && c28.count > 0){
+            showFlag(View.VISIBLE, c28.count, index);
+        }else{
+            showFlag(View.INVISIBLE, 0, index);
+        }
+
+
+    }
+    void getunHandled3(){
+        CountResult c31 = distributionNetworkEngineeringClient.getUnFinishedByUserId(userPrefs.id().get());
+
+        if(c31 != null && c31.count > 0){
+            showFlag(View.VISIBLE, c31.count, 0);
+        }else{
+            showFlag(View.INVISIBLE, 0, 0);
+        }
+    }
+    void getunHandled4(){
+
     }
 
     @UiThread
