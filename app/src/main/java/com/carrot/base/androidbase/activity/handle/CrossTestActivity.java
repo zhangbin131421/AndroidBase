@@ -114,9 +114,9 @@ public class CrossTestActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {etUnhandleReason};
 
-        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etCrossPoint,
                                 etCrossName, etSafetyMeasure, etCrossDistance, etEarthDistance, etModificationOpinion,
@@ -190,6 +190,10 @@ public class CrossTestActivity extends BaseHandlerActivity{
             etUnhandleReason.setText(crossTestResult.unhandleReason);
 
             getImage();
+        }
+
+        if(crossTestResult.tester == null || crossTestResult.tester.equals("")){
+            etTester.setText(userPrefs.name().get());
         }
     }
 

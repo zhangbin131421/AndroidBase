@@ -72,19 +72,19 @@
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
-                    android:text="结束时间"/>
-                <TextView style="@style/formDivider"/>
-                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
-                    android:id="@+id/et_EndTime"/>
-            </LinearLayout>
-
-            <LinearLayout style="@style/tableTitle2">
-                <TextView style="@style/tableColName"
                     android:text="安全措施"/>
                 <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
                     android:text="@string/safetyMeasure"
                     android:id="@+id/et_SafetyMeasure"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="截止时间"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInput"
+                    android:id="@+id/et_EndTime"/>
             </LinearLayout>
 
             <!-- ********************* -->

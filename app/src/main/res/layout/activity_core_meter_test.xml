@@ -95,7 +95,7 @@
             <LinearLayout style="@style/tableTitle2">
                 <TextView
                     style="@style/tableColName"
-                    android:text="结束时间"/>
+                    android:text="截止时间"/>
                 <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     android:id="@+id/et_end_time"

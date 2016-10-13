@@ -86,6 +86,17 @@
                     android:text="@string/safetyMeasure"/>
             </LinearLayout>
 
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="截止时间"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_end_handle_time"/>
+            </LinearLayout>
+
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="测量情况"/>
@@ -183,7 +194,7 @@
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
-                    android:id="@+id/et_end_handle_time"/>
+                    android:visibility="gone"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
