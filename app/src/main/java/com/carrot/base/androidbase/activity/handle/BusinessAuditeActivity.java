@@ -71,6 +71,17 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
     FormEditText etUnhandleReason;
 
 
+    @ViewById(R.id.et_worker)
+    FormEditText etWorker;
+    @ViewById(R.id.et_end_time)
+    FormEditText etEndTime;
+
+
+
+
+    @ViewById(R.id.llIsHandler)
+    LinearLayout llIsHandler;
+
 
     @AfterViews
     void bindAdapter(){
@@ -80,23 +91,28 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {};
+        allValidateFields = new FormEditText[] {etAuditeHouseholdNum,etUnhandleReason};
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,etEndTime};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etAuditeScope,etSafetyMeasure,etBeginAuditeTime,etAuditeHouseholdNum,etAuditeResult,etEndAuditeTime,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etAuditeScope,
+                etSafetyMeasure,etBeginAuditeTime,etAuditeHouseholdNum,etAuditeResult,
+                etEndAuditeTime,etUnhandleReason,etEndTime,etWorker};
 
         updateDisabledSpinnerList = new Spinner[] {};
         finishDisabledSpinnerList = new Spinner[] {spnAuditeContent,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
             new OpenDateVo(etBeginAuditeTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etEndAuditeTime, OpenDateVo.UPDATE_ADD),
+                new OpenDateVo(etEndAuditeTime, OpenDateVo.UPDATE_ADD),
+                new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
         };
 
-        showBySpinnerList = new ShowWithSpinnerVo[]{};
+        showBySpinnerList = new ShowWithSpinnerVo[]{
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+        };
 
 
 
@@ -142,7 +158,13 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, businessAuditeResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(businessAuditeResult.unhandleReason);
 
+            etEndTime.setText(businessAuditeResult.endTime);
+            etWorker.setText(businessAuditeResult.worker);
             getImage();
+        }
+
+        if(businessAuditeResult.worker == null || businessAuditeResult.worker.equals("")){
+            etWorker.setText(userPrefs.name().get());
         }
     }
 
@@ -191,6 +213,8 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
 
             this.businessAuditeResult.unhandleReason = etUnhandleReason.getText().toString();
 
+            this.businessAuditeResult.worker = etWorker.getText().toString();
+            this.businessAuditeResult.endTime = etEndTime.getText().toString();
 
             return true;
         }{

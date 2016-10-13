@@ -76,6 +76,16 @@
                     android:text="@string/safetyMeasure"/>
             </LinearLayout>
 
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="截止时间"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_end_time"/>
+            </LinearLayout>
+
             <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="普查情况"/>
@@ -93,7 +103,8 @@
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
-                    android:id="@+id/et_audite_household_num"/>
+                    android:id="@+id/et_audite_household_num"
+                    whatever:testType="numeric"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -104,6 +115,16 @@
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
                     android:id="@+id/et_audite_result"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="处理人员 "/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_worker"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle">
@@ -124,7 +145,8 @@
                     android:id="@+id/spn_is_handled"
                     style="@style/spinner_form_right"/>
             </LinearLayout>
-            <LinearLayout style="@style/tableTitle2">
+            <LinearLayout style="@style/tableTitle2"
+                android:id="@+id/llIsHandler">
                 <TextView style="@style/tableColName"
                     android:text="未处理"/>
                 <TextView style="@style/formDivider"/>

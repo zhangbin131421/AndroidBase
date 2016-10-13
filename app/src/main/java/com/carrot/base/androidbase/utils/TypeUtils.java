@@ -207,7 +207,7 @@ public class TypeUtils {
         subTypes4.add(new TypeVo(TYPE_1_3, true, R.drawable.energy_meter, true));
         subTypes4.add(new TypeVo(TYPE_1_4, true, R.drawable.multiple_devices, true));
         subTypes4.add(new TypeVo(TYPE_1_5, true, R.drawable.purchase_order, true));
-        subTypes4.add(new TypeVo(TYPE_1_6, true, R.drawable.survey, false));
+        subTypes4.add(new TypeVo(TYPE_1_6, true, R.drawable.survey, true));
         subTypes4.add(new TypeVo(TYPE_1_7, true, R.drawable.disconnected, true));
 
         type4.subTypes = subTypes4;

@@ -41,6 +41,14 @@ public class BusinessAuditeResult {
     @JsonProperty(value=AssignByUserID)
     public int assignByUserID;
 
+    public static final String EndTime = "EndTime";
+    @JsonProperty(value=EndTime)
+    public String endTime;
+
+    public static final String Worker = "Worker";
+    @JsonProperty(value=Worker)
+    public String worker;
+
     public static final String CreatedTime = "CreatedTime";
     @JsonProperty(value=CreatedTime)
     public String createdTime;
@@ -110,6 +118,10 @@ public class BusinessAuditeResult {
         rtn.add(BusinessAuditeResult.EndAuditeTime, this.endAuditeTime == null ? "" : this.endAuditeTime.getBytes("UTF-8"));
         rtn.add(BusinessAuditeResult.IsHandled, this.isHandled+"");
         rtn.add(BusinessAuditeResult.UnhandleReason, this.unhandleReason == null ? "" : this.unhandleReason.getBytes("UTF-8"));
+
+
+        rtn.add(BusinessAuditeResult.EndTime, this.endTime == null ? "" : this.endTime.getBytes("UTF-8"));
+        rtn.add(BusinessAuditeResult.Worker, this.worker == null ? "" : this.worker.getBytes("UTF-8"));
 
         return rtn;
     }
