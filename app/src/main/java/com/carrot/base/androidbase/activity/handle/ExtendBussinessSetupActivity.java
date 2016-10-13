@@ -81,6 +81,8 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
     Spinner spnIsHandled;
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
+    @ViewById(R.id.et_worker)
+    FormEditText etWorker;
 
 
     @ViewById(R.id.ll_is_handler)
@@ -100,7 +102,9 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSetupAddress,etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,etEndHandleTime,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSetupAddress,
+                etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,
+                etEndHandleTime,etUnhandleReason,etWorker};
 
         updateDisabledSpinnerList = new Spinner[] {};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnExtendType,spnIsHandled,};
@@ -159,11 +163,16 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
             etEndTime.setText(extendBussinessSetupResult.endTime);
             etBeginHandleTime.setText(extendBussinessSetupResult.beginHandleTime);
             etHandleContent.setText(extendBussinessSetupResult.handleContent);
+            etWorker.setText(extendBussinessSetupResult.worker);
             etEndHandleTime.setText(extendBussinessSetupResult.endHandleTime);
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, extendBussinessSetupResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(extendBussinessSetupResult.unhandleReason);
 
             getImage();
+        }
+
+        if(extendBussinessSetupResult.worker == null || extendBussinessSetupResult.worker.equals("")){
+            etWorker.setText(userPrefs.name().get());
         }
     }
 
@@ -217,6 +226,7 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
             this.extendBussinessSetupResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.extendBussinessSetupResult.unhandleReason = etUnhandleReason.getText().toString();
+            this.extendBussinessSetupResult.worker = etWorker.getText().toString();
 
 
             return true;

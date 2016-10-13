@@ -89,6 +89,10 @@ public class ExtendBussinessSetupResult {
     @JsonProperty(value=HandleContentPic)
     public String handleContentPic;
 
+    public static final String Worker = "Worker";
+    @JsonProperty(value=Worker)
+    public String worker;
+
     public static final String EndHandleTime = "EndHandleTime";
     @JsonProperty(value=EndHandleTime)
     public String endHandleTime;
@@ -124,6 +128,7 @@ public class ExtendBussinessSetupResult {
         rtn.add(ExtendBussinessSetupResult.EndHandleTime, this.endHandleTime == null ? "" : this.endHandleTime.getBytes("UTF-8"));
         rtn.add(ExtendBussinessSetupResult.IsHandled, this.isHandled+"");
         rtn.add(ExtendBussinessSetupResult.UnhandleReason, this.unhandleReason == null ? "" : this.unhandleReason.getBytes("UTF-8"));
+        rtn.add(ExtendBussinessSetupResult.Worker, this.worker == null ? "" : this.worker.getBytes("UTF-8"));
 
         return rtn;
     }
