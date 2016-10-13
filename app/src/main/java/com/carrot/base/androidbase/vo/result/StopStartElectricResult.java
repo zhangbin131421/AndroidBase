@@ -81,13 +81,27 @@ public class StopStartElectricResult {
     @JsonProperty(value=IsHandled)
     public int isHandled;
 
-    public static final String HandleContentPic = "HandleContentPic";
-    @JsonProperty(value=HandleContentPic)
-    public String handleContentPic;
+    public static final String EndTime = "EndTime";
+    @JsonProperty(value=EndTime)
+    public String endTime;
+
+    public static final String HandleType = "HandleType";
+    @JsonProperty(value=HandleType)
+    public String handleType;
 
     public static final String UnhandleReason = "UnhandleReason";
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
+
+
+    public static final String HandleContentPic = "HandleContentPic";
+    @JsonProperty(value=HandleContentPic)
+    public String handleContentPic;
+
+    public static final String Worker = "Worker";
+    @JsonProperty(value=Worker)
+    public String worker;
+
 
 
 
@@ -110,6 +124,9 @@ public class StopStartElectricResult {
         rtn.add(StopStartElectricResult.IsHandled, this.isHandled+"");
         rtn.add(StopStartElectricResult.UnhandleReason, this.unhandleReason == null ? "" : this.unhandleReason.getBytes("UTF-8"));
 
+        rtn.add(StopStartElectricResult.Worker, this.worker == null ? "" : this.worker.getBytes("UTF-8"));
+        rtn.add(StopStartElectricResult.EndTime, this.endTime == null ? "" : this.endTime.getBytes("UTF-8"));
+        rtn.add(StopStartElectricResult.HandleType, this.handleType == null ? "" : this.handleType.getBytes("UTF-8"));
         return rtn;
     }
 }
