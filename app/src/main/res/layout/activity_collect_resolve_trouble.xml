@@ -57,6 +57,15 @@
             </LinearLayout>
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
+                    android:text="用户名称"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_username"/>
+            </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
                     android:text="故障地址"/>
                 <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
@@ -64,6 +73,37 @@
                     whatever:emptyErrorString="@string/notEmpty"
                     android:id="@+id/et_trouble_address"/>
             </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="电表局编号"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_ammeter_no"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="终端资产号"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_property_no"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="在线状态"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_status"/>
+            </LinearLayout>
+
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
@@ -78,7 +118,7 @@
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
-                    android:text="结束时间"/>
+                    android:text="截止时间"/>
                 <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
@@ -125,7 +165,20 @@
                         </org.apmem.tools.layouts.FlowLayout>
                     </LinearLayout>
 
-                </LinearLayout>            <LinearLayout style="@style/tableTitle">
+                </LinearLayout>
+
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="处理人员"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_worker"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="处理结果"/>
                 <TextView style="@style/formDivider"/>

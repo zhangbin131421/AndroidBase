@@ -57,6 +57,22 @@ public class CollectResolveTroubleResult {
     @JsonProperty(value=AreaName)
     public String areaName;
 
+    public static final String Username = "username";
+    @JsonProperty(value=Username)
+    public String username;
+
+    public static final String AmmeterNo = "ammeterNo";
+    @JsonProperty(value=AmmeterNo)
+    public String ammeterNo;
+
+    public static final String PropertyNo = "propertyNo";
+    @JsonProperty(value=PropertyNo)
+    public String propertyNo;
+
+    public static final String Status = "status";
+    @JsonProperty(value=Status)
+    public String status;
+
     public static final String AreaID = "AreaID";
     @JsonProperty(value=AreaID)
     public int areaID;
@@ -89,6 +105,10 @@ public class CollectResolveTroubleResult {
     @JsonProperty(value=HandleContentPic)
     public String handleContentPic;
 
+    public static final String Worker = "Worker";
+    @JsonProperty(value=Worker)
+    public String worker;
+
     public static final String EndHandleTime = "EndHandleTime";
     @JsonProperty(value=EndHandleTime)
     public String endHandleTime;
@@ -114,6 +134,15 @@ public class CollectResolveTroubleResult {
         rtn.add(CollectResolveTroubleResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));
         rtn.add(CollectResolveTroubleResult.TaskNum, this.taskNum == null ? "" : this.taskNum.getBytes("UTF-8"));
         rtn.add(CollectResolveTroubleResult.AreaName, this.areaName == null ? "" : this.areaName.getBytes("UTF-8"));
+
+
+        rtn.add(CollectResolveTroubleResult.Username, this.username == null ? "" : this.username.getBytes("UTF-8"));
+        rtn.add(CollectResolveTroubleResult.AmmeterNo, this.ammeterNo == null ? "" : this.ammeterNo.getBytes("UTF-8"));
+        rtn.add(CollectResolveTroubleResult.PropertyNo, this.propertyNo == null ? "" : this.propertyNo.getBytes("UTF-8"));
+        rtn.add(CollectResolveTroubleResult.Status, this.status == null ? "" : this.status.getBytes("UTF-8"));
+        rtn.add(CollectResolveTroubleResult.Worker, this.worker == null ? "" : this.worker.getBytes("UTF-8"));
+
+
         rtn.add(CollectResolveTroubleResult.AreaID, this.areaID+"");
         rtn.add(CollectResolveTroubleResult.TroubleAddress, this.troubleAddress == null ? "" : this.troubleAddress.getBytes("UTF-8"));
         rtn.add(CollectResolveTroubleResult.SafetyMeasure, this.safetyMeasure == null ? "" : this.safetyMeasure.getBytes("UTF-8"));

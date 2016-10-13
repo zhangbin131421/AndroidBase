@@ -82,6 +82,17 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
     @ViewById(R.id.et_unhandle_reason)
     FormEditText etUnhandleReason;
 
+    @ViewById(R.id.et_username)
+    FormEditText etUsername;
+    @ViewById(R.id.et_ammeter_no)
+    FormEditText etAmmeterNo;
+    @ViewById(R.id.et_property_no)
+    FormEditText etPropertyNo;
+    @ViewById(R.id.et_status)
+    FormEditText etStatus;
+    @ViewById(R.id.et_worker)
+    FormEditText etWorker;
+
 
     @ViewById(R.id.ll_is_handler)
     LinearLayout llIsHandler;
@@ -101,7 +112,10 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etTroubleAddress,etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,etEndHandleTime,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etTroubleAddress,
+                etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,etEndHandleTime,
+                etUnhandleReason,
+                etUsername,etAmmeterNo, etPropertyNo, etStatus, etWorker};
 
         updateDisabledSpinnerList = new Spinner[] {};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnTroubleReason,spnIsHandled,};
@@ -164,7 +178,17 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, collectResolveTroubleResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(collectResolveTroubleResult.unhandleReason);
 
+
+            etUsername.setText(collectResolveTroubleResult.username);
+            etAmmeterNo.setText(collectResolveTroubleResult.ammeterNo);
+            etPropertyNo.setText(collectResolveTroubleResult.propertyNo);
+            etStatus.setText(collectResolveTroubleResult.status);
+            etWorker.setText(collectResolveTroubleResult.worker);
+
             getImage();
+        }
+        if(collectResolveTroubleResult.worker == null || collectResolveTroubleResult.worker.equals("")){
+            etWorker.setText(userPrefs.name().get());
         }
     }
 
@@ -216,6 +240,14 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
             this.collectResolveTroubleResult.handleContent = etHandleContent.getText().toString();
             this.collectResolveTroubleResult.endHandleTime = etEndHandleTime.getText().toString();
             this.collectResolveTroubleResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
+
+
+
+            this.collectResolveTroubleResult.username = etUsername.getText().toString();
+            this.collectResolveTroubleResult.ammeterNo = etAmmeterNo.getText().toString();
+            this.collectResolveTroubleResult.propertyNo = etPropertyNo.getText().toString();
+            this.collectResolveTroubleResult.status = etStatus.getText().toString();
+            this.collectResolveTroubleResult.worker = etWorker.getText().toString();
 
             this.collectResolveTroubleResult.unhandleReason = etUnhandleReason.getText().toString();
 
