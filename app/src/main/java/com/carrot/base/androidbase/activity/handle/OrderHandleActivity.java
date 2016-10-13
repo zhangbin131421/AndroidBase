@@ -78,6 +78,21 @@ public class OrderHandleActivity extends BaseHandlerActivity{
     LinearLayout llIsHandler;
 
 
+    @ViewById(R.id.et_user_add)
+    FormEditText etUserAdd;
+    @ViewById(R.id.et_user_name)
+    FormEditText etUserName;
+    @ViewById(R.id.et_user_no)
+    FormEditText etUserNo;
+    @ViewById(R.id.et_end_time)
+    FormEditText etEndTime;
+
+
+    @ViewById(R.id.spn_area_name)
+    Spinner spnAreaName;
+    @ViewById(R.id.spn_type)
+    Spinner spnType;
+
     @AfterViews
     void bindAdapter(){
         super.afterInitView(TypeUtils.TYPE_1_5, getApplicationContext(), getResources());
@@ -92,13 +107,16 @@ public class OrderHandleActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etOrderContent,etBeginHandleTime,etHandleContent,etEndHandleTime,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etOrderContent,etBeginHandleTime,
+                etHandleContent,etEndHandleTime,etUnhandleReason,
+        etUserAdd, etUserName, etUserNo, etEndTime};
 
-        updateDisabledSpinnerList = new Spinner[] {};
-        finishDisabledSpinnerList = new Spinner[] {spnIsHandled,};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName,};
+        finishDisabledSpinnerList = new Spinner[] {spnIsHandled,spnAreaName, spnType};
 
         openDateEditTextList = new OpenDateVo[] {
             new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+                new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -122,6 +140,8 @@ public class OrderHandleActivity extends BaseHandlerActivity{
     void initDropDownList(){
         //下拉选择框
         setDropDownListAdapter(spnIsHandled, TypeUtils.TYPE_HANDLER);
+        setDropDownListAdapter(spnAreaName, DataInstance.getInstance().areaInformationResults);
+        setDropDownListAdapter(spnType, TypeUtils.ORDER_TYPE);
     }
 
 
@@ -146,6 +166,15 @@ public class OrderHandleActivity extends BaseHandlerActivity{
             etEndHandleTime.setText(orderHandleResult.endHandleTime);
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, orderHandleResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(orderHandleResult.unhandleReason);
+
+            etUserName.setText(orderHandleResult.userName);
+            etUserNo.setText(orderHandleResult.userNo);
+            etUserAdd.setText(orderHandleResult.userAdd);
+            etEndTime.setText(orderHandleResult.endTime);
+
+
+            spnType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.ORDER_TYPE, orderHandleResult.type));
+            spnAreaName.setSelection(getSelectedAreaIndex(orderHandleResult.areaName));
 
             getImage();
         }
@@ -194,6 +223,18 @@ public class OrderHandleActivity extends BaseHandlerActivity{
             this.orderHandleResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.orderHandleResult.unhandleReason = etUnhandleReason.getText().toString();
+
+            this.orderHandleResult.userAdd = etUserAdd.getText().toString();
+            this.orderHandleResult.userName = etUserName.getText().toString();
+            this.orderHandleResult.userNo = etUserNo.getText().toString();
+            this.orderHandleResult.endTime = etEndTime.getText().toString();
+
+
+            this.orderHandleResult.areaName = spnAreaName.getSelectedItem().toString();
+
+            this.orderHandleResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
+
+            this.orderHandleResult.type = spnType.getSelectedItem().toString();
 
 
             return true;

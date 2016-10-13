@@ -49,12 +49,69 @@
 
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
+                    android:text="台区名称"/>
+                <TextView style="@style/formDivider"/>
+                <Spinner
+                    android:id="@+id/spn_area_name"
+                    style="@style/spinner_form_right"/>
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="户号"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_user_no"/>
+            </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="户名"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_user_name"/>
+            </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="地址"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_user_add"/>
+            </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="工单类型"/>
+                <TextView style="@style/formDivider"/>
+
+                <Spinner
+                    android:id="@+id/spn_type"
+                    style="@style/spinner_form_right"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
                     android:text="工单内容"/>
                 <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText
                     style="@style/tableColInput"
                     whatever:emptyErrorString="@string/notEmpty"
                     android:id="@+id/et_order_content"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="截止时间"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_end_time"/>
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle">

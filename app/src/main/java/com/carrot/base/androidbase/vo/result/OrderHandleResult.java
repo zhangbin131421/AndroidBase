@@ -53,6 +53,34 @@ public class OrderHandleResult {
     @JsonProperty(value=TaskNum)
     public String taskNum;
 
+    public static final String AreaName = "AreaName";
+    @JsonProperty(value=AreaName)
+    public String areaName;
+
+    public static final String AreaID = "AreaID";
+    @JsonProperty(value=AreaID)
+    public int areaID;
+
+    public static final String UserNo = "UserNo";
+    @JsonProperty(value=UserNo)
+    public String userNo;
+
+    public static final String UserName = "UserName";
+    @JsonProperty(value=UserName)
+    public String userName;
+
+    public static final String UserAdd = "UserAdd";
+    @JsonProperty(value=UserAdd)
+    public String userAdd;
+
+    public static final String Type = "Type";
+    @JsonProperty(value=Type)
+    public String type;
+
+    public static final String EndTime = "EndTime";
+    @JsonProperty(value=EndTime)
+    public String endTime;
+
     public static final String OrderContent = "OrderContent";
     @JsonProperty(value=OrderContent)
     public String orderContent;
@@ -99,6 +127,15 @@ public class OrderHandleResult {
         rtn.add(OrderHandleResult.EndHandleTime, this.endHandleTime == null ? "" : this.endHandleTime.getBytes("UTF-8"));
         rtn.add(OrderHandleResult.IsHandled, this.isHandled+"");
         rtn.add(OrderHandleResult.UnhandleReason, this.unhandleReason == null ? "" : this.unhandleReason.getBytes("UTF-8"));
+
+
+        rtn.add(OrderHandleResult.AreaName, this.areaName == null ? "" : this.areaName.getBytes("UTF-8"));
+        rtn.add(OrderHandleResult.AreaID, this.areaID+"");
+        rtn.add(OrderHandleResult.UserNo, this.userNo == null ? "" : this.userNo.getBytes("UTF-8"));
+        rtn.add(OrderHandleResult.UserName, this.userName == null ? "" : this.userName.getBytes("UTF-8"));
+        rtn.add(OrderHandleResult.UserAdd, this.userAdd == null ? "" : this.userAdd.getBytes("UTF-8"));
+        rtn.add(OrderHandleResult.Type, this.type == null ? "" : this.type.getBytes("UTF-8"));
+        rtn.add(OrderHandleResult.EndTime, this.endTime == null ? "" : this.endTime.getBytes("UTF-8"));
 
         return rtn;
     }

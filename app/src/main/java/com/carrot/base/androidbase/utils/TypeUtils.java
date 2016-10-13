@@ -109,6 +109,10 @@ public class TypeUtils {
      */
     public final static String[] TYPE_HANDLER = new String[]{"已处理", "未处理"};
     /**
+     * 工单处理	- - 工单类型
+     */
+    public final static String[] ORDER_TYPE = new String[]{"投诉","意见","咨询"};
+    /**
      * 巡视种类
      */
     public final static String[] CHECK_TYPE = new String[]{"定期","特殊","夜间","故障","监察","其他"};
