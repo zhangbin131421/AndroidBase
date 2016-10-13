@@ -57,9 +57,9 @@ public class SpecialSecurityCheckResult {
     @JsonProperty(value=BeginTime)
     public String beginTime;
 
-    public static final String EndTime = "EndTime";
-    @JsonProperty(value=EndTime)
-    public String endTime;
+//    public static final String EndTime = "EndTime";
+//    @JsonProperty(value=EndTime)
+//    public String endTime;
 
     public static final String SafetyMeasure = "SafetyMeasure";
     @JsonProperty(value=SafetyMeasure)
@@ -102,7 +102,7 @@ public class SpecialSecurityCheckResult {
         rtn.add(SpecialSecurityCheckResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.TaskNum, this.taskNum == null ? "" : this.taskNum.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.BeginTime, this.beginTime == null ? "" : this.beginTime.getBytes("UTF-8"));
-        rtn.add(SpecialSecurityCheckResult.EndTime, this.endTime == null ? "" : this.endTime.getBytes("UTF-8"));
+//        rtn.add(SpecialSecurityCheckResult.EndTime, this.endTime == null ? "" : this.endTime.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.SafetyMeasure, this.safetyMeasure == null ? "" : this.safetyMeasure.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.BeginHandleTime, this.beginHandleTime == null ? "" : this.beginHandleTime.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.ExistIssue, this.existIssue == null ? "" : this.existIssue.getBytes("UTF-8"));

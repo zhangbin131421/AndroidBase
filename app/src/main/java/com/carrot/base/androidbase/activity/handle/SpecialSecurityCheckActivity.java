@@ -53,7 +53,7 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
     FormEditText etTaskNum;
     @ViewById(R.id.et_begin_time)
     FormEditText etBeginTime;
-    @ViewById(R.id.et_end_time)
+    @ViewById(R.id.et_end_handle_time)
     FormEditText etEndTime;
     @ViewById(R.id.et_safety_measure)
     FormEditText etSafetyMeasure;
@@ -63,8 +63,8 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
     FormEditText etExistIssue;
     @ViewById(R.id.et_check_date)
     FormEditText etCheckDate;
-    @ViewById(R.id.et_end_handle_time)
-    FormEditText etEndHandleTime;
+//    @ViewById(R.id.et_end_handle_time)
+//    FormEditText etEndHandleTime;
     @ViewById(R.id.spn_is_handled)
     Spinner spnIsHandled;
     @ViewById(R.id.et_unhandle_reason)
@@ -89,17 +89,17 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginTime,etEndTime,etSafetyMeasure,etBeginHandleTime,etExistIssue,etCheckDate,etEndHandleTime,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginTime,etEndTime,etSafetyMeasure,etBeginHandleTime,etExistIssue,etCheckDate,etUnhandleReason,};
 
         updateDisabledSpinnerList = new Spinner[] {};
         finishDisabledSpinnerList = new Spinner[] {spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etBeginTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etBeginHandleTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etCheckDate, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etBeginTime, OpenDateVo.UPDATE),
+            new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+            new OpenDateVo(etBeginHandleTime, OpenDateVo.UPDATE),
+            new OpenDateVo(etCheckDate, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -141,12 +141,12 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
             etAssignmentTime.setText(specialSecurityCheckResult.assignmentTime);
             etTaskNum.setText(specialSecurityCheckResult.taskNum);
             etBeginTime.setText(specialSecurityCheckResult.beginTime);
-            etEndTime.setText(specialSecurityCheckResult.endTime);
+            etEndTime.setText(specialSecurityCheckResult.endHandleTime);
             etSafetyMeasure.setText(specialSecurityCheckResult.safetyMeasure);
             etBeginHandleTime.setText(specialSecurityCheckResult.beginHandleTime);
             etExistIssue.setText(specialSecurityCheckResult.existIssue);
             etCheckDate.setText(specialSecurityCheckResult.checkDate);
-            etEndHandleTime.setText(specialSecurityCheckResult.endHandleTime);
+//            etEndHandleTime.setText(specialSecurityCheckResult.endHandleTime);
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, specialSecurityCheckResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(specialSecurityCheckResult.unhandleReason);
 
@@ -188,12 +188,12 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
             this.specialSecurityCheckResult.assignmentTime = etAssignmentTime.getText().toString();
             this.specialSecurityCheckResult.taskNum = etTaskNum.getText().toString();
             this.specialSecurityCheckResult.beginTime = etBeginTime.getText().toString();
-            this.specialSecurityCheckResult.endTime = etEndTime.getText().toString();
+//            this.specialSecurityCheckResult.endTime = etEndTime.getText().toString();
             this.specialSecurityCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
             this.specialSecurityCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
             this.specialSecurityCheckResult.existIssue = etExistIssue.getText().toString();
             this.specialSecurityCheckResult.checkDate = etCheckDate.getText().toString();
-            this.specialSecurityCheckResult.endHandleTime = etEndHandleTime.getText().toString();
+            this.specialSecurityCheckResult.endHandleTime = etEndTime.getText().toString();
             this.specialSecurityCheckResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
 
             this.specialSecurityCheckResult.unhandleReason = etUnhandleReason.getText().toString();

@@ -86,8 +86,8 @@ public class TaskCardSpecialSecurityCheckAdapter extends RecyclerView.Adapter<Ta
             holder.creationTime.setText("");
         }
 
-        if(taskBaseVo.endTime != null && !taskBaseVo.endTime.equals("")){
-            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
+        if(taskBaseVo.endHandleTime != null && !taskBaseVo.endHandleTime.equals("")){
+            holder.endTime.setText("结束日期：" + taskBaseVo.endHandleTime.substring(0,10));
         }else{
             holder.endTime.setText("");
         }
