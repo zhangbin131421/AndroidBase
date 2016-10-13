@@ -57,6 +57,33 @@
             </LinearLayout>
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
+                    android:text="供电量"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_electricity_a"/>
+            </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="售电量"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_electricity_b"/>
+            </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="损失电量"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_electricity_c"/>
+            </LinearLayout>
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
                     android:text="线损率"/>
                 <TextView style="@style/formDivider"/>
                 <com.andreabaccega.widget.FormEditText

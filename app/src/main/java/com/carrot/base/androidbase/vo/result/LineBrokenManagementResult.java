@@ -61,6 +61,18 @@ public class LineBrokenManagementResult {
     @JsonProperty(value=AreaID)
     public int areaID;
 
+    public static final String ElectricityA = "ElectricityA";
+    @JsonProperty(value=ElectricityA)
+    public String electricityA;
+
+    public static final String ElectricityB = "ElectricityB";
+    @JsonProperty(value=ElectricityB)
+    public String electricityB;
+
+    public static final String ElectricityC = "ElectricityC";
+    @JsonProperty(value=ElectricityC)
+    public String electricityC;
+
     public static final String BrokenRate = "BrokenRate";
     @JsonProperty(value=BrokenRate)
     public String brokenRate;
@@ -111,6 +123,9 @@ public class LineBrokenManagementResult {
         rtn.add(LineBrokenManagementResult.TaskNum, this.taskNum == null ? "" : this.taskNum.getBytes("UTF-8"));
         rtn.add(LineBrokenManagementResult.AreaName, this.areaName == null ? "" : this.areaName.getBytes("UTF-8"));
         rtn.add(LineBrokenManagementResult.AreaID, this.areaID+"");
+        rtn.add(LineBrokenManagementResult.ElectricityA, this.electricityA == null ? "" : this.electricityA.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.ElectricityB, this.electricityB == null ? "" : this.electricityB.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.ElectricityC, this.electricityC == null ? "" : this.electricityC.getBytes("UTF-8"));
         rtn.add(LineBrokenManagementResult.BrokenRate, this.brokenRate == null ? "" : this.brokenRate.getBytes("UTF-8"));
         rtn.add(LineBrokenManagementResult.SafetyMeasure, this.safetyMeasure == null ? "" : this.safetyMeasure.getBytes("UTF-8"));
         rtn.add(LineBrokenManagementResult.BeginHandleTime, this.beginHandleTime == null ? "" : this.beginHandleTime.getBytes("UTF-8"));

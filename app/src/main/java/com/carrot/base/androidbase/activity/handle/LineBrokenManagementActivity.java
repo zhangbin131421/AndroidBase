@@ -54,6 +54,16 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
     FormEditText etTaskNum;
     @ViewById(R.id.spn_area_name)
     Spinner spnAreaName;
+
+    @ViewById(R.id.et_electricity_a)
+    FormEditText etElectricityA;
+
+    @ViewById(R.id.et_electricity_b)
+    FormEditText etElectricityB;
+
+    @ViewById(R.id.et_electricity_c)
+    FormEditText etElectricityC;
+
     @ViewById(R.id.et_broken_rate)
     FormEditText etBrokenRate;
     @ViewById(R.id.et_safety_measure)
@@ -98,7 +108,10 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBrokenRate,etSafetyMeasure,etBeginHandleTime,etHandleContent,etEndHandleTiem,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBrokenRate,
+                etSafetyMeasure,etBeginHandleTime,etHandleContent,
+                etEndHandleTiem,etUnhandleReason,
+        etElectricityA,etElectricityB,etElectricityC,};
 
         updateDisabledSpinnerList = new Spinner[] {};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnUnqualifiedReason,spnIsHandled,};
@@ -149,6 +162,9 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
             etAssignmentTime.setText(lineBrokenManagementResult.assignmentTime);
             etTaskNum.setText(lineBrokenManagementResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndex(lineBrokenManagementResult.areaName));
+            etElectricityA.setText(lineBrokenManagementResult.electricityA);
+            etElectricityB.setText(lineBrokenManagementResult.electricityB);
+            etElectricityC.setText(lineBrokenManagementResult.electricityC);
             etBrokenRate.setText(lineBrokenManagementResult.brokenRate);
             etSafetyMeasure.setText(lineBrokenManagementResult.safetyMeasure);
             etBeginHandleTime.setText(lineBrokenManagementResult.beginHandleTime);
@@ -201,6 +217,9 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
             this.lineBrokenManagementResult.areaName = spnAreaName.getSelectedItem().toString();
 
             this.lineBrokenManagementResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
+            this.lineBrokenManagementResult.electricityA = etElectricityA.getText().toString();
+            this.lineBrokenManagementResult.electricityB = etElectricityB.getText().toString();
+            this.lineBrokenManagementResult.electricityC = etElectricityC.getText().toString();
             this.lineBrokenManagementResult.brokenRate = etBrokenRate.getText().toString();
             this.lineBrokenManagementResult.safetyMeasure = etSafetyMeasure.getText().toString();
             this.lineBrokenManagementResult.beginHandleTime = etBeginHandleTime.getText().toString();
