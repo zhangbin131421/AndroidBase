@@ -51,8 +51,8 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
     FormEditText etAssignmentTime;
     @ViewById(R.id.et_task_num)
     FormEditText etTaskNum;
-    @ViewById(R.id.et_begin_time)
-    FormEditText etBeginTime;
+//    @ViewById(R.id.et_begin_time)
+//    FormEditText etBeginTime;
     @ViewById(R.id.et_end_handle_time)
     FormEditText etEndTime;
     @ViewById(R.id.et_safety_measure)
@@ -74,6 +74,14 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
     LinearLayout llIsHandler;
 
 
+    @ViewById(R.id.et_check_scope)
+    FormEditText etCheckScope;
+    @ViewById(R.id.et_check_content)
+    FormEditText etCheckContent;
+
+    @ViewById(R.id.et_checker)
+    FormEditText etChecker;
+
 
     @AfterViews
     void bindAdapter(){
@@ -89,13 +97,15 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginTime,etEndTime,etSafetyMeasure,etBeginHandleTime,etExistIssue,etCheckDate,etUnhandleReason,};
+        finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,
+                etSafetyMeasure,etBeginHandleTime,etExistIssue,etCheckDate,etUnhandleReason,
+                etCheckScope,etCheckContent,etChecker};
 
         updateDisabledSpinnerList = new Spinner[] {};
         finishDisabledSpinnerList = new Spinner[] {spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etBeginTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etBeginTime, OpenDateVo.UPDATE),
             new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
             new OpenDateVo(etBeginHandleTime, OpenDateVo.UPDATE),
             new OpenDateVo(etCheckDate, OpenDateVo.UPDATE),
@@ -140,7 +150,7 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(specialSecurityCheckResult.assignmentTime);
             etTaskNum.setText(specialSecurityCheckResult.taskNum);
-            etBeginTime.setText(specialSecurityCheckResult.beginTime);
+//            etBeginTime.setText(specialSecurityCheckResult.beginTime);
             etEndTime.setText(specialSecurityCheckResult.endHandleTime);
             etSafetyMeasure.setText(specialSecurityCheckResult.safetyMeasure);
             etBeginHandleTime.setText(specialSecurityCheckResult.beginHandleTime);
@@ -150,7 +160,15 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, specialSecurityCheckResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(specialSecurityCheckResult.unhandleReason);
 
+            etCheckScope.setText(specialSecurityCheckResult.checkScope);
+            etCheckContent.setText(specialSecurityCheckResult.checkContent);
+
+            etChecker.setText(specialSecurityCheckResult.checker);
             getImage();
+        }
+
+        if(specialSecurityCheckResult.checker == null || specialSecurityCheckResult.checker.equals("")){
+            etChecker.setText(userPrefs.name().get());
         }
     }
 
@@ -187,7 +205,7 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
             this.specialSecurityCheckResult.assignmentTime = etAssignmentTime.getText().toString();
             this.specialSecurityCheckResult.taskNum = etTaskNum.getText().toString();
-            this.specialSecurityCheckResult.beginTime = etBeginTime.getText().toString();
+//            this.specialSecurityCheckResult.beginTime = etBeginTime.getText().toString();
 //            this.specialSecurityCheckResult.endTime = etEndTime.getText().toString();
             this.specialSecurityCheckResult.safetyMeasure = etSafetyMeasure.getText().toString();
             this.specialSecurityCheckResult.beginHandleTime = etBeginHandleTime.getText().toString();
@@ -198,6 +216,10 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
             this.specialSecurityCheckResult.unhandleReason = etUnhandleReason.getText().toString();
 
+            this.specialSecurityCheckResult.checkContent = etCheckContent.getText().toString();
+            this.specialSecurityCheckResult.checkScope = etCheckScope.getText().toString();
+
+            this.specialSecurityCheckResult.checker = etChecker.getText().toString();
 
             return true;
         }{

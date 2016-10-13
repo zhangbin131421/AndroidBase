@@ -53,9 +53,19 @@ public class SpecialSecurityCheckResult {
     @JsonProperty(value=TaskNum)
     public String taskNum;
 
-    public static final String BeginTime = "BeginTime";
-    @JsonProperty(value=BeginTime)
-    public String beginTime;
+//    public static final String BeginTime = "BeginTime";
+//    @JsonProperty(value=BeginTime)
+//    public String beginTime;
+
+    public static final String CheckScope = "CheckScope";
+    @JsonProperty(value=CheckScope)
+    public String checkScope;
+
+
+    public static final String CheckContent = "CheckContent";
+    @JsonProperty(value=CheckContent)
+    public String checkContent;
+
 
 //    public static final String EndTime = "EndTime";
 //    @JsonProperty(value=EndTime)
@@ -89,6 +99,10 @@ public class SpecialSecurityCheckResult {
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
 
+    public static final String Checker = "Checker";
+    @JsonProperty(value=Checker)
+    public String checker;
+
 
 
     @JsonIgnore
@@ -101,7 +115,7 @@ public class SpecialSecurityCheckResult {
         rtn.add(SpecialSecurityCheckResult.CreatedTime, this.createdTime == null ? "" : this.createdTime.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.AssignmentTime, this.assignmentTime == null ? "" : this.assignmentTime.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.TaskNum, this.taskNum == null ? "" : this.taskNum.getBytes("UTF-8"));
-        rtn.add(SpecialSecurityCheckResult.BeginTime, this.beginTime == null ? "" : this.beginTime.getBytes("UTF-8"));
+//        rtn.add(SpecialSecurityCheckResult.BeginTime, this.beginTime == null ? "" : this.beginTime.getBytes("UTF-8"));
 //        rtn.add(SpecialSecurityCheckResult.EndTime, this.endTime == null ? "" : this.endTime.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.SafetyMeasure, this.safetyMeasure == null ? "" : this.safetyMeasure.getBytes("UTF-8"));
         rtn.add(SpecialSecurityCheckResult.BeginHandleTime, this.beginHandleTime == null ? "" : this.beginHandleTime.getBytes("UTF-8"));
@@ -111,6 +125,10 @@ public class SpecialSecurityCheckResult {
         rtn.add(SpecialSecurityCheckResult.IsHandled, this.isHandled+"");
         rtn.add(SpecialSecurityCheckResult.UnhandleReason, this.unhandleReason == null ? "" : this.unhandleReason.getBytes("UTF-8"));
 
+        rtn.add(SpecialSecurityCheckResult.CheckContent, this.checkContent == null ? "" : this.checkContent.getBytes("UTF-8"));
+        rtn.add(SpecialSecurityCheckResult.CheckScope, this.checkScope == null ? "" : this.checkScope.getBytes("UTF-8"));
+
+        rtn.add(SpecialSecurityCheckResult.Checker, this.checker == null ? "" : this.checker.getBytes("UTF-8"));
         return rtn;
     }
 }
