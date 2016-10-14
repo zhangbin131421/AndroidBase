@@ -104,11 +104,12 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
+                etEarthPlace,etEarthEquipmentName,etResistanceValue,etEndHandleTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEarthPlace,etEarthEquipmentName,etResistanceValue,etSafetyMeasure,etBeginHandleTime,etTestResistanceValue,etTestDate,etTester,etEndHandleTime,etUnhandleReason,};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnWether,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {

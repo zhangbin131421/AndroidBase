@@ -95,7 +95,8 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
+                etCheckScope, etCheckContent,etEndTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,
                 etSafetyMeasure,etBeginHandleTime,etExistIssue,etCheckDate,etUnhandleReason,

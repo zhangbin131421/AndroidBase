@@ -124,11 +124,13 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
+                etEngineeringName ,etEngineeringNum ,etExecutionCompany ,
+                etWorkContent ,etWorkPlace ,etStopScope ,etStopTime ,etWorkLicensor};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEngineeringName,etEngineeringNum,etExecutionCompany,etWorkContent,etWorkPlace,etStopScope,etStopTime,etWorkLicensor,etBeginHandleTime,etWorkInvoiceNum,etExecutionResponsible,etWorkResponsible,etWorkContent2,etSafetyMeasure,etActualStopTime,etEndStopTime,etInspector,etInspect,etComplete,etEndHandleTime,etUnhandleReason,};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
