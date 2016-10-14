@@ -190,12 +190,12 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
 
         try{
 
-            int a = Integer.parseInt(etCurrentA.getText().toString());
-            int b = Integer.parseInt(etCurrentB.getText().toString());
-            int c = Integer.parseInt(etCurrentC.getText().toString());
+            double a = Double.parseDouble(etCurrentA.getText().toString());
+            double b = Double.parseDouble(etCurrentB.getText().toString());
+            double c = Double.parseDouble(etCurrentC.getText().toString());
 
-            int max = -1;
-            int min = 9999999;
+            double max = -1;
+            double min = 9999999;
             if(a > b){
                 max = a > c ? a : c;
                 min = b > c ? c : b;
@@ -207,12 +207,12 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
 //            负载率（%）	公式：（1+2+3）*220/1000/4*100
 //            三相不平衡率（%）	公式：（最大相电流—最小相电流）/最大相电流*100
 
-            double loadRate = (a+b+c)*220/1000/4*100;
-            double imbalanceRate = (max-min)/max*100;
+            double loadRate = (a+b+c)*220*100/1000/4;
+            double imbalanceRate = (max-min)*10000/max;
 
             Log.i("sslog", max+", " + min + ", " + loadRate + ", " + imbalanceRate);
-            etLoadRate.setText(String.format("%.2f", loadRate));
-            etImbalanceRate.setText(String.format("%.2f", imbalanceRate));
+            etLoadRate.setText(String.format("%.2f", loadRate/100));
+            etImbalanceRate.setText(String.format("%.2f", imbalanceRate/100));
         }catch (Exception e){
             alert("错误", "请输入数字", SweetAlertDialog.ERROR_TYPE, null);
         }
