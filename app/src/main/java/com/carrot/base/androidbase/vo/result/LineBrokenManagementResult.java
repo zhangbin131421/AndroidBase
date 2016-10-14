@@ -109,6 +109,11 @@ public class LineBrokenManagementResult {
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
 
+    public static final String Worker = "Worker";
+    @JsonProperty(value=Worker)
+    public String worker;
+
+
 
 
     @JsonIgnore
@@ -134,6 +139,7 @@ public class LineBrokenManagementResult {
         rtn.add(LineBrokenManagementResult.EndHandleTiem, this.endHandleTiem == null ? "" : this.endHandleTiem.getBytes("UTF-8"));
         rtn.add(LineBrokenManagementResult.IsHandled, this.isHandled+"");
         rtn.add(LineBrokenManagementResult.UnhandleReason, this.unhandleReason == null ? "" : this.unhandleReason.getBytes("UTF-8"));
+        rtn.add(LineBrokenManagementResult.Worker, this.worker == null ? "" : this.worker.getBytes("UTF-8"));
 
         return rtn;
     }

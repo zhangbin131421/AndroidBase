@@ -110,14 +110,15 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
+                etUsername,etTroubleAddress,etAmmeterNo,etPropertyNo,etStatus,etEndTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etTroubleAddress,
                 etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,etEndHandleTime,
                 etUnhandleReason,
                 etUsername,etAmmeterNo, etPropertyNo, etStatus, etWorker};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnTroubleReason,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {

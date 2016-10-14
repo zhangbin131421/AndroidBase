@@ -119,7 +119,8 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure};
+        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure,
+                etProtectLine,etType,etEndTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,etBeginHandleTime,etProtectLine,
                 etElectricityA,etElectricityC,etOperateTime,etTestTime,etHandleContent, etSafetyMeasure,etType,
@@ -217,6 +218,9 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
             this.saveStatus = 1;
         }
 
+        if(totalPerformanceTestResult.tester == null || totalPerformanceTestResult.tester.equals("")){
+            etTester.setText(userPrefs.name().get());
+        }
     }
 
 

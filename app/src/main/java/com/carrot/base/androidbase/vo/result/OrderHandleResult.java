@@ -109,6 +109,10 @@ public class OrderHandleResult {
     @JsonProperty(value=UnhandleReason)
     public String unhandleReason;
 
+    public static final String Worker = "Worker";
+    @JsonProperty(value=Worker)
+    public String worker;
+
 
 
     @JsonIgnore
@@ -136,6 +140,7 @@ public class OrderHandleResult {
         rtn.add(OrderHandleResult.UserAdd, this.userAdd == null ? "" : this.userAdd.getBytes("UTF-8"));
         rtn.add(OrderHandleResult.Type, this.type == null ? "" : this.type.getBytes("UTF-8"));
         rtn.add(OrderHandleResult.EndTime, this.endTime == null ? "" : this.endTime.getBytes("UTF-8"));
+        rtn.add(OrderHandleResult.Worker, this.worker == null ? "" : this.worker.getBytes("UTF-8"));
 
         return rtn;
     }

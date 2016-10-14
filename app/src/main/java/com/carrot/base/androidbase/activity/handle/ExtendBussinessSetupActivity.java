@@ -100,13 +100,14 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
+                etSetupAddress,etEndTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSetupAddress,
                 etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,
                 etEndHandleTime,etUnhandleReason,etWorker};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName,spnExtendType};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnExtendType,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {

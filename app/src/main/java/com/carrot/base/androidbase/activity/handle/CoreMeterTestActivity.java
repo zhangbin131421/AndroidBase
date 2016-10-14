@@ -123,13 +123,14 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime, etBeginHandleTime};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime, etBeginHandleTime};
+        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure,
+                etEndTime, etBeginHandleTime,etProtectLine,etType};
 
         finishDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etProtectLine, etType,
                 etSafetyMeasure, etEndTime, etBeginHandleTime, etHandleContent, etTester,
                 etTestingTime, etEndHandleTime, etUnhandleReason,aTesting,bTesting,cTesting};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {etAreaName};
         finishDisabledSpinnerList = new Spinner[] {etWether, etTestWay, etTestResult, etIsHandled, etAreaName};
 
         imageAddButtonList = new ImageView[] {addAImage,addBImage,addCImage};

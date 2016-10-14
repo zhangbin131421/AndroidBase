@@ -176,7 +176,7 @@
                     android:id="@+id/spn_period"
                     style="@style/spinner_form_right"/>
             </LinearLayout>
-<LinearLayout style="@style/tableTitle2">
+            <LinearLayout style="@style/tableTitle2">
                     <TextView style="@style/tableColName"
                         android:text="A相电流（A）1"/>
                     <TextView style="@style/formDivider"/>
@@ -186,7 +186,8 @@
                         android:orientation="vertical">
                         <com.andreabaccega.widget.FormEditText
                             whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInputPic"
-                            android:id="@+id/et_current_a"/>
+                            android:id="@+id/et_current_a"
+                            whatever:testType="numeric"/>
                         <org.apmem.tools.layouts.FlowLayout
                             android:id="@+id/ll_current_a"
                             style="@style/tableColImageLayout"
@@ -207,7 +208,8 @@
                         android:orientation="vertical">
                         <com.andreabaccega.widget.FormEditText
                             whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInputPic"
-                            android:id="@+id/et_current_b"/>
+                            android:id="@+id/et_current_b"
+                            whatever:testType="numeric"/>
                         <org.apmem.tools.layouts.FlowLayout
                             android:id="@+id/ll_current_b"
                             style="@style/tableColImageLayout"
@@ -228,7 +230,8 @@
                         android:orientation="vertical">
                         <com.andreabaccega.widget.FormEditText
                             whatever:emptyErrorString="@string/notEmpty" style="@style/tableColInputPic"
-                            android:id="@+id/et_current_c"/>
+                            android:id="@+id/et_current_c"
+                            whatever:testType="numeric"/>
                         <org.apmem.tools.layouts.FlowLayout
                             android:id="@+id/ll_current_c"
                             style="@style/tableColImageLayout"

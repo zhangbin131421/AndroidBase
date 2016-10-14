@@ -95,19 +95,20 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,etEndTime};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,etEndTime,
+                etAuditeScope};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etAuditeScope,
                 etSafetyMeasure,etBeginAuditeTime,etAuditeHouseholdNum,etAuditeResult,
                 etEndAuditeTime,etUnhandleReason,etEndTime,etWorker};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnAuditeContent};
         finishDisabledSpinnerList = new Spinner[] {spnAuditeContent,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etBeginAuditeTime, OpenDateVo.UPDATE_ADD),
-                new OpenDateVo(etEndAuditeTime, OpenDateVo.UPDATE_ADD),
-                new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etBeginAuditeTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etEndAuditeTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{

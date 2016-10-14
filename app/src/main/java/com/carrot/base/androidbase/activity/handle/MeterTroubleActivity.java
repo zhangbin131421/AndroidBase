@@ -114,14 +114,15 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
+                etHouseholdNum,etMeterNum,etTroubleAddress,etEndTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etHouseholdNum,
                 etMeterNum,etTroubleAddress,etSafetyMeasure,etBeginHandleTime,etTroubleReason,
                 etHandleContent,etEndHandleTime,etUnhandleReason,
                 etEndTime, etWorker};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {

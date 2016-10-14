@@ -111,13 +111,14 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,
+                etStopStartElectricAddress,etEndTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etStopStartElectricAddress,
                 etBeginHandleTime,etEndHandleTime,etUnhandleReason,
         etEndTime, etHandleContent, etWorder};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName, spnHandleType,spnIsHandled};
 
         openDateEditTextList = new OpenDateVo[] {

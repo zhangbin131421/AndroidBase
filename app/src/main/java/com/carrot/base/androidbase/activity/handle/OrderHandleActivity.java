@@ -93,6 +93,9 @@ public class OrderHandleActivity extends BaseHandlerActivity{
     @ViewById(R.id.spn_type)
     Spinner spnType;
 
+    @ViewById(R.id.et_worker)
+    FormEditText etWorker;
+
     @AfterViews
     void bindAdapter(){
         super.afterInitView(TypeUtils.TYPE_1_5, getApplicationContext(), getResources());
@@ -105,13 +108,14 @@ public class OrderHandleActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,
+                etUserNo,etUserName,etUserAdd,etOrderContent,etEndTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etOrderContent,etBeginHandleTime,
                 etHandleContent,etEndHandleTime,etUnhandleReason,
-        etUserAdd, etUserName, etUserNo, etEndTime};
+        etUserAdd, etUserName, etUserNo, etEndTime,etWorker};
 
-        updateDisabledSpinnerList = new Spinner[] {spnAreaName,};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName,spnType};
         finishDisabledSpinnerList = new Spinner[] {spnIsHandled,spnAreaName, spnType};
 
         openDateEditTextList = new OpenDateVo[] {
@@ -171,12 +175,17 @@ public class OrderHandleActivity extends BaseHandlerActivity{
             etUserNo.setText(orderHandleResult.userNo);
             etUserAdd.setText(orderHandleResult.userAdd);
             etEndTime.setText(orderHandleResult.endTime);
+            etWorker.setText(orderHandleResult.worker);
 
 
             spnType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.ORDER_TYPE, orderHandleResult.type));
             spnAreaName.setSelection(getSelectedAreaIndex(orderHandleResult.areaName));
 
             getImage();
+        }
+
+        if(orderHandleResult.worker == null || orderHandleResult.worker.equals("")){
+            etWorker.setText(userPrefs.name().get());
         }
     }
 
@@ -235,7 +244,7 @@ public class OrderHandleActivity extends BaseHandlerActivity{
             this.orderHandleResult.areaID = ((AreaInformationResult)spnAreaName.getSelectedItem()).id;
 
             this.orderHandleResult.type = spnType.getSelectedItem().toString();
-
+            this.orderHandleResult.worker = etWorker.getText().toString();
 
             return true;
         }{

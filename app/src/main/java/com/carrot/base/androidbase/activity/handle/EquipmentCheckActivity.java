@@ -127,7 +127,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
+        updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
+        };
 
         finishDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
 //                etBeginHandleTime,

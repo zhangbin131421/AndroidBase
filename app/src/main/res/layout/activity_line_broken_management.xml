@@ -142,7 +142,20 @@
                         </org.apmem.tools.layouts.FlowLayout>
                     </LinearLayout>
 
-                </LinearLayout>            <LinearLayout style="@style/tableTitle">
+                </LinearLayout>
+
+
+            <LinearLayout style="@style/tableTitle2">
+                <TextView style="@style/tableColName"
+                    android:text="处理人员"/>
+                <TextView style="@style/formDivider"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_worker"/>
+            </LinearLayout>
+
+            <LinearLayout style="@style/tableTitle">
                 <TextView style="@style/tableColName"
                     android:text="处理结果"/>
                 <TextView style="@style/formDivider"/>

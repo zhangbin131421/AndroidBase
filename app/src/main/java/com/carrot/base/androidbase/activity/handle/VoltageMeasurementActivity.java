@@ -1,5 +1,6 @@
 package com.carrot.base.androidbase.activity.handle;
 
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -15,6 +16,7 @@ import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.VoltageMeasurementResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
+import org.androidannotations.annotations.AfterTextChange;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.finalteam.galleryfinal.model.PhotoInfo;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by victor on 8/22/16.
@@ -178,17 +181,57 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
 
     }
 
+    @AfterTextChange({R.id.et_current_a,R.id.et_current_b,R.id.et_current_c})
+    void afterTextChangedOnHelloTextView() {
+        if(etCurrentA.getText() == null || etCurrentB.getText() == null || etCurrentC.getText() == null ||
+                etCurrentA.getText().toString().equals("") || etCurrentB.getText().toString().equals("") || etCurrentC.getText().toString().equals("")){
+            return;
+        }
+
+        try{
+
+            int a = Integer.parseInt(etCurrentA.getText().toString());
+            int b = Integer.parseInt(etCurrentB.getText().toString());
+            int c = Integer.parseInt(etCurrentC.getText().toString());
+
+            int max = -1;
+            int min = 9999999;
+            if(a > b){
+                max = a > c ? a : c;
+                min = b > c ? c : b;
+            }else{
+                max = b > c ? b : c;
+                min = a > c ? c : a;
+            }
+
+//            负载率（%）	公式：（1+2+3）*220/1000/4*100
+//            三相不平衡率（%）	公式：（最大相电流—最小相电流）/最大相电流*100
+
+            double loadRate = (a+b+c)*220/1000/4*100;
+            double imbalanceRate = (max-min)/max*100;
+
+            Log.i("sslog", max+", " + min + ", " + loadRate + ", " + imbalanceRate);
+            etLoadRate.setText(String.format("%.2f", loadRate));
+            etImbalanceRate.setText(String.format("%.2f", imbalanceRate));
+        }catch (Exception e){
+            alert("错误", "请输入数字", SweetAlertDialog.ERROR_TYPE, null);
+        }
+
+    }
+
 
     public void setValidateList(){
         allValidateFields = new FormEditText[] {etUnhandleReason, etHouseholder, etPowerHouseholder};
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
-        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
+        updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
+                etConfigA,etConfigB,etConfigC,etRatedCurrent,etPowerHouseholder,
+                etPowerCapacity,etHouseholder,etHouseholderCapacity,etEndTime,etLoadRate,etImbalanceRate};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etConfigA,etConfigB,etConfigC,etRatedCurrent,etPowerHouseholder,etPowerCapacity,etHouseholder,etHouseholderCapacity,etSafetyMeasure,etEndTime,etBeginHandleTime,etCurrentA,etCurrentB,etCurrentC,etZeoLineCurrent,etLoadRate,etImbalanceRate,etHeaderVoltage,etFooterVoltage,etModificationOpinion,etTestTime,etTester,etEndHandleTime,etUnhandleReason,};
 
-        updateDisabledSpinnerList = new Spinner[] {};
+        updateDisabledSpinnerList = new Spinner[] {spnAreaName};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnPeriod,spnIsOutOfLimit,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
@@ -280,6 +323,10 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
             etUnhandleReason.setText(voltageMeasurementResult.unhandleReason);
 
             getImage();
+        }
+
+        if(voltageMeasurementResult.tester == null || voltageMeasurementResult.tester.equals("")){
+            etTester.setText(voltageMeasurementResult.tester);
         }
     }
 
