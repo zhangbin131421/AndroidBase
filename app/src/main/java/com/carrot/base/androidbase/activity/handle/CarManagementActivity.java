@@ -90,8 +90,8 @@ public class CarManagementActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnCost,spnApplyStatus,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etDriveOutTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etBackTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etDriveOutTime, OpenDateVo.UPDATE),
+            new OpenDateVo(etBackTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{};

@@ -111,8 +111,8 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnExtendType,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{

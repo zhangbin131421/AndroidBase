@@ -127,8 +127,8 @@ public class CrossTestActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName, spnIsHandled, spnIsQualified};
 
         openDateEditTextList = new OpenDateVo[] {
-                new OpenDateVo(etTestTime, OpenDateVo.UPDATE_ADD),
-                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD)
+                new OpenDateVo(etTestTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE)
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{

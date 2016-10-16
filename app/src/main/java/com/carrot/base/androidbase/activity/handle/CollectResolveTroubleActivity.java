@@ -122,8 +122,8 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnTroubleReason,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{

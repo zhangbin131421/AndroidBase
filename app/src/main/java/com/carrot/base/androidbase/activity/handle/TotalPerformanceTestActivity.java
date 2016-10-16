@@ -133,9 +133,9 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
         openDateEditTextList = new OpenDateVo[] {
                 new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
-                new OpenDateVo(etOperateTime, OpenDateVo.UPDATE_ADD),
-                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
-                new OpenDateVo(etTestTime, OpenDateVo.UPDATE_ADD)
+                new OpenDateVo(etOperateTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etTestTime, OpenDateVo.UPDATE)
         };
 
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {

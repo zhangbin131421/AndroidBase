@@ -120,7 +120,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnUnqualifiedReason,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etEndHandleTiem, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndHandleTiem, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{

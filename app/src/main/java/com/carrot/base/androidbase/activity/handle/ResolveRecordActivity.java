@@ -138,12 +138,12 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
         openDateEditTextList = new OpenDateVo[] {
 //                new OpenDateVo(et_BeginHandleTime, 10),
-                new OpenDateVo(et_WorkDate, 10)
+                new OpenDateVo(et_WorkDate, OpenDateVo.UPDATE)
 //                ,new OpenDateVo(et_EndHandleTime, 10)
         };
         openTimeEditTextList = new OpenDateVo[] {
-                new OpenDateVo(et_StopTime, 10),
-                new OpenDateVo(et_EndStopTime, 10)
+                new OpenDateVo(et_StopTime, OpenDateVo.UPDATE),
+                new OpenDateVo(et_EndStopTime, OpenDateVo.UPDATE)
         };
 
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {

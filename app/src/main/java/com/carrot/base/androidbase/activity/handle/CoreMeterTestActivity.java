@@ -137,9 +137,9 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
         openDateEditTextList = new OpenDateVo[] {
 //                new OpenDateVo(etEndTime, 1),
-                new OpenDateVo(etEndHandleTime, 10),
+                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
 //                new OpenDateVo(etBeginHandleTime, 1),
-                new OpenDateVo(etTestingTime, 10),
+                new OpenDateVo(etTestingTime, OpenDateVo.UPDATE),
         };
 
         openChooseImageList = new BaseHandlerActivity.ImageChooseVo[] {

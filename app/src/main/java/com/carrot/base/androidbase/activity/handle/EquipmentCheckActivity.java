@@ -141,9 +141,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         imageAddButtonList = new ImageView[] {imageAdd};
 
         openDateEditTextList = new OpenDateVo[] {
-                new OpenDateVo(etEndTime, 1),
-                new OpenDateVo(etCheckTime, 10),
-                new OpenDateVo(etEndHandleTime, 10)
+                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etCheckTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE)
 //                ,new OpenDateVo(etBeginHandleTime, 10)
         };
 

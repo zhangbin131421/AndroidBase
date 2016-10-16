@@ -126,8 +126,8 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
-                new OpenDateVo(etEndTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{

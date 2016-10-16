@@ -134,10 +134,10 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etStopTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etActualStopTime, OpenDateVo.UPDATE_ADD),
-                new OpenDateVo(etEndStopTime, OpenDateVo.UPDATE_ADD),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),
+            new OpenDateVo(etStopTime, OpenDateVo.UPDATE),
+            new OpenDateVo(etActualStopTime, OpenDateVo.UPDATE),
+                new OpenDateVo(etEndStopTime, OpenDateVo.UPDATE),
+            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
