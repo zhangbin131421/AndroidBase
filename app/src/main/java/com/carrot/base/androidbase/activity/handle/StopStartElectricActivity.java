@@ -165,17 +165,17 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(stopStartElectricResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(stopStartElectricResult.assignmentTime));
             etTaskNum.setText(stopStartElectricResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndexByID(stopStartElectricResult.areaID));
             etStopStartElectricAddress.setText(stopStartElectricResult.stopStartElectricAddress);
-            etBeginHandleTime.setText(stopStartElectricResult.beginHandleTime);
+            etBeginHandleTime.setText(getYYYYMMDD(stopStartElectricResult.beginHandleTime));
             spnHandleType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.SS_HANDLER, stopStartElectricResult.handleType));
-            etEndHandleTime.setText(stopStartElectricResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(stopStartElectricResult.endHandleTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, stopStartElectricResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(stopStartElectricResult.unhandleReason);
 
-            etEndTime.setText(stopStartElectricResult.endTime);
+            etEndTime.setText(getYYYYMMDD(stopStartElectricResult.endTime));
             etHandleContent.setText(stopStartElectricResult.handleContent);
             etWorder.setText(stopStartElectricResult.worker);
 

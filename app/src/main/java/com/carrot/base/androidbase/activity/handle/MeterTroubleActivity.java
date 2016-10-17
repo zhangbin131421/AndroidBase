@@ -170,21 +170,21 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(meterTroubleResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(meterTroubleResult.assignmentTime));
             etTaskNum.setText(meterTroubleResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndexByID(meterTroubleResult.areaID));
             etHouseholdNum.setText(meterTroubleResult.householdNum);
             etMeterNum.setText(meterTroubleResult.meterNum);
             etTroubleAddress.setText(meterTroubleResult.troubleAddress);
             etSafetyMeasure.setText(meterTroubleResult.safetyMeasure);
-            etBeginHandleTime.setText(meterTroubleResult.beginHandleTime);
+            etBeginHandleTime.setText(getYYYYMMDD(meterTroubleResult.beginHandleTime));
             etTroubleReason.setText(meterTroubleResult.troubleReason);
             etHandleContent.setText(meterTroubleResult.handleContent);
-            etEndHandleTime.setText(meterTroubleResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(meterTroubleResult.endHandleTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, meterTroubleResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(meterTroubleResult.unhandleReason);
 
-            etEndTime.setText(meterTroubleResult.endTime);
+            etEndTime.setText(getYYYYMMDD(meterTroubleResult.endTime));
             etWorker.setText(meterTroubleResult.worker);
 
             getImage();

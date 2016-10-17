@@ -173,20 +173,20 @@ public class CrossTestActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(crossTestResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(crossTestResult.assignmentTime));
             etTaskNum.setText(crossTestResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndexByID(crossTestResult.areaID));
             etCrossPoint.setText(crossTestResult.crossPoint);
             etCrossName.setText(crossTestResult.crossName);
             etSafetyMeasure.setText(crossTestResult.safetyMeasure);
-            etBeginHandleTime.setText(crossTestResult.beginHandleTime);
+            etBeginHandleTime.setText(getYYYYMMDD(crossTestResult.beginHandleTime));
             etEarthDistance.setText(crossTestResult.earthDistance);
             etCrossDistance.setText(crossTestResult.crossDistance);
             spnIsQualified.setSelection(TypeUtils.getSelectedIndex(TypeUtils.QUALIFIED, crossTestResult.isQualified));
             etModificationOpinion.setText(crossTestResult.modificationOpinion);
-            etTestTime.setText(crossTestResult.testTime);
+            etTestTime.setText(getYYYYMMDD(crossTestResult.testTime));
             etTester.setText(crossTestResult.tester);
-            etEndHandleTime.setText(crossTestResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(crossTestResult.endHandleTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, crossTestResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(crossTestResult.unhandleReason);
 

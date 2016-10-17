@@ -946,4 +946,11 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
             }
         }
     }
+
+    String getYYYYMMDD(String date){
+        if(date == null || date.length() < 10){
+            return "";
+        }
+        return date.substring(0, 10);
+    }
 }

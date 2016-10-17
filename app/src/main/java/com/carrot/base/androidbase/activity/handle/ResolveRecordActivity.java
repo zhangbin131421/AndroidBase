@@ -191,13 +191,13 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(resolveRecordResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(resolveRecordResult.assignmentTime));
             et_TaskNum.setText(resolveRecordResult.taskNum);
 
 
             et_DefectPlace.setText(resolveRecordResult.defectPlace);
             et_DefectContent.setText(resolveRecordResult.defectContent);
-            et_EndTime.setText(resolveRecordResult.endTime);
+            et_EndTime.setText(getYYYYMMDD(resolveRecordResult.endTime));
             et_SafetyMeasure.setText(resolveRecordResult.safetyMeasure);
             et_WorkType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.WORK_TYPE, resolveRecordResult.workType));
             et_WorkInvoiceNum.setText(resolveRecordResult.workInvoiceNum);
@@ -205,15 +205,15 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
             et_Applier.setText(resolveRecordResult.applier);
             et_WorkLicensor.setText(resolveRecordResult.workLicensor);
             et_WorkPrincipal.setText(resolveRecordResult.workPrincipal);
-            et_StopTime.setText(resolveRecordResult.stopTime);
-            et_EndStopTime.setText(resolveRecordResult.endStopTime);
+            et_StopTime.setText(getYYYYMMDD(resolveRecordResult.stopTime));
+            et_EndStopTime.setText(getYYYYMMDD(resolveRecordResult.endStopTime));
             et_StopPeople.setText(resolveRecordResult.stopPeople);
             et_Worker.setText(resolveRecordResult.worker);
             et_OperationInvoiceNum.setText(resolveRecordResult.operationInvoiceNum);
             et_WorkInstruction.setText(resolveRecordResult.workInstruction);
             et_ResolveContent.setText(resolveRecordResult.resolveContent);
             if(resolveRecordResult.workDate!=null){
-                et_WorkDate.setText(resolveRecordResult.workDate);
+                et_WorkDate.setText(getYYYYMMDD(resolveRecordResult.workDate));
             }else{
                 et_WorkDate.setText(DateUtils.getCurrentYYYY_MM_DD());
             }

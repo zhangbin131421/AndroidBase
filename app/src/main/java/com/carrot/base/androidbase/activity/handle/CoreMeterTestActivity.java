@@ -200,14 +200,14 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
             etAssignmentTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
 
-            etEndTime.setText(coreMeterTestResult.endTime);
-            etTestingTime.setText(coreMeterTestResult.testingTime);
-            etBeginHandleTime.setText(coreMeterTestResult.beginHandleTime);
+            etEndTime.setText(getYYYYMMDD(coreMeterTestResult.endTime));
+            etTestingTime.setText(getYYYYMMDD(coreMeterTestResult.testingTime));
+            etBeginHandleTime.setText(getYYYYMMDD(coreMeterTestResult.beginHandleTime));
 
             if(coreMeterTestResult.endHandleTime == null || coreMeterTestResult.endHandleTime.equals("")){
 
             }else{
-                etEndHandleTime.setText(coreMeterTestResult.endHandleTime);
+                etEndHandleTime.setText(getYYYYMMDD(coreMeterTestResult.endHandleTime));
             }
 
 

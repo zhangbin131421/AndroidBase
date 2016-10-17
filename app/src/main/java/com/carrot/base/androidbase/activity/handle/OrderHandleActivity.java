@@ -162,19 +162,19 @@ public class OrderHandleActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(orderHandleResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(orderHandleResult.assignmentTime));
             etTaskNum.setText(orderHandleResult.taskNum);
             etOrderContent.setText(orderHandleResult.orderContent);
-            etBeginHandleTime.setText(orderHandleResult.beginHandleTime);
+            etBeginHandleTime.setText(getYYYYMMDD(orderHandleResult.beginHandleTime));
             etHandleContent.setText(orderHandleResult.handleContent);
-            etEndHandleTime.setText(orderHandleResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(orderHandleResult.endHandleTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, orderHandleResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(orderHandleResult.unhandleReason);
 
             etUserName.setText(orderHandleResult.userName);
             etUserNo.setText(orderHandleResult.userNo);
             etUserAdd.setText(orderHandleResult.userAdd);
-            etEndTime.setText(orderHandleResult.endTime);
+            etEndTime.setText(getYYYYMMDD(orderHandleResult.endTime));
             etWorker.setText(orderHandleResult.worker);
 
 

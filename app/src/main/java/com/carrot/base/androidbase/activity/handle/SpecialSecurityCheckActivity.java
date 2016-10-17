@@ -149,14 +149,14 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(specialSecurityCheckResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(specialSecurityCheckResult.assignmentTime));
             etTaskNum.setText(specialSecurityCheckResult.taskNum);
 //            etBeginTime.setText(specialSecurityCheckResult.beginTime);
-            etEndTime.setText(specialSecurityCheckResult.endHandleTime);
+            etEndTime.setText(getYYYYMMDD(specialSecurityCheckResult.endHandleTime));
             etSafetyMeasure.setText(specialSecurityCheckResult.safetyMeasure);
-            etBeginHandleTime.setText(specialSecurityCheckResult.beginHandleTime);
+            etBeginHandleTime.setText(getYYYYMMDD(specialSecurityCheckResult.beginHandleTime));
             etExistIssue.setText(specialSecurityCheckResult.existIssue);
-            etCheckDate.setText(specialSecurityCheckResult.checkDate);
+            etCheckDate.setText(getYYYYMMDD(specialSecurityCheckResult.checkDate));
 //            etEndHandleTime.setText(specialSecurityCheckResult.endHandleTime);
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, specialSecurityCheckResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(specialSecurityCheckResult.unhandleReason);

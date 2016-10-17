@@ -291,7 +291,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(voltageMeasurementResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(voltageMeasurementResult.assignmentTime));
             etTaskNum.setText(voltageMeasurementResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndexByID(voltageMeasurementResult.areaID));
             etConfigA.setText(voltageMeasurementResult.configA);
@@ -303,8 +303,8 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
             etHouseholder.setText(voltageMeasurementResult.householder);
             etHouseholderCapacity.setText(voltageMeasurementResult.householderCapacity);
             etSafetyMeasure.setText(voltageMeasurementResult.safetyMeasure);
-            etEndTime.setText(voltageMeasurementResult.endTime);
-            etBeginHandleTime.setText(voltageMeasurementResult.beginHandleTime);
+            etEndTime.setText(getYYYYMMDD(voltageMeasurementResult.endTime));
+            etBeginHandleTime.setText(getYYYYMMDD(voltageMeasurementResult.beginHandleTime));
             spnPeriod.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TIME_PERIOD, voltageMeasurementResult.period));
             etCurrentA.setText(voltageMeasurementResult.currentA);
             etCurrentB.setText(voltageMeasurementResult.currentB);
@@ -316,9 +316,9 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
             etFooterVoltage.setText(voltageMeasurementResult.footerVoltage);
             spnIsOutOfLimit.setSelection(TypeUtils.getSelectedIndex(TypeUtils.OUT_LIMIT, voltageMeasurementResult.isOutOfLimit));
             etModificationOpinion.setText(voltageMeasurementResult.modificationOpinion);
-            etTestTime.setText(voltageMeasurementResult.testTime);
+            etTestTime.setText(getYYYYMMDD(voltageMeasurementResult.testTime));
             etTester.setText(voltageMeasurementResult.tester);
-            etEndHandleTime.setText(voltageMeasurementResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(voltageMeasurementResult.endHandleTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, voltageMeasurementResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(voltageMeasurementResult.unhandleReason);
 

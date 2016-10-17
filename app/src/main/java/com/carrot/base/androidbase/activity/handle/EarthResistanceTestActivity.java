@@ -157,19 +157,19 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(earthResistanceTestResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(earthResistanceTestResult.assignmentTime));
             etTaskNum.setText(earthResistanceTestResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndexByID(earthResistanceTestResult.areaID));
             etEarthPlace.setText(earthResistanceTestResult.earthPlace);
             etEarthEquipmentName.setText(earthResistanceTestResult.earthEquipmentName);
             etResistanceValue.setText(earthResistanceTestResult.resistanceValue);
             etSafetyMeasure.setText(earthResistanceTestResult.safetyMeasure);
-            etBeginHandleTime.setText(earthResistanceTestResult.beginHandleTime);
+            etBeginHandleTime.setText(getYYYYMMDD(earthResistanceTestResult.beginHandleTime));
             spnWether.setSelection(TypeUtils.getSelectedIndex(TypeUtils.WEATHERS, earthResistanceTestResult.wether));
             etTestResistanceValue.setText(earthResistanceTestResult.testResistanceValue);
-            etTestDate.setText(earthResistanceTestResult.testDate);
+            etTestDate.setText(getYYYYMMDD(earthResistanceTestResult.testDate));
             etTester.setText(earthResistanceTestResult.tester);
-            etEndHandleTime.setText(earthResistanceTestResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(earthResistanceTestResult.endHandleTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, earthResistanceTestResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(earthResistanceTestResult.unhandleReason);
 

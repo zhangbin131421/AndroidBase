@@ -127,12 +127,12 @@ public class CarManagementActivity extends BaseHandlerActivity{
 
         }else{
 
-            etApplyTime.setText(carManagementResult.applyTime);
+            etApplyTime.setText(getYYYYMMDD(carManagementResult.applyTime));
             etApplyNum.setText(carManagementResult.applyNum);
             etCarID.setText(carManagementResult.carID);
             etArrivalPlace.setText(carManagementResult.arrivalPlace);
-            etDriveOutTime.setText(carManagementResult.driveOutTime);
-            etBackTime.setText(carManagementResult.backTime);
+            etDriveOutTime.setText(getYYYYMMDD(carManagementResult.driveOutTime));
+            etBackTime.setText(getYYYYMMDD(carManagementResult.backTime));
             etStartDistanceCode.setText(carManagementResult.startDistanceCode);
             etEndDistanceCode.setText(carManagementResult.endDistanceCode);
             spnCost.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CAR_COST, carManagementResult.cost));

@@ -190,26 +190,26 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
             etTester.setText(userPrefs.name().get());
         }else{
-            etAssignmentTime.setText(totalPerformanceTestResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(totalPerformanceTestResult.assignmentTime));
             etTaskNum.setText(totalPerformanceTestResult.taskNum);
             etAreaName.setSelection(getSelectedAreaIndexByID(totalPerformanceTestResult.areaID));
             etProtectLine.setText(totalPerformanceTestResult.protectLine);
             etType.setText(totalPerformanceTestResult.type);
             etSafetyMeasure.setSelection(TypeUtils.getSelectedIndex(TypeUtils.SAFETY_MEASURE, totalPerformanceTestResult.safetyMeasure));
-            etEndTime.setText(totalPerformanceTestResult.endTime);
+            etEndTime.setText(getYYYYMMDD(totalPerformanceTestResult.endTime));
 
-            etBeginHandleTime.setText(totalPerformanceTestResult.beginHandleTime);
+            etBeginHandleTime.setText(getYYYYMMDD(totalPerformanceTestResult.beginHandleTime));
             etElectricityA.setText(totalPerformanceTestResult.electricityA);
             etElectricityB.setText(totalPerformanceTestResult.electricityB);
             etElectricityC.setText(totalPerformanceTestResult.electricityC);
             etElectricityD.setText(totalPerformanceTestResult.electricityD);
-            etOperateTime.setText(totalPerformanceTestResult.operateTime);
-            etTestTime.setText(totalPerformanceTestResult.testTime);
+            etOperateTime.setText(getYYYYMMDD(totalPerformanceTestResult.operateTime));
+            etTestTime.setText(getYYYYMMDD(totalPerformanceTestResult.testTime));
             etTestResult.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TEST_RESULT, totalPerformanceTestResult.testResult));
             etHandleContent.setText(totalPerformanceTestResult.handleContent);
             etTester.setText(totalPerformanceTestResult.tester);
 
-            etEndHandleTime.setText(totalPerformanceTestResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(totalPerformanceTestResult.endHandleTime));
             etIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, totalPerformanceTestResult.isHandled == 2 ? "未处理" : "已处理"));
 
             etUnhandleReason.setText(totalPerformanceTestResult.unhandleReason);

@@ -155,17 +155,17 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(extendBussinessSetupResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(extendBussinessSetupResult.assignmentTime));
             etTaskNum.setText(extendBussinessSetupResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndexByID(extendBussinessSetupResult.areaID));
             spnExtendType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.EXTEND_TYPE, extendBussinessSetupResult.extendType));
             etSetupAddress.setText(extendBussinessSetupResult.setupAddress);
             etSafetyMeasure.setText(extendBussinessSetupResult.safetyMeasure);
-            etEndTime.setText(extendBussinessSetupResult.endTime);
-            etBeginHandleTime.setText(extendBussinessSetupResult.beginHandleTime);
+            etEndTime.setText(getYYYYMMDD(extendBussinessSetupResult.endTime));
+            etBeginHandleTime.setText(getYYYYMMDD(extendBussinessSetupResult.beginHandleTime));
             etHandleContent.setText(extendBussinessSetupResult.handleContent);
             etWorker.setText(extendBussinessSetupResult.worker);
-            etEndHandleTime.setText(extendBussinessSetupResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(extendBussinessSetupResult.endHandleTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, extendBussinessSetupResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(extendBussinessSetupResult.unhandleReason);
 

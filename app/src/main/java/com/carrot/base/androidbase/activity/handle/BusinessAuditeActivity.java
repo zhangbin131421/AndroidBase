@@ -147,15 +147,15 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(businessAuditeResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(businessAuditeResult.assignmentTime));
             etTaskNum.setText(businessAuditeResult.taskNum);
             spnAuditeContent.setSelection(TypeUtils.getSelectedIndex(TypeUtils.AUDITE_CONTENT, businessAuditeResult.auditeContent));
             etAuditeScope.setText(businessAuditeResult.auditeScope);
             etSafetyMeasure.setText(businessAuditeResult.safetyMeasure);
-            etBeginAuditeTime.setText(businessAuditeResult.beginAuditeTime);
+            etBeginAuditeTime.setText(getYYYYMMDD(businessAuditeResult.beginAuditeTime));
             etAuditeHouseholdNum.setText(businessAuditeResult.auditeHouseholdNum);
             etAuditeResult.setText(businessAuditeResult.auditeResult);
-            etEndAuditeTime.setText(businessAuditeResult.endAuditeTime);
+            etEndAuditeTime.setText(getYYYYMMDD(businessAuditeResult.endAuditeTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, businessAuditeResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(businessAuditeResult.unhandleReason);
 

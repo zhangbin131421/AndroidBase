@@ -166,16 +166,16 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(collectResolveTroubleResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(collectResolveTroubleResult.assignmentTime));
             etTaskNum.setText(collectResolveTroubleResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndexByID(collectResolveTroubleResult.areaID));
             etTroubleAddress.setText(collectResolveTroubleResult.troubleAddress);
             etSafetyMeasure.setText(collectResolveTroubleResult.safetyMeasure);
-            etEndTime.setText(collectResolveTroubleResult.endTime);
-            etBeginHandleTime.setText(collectResolveTroubleResult.beginHandleTime);
+            etEndTime.setText(getYYYYMMDD(collectResolveTroubleResult.endTime));
+            etBeginHandleTime.setText(getYYYYMMDD(collectResolveTroubleResult.beginHandleTime));
             spnTroubleReason.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TROUBLE_REASON, collectResolveTroubleResult.troubleReason));
             etHandleContent.setText(collectResolveTroubleResult.handleContent);
-            etEndHandleTime.setText(collectResolveTroubleResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(collectResolveTroubleResult.endHandleTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, collectResolveTroubleResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(collectResolveTroubleResult.unhandleReason);
 

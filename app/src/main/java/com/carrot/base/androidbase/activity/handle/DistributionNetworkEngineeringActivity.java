@@ -178,7 +178,7 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(distributionNetworkEngineeringResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(distributionNetworkEngineeringResult.assignmentTime));
             etTaskNum.setText(distributionNetworkEngineeringResult.taskNum);
             etEngineeringName.setText(distributionNetworkEngineeringResult.engineeringName);
             etEngineeringNum.setText(distributionNetworkEngineeringResult.engineeringNum);
@@ -187,20 +187,20 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
             etWorkContent.setText(distributionNetworkEngineeringResult.workContent);
             etWorkPlace.setText(distributionNetworkEngineeringResult.workPlace);
             etStopScope.setText(distributionNetworkEngineeringResult.stopScope);
-            etStopTime.setText(distributionNetworkEngineeringResult.stopTime);
+            etStopTime.setText(getYYYYMMDD(distributionNetworkEngineeringResult.stopTime));
             etWorkLicensor.setText(distributionNetworkEngineeringResult.workLicensor);
-            etBeginHandleTime.setText(distributionNetworkEngineeringResult.beginHandleTime);
+            etBeginHandleTime.setText(getYYYYMMDD(distributionNetworkEngineeringResult.beginHandleTime));
             etWorkInvoiceNum.setText(distributionNetworkEngineeringResult.workInvoiceNum);
             etExecutionResponsible.setText(distributionNetworkEngineeringResult.executionResponsible);
             etWorkResponsible.setText(distributionNetworkEngineeringResult.workResponsible);
             etWorkContent2.setText(distributionNetworkEngineeringResult.workContent2);
             etSafetyMeasure.setText(distributionNetworkEngineeringResult.safetyMeasure);
-            etActualStopTime.setText(distributionNetworkEngineeringResult.actualStopTime);
-            etEndStopTime.setText(distributionNetworkEngineeringResult.endStopTime);
+            etActualStopTime.setText(getYYYYMMDD(distributionNetworkEngineeringResult.actualStopTime));
+            etEndStopTime.setText(getYYYYMMDD(distributionNetworkEngineeringResult.endStopTime));
             etInspector.setText(distributionNetworkEngineeringResult.inspector);
             etInspect.setText(distributionNetworkEngineeringResult.inspect);
             etComplete.setText(distributionNetworkEngineeringResult.complete);
-            etEndHandleTime.setText(distributionNetworkEngineeringResult.endHandleTime);
+            etEndHandleTime.setText(getYYYYMMDD(distributionNetworkEngineeringResult.endHandleTime));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, distributionNetworkEngineeringResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(distributionNetworkEngineeringResult.unhandleReason);
 

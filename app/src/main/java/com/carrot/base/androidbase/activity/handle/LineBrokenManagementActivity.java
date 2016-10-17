@@ -162,7 +162,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
         }else{
 
-            etAssignmentTime.setText(lineBrokenManagementResult.assignmentTime);
+            etAssignmentTime.setText(getYYYYMMDD(lineBrokenManagementResult.assignmentTime));
             etTaskNum.setText(lineBrokenManagementResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndexByID(lineBrokenManagementResult.areaID));
             etElectricityA.setText(lineBrokenManagementResult.electricityA);
@@ -170,10 +170,10 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
             etElectricityC.setText(lineBrokenManagementResult.electricityC);
             etBrokenRate.setText(lineBrokenManagementResult.brokenRate);
             etSafetyMeasure.setText(lineBrokenManagementResult.safetyMeasure);
-            etBeginHandleTime.setText(lineBrokenManagementResult.beginHandleTime);
+            etBeginHandleTime.setText(getYYYYMMDD(lineBrokenManagementResult.beginHandleTime));
             spnUnqualifiedReason.setSelection(TypeUtils.getSelectedIndex(TypeUtils.LB_NOOK_REASON, lineBrokenManagementResult.unqualifiedReason));
             etHandleContent.setText(lineBrokenManagementResult.handleContent);
-            etEndHandleTiem.setText(lineBrokenManagementResult.endHandleTiem);
+            etEndHandleTiem.setText(getYYYYMMDD(lineBrokenManagementResult.endHandleTiem));
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, lineBrokenManagementResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(lineBrokenManagementResult.unhandleReason);
             etWorker.setText(lineBrokenManagementResult.worker);
