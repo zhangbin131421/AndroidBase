@@ -168,7 +168,7 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(collectResolveTroubleResult.assignmentTime);
             etTaskNum.setText(collectResolveTroubleResult.taskNum);
-            spnAreaName.setSelection(getSelectedAreaIndex(collectResolveTroubleResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndexByID(collectResolveTroubleResult.areaID));
             etTroubleAddress.setText(collectResolveTroubleResult.troubleAddress);
             etSafetyMeasure.setText(collectResolveTroubleResult.safetyMeasure);
             etEndTime.setText(collectResolveTroubleResult.endTime);

@@ -182,7 +182,7 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
             etTaskNum.setText(distributionNetworkEngineeringResult.taskNum);
             etEngineeringName.setText(distributionNetworkEngineeringResult.engineeringName);
             etEngineeringNum.setText(distributionNetworkEngineeringResult.engineeringNum);
-            spnAreaName.setSelection(getSelectedAreaIndex(distributionNetworkEngineeringResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndexByID(distributionNetworkEngineeringResult.areaID));
             etExecutionCompany.setText(distributionNetworkEngineeringResult.executionCompany);
             etWorkContent.setText(distributionNetworkEngineeringResult.workContent);
             etWorkPlace.setText(distributionNetworkEngineeringResult.workPlace);

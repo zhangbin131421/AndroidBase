@@ -58,7 +58,7 @@ public class ResolveRecordResult {
 
     public static final String AreaID = "AreaID";
     @JsonProperty(value=AreaID)
-    public String areaID;
+    public int areaID;
 
 
     public static final String DefectPlace = "DefectPlace";
@@ -166,7 +166,7 @@ public class ResolveRecordResult {
         rtn.add(ResolveRecordResult.UserID, this.userId+"");
         rtn.add(ResolveRecordResult.Applier, this.applier.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.AreaName, this.areaName.getBytes("UTF-8"));
-        rtn.add(ResolveRecordResult.AreaID, this.areaID);
+        rtn.add(ResolveRecordResult.AreaID, this.areaID+"");
 //        rtn.add(ResolveRecordResult.BeginHandleTime, this.beginHandleTime.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.DefectContent, this.defectContent.getBytes("UTF-8"));
         rtn.add(ResolveRecordResult.DefectPlace, this.defectPlace.getBytes("UTF-8"));

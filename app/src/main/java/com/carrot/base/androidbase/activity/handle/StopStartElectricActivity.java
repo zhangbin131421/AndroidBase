@@ -167,7 +167,7 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(stopStartElectricResult.assignmentTime);
             etTaskNum.setText(stopStartElectricResult.taskNum);
-            spnAreaName.setSelection(getSelectedAreaIndex(stopStartElectricResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndexByID(stopStartElectricResult.areaID));
             etStopStartElectricAddress.setText(stopStartElectricResult.stopStartElectricAddress);
             etBeginHandleTime.setText(stopStartElectricResult.beginHandleTime);
             spnHandleType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.SS_HANDLER, stopStartElectricResult.handleType));

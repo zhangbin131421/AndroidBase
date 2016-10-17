@@ -293,7 +293,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(voltageMeasurementResult.assignmentTime);
             etTaskNum.setText(voltageMeasurementResult.taskNum);
-            spnAreaName.setSelection(getSelectedAreaIndex(voltageMeasurementResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndexByID(voltageMeasurementResult.areaID));
             etConfigA.setText(voltageMeasurementResult.configA);
             etConfigB.setText(voltageMeasurementResult.configB);
             etConfigC.setText(voltageMeasurementResult.configC);

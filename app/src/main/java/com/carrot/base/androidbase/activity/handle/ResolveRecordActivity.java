@@ -223,7 +223,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
             et_UnhandleReason.setText(resolveRecordResult.unhandleReason);
 //            et_BeginHandleTime.setText(resolveRecordResult.beginHandleTime);
-            etAreaName.setSelection(getSelectedAreaIndex(resolveRecordResult.areaName));
+            etAreaName.setSelection(getSelectedAreaIndexByID(resolveRecordResult.areaID));
 
 
 
@@ -292,7 +292,7 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
             if(obj != null){
                 this.resolveRecordResult.areaName = obj.areaName;
-                this.resolveRecordResult.areaID = obj.id+"";
+                this.resolveRecordResult.areaID = obj.id;
             }
 
 //            this.resolveRecordResult.beginHandleTime = et_BeginHandleTime.getText().toString();

@@ -212,7 +212,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
 
             etTaskNum.setText(coreMeterTestResult.taskNum);
-            etAreaName.setSelection(getSelectedAreaIndex(coreMeterTestResult.areaName));
+            etAreaName.setSelection(getSelectedAreaIndexByID(coreMeterTestResult.areaID));
             etProtectLine.setText(coreMeterTestResult.protectLine);
             etType.setText(coreMeterTestResult.type);
             etSafetyMeasure.setText(coreMeterTestResult.safetyMeasure);

@@ -159,7 +159,7 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(earthResistanceTestResult.assignmentTime);
             etTaskNum.setText(earthResistanceTestResult.taskNum);
-            spnAreaName.setSelection(getSelectedAreaIndex(earthResistanceTestResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndexByID(earthResistanceTestResult.areaID));
             etEarthPlace.setText(earthResistanceTestResult.earthPlace);
             etEarthEquipmentName.setText(earthResistanceTestResult.earthEquipmentName);
             etResistanceValue.setText(earthResistanceTestResult.resistanceValue);

@@ -198,6 +198,29 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
 
     /**
      *
+     * @param id
+     * @return
+     */
+    public int getSelectedAreaIndexByID(int id){
+
+        if(DataInstance.getInstance().areaInformationResults == null
+                || DataInstance.getInstance().areaInformationResults.length == 0){
+            return -1;
+        }
+
+        int rtn = -1;
+        for(int i = 0; i < DataInstance.getInstance().areaInformationResults.length; i ++){
+            AreaInformationResult areaInformationResult = DataInstance.getInstance().areaInformationResults[i];
+            if(id == areaInformationResult.id){
+                rtn = i;
+                break;
+            }
+        }
+        return rtn;
+    }
+
+    /**
+     *
      * @param item
      * @return
      */

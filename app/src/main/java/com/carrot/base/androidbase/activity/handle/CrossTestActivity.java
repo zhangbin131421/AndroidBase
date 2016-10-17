@@ -175,7 +175,7 @@ public class CrossTestActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(crossTestResult.assignmentTime);
             etTaskNum.setText(crossTestResult.taskNum);
-            spnAreaName.setSelection(getSelectedAreaIndex(crossTestResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndexByID(crossTestResult.areaID));
             etCrossPoint.setText(crossTestResult.crossPoint);
             etCrossName.setText(crossTestResult.crossName);
             etSafetyMeasure.setText(crossTestResult.safetyMeasure);

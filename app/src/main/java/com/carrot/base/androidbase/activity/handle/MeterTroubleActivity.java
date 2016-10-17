@@ -172,7 +172,7 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(meterTroubleResult.assignmentTime);
             etTaskNum.setText(meterTroubleResult.taskNum);
-            spnAreaName.setSelection(getSelectedAreaIndex(meterTroubleResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndexByID(meterTroubleResult.areaID));
             etHouseholdNum.setText(meterTroubleResult.householdNum);
             etMeterNum.setText(meterTroubleResult.meterNum);
             etTroubleAddress.setText(meterTroubleResult.troubleAddress);

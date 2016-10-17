@@ -164,7 +164,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
             etAssignmentTime.setText(lineBrokenManagementResult.assignmentTime);
             etTaskNum.setText(lineBrokenManagementResult.taskNum);
-            spnAreaName.setSelection(getSelectedAreaIndex(lineBrokenManagementResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndexByID(lineBrokenManagementResult.areaID));
             etElectricityA.setText(lineBrokenManagementResult.electricityA);
             etElectricityB.setText(lineBrokenManagementResult.electricityB);
             etElectricityC.setText(lineBrokenManagementResult.electricityC);

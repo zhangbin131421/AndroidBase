@@ -179,7 +179,7 @@ public class OrderHandleActivity extends BaseHandlerActivity{
 
 
             spnType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.ORDER_TYPE, orderHandleResult.type));
-            spnAreaName.setSelection(getSelectedAreaIndex(orderHandleResult.areaName));
+            spnAreaName.setSelection(getSelectedAreaIndexByID(orderHandleResult.areaID));
 
             getImage();
         }

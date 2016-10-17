@@ -192,7 +192,7 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
         }else{
             etAssignmentTime.setText(totalPerformanceTestResult.assignmentTime);
             etTaskNum.setText(totalPerformanceTestResult.taskNum);
-            etAreaName.setSelection(getSelectedAreaIndex(totalPerformanceTestResult.areaName));
+            etAreaName.setSelection(getSelectedAreaIndexByID(totalPerformanceTestResult.areaID));
             etProtectLine.setText(totalPerformanceTestResult.protectLine);
             etType.setText(totalPerformanceTestResult.type);
             etSafetyMeasure.setSelection(TypeUtils.getSelectedIndex(TypeUtils.SAFETY_MEASURE, totalPerformanceTestResult.safetyMeasure));
