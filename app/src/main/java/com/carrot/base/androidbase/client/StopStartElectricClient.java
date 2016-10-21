@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Created by victor on 8/28/16.
  */
-@Rest(rootUrl = "http://120.55.101.6:8889/api/StopStartElectric",
+@Rest(rootUrl = "http://119.90.140.156:8087/api/StopStartElectric",
         converters = {MappingJackson2HttpMessageConverter.class,
                 StringHttpMessageConverter.class,FormHttpMessageConverter.class,
                 ByteArrayHttpMessageConverter.class})

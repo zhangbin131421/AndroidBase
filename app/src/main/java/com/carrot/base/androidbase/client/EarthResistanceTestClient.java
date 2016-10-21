@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Created by victor on 8/28/16.
  */
-@Rest(rootUrl = "http://120.55.101.6:8889/api/EarthResistanceTest",
+@Rest(rootUrl = "http://119.90.140.156:8087/api/EarthResistanceTest",
         converters = {MappingJackson2HttpMessageConverter.class,
                 StringHttpMessageConverter.class,FormHttpMessageConverter.class,
                 ByteArrayHttpMessageConverter.class})
