@@ -326,7 +326,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
         }
 
         if(voltageMeasurementResult.tester == null || voltageMeasurementResult.tester.equals("")){
-            etTester.setText(voltageMeasurementResult.tester);
+            etTester.setText(userPrefs.name().get());
         }
     }
 
