@@ -226,7 +226,7 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
-                etConfigA,etConfigB,etConfigC,etRatedCurrent,etPowerHouseholder,
+                etConfigA,etConfigB,etConfigC,etRatedCurrent,etPowerHouseholder,etEndHandleTime,
                 etPowerCapacity,etHouseholder,etHouseholderCapacity,etEndTime,etLoadRate,etImbalanceRate};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etConfigA,etConfigB,etConfigC,etRatedCurrent,etPowerHouseholder,etPowerCapacity,etHouseholder,etHouseholderCapacity,etSafetyMeasure,etEndTime,etBeginHandleTime,etCurrentA,etCurrentB,etCurrentC,etZeoLineCurrent,etLoadRate,etImbalanceRate,etHeaderVoltage,etFooterVoltage,etModificationOpinion,etTestTime,etTester,etEndHandleTime,etUnhandleReason,};
@@ -235,9 +235,9 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnPeriod,spnIsOutOfLimit,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
             new OpenDateVo(etTestTime, OpenDateVo.UPDATE),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{

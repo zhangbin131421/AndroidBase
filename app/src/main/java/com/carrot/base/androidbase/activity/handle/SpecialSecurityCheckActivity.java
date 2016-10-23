@@ -107,7 +107,7 @@ public class SpecialSecurityCheckActivity extends BaseHandlerActivity{
 
         openDateEditTextList = new OpenDateVo[] {
 //            new OpenDateVo(etBeginTime, OpenDateVo.UPDATE),
-            new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
             new OpenDateVo(etBeginHandleTime, OpenDateVo.UPDATE),
             new OpenDateVo(etCheckDate, OpenDateVo.UPDATE),
 //            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE_ADD),

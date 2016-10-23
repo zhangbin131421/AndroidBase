@@ -82,7 +82,8 @@ public class CarManagementActivity extends BaseHandlerActivity{
 
         addDisableList = new FormEditText[] {etApplyTime,etApplyNum,};
 
-        updateDisableList = new FormEditText[] {etApplyTime,etApplyNum,etCarID,etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode};
+        updateDisableList = new FormEditText[] {etApplyTime,etApplyNum,
+                etCarID,etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode};
 
         finishDisableList = new FormEditText[] {etApplyTime,etApplyNum,etCarID,etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode,};
 

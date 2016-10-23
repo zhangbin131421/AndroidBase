@@ -96,7 +96,7 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,etEndTime,
-                etAuditeScope};
+                etAuditeScope,etEndTime,etBeginAuditeTime,etEndAuditeTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etAuditeScope,
                 etSafetyMeasure,etBeginAuditeTime,etAuditeHouseholdNum,etAuditeResult,
@@ -106,9 +106,9 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAuditeContent,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etBeginAuditeTime, OpenDateVo.UPDATE),
-                new OpenDateVo(etEndAuditeTime, OpenDateVo.UPDATE),
-                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etBeginAuditeTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndAuditeTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -159,10 +159,12 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, businessAuditeResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(businessAuditeResult.unhandleReason);
 
-            etEndTime.setText(businessAuditeResult.endTime);
+            etEndTime.setText(getYYYYMMDD(businessAuditeResult.endTime));
             etWorker.setText(businessAuditeResult.worker);
             getImage();
         }
+
+        etEndAuditeTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
         if(businessAuditeResult.worker == null || businessAuditeResult.worker.equals("")){
             etWorker.setText(userPrefs.name().get());

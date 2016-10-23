@@ -125,7 +125,7 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
-                etEngineeringName ,etEngineeringNum ,etExecutionCompany ,
+                etEngineeringName ,etEngineeringNum ,etExecutionCompany ,etEndHandleTime,
                 etWorkContent ,etWorkPlace ,etStopScope ,etStopTime ,etWorkLicensor};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEngineeringName,etEngineeringNum,etExecutionCompany,etWorkContent,etWorkPlace,etStopScope,etStopTime,etWorkLicensor,etBeginHandleTime,etWorkInvoiceNum,etExecutionResponsible,etWorkResponsible,etWorkContent2,etSafetyMeasure,etActualStopTime,etEndStopTime,etInspector,etInspect,etComplete,etEndHandleTime,etUnhandleReason,};
@@ -134,10 +134,10 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etStopTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etStopTime, OpenDateVo.UPDATE),
             new OpenDateVo(etActualStopTime, OpenDateVo.UPDATE),
                 new OpenDateVo(etEndStopTime, OpenDateVo.UPDATE),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -206,6 +206,8 @@ public class DistributionNetworkEngineeringActivity extends BaseHandlerActivity{
 
             getImage();
         }
+
+        etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
     }
 
     /**

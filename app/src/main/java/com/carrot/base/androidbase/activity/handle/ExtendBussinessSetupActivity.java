@@ -101,7 +101,7 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
-                etSetupAddress,etEndTime};
+                etSetupAddress,etEndTime,etEndHandleTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSetupAddress,
                 etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,
@@ -112,7 +112,7 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
 
         openDateEditTextList = new OpenDateVo[] {
             new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -171,6 +171,8 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
 
             getImage();
         }
+
+        etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
         if(extendBussinessSetupResult.worker == null || extendBussinessSetupResult.worker.equals("")){
             etWorker.setText(userPrefs.name().get());

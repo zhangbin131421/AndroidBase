@@ -112,7 +112,7 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,
-                etStopStartElectricAddress,etEndTime};
+                etStopStartElectricAddress,etEndTime,etEndHandleTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etStopStartElectricAddress,
                 etBeginHandleTime,etEndHandleTime,etUnhandleReason,
@@ -122,8 +122,8 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName, spnHandleType,spnIsHandled};
 
         openDateEditTextList = new OpenDateVo[] {
-                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
-                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -183,6 +183,8 @@ public class StopStartElectricActivity extends BaseHandlerActivity{
 
             getImage();
         }
+
+        etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
         if(stopStartElectricResult.worker == null || stopStartElectricResult.worker.equals("")){
             etWorder.setText(userPrefs.name().get());

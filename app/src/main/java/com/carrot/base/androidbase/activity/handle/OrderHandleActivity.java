@@ -109,7 +109,7 @@ public class OrderHandleActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,
-                etUserNo,etUserName,etUserAdd,etOrderContent,etEndTime};
+                etUserNo,etUserName,etUserAdd,etOrderContent,etEndTime,etEndHandleTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etOrderContent,etBeginHandleTime,
                 etHandleContent,etEndHandleTime,etUnhandleReason,
@@ -119,8 +119,8 @@ public class OrderHandleActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnIsHandled,spnAreaName, spnType};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
-                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -183,6 +183,8 @@ public class OrderHandleActivity extends BaseHandlerActivity{
 
             getImage();
         }
+
+        etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
         if(orderHandleResult.worker == null || orderHandleResult.worker.equals("")){
             etWorker.setText(userPrefs.name().get());

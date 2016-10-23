@@ -124,7 +124,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime, etBeginHandleTime};
 
         updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure,
-                etEndTime, etBeginHandleTime,etProtectLine,etType};
+                etEndTime, etBeginHandleTime,etProtectLine,etType,etEndHandleTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etProtectLine, etType,
                 etSafetyMeasure, etEndTime, etBeginHandleTime, etHandleContent, etTester,
@@ -137,7 +137,7 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
         openDateEditTextList = new OpenDateVo[] {
 //                new OpenDateVo(etEndTime, 1),
-                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
 //                new OpenDateVo(etBeginHandleTime, 1),
                 new OpenDateVo(etTestingTime, OpenDateVo.UPDATE),
         };
@@ -237,6 +237,8 @@ public class CoreMeterTestActivity extends BaseHandlerActivity{
 
             this.saveStatus = 1;
         }
+
+        etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
         if(progress != null){
             progress.dismiss();
         }

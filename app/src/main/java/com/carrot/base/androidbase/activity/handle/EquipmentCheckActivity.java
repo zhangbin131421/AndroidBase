@@ -125,9 +125,10 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
                 etDefectPlace, etHandleContent, etDefectContent, etCheckpeople, etCheckTime,
                 etEndHandleTime, etUnhandleReason};
 
-        addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime};
+        addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,etEndHandleTime};
 
         updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
+                etEndHandleTime
         };
 
         finishDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etSafetyMeasure, etEndTime,
@@ -141,9 +142,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         imageAddButtonList = new ImageView[] {imageAdd};
 
         openDateEditTextList = new OpenDateVo[] {
-                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
                 new OpenDateVo(etCheckTime, OpenDateVo.UPDATE),
-                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE)
+//                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE)
 //                ,new OpenDateVo(etBeginHandleTime, 10)
         };
 
@@ -245,6 +246,8 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
             getImage();
         }
+
+        etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
     }
 
     /**

@@ -109,7 +109,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
-                etElectricityA,etElectricityB,etElectricityC,etBrokenRate};
+                etElectricityA,etElectricityB,etElectricityC,etBrokenRate,etEndHandleTiem};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBrokenRate,
                 etSafetyMeasure,etBeginHandleTime,etHandleContent,
@@ -120,7 +120,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnUnqualifiedReason,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etEndHandleTiem, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndHandleTiem, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -180,6 +180,8 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
             getImage();
         }
+
+        etEndHandleTiem.setText(DateUtils.getCurrentYYYY_MM_DD());
 
         if(lineBrokenManagementResult.worker == null || lineBrokenManagementResult.worker.equals("")){
             etWorker.setText(userPrefs.name().get());

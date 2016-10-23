@@ -85,8 +85,8 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
     org.apmem.tools.layouts.FlowLayout et_ResolveContentPic;
     @ViewById(R.id.et_WorkDate)
     FormEditText et_WorkDate;
-//    @ViewById(R.id.et_EndHandleTime)
-//    FormEditText et_EndHandleTime;
+    @ViewById(R.id.et_EndHandleTime)
+    FormEditText et_EndHandleTime;
     @ViewById(R.id.et_IsHandled)
     Spinner et_IsHandled;
     @ViewById(R.id.et_UnhandleReason)
@@ -119,17 +119,18 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
         allValidateFields = new FormEditText[] {et_DefectPlace,
                 et_DefectContent, et_EndTime, et_SafetyMeasure,et_WorkDate};
 
-        addDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_SafetyMeasure, et_EndTime};
+        addDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_SafetyMeasure, et_EndTime,
+                et_EndHandleTime};
 
         updateDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
-                et_DefectContent, et_SafetyMeasure, et_EndTime,};
+                et_DefectContent, et_SafetyMeasure, et_EndTime,et_EndHandleTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime, et_TaskNum, et_DefectPlace,
                 et_DefectContent, et_EndTime, et_SafetyMeasure, et_WorkInvoiceNum, et_StopScope,
                 et_Applier, et_WorkLicensor, et_WorkPrincipal, et_StopTime, et_EndStopTime,
                 et_StopPeople, et_Worker, et_OperationInvoiceNum, et_WorkInstruction, et_WorkDate,
 //                et_EndHandleTime,et_BeginHandleTime,
-                et_UnhandleReason, et_ResolveContent};
+                et_UnhandleReason, et_ResolveContent,et_EndHandleTime};
 
         updateDisabledSpinnerList = new Spinner[] {etAreaName};
         finishDisabledSpinnerList = new Spinner[] {etAreaName, et_WorkType, et_IsHandled};
@@ -232,6 +233,8 @@ public class ResolveRecordActivity extends BaseHandlerActivity{
 
             this.saveStatus = 1;
         }
+
+        et_EndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
     }
 

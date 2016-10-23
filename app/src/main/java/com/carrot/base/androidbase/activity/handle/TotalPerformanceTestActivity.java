@@ -120,7 +120,7 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure};
 
         updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure,
-                etProtectLine,etType,etEndTime};
+                etProtectLine,etType,etEndTime,etEndHandleTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,etBeginHandleTime,etProtectLine,
                 etElectricityA,etElectricityC,etOperateTime,etTestTime,etHandleContent, etSafetyMeasure,etType,
@@ -132,9 +132,9 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
         imageAddButtonList = new ImageView[] {imageAddB, imageAddD};
 
         openDateEditTextList = new OpenDateVo[] {
-                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
                 new OpenDateVo(etOperateTime, OpenDateVo.UPDATE),
-                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
                 new OpenDateVo(etTestTime, OpenDateVo.UPDATE)
         };
 
@@ -217,6 +217,8 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
             this.saveStatus = 1;
         }
+
+        etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
         if(totalPerformanceTestResult.tester == null || totalPerformanceTestResult.tester.equals("")){
             etTester.setText(userPrefs.name().get());

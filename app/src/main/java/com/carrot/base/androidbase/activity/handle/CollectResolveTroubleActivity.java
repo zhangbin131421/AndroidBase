@@ -111,7 +111,7 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
-                etUsername,etTroubleAddress,etAmmeterNo,etPropertyNo,etStatus,etEndTime};
+                etUsername,etTroubleAddress,etAmmeterNo,etPropertyNo,etStatus,etEndTime,etEndHandleTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etTroubleAddress,
                 etSafetyMeasure,etEndTime,etBeginHandleTime,etHandleContent,etEndHandleTime,
@@ -123,7 +123,7 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
 
         openDateEditTextList = new OpenDateVo[] {
             new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -188,6 +188,9 @@ public class CollectResolveTroubleActivity extends BaseHandlerActivity{
 
             getImage();
         }
+
+        etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
+
         if(collectResolveTroubleResult.worker == null || collectResolveTroubleResult.worker.equals("")){
             etWorker.setText(userPrefs.name().get());
         }

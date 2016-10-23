@@ -115,7 +115,7 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
-                etHouseholdNum,etMeterNum,etTroubleAddress,etEndTime};
+                etHouseholdNum,etMeterNum,etTroubleAddress,etEndTime,etEndHandleTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etHouseholdNum,
                 etMeterNum,etTroubleAddress,etSafetyMeasure,etBeginHandleTime,etTroubleReason,
@@ -126,8 +126,8 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnIsHandled,};
 
         openDateEditTextList = new OpenDateVo[] {
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
-                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//                new OpenDateVo(etEndTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
@@ -189,6 +189,8 @@ public class MeterTroubleActivity extends BaseHandlerActivity{
 
             getImage();
         }
+
+        etEndHandleTime.setText(DateUtils.getCurrentYYYY_MM_DD());
 
         if(meterTroubleResult.worker == null || meterTroubleResult.worker.equals("")){
             etWorker.setText(userPrefs.name().get());

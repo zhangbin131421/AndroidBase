@@ -115,7 +115,7 @@ public class EarthResistanceTestActivity extends BaseHandlerActivity{
         openDateEditTextList = new OpenDateVo[] {
             new OpenDateVo(etBeginHandleTime, OpenDateVo.UPDATE),
             new OpenDateVo(etTestDate, OpenDateVo.UPDATE),
-            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
+//            new OpenDateVo(etEndHandleTime, OpenDateVo.UPDATE),
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
