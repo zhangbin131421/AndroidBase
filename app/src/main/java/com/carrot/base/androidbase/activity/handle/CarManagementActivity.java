@@ -65,8 +65,8 @@ public class CarManagementActivity extends BaseHandlerActivity{
     FormEditText etEndDistanceCode;
     @ViewById(R.id.spn_cost)
     Spinner spnCost;
-    @ViewById(R.id.spn_apply_status)
-    Spinner spnApplyStatus;
+    @ViewById(R.id.et_apply_status)
+    FormEditText etApplyStatus;
 
 
 
@@ -80,15 +80,16 @@ public class CarManagementActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {};
 
-        addDisableList = new FormEditText[] {etApplyTime,etApplyNum,};
+        addDisableList = new FormEditText[] {etApplyTime,etApplyNum,etApplyStatus};
 
         updateDisableList = new FormEditText[] {etApplyTime,etApplyNum,
-                etCarID,etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode};
+                etCarID,etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode,etApplyStatus};
 
-        finishDisableList = new FormEditText[] {etApplyTime,etApplyNum,etCarID,etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode,};
+        finishDisableList = new FormEditText[] {etApplyTime,etApplyNum,etCarID,etArrivalPlace,
+                etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode,etApplyStatus};
 
-        updateDisabledSpinnerList = new Spinner[] {spnCost,spnApplyStatus,};
-        finishDisabledSpinnerList = new Spinner[] {spnCost,spnApplyStatus,};
+        updateDisabledSpinnerList = new Spinner[] {spnCost,};
+        finishDisabledSpinnerList = new Spinner[] {spnCost,};
 
         openDateEditTextList = new OpenDateVo[] {
             new OpenDateVo(etDriveOutTime, OpenDateVo.UPDATE),
@@ -112,7 +113,7 @@ public class CarManagementActivity extends BaseHandlerActivity{
     void initDropDownList(){
         //下拉选择框
         setDropDownListAdapter(spnCost, TypeUtils.CAR_COST);
-        setDropDownListAdapter(spnApplyStatus, TypeUtils.APPLY_STATUS);
+//        setDropDownListAdapter(spnApplyStatus, TypeUtils.APPLY_STATUS);
     }
 
 
@@ -137,9 +138,13 @@ public class CarManagementActivity extends BaseHandlerActivity{
             etStartDistanceCode.setText(carManagementResult.startDistanceCode);
             etEndDistanceCode.setText(carManagementResult.endDistanceCode);
             spnCost.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CAR_COST, carManagementResult.cost));
-            spnApplyStatus.setSelection(TypeUtils.getSelectedIndex(TypeUtils.APPLY_STATUS, carManagementResult.applyStatus));
-
+//            spnApplyStatus.setSelection(TypeUtils.getSelectedIndex(TypeUtils.APPLY_STATUS, carManagementResult.applyStatus));
+            etApplyStatus.setText(carManagementResult.applyStatus);
             getImage();
+        }
+
+        if(carManagementResult.applyStatus == null || carManagementResult.applyStatus.equals("")){
+            etApplyStatus.setText("申请中");
         }
     }
 
@@ -184,7 +189,7 @@ public class CarManagementActivity extends BaseHandlerActivity{
             this.carManagementResult.endDistanceCode = etEndDistanceCode.getText().toString();
             this.carManagementResult.cost = spnCost.getSelectedItem().toString();
 
-            this.carManagementResult.applyStatus = spnApplyStatus.getSelectedItem().toString();
+            this.carManagementResult.applyStatus = etApplyStatus.getText().toString();
 
 
 

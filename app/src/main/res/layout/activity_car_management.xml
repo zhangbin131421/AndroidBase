@@ -119,9 +119,13 @@
                 <TextView style="@style/tableColName"
                     android:text="申请状态"/>
                 <TextView style="@style/formDivider"/>
-                <Spinner
-                    android:id="@+id/spn_apply_status"
-                    style="@style/spinner_form_right"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_apply_status"/>
+                <!--<Spinner-->
+                    <!--android:id="@+id/spn_apply_status"-->
+                    <!--style="@style/spinner_form_right"/>-->
             </LinearLayout>
 
         </LinearLayout>
