@@ -115,6 +115,10 @@
             android:screenOrientation="portrait"
             android:label="任务列表" android:launchMode="standard">
         </activity>
+        <activity android:name=".activity.taskList.TaskListNotificationActivity_"
+            android:screenOrientation="portrait"
+            android:label="任务列表" android:launchMode="standard">
+        </activity>
 
         <activity android:name=".activity.SettingActivity_" android:label="设置"
             android:screenOrientation="portrait">
@@ -187,6 +191,9 @@
 
 
         <activity android:name=".activity.handle.CarManagementActivity_"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name=".activity.handle.NotificationActivity_"
             android:screenOrientation="portrait"
             ></activity>
 

@@ -17,6 +17,8 @@ import com.carrot.base.androidbase.activity.handle.EquipmentCheckActivity_;
 import com.carrot.base.androidbase.activity.handle.ExtendBussinessSetupActivity_;
 import com.carrot.base.androidbase.activity.handle.LineBrokenManagementActivity_;
 import com.carrot.base.androidbase.activity.handle.MeterTroubleActivity_;
+import com.carrot.base.androidbase.activity.handle.NotificationActivity;
+import com.carrot.base.androidbase.activity.handle.NotificationActivity_;
 import com.carrot.base.androidbase.activity.handle.OrderHandleActivity_;
 import com.carrot.base.androidbase.activity.handle.ResolveRecordActivity_;
 import com.carrot.base.androidbase.activity.handle.SpecialSecurityCheckActivity_;
@@ -61,6 +63,7 @@ public class TypeUtils {
 
     public final static String TYPE_4 = "综合";
     public final static String TYPE_4_1 = "车辆管理";
+    public final static String TYPE_4_2 = "通知报表";
     /**
      * 测试
      */
@@ -247,6 +250,7 @@ public class TypeUtils {
 
 
         subTypes1.add(new TypeVo(TYPE_4_1, true, R.drawable.garage, true));
+        subTypes1.add(new TypeVo(TYPE_4_2, true, R.drawable.notification, true));
 
         type1.subTypes = subTypes1;
 
@@ -372,6 +376,12 @@ public class TypeUtils {
 
             case TYPE_4_1:
                 CarManagementActivity_.intent(context)
+                        .taskBaseVo(taskBaseVo)
+                        .isFinished(status)
+                        .startForResult(requestCode);
+                break;
+            case TYPE_4_2:
+                NotificationActivity_.intent(context)
                         .taskBaseVo(taskBaseVo)
                         .isFinished(status)
                         .startForResult(requestCode);

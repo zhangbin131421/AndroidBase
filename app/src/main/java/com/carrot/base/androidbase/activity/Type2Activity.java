@@ -24,6 +24,7 @@ import com.carrot.base.androidbase.activity.taskList.TaskListEquipmentCheckActiv
 import com.carrot.base.androidbase.activity.taskList.TaskListExtendBussinessSetupActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListLineBrokenManagementActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListMeterTroubleActivity_;
+import com.carrot.base.androidbase.activity.taskList.TaskListNotificationActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListOrderHandleActivity_;
 import com.carrot.base.androidbase.activity.taskList.TaskListResolveRecordActivity;
 import com.carrot.base.androidbase.activity.taskList.TaskListResolveRecordActivity_;
@@ -498,6 +499,13 @@ public class Type2Activity extends AppCompatActivity {
                     }
                     case TypeUtils.TYPE_4_1:{
                         TaskListCarManagementActivity_.intent(getApplicationContext())
+                                .typeVo(typeVo)
+                                .subTypeVo(typeVo.subTypes.get(position))
+                                .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
+                        break;
+                    }
+                    case TypeUtils.TYPE_4_2:{
+                        TaskListNotificationActivity_.intent(getApplicationContext())
                                 .typeVo(typeVo)
                                 .subTypeVo(typeVo.subTypes.get(position))
                                 .flags(Intent.FLAG_ACTIVITY_NEW_TASK).start();
