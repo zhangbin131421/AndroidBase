@@ -13,11 +13,13 @@ import com.carrot.base.androidbase.utils.FileUtils;
 import com.carrot.base.androidbase.utils.TypeUtils;
 import com.carrot.base.androidbase.vo.result.AreaInformationResult;
 import com.carrot.base.androidbase.vo.result.CarManagementResult;
+import com.carrot.base.androidbase.vo.result.CarResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.rest.spring.annotations.RestService;
@@ -51,8 +53,8 @@ public class CarManagementActivity extends BaseHandlerActivity{
     FormEditText etApplyTime;
     @ViewById(R.id.et_apply_num)
     FormEditText etApplyNum;
-    @ViewById(R.id.et_car_i_d)
-    FormEditText etCarID;
+    @ViewById(R.id.spn_car_id)
+    Spinner spnCarID;
     @ViewById(R.id.et_arrival_place)
     FormEditText etArrivalPlace;
     @ViewById(R.id.et_drive_out_time)
@@ -63,12 +65,13 @@ public class CarManagementActivity extends BaseHandlerActivity{
     FormEditText etStartDistanceCode;
     @ViewById(R.id.et_end_distance_code)
     FormEditText etEndDistanceCode;
-    @ViewById(R.id.spn_cost)
-    Spinner spnCost;
+    @ViewById(R.id.et_cost)
+    FormEditText etCost;
     @ViewById(R.id.et_apply_status)
     FormEditText etApplyStatus;
 
-
+    @Extra("cars")
+    String[] cars;
 
     @AfterViews
     void bindAdapter(){
@@ -83,13 +86,14 @@ public class CarManagementActivity extends BaseHandlerActivity{
         addDisableList = new FormEditText[] {etApplyTime,etApplyNum,etApplyStatus};
 
         updateDisableList = new FormEditText[] {etApplyTime,etApplyNum,
-                etCarID,etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode,etApplyStatus};
+                etArrivalPlace,etDriveOutTime,etBackTime,etStartDistanceCode,
+                etCost,etEndDistanceCode,etApplyStatus};
 
-        finishDisableList = new FormEditText[] {etApplyTime,etApplyNum,etCarID,etArrivalPlace,
+        finishDisableList = new FormEditText[] {etApplyTime,etApplyNum,etArrivalPlace,etCost,
                 etDriveOutTime,etBackTime,etStartDistanceCode,etEndDistanceCode,etApplyStatus};
 
-        updateDisabledSpinnerList = new Spinner[] {spnCost,};
-        finishDisabledSpinnerList = new Spinner[] {spnCost,};
+        updateDisabledSpinnerList = new Spinner[] {spnCarID};
+        finishDisabledSpinnerList = new Spinner[] {spnCarID};
 
         openDateEditTextList = new OpenDateVo[] {
             new OpenDateVo(etDriveOutTime, OpenDateVo.UPDATE),
@@ -111,8 +115,11 @@ public class CarManagementActivity extends BaseHandlerActivity{
     }
 
     void initDropDownList(){
+
+
         //下拉选择框
-        setDropDownListAdapter(spnCost, TypeUtils.CAR_COST);
+        setDropDownListAdapter(spnCarID, cars);
+//        setDropDownListAdapter(spnCost, TypeUtils.CAR_COST);
 //        setDropDownListAdapter(spnApplyStatus, TypeUtils.APPLY_STATUS);
     }
 
@@ -131,13 +138,14 @@ public class CarManagementActivity extends BaseHandlerActivity{
 
             etApplyTime.setText(getYYYYMMDD(carManagementResult.applyTime));
             etApplyNum.setText(carManagementResult.applyNum);
-            etCarID.setText(carManagementResult.carID);
+            spnCarID.setSelection(TypeUtils.getSelectedIndex(cars, carManagementResult.carID));
             etArrivalPlace.setText(carManagementResult.arrivalPlace);
             etDriveOutTime.setText(getYYYYMMDD(carManagementResult.driveOutTime));
             etBackTime.setText(getYYYYMMDD(carManagementResult.backTime));
             etStartDistanceCode.setText(carManagementResult.startDistanceCode);
             etEndDistanceCode.setText(carManagementResult.endDistanceCode);
-            spnCost.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CAR_COST, carManagementResult.cost));
+//            spnCost.setSelection(TypeUtils.getSelectedIndex(TypeUtils.CAR_COST, carManagementResult.cost));
+            etCost.setText(carManagementResult.cost);
 //            spnApplyStatus.setSelection(TypeUtils.getSelectedIndex(TypeUtils.APPLY_STATUS, carManagementResult.applyStatus));
             etApplyStatus.setText(carManagementResult.applyStatus);
             getImage();
@@ -181,13 +189,13 @@ public class CarManagementActivity extends BaseHandlerActivity{
 
             this.carManagementResult.applyTime = etApplyTime.getText().toString();
             this.carManagementResult.applyNum = etApplyNum.getText().toString();
-            this.carManagementResult.carID = etCarID.getText().toString();
+            this.carManagementResult.carID = spnCarID.getSelectedItem().toString();
             this.carManagementResult.arrivalPlace = etArrivalPlace.getText().toString();
             this.carManagementResult.driveOutTime = etDriveOutTime.getText().toString();
             this.carManagementResult.backTime = etBackTime.getText().toString();
             this.carManagementResult.startDistanceCode = etStartDistanceCode.getText().toString();
             this.carManagementResult.endDistanceCode = etEndDistanceCode.getText().toString();
-            this.carManagementResult.cost = spnCost.getSelectedItem().toString();
+            this.carManagementResult.cost = etCost.getText().toString();
 
             this.carManagementResult.applyStatus = etApplyStatus.getText().toString();
 

@@ -1,6 +1,7 @@
 package com.carrot.base.androidbase.client;
 
 import com.carrot.base.androidbase.vo.result.CarManagementResult;
+import com.carrot.base.androidbase.vo.result.CarResult;
 import com.carrot.base.androidbase.vo.result.CountResult;
 import com.carrot.base.androidbase.vo.result.UpdateResult;
 
@@ -56,4 +57,8 @@ public interface CarManagementClient extends RestClientErrorHandling {
     void delete(@Path int id);
 
 
+
+    @Get("/GetAllCarInfo")
+    @Accept(MediaType.APPLICATION_JSON)
+    List<CarResult> getAllCar();
 }

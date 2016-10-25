@@ -51,10 +51,14 @@
                 <TextView style="@style/tableColName"
                     android:text="车号"/>
                 <TextView style="@style/formDivider"/>
-                <com.andreabaccega.widget.FormEditText
-                    style="@style/tableColInput"
-                    whatever:emptyErrorString="@string/notEmpty"
-                    android:id="@+id/et_car_i_d"/>
+                <Spinner
+                    android:id="@+id/spn_car_id"
+                    style="@style/spinner_form_right"/>
+
+                <!--<com.andreabaccega.widget.FormEditText-->
+                    <!--style="@style/tableColInput"-->
+                    <!--whatever:emptyErrorString="@string/notEmpty"-->
+                    <!--android:id="@+id/et_car_i_d"/>-->
             </LinearLayout>
 
             <LinearLayout style="@style/tableTitle2">
@@ -111,10 +115,12 @@
                 <TextView style="@style/tableColName"
                     android:text="费用"/>
                 <TextView style="@style/formDivider"/>
-                <Spinner
-                    android:id="@+id/spn_cost"
-                    style="@style/spinner_form_right"/>
+                <com.andreabaccega.widget.FormEditText
+                    style="@style/tableColInput"
+                    whatever:emptyErrorString="@string/notEmpty"
+                    android:id="@+id/et_cost"/>
             </LinearLayout>
+
             <LinearLayout style="@style/tableTitle2">
                 <TextView style="@style/tableColName"
                     android:text="申请状态"/>
