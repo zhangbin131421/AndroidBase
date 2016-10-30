@@ -49,7 +49,7 @@ public class TypeUtils {
     public final static String TYPE_1_7 = "停复电";
 
     public final static String TYPE_2 = "生产";
-    public final static String TYPE_2_1 = "总表试跳";
+    public final static String TYPE_2_1 = "总保试跳";
     public final static String TYPE_2_2 = "总保性能检测";
     public final static String TYPE_2_3 = "设备巡视";
     public final static String TYPE_2_4 = "消缺记录";
