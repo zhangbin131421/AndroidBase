@@ -91,7 +91,7 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {etAuditeHouseholdNum,etUnhandleReason};
+        allValidateFields = new FormEditText[] {};
 
         addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etSafetyMeasure,};
 
@@ -209,7 +209,10 @@ public class BusinessAuditeActivity extends BaseHandlerActivity{
             this.businessAuditeResult.auditeScope = etAuditeScope.getText().toString();
             this.businessAuditeResult.safetyMeasure = etSafetyMeasure.getText().toString();
             this.businessAuditeResult.beginAuditeTime = etBeginAuditeTime.getText().toString();
+
             this.businessAuditeResult.auditeHouseholdNum = etAuditeHouseholdNum.getText().toString();
+
+
             this.businessAuditeResult.auditeResult = etAuditeResult.getText().toString();
             this.businessAuditeResult.endAuditeTime = etEndAuditeTime.getText().toString();
             this.businessAuditeResult.isHandled = spnIsHandled.getSelectedItem().toString().equals("已处理") ? 1 : 2;
