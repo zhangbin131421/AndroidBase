@@ -158,7 +158,7 @@ public class ExtendBussinessSetupActivity extends BaseHandlerActivity{
             etAssignmentTime.setText(getYYYYMMDD(extendBussinessSetupResult.assignmentTime));
             etTaskNum.setText(extendBussinessSetupResult.taskNum);
             spnAreaName.setSelection(getSelectedAreaIndexByID(extendBussinessSetupResult.areaID));
-            spnExtendType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.EXTEND_TYPE, extendBussinessSetupResult.extendType));
+//            spnExtendType.setSelection(TypeUtils.getSelectedIndex(TypeUtils.EXTEND_TYPE, extendBussinessSetupResult.extendType));
             etSetupAddress.setText(extendBussinessSetupResult.setupAddress);
             etSafetyMeasure.setText(extendBussinessSetupResult.safetyMeasure);
             etEndTime.setText(getYYYYMMDD(extendBussinessSetupResult.endTime));
