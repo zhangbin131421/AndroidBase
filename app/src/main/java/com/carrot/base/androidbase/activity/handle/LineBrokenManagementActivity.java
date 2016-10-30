@@ -95,6 +95,8 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
     @ViewById(R.id.ll_is_handler)
     LinearLayout llIsHandler;
+    @ViewById(R.id.et_end_time)
+    FormEditText etEndTime;
 
     @AfterViews
     void bindAdapter(){
@@ -106,15 +108,15 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
     public void setValidateList(){
         allValidateFields = new FormEditText[] {etUnhandleReason};
 
-        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,};
+        addDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,etEndTime};
 
         updateDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBeginHandleTime,etSafetyMeasure,
-                etElectricityA,etElectricityB,etElectricityC,etBrokenRate,etEndHandleTiem};
+                etElectricityA,etElectricityB,etElectricityC,etBrokenRate,etEndHandleTiem,etEndTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etBrokenRate,
                 etSafetyMeasure,etBeginHandleTime,etHandleContent,
                 etEndHandleTiem,etUnhandleReason,
-        etElectricityA,etElectricityB,etElectricityC,etWorker};
+        etElectricityA,etElectricityB,etElectricityC,etWorker,etEndTime};
 
         updateDisabledSpinnerList = new Spinner[] {spnAreaName};
         finishDisabledSpinnerList = new Spinner[] {spnAreaName,spnUnqualifiedReason,spnIsHandled,};
@@ -177,7 +179,7 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
             spnIsHandled.setSelection(TypeUtils.getSelectedIndex(TypeUtils.TYPE_HANDLER, lineBrokenManagementResult.isHandled == 2 ? "未处理" : "已处理"));
             etUnhandleReason.setText(lineBrokenManagementResult.unhandleReason);
             etWorker.setText(lineBrokenManagementResult.worker);
-
+            etEndTime.setText(getYYYYMMDD(lineBrokenManagementResult.endTime));
             getImage();
         }
 
@@ -241,6 +243,8 @@ public class LineBrokenManagementActivity extends BaseHandlerActivity{
 
             this.lineBrokenManagementResult.unhandleReason = etUnhandleReason.getText().toString();
             this.lineBrokenManagementResult.worker = etWorker.getText().toString();
+
+            this.lineBrokenManagementResult.endTime = etEndTime.getText().toString();
 
             return true;
         }{

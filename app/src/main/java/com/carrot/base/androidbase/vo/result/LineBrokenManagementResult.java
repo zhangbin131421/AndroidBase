@@ -114,6 +114,10 @@ public class LineBrokenManagementResult {
     public String worker;
 
 
+    public static final String EndTime = "EndTime";
+    @JsonProperty(value=EndTime)
+    public String endTime;
+
 
 
     @JsonIgnore
@@ -140,7 +144,7 @@ public class LineBrokenManagementResult {
         rtn.add(LineBrokenManagementResult.IsHandled, this.isHandled+"");
         rtn.add(LineBrokenManagementResult.UnhandleReason, this.unhandleReason == null ? "" : this.unhandleReason.getBytes("UTF-8"));
         rtn.add(LineBrokenManagementResult.Worker, this.worker == null ? "" : this.worker.getBytes("UTF-8"));
-
+        rtn.add(LineBrokenManagementResult.EndTime, this.endTime == null ? "" : this.endTime.getBytes("UTF-8"));
         return rtn;
     }
 }
