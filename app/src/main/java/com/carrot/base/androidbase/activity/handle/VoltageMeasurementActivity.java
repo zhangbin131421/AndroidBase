@@ -174,6 +174,8 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
     @ViewById(R.id.ll_is_handler)
     LinearLayout llIsHandler;
 
+    @ViewById(R.id.ll_modification_opinion)
+    LinearLayout llModificationOpinion;
 
     @AfterViews
     void bindAdapter(){
@@ -241,7 +243,8 @@ public class VoltageMeasurementActivity extends BaseHandlerActivity{
         };
 
         showBySpinnerList = new ShowWithSpinnerVo[]{
-                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason})
+                new ShowWithSpinnerVo(spnIsHandled, llIsHandler, "未处理", new FormEditText[]{etUnhandleReason}),
+                new ShowWithSpinnerVo(spnIsOutOfLimit, llModificationOpinion, "是", new FormEditText[]{etModificationOpinion})
         };
 
 

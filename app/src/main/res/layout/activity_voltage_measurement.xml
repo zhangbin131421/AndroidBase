@@ -333,7 +333,8 @@
                     android:id="@+id/spn_is_out_of_limit"
                     style="@style/spinner_form_right"/>
             </LinearLayout>
-            <LinearLayout style="@style/tableTitle2">
+            <LinearLayout style="@style/tableTitle2"
+                android:id="@+id/ll_modification_opinion">
                 <TextView style="@style/tableColName"
                     android:text="整改建议"/>
                 <TextView style="@style/formDivider"/>
