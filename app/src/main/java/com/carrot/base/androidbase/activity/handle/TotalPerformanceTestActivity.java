@@ -113,14 +113,14 @@ public class TotalPerformanceTestActivity extends BaseHandlerActivity{
 
 
     public void setValidateList(){
-        allValidateFields = new FormEditText[] {etSafetyMeasure, etType, etProtectLine, etAssignmentTime,
-                etEndTime, etElectricityA,etElectricityB,etElectricityC,etElectricityD,etOperateTime,
-                etTestTime,etHandleContent, etTester,etEndHandleTime,etUnhandleReason};
+        allValidateFields = new FormEditText[] {};
 
-        addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure};
+        addDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure,
+                etElectricityA,etElectricityC,etOperateTime};
 
         updateDisableList = new FormEditText[] {etAssignmentTime, etTaskNum, etBeginHandleTime, etSafetyMeasure,
-                etProtectLine,etType,etEndTime,etEndHandleTime};
+                etProtectLine,etType,etEndTime,etEndHandleTime,
+                etElectricityA,etElectricityC,etOperateTime};
 
         finishDisableList = new FormEditText[] {etAssignmentTime,etTaskNum,etEndTime,etBeginHandleTime,etProtectLine,
                 etElectricityA,etElectricityC,etOperateTime,etTestTime,etHandleContent, etSafetyMeasure,etType,
