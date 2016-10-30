@@ -30,7 +30,7 @@ public class TaskCardBusinessAuditeAdapter extends RecyclerView.Adapter<TaskCard
         TextView creationTime;
         TextView endTime;
         TextView areaName;
-        TextView defectContent;
+        TextView scope;
 
         TextView tv_unfinished;
 
@@ -39,7 +39,7 @@ public class TaskCardBusinessAuditeAdapter extends RecyclerView.Adapter<TaskCard
             name = (TextView) itemView.findViewById(R.id.tv_task_name);
 
             areaName = (TextView) itemView.findViewById(R.id.tv_area_name);
-            defectContent = (TextView) itemView.findViewById(R.id.tv_defect_content);
+            scope = (TextView) itemView.findViewById(R.id.tv_scope);
 
 
             creationTime = (TextView) itemView.findViewById(R.id.tv_creation_time);
@@ -89,12 +89,8 @@ public class TaskCardBusinessAuditeAdapter extends RecyclerView.Adapter<TaskCard
             holder.creationTime.setText("");
         }
 
-
-//        if(taskBaseVo.end != null && !taskBaseVo.endTime.equals("")){
-//            holder.endTime.setText("结束日期：" + taskBaseVo.endTime.substring(0,10));
-//        }else{
-//            holder.endTime.setText("");
-//        }
+        holder.scope.setText(taskBaseVo.auditeScope);
+        holder.areaName.setText(taskBaseVo.auditeContent);
 
         if(taskBaseVo.isHandled == 2){
             holder.tv_unfinished.setText("未完成");
