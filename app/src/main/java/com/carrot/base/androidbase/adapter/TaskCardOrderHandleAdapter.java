@@ -80,9 +80,9 @@ public class TaskCardOrderHandleAdapter extends RecyclerView.Adapter<TaskCardOrd
         OrderHandleResult taskBaseVo = mDataset.get(position);
 
         holder.name.setText(taskBaseVo.taskNum);
-        //TODO 类型、地址
-//        holder.type.setText(taskBaseVo.);
-//        holder.address.setText(taskBaseVo.);
+        //
+        holder.type.setText(taskBaseVo.areaName);
+        holder.address.setText(taskBaseVo.type);
 
         if(taskBaseVo.assignmentTime != null && !taskBaseVo.assignmentTime.equals("")){
             holder.creationTime.setText("指派日期：" + taskBaseVo.assignmentTime.substring(0,10));
