@@ -118,7 +118,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
 
     }
 
-
+    /**
+     * 设备巡视校验列表
+     */
     public void setValidateList(){
         allValidateFields = new FormEditText[] {etSafetyMeasure, etEndTime,
 //                etBeginHandleTime,
@@ -186,6 +188,9 @@ public class EquipmentCheckActivity extends BaseHandlerActivity{
         equipmentCheckResult = equipmentCheckClient.getById(taskBaseVo.id);
     }
 
+    /**
+     * 设备巡视
+     */
     void refreshViewAfterGetEntity(){
         if(equipmentCheckResult == null){
 

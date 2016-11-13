@@ -903,6 +903,7 @@ public abstract class BaseHandlerActivity extends AppCompatActivity implements D
         opts.inInputShareable=true;              //Which kind of reference will be used to recover the Bitmap data after being clear, when it will be used in the future
         opts.inTempStorage=new byte[32 * 1024];
 
+        opts.inSampleSize=8;
 
         for (final PhotoInfo pi : resultList){
 
