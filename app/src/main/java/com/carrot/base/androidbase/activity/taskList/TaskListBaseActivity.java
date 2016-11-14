@@ -172,7 +172,7 @@ public abstract class TaskListBaseActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        super.onActivityReenter(resultCode, data);
+//        super.onActivityReenter(resultCode, data);
         if(resultCode == ResultCodeConstant.RESULT_CODE_REFRESH){
             refreshItems();
         }
