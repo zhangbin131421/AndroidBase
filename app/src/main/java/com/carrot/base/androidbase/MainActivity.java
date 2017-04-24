@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         useTimer();
-        getVersion();
+
     }
 
 
@@ -413,6 +413,9 @@ public class MainActivity extends AppCompatActivity {
             LoginActivity_.intent(MainActivity.this).start();
 
         }
+        else {
+            getVersion();
+        }
 
     }
 
@@ -452,7 +455,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog,
                                                 int whichButton) {
                                 // 点击"取消"按钮之后退出程序
-                                finish();
+                                dialog.dismiss();
                             }
                         }).create();// 创建
         // 显示对话框
