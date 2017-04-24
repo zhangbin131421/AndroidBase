@@ -1,13 +1,9 @@
 package com.carrot.base.androidbase.client;
 
-import com.carrot.base.androidbase.vo.result.LoginResult;
-import com.carrot.base.androidbase.vo.result.UserResult;
+import com.carrot.base.androidbase.vo.result.VersionUpgradeResult;
 
 import org.androidannotations.rest.spring.annotations.Accept;
-import org.androidannotations.rest.spring.annotations.Body;
 import org.androidannotations.rest.spring.annotations.Get;
-import org.androidannotations.rest.spring.annotations.Path;
-import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.MediaType;
 import org.androidannotations.rest.spring.api.RestClientErrorHandling;
@@ -18,22 +14,10 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 /**
  * Created by victor on 8/21/16.
  */
-@Rest(rootUrl = "http://120.77.100.58:8082/api/User", converters = {MappingJackson2HttpMessageConverter.class,GsonHttpMessageConverter.class,StringHttpMessageConverter.class})
+@Rest(rootUrl = "http://120.77.100.58:8082/api/VersionCheck/GetLatestVersionNum", converters = {MappingJackson2HttpMessageConverter.class, GsonHttpMessageConverter.class, StringHttpMessageConverter.class})
 public interface VersionUpgradeClient extends RestClientErrorHandling {
 
-    @Get("/GetUserById/?ID={id}")
+    @Get("")
     @Accept(MediaType.APPLICATION_JSON)
-    UserResult getUserById(@Path int id);
-
-    @Get("/Login/?LoginName={username}&Password={password}")
-    @Accept(MediaType.APPLICATION_JSON)
-    LoginResult login(@Path String username, @Path String password);
-
-
-
-    @Post("/UpdateUser")
-    @Accept(MediaType.APPLICATION_JSON)
-    void updateUser(@Body UserResult userResult);
-
-
+    VersionUpgradeResult getVersionUpgradeResult();
 }
